@@ -835,7 +835,8 @@ Android NDK: ERROR:C:/AndroidNDK/sources/cxx-stl/gnu-libstdc++/Android.mk:gnustl
 Android NDK: Check that C:/AndroidNDK/sources/cxx-stl/gnu-libstdc++/4.9/libs/armeabi-v7a/thumb/libgnustl_static.a exists 
 or that its path is correct
 解决：NDK找不到4.9版本的toolchain, 指定toolchain为4.8版本，或者升级ndk版本。 cocos compile -p android --ap android-15 --ndk-toolchain arm-linux-androideabi-4.8
-
+《NDK_TOOLCHAIN_VERSION （编译器类型、版本）默认采用的是GCC编译器，对于GCC版本的选择与 NDK版本有关系，
+NDK R12，在64位ABI默认是GCC 4.9，32位ABI默认是GCC4.8 》
 
 
 
