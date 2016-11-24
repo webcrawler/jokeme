@@ -214,7 +214,7 @@ Path   %NDK_ROOT%;%ANT_ROOT%;%ANDROID_SDK_ROOT%;%ANDROID_SDK_ROOT%\tools;%ANDROI
 1. 按住shift键+鼠标右键 选择在此处(F:\cocos2d-x-3.2alpha0\cocos2d-x-3.2alpha0\tests\cpp-empty-test)打开命令窗口
 2. cocos compile -p android –-ap 20
 3. 生成包 F:\cocos2d-x-3.2alpha0\cocos2d-x-3.2alpha0\tests\cpp-empty-test\publish\android\CppEmptyTest-debug.apk
-4. cd到apk目录 adb install CppEmptyTest-debug.apk
+4. cd到apk目录 adb install CppEmptyTest-debug.apk(安装到内置存储), adb install -s CppEmptyTest-debug.apk(安装到sdcard)
 编译打包(2)(旧方法):
 1. 进入 F:\cocos2d-x-3.2alpha0\cocos2d-x-3.2alpha0\build
 2. 查看当前sdk中所包含的target以及相应id: android list targets
@@ -828,6 +828,14 @@ key.alias.password=fjut
 key.store.password=fjut
 key.store=/Users/fjut/123.keystore
 key.alias=android
+
+46. 执行 cocos compile -p android --ap android-15  报错：
+leading to the following error when I try to compile with APP_STL=gnustl_static and NDK_TOOLCHAIN_VERSION = 4.9 in Application.mk:
+Android NDK: ERROR:C:/AndroidNDK/sources/cxx-stl/gnu-libstdc++/Android.mk:gnustl_static: LOCAL_SRC_FILES points to a missing file
+Android NDK: Check that C:/AndroidNDK/sources/cxx-stl/gnu-libstdc++/4.9/libs/armeabi-v7a/thumb/libgnustl_static.a exists 
+or that its path is correct
+解决：NDK找不到4.9版本的toolchain, 指定toolchain为4.8版本，或者升级ndk版本。 cocos compile -p android --ap android-15 --ndk-toolchain arm-linux-androideabi-4.8
+
 
 
 
