@@ -295,6 +295,7 @@ Scene* pScene = Director::getInstance()->getRunningScene();
 pScene->runAction(act);
 
 8. android.mk 包含文件： （ http://blog.ready4go.com/blog/2013/10/12/update-android-dot-mk-with-local-src-files-and-local-c-includes/ ）
+http://blog.csdn.net/ruglcc/article/details/7814546/
 # 配置自己的源文件目录
 MY_FILES_PATH  :=  $(LOCAL_PATH) \ #（为了寻找 jni/hellocpp/main.cpp）
 $(LOCAL_PATH)/../../Classes
