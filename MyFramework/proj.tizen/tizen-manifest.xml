@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<manifest xmlns="http://tizen.org/ns/packages" api-version="2.3" package="com.joke.me" version="1.0.0">
+    <ui-application appid="com.joke.me" exec="hellocpp" multiple="false" nodisplay="false" taskmanage="true" type="capp">
+        <label>MyFramework</label>
+        <icon>MyFramework.png</icon>
+    </ui-application>
+</manifest>

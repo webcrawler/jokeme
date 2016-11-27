@@ -1,0 +1,125 @@
+<Solution>
+  <PropertyGroup Name="Fenghuang" Version="3.10.0.0" Type="CocosStudio" />
+  <SolutionFolder>
+    <Group ctype="ResourceGroup">
+      <RootFolder Name=".">
+        <Folder Name="MyRes">
+          <Folder Name="gamemenu">
+            <Image Name="game_baccaratnew.png" />
+            <Image Name="game_dzshowhand.png" />
+            <Image Name="game_ersparrow.png" />
+            <Image Name="game_fivestars.png" />
+            <Image Name="game_fowlsandbeasts.png" />
+            <Image Name="game_gangbattle28.png" />
+            <Image Name="game_landlord.png" />
+            <Image Name="game_lgcqfish.png" />
+            <Image Name="game_lgnhfish.png" />
+            <Image Name="game_lkpyfish.png" />
+            <Image Name="game_oxbattle.png" />
+            <Image Name="game_oxnewfour.png" />
+            <Image Name="game_pengpengcar.png" />
+            <Image Name="game_sanshun.png" />
+            <Image Name="game_seaworld.png" />
+            <Image Name="game_xlchsparrow.png" />
+            <Image Name="game_xzddsparrow.png" />
+            <Image Name="game_ywzbfish.png" />
+            <Image Name="game_zhang13.png" />
+            <Image Name="game_zyqsfish.png" />
+            <Image Name="room_title (10).png" />
+            <Image Name="room_title (11).png" />
+            <Image Name="room_title (12).png" />
+            <Image Name="room_title (13).png" />
+            <Image Name="room_title (14).png" />
+            <Image Name="room_title (15).png" />
+            <Image Name="room_title (16).png" />
+            <Image Name="room_title (2).png" />
+            <Image Name="room_title (3).png" />
+            <Image Name="room_title (4).png" />
+            <Image Name="room_title (5).png" />
+            <Image Name="room_title (6).png" />
+            <Image Name="room_title (7).png" />
+            <Image Name="room_title (8).png" />
+            <Image Name="room_title (9).png" />
+            <Image Name="room_title.png" />
+            <Image Name="room_title_dt.png" />
+            <Image Name="room_title_hysj.png" />
+            <Image Name="room_title_ssm.png" />
+          </Folder>
+          <Folder Name="login">
+            <Image Name="cancel1.png" />
+            <Image Name="cancel2.png" />
+            <Image Name="chair_none.png" />
+            <Image Name="ditu.png" />
+            <Image Name="gameAccount.png" />
+            <Image Name="gamePassword.png" />
+            <Image Name="item_bg.png" />
+            <Image Name="loading_circle1.png" />
+            <Image Name="loading_circle2.png" />
+            <Image Name="logon_01.png" />
+            <Image Name="logon_02.png" />
+            <Image Name="logon_bg.jpg" />
+            <Image Name="logon_name.png" />
+            <Image Name="logon_tourist.png" />
+            <Image Name="none.png" />
+            <Image Name="page_point_full.png" />
+            <Image Name="page_point_null.png" />
+            <Image Name="register_01.png" />
+            <Image Name="register_02.png" />
+            <Image Name="register_button.png" />
+            <Image Name="remPassWord.png" />
+            <Image Name="savePassword.png" />
+            <Image Name="upgrade_bg.jpg" />
+            <Image Name="upgrade_logo.png" />
+            <Image Name="upgrade_progress.png" />
+            <Image Name="upgrade_progress_bg.png" />
+            <Image Name="upgrade_progress_ico.png" />
+          </Folder>
+          <Folder Name="menu">
+            <Image Name="plaza_bg.png" />
+            <Image Name="plaza_btm_b1.png" />
+            <Image Name="plaza_btm_b2.png" />
+            <Image Name="plaza_btm_b3.png" />
+            <Image Name="plaza_btm_b4.png" />
+            <Image Name="plaza_btm_b5.png" />
+            <Image Name="plaza_btm_b5_return.png" />
+            <Image Name="plaza_gg_icon.png" />
+            <Image Name="plaza_gold_add.png" />
+            <Image Name="plaza_gold_bg.png" />
+            <Image Name="plaza_head_1.png" />
+            <Image Name="plaza_head_2.png" />
+            <Image Name="plaza_head_3.png" />
+            <Image Name="plaza_head_4.png" />
+            <Image Name="plaza_head_5.png" />
+            <Image Name="plaza_head_6.png" />
+            <Image Name="plaza_head_bg.png" />
+            <Image Name="plaza_head_icon.png" />
+            <Image Name="plaza_icon_last.png" />
+            <Image Name="plaza_icon_next.png" />
+            <Image Name="plaza_lanbabg.png" />
+            <Image Name="plaza_level_bg.png" />
+            <Image Name="plaza_level_num.png" />
+            <Image Name="plaza_navbar.png" />
+            <Image Name="plaza_quick.png" />
+            <Image Name="plaza_title.png" />
+            <Image Name="plaza_title_bg.png" />
+            <Image Name="plaza_tool_b1.png" />
+            <Image Name="plaza_tool_b2.png" />
+            <Image Name="plaza_tool_b3.png" />
+            <Image Name="plaza_tool_btnShare.png" />
+            <Image Name="plaza_tool_line.png" />
+            <Image Name="room_1.png" />
+            <Image Name="room_2.png" />
+            <Image Name="room_3.png" />
+            <Image Name="room_4.png" />
+            <Image Name="room_5.png" />
+          </Folder>
+        </Folder>
+        <Folder Name="csb">
+          <Project Name="layer_login.csd" Type="Layer" />
+          <Project Name="layer_reg.csd" Type="Layer" />
+          <Project Name="layer_test.csd" Type="Layer" />
+        </Folder>
+      </RootFolder>
+    </Group>
+  </SolutionFolder>
+</Solution>
