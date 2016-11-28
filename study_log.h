@@ -834,9 +834,16 @@ leading to the following error when I try to compile with APP_STL=gnustl_static 
 Android NDK: ERROR:C:/AndroidNDK/sources/cxx-stl/gnu-libstdc++/Android.mk:gnustl_static: LOCAL_SRC_FILES points to a missing file
 Android NDK: Check that C:/AndroidNDK/sources/cxx-stl/gnu-libstdc++/4.9/libs/armeabi-v7a/thumb/libgnustl_static.a exists 
 or that its path is correct
-解决：NDK找不到4.9版本的toolchain, 指定toolchain为4.8版本，或者升级ndk版本。 cocos compile -p android --ap android-15 --ndk-toolchain arm-linux-androideabi-4.8
+解决：NDK找不到4.9版本的toolchain, 指定toolchain为4.8版本，或者升级ndk版本。 
+cocos compile -p android --ap android-15 --ndk-toolchain arm-linux-androideabi-4.8  (在ndk目录下查找toolchain 版本：android-ndk-r10b\toolchains\arm-linux-androideabi-4.8)
 《NDK_TOOLCHAIN_VERSION （编译器类型、版本）默认采用的是GCC编译器，对于GCC版本的选择与 NDK版本有关系，
 NDK R12，在64位ABI默认是GCC 4.9，32位ABI默认是GCC4.8 》
+
+47. 修改cocos2dx 安装apk时 上传apk到手机存储位置为sdcard (/sdcard/tmp/), 默认存放位置是在系统空间/data/local/tmp/
+打开cocos2d-x-3.13.1\tools\cocos2d-console\plugins\plugin_deploy.py 找到 adb_install = "%s install \"%s\"" % (adb_path, apk_path) 改为：
+adb_install = "%s install -s \"%s\"" % (adb_path, apk_path)
+
+
 
 
 
