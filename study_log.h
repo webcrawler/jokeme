@@ -108,7 +108,7 @@ void MyClass::scriptTest()
 
 
 
-2. adb logcat > foo.txt    保存在当前目录
+2. adb logcat > /Users/admin/Documents/log17.txt   // 输出log到外部文件
 ndk-stack -sym /Users/admin/Documents/git/BatteryClient/Maze2.0.0/proj.android/obj/local/armeabi  -dump /Users/admin/Documents/log17.txt
 
 addr2line命令获取代码行数：
@@ -295,32 +295,28 @@ Scene* pScene = Director::getInstance()->getRunningScene();
 pScene->runAction(act);
 
 8. android.mk 包含文件： （ http://blog.ready4go.com/blog/2013/10/12/update-android-dot-mk-with-local-src-files-and-local-c-includes/ ）
-# 配置自己的源文件目录和源文件后缀名
-MY_FILES_PATH  :=  $(LOCAL_PATH) \
+http://blog.csdn.net/ruglcc/article/details/7814546/
+# 配置自己的源文件目录
+MY_FILES_PATH  :=  $(LOCAL_PATH) \ #（为了寻找 jni/hellocpp/main.cpp）
 $(LOCAL_PATH)/../../Classes
-
+# 指定查找源文件后缀名
 MY_FILES_SUFFIX := %.cpp %.c
-
 # 递归遍历目录下的所有的文件
 rwildcard=$(wildcard $1$2) $(foreach d,$(wildcard $1*),$(call rwildcard,$d/,$2))
-
 # 获取相应的源文件
 MY_ALL_FILES := $(foreach src_path,$(MY_FILES_PATH), $(call rwildcard,$(src_path),*.*) )
 MY_ALL_FILES := $(MY_ALL_FILES:$(MY_CPP_PATH)/./%=$(MY_CPP_PATH)%)
 MY_SRC_LIST  := $(filter $(MY_FILES_SUFFIX),$(MY_ALL_FILES))
 MY_SRC_LIST  := $(MY_SRC_LIST:$(LOCAL_PATH)/%=%)
-
 # 去除字串的重复单词
 define uniq =
 $(eval seen :=)
 $(foreach _,$1,$(if $(filter $_,${seen}),,$(eval seen += $_)))
 ${seen}
 endef
-
 # 递归遍历获取所有目录
 MY_ALL_DIRS := $(dir $(foreach src_path,$(MY_FILES_PATH), $(call rwildcard,$(src_path),*/) ) )
 MY_ALL_DIRS := $(call uniq,$(MY_ALL_DIRS))
-
 # 赋值给NDK编译系统
 LOCAL_SRC_FILES  := $(MY_SRC_LIST)
 LOCAL_C_INCLUDES := $(MY_ALL_DIRS)
@@ -816,7 +812,7 @@ E:\android\jdk1.8.0_101\jre\bin
 1. 导入android项目，import project: cocos2d\cocos\platform\android\java
 2. 右键project->properties->android->library， add libray路径 解决error
 3. java build path -> libraries-> add jars
-4. builders 勾选 CDT Builders 开启c++编译,  C/C++ Build 下 Build command，默认 python ${ProjDirPath}/build_native.py -b release
+4. builders 勾选 CDT Builders 开启c++编译,  Build command，默认 python ${ProjDirPath}/build_native.py -b release
 5. C/C++ Build->Environment add:
 PATH -> E:\fjut\cocos2d-x-3.8.1\cocos2d-x-3.8.1\tools\cocos2d-console\bin;D:\Python27
 ANT_ROOT ->  E:\android\apache-ant-1.9.7\bin
@@ -834,16 +830,10 @@ leading to the following error when I try to compile with APP_STL=gnustl_static 
 Android NDK: ERROR:C:/AndroidNDK/sources/cxx-stl/gnu-libstdc++/Android.mk:gnustl_static: LOCAL_SRC_FILES points to a missing file
 Android NDK: Check that C:/AndroidNDK/sources/cxx-stl/gnu-libstdc++/4.9/libs/armeabi-v7a/thumb/libgnustl_static.a exists 
 or that its path is correct
-解决：NDK找不到4.9版本的toolchain, 指定toolchain为4.8版本，或者升级ndk版本。 
-cocos compile -p android --ap android-15 --ndk-toolchain arm-linux-androideabi-4.8  (在ndk目录下查找toolchain 版本：android-ndk-r10b\toolchains\arm-linux-androideabi-4.8)
+解决：NDK找不到4.9版本的toolchain, 指定toolchain为4.8版本，或者升级ndk版本。 cocos compile -p android --ap android-15 --ndk-toolchain arm-linux-androideabi-4.8
+(arm-linux-androideabi-4.8 在ndk下toolchain目录)
 《NDK_TOOLCHAIN_VERSION （编译器类型、版本）默认采用的是GCC编译器，对于GCC版本的选择与 NDK版本有关系，
 NDK R12，在64位ABI默认是GCC 4.9，32位ABI默认是GCC4.8 》
-
-47. 修改cocos2dx 安装apk时 上传apk到手机存储位置为sdcard (/sdcard/tmp/), 默认存放位置是在系统空间/data/local/tmp/
-打开cocos2d-x-3.13.1\tools\cocos2d-console\plugins\plugin_deploy.py 找到 adb_install = "%s install \"%s\"" % (adb_path, apk_path) 改为：
-adb_install = "%s install -s \"%s\"" % (adb_path, apk_path)
-
-
 
 
 

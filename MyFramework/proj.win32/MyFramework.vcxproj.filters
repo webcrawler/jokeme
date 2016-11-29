@@ -1,0 +1,203 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="win32">
+      <UniqueIdentifier>{84a8ebd7-7cf0-47f6-b75e-d441df67da40}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="resource">
+      <UniqueIdentifier>{715254bc-d70b-4ec5-bf29-467dd3ace079}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{bb6c862e-70e9-49d9-81b7-3829a6f50471}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Control">
+      <UniqueIdentifier>{5ea4f576-9bc3-4557-a228-bd85134babbe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Framework">
+      <UniqueIdentifier>{718cbe2b-0b63-4f78-a178-86768b197ff7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Views">
+      <UniqueIdentifier>{a97e695b-9aff-435a-ac8b-96f90bae42a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Framework\CommonFunc">
+      <UniqueIdentifier>{f37ffc39-8de1-44ff-96dc-b6d82ddc7534}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Framework\EventDispather">
+      <UniqueIdentifier>{c930cffb-9fd0-4a4d-a691-28bdd837fe16}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Framework\UIManager">
+      <UniqueIdentifier>{2aaf8089-75c3-4c1a-b20b-d13b6b95aa4e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Views\Game">
+      <UniqueIdentifier>{cfa6c8d4-2691-43af-8e9d-5341cd80af1c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Views\Login">
+      <UniqueIdentifier>{df5d6856-f55e-4af7-92f9-921dfa5c39e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Views\Menus">
+      <UniqueIdentifier>{93f35350-fd25-45ab-8971-e76ab6dc4ba5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Views\Test">
+      <UniqueIdentifier>{c4920e51-5c0d-4246-add1-4824d0579a47}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\AppDelegate.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\HelloWorldScene.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Control\GameControl.cpp">
+      <Filter>src\Control</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Framework\CommonFunc\FileManager.cpp">
+      <Filter>src\Framework\CommonFunc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Framework\CommonFunc\LocalizedString.cpp">
+      <Filter>src\Framework\CommonFunc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Framework\CommonFunc\UIFunc.cpp">
+      <Filter>src\Framework\CommonFunc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Framework\EventDispather\UIEventDispather.cpp">
+      <Filter>src\Framework\EventDispather</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Framework\UIManager\LayerBase.cpp">
+      <Filter>src\Framework\UIManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Framework\UIManager\LoadingUI.cpp">
+      <Filter>src\Framework\UIManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Framework\UIManager\SceneBase.cpp">
+      <Filter>src\Framework\UIManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Framework\UIManager\ShelterUI.cpp">
+      <Filter>src\Framework\UIManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Framework\UIManager\UIManager.cpp">
+      <Filter>src\Framework\UIManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Views\Login\LayerLogin.cpp">
+      <Filter>src\Views\Login</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Views\Login\LayerReg.cpp">
+      <Filter>src\Views\Login</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Views\Login\SceneLogin.cpp">
+      <Filter>src\Views\Login</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Views\Test\LayerTest.cpp">
+      <Filter>src\Views\Test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Views\Test\SceneTest.cpp">
+      <Filter>src\Views\Test</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="main.h">
+      <Filter>win32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\AppDelegate.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\HelloWorldScene.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Control\define_control.h">
+      <Filter>src\Control</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Control\GameControl.h">
+      <Filter>src\Control</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Framework\define_framework.h">
+      <Filter>src\Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Framework\CommonFunc\define_commonfunc.h">
+      <Filter>src\Framework\CommonFunc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Framework\CommonFunc\FileManager.h">
+      <Filter>src\Framework\CommonFunc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Framework\CommonFunc\Game_Val_Define.h">
+      <Filter>src\Framework\CommonFunc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Framework\CommonFunc\LocalizedString.h">
+      <Filter>src\Framework\CommonFunc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Framework\CommonFunc\UIFunc.h">
+      <Filter>src\Framework\CommonFunc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Framework\EventDispather\define_eventdispather.h">
+      <Filter>src\Framework\EventDispather</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Framework\EventDispather\UIEventDefine.h">
+      <Filter>src\Framework\EventDispather</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Framework\EventDispather\UIEventDispather.h">
+      <Filter>src\Framework\EventDispather</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Framework\UIManager\define_uimanager.h">
+      <Filter>src\Framework\UIManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Framework\UIManager\LayerBase.h">
+      <Filter>src\Framework\UIManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Framework\UIManager\LoadingUI.h">
+      <Filter>src\Framework\UIManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Framework\UIManager\SceneBase.h">
+      <Filter>src\Framework\UIManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Framework\UIManager\ShelterUI.h">
+      <Filter>src\Framework\UIManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Framework\UIManager\UIManager.h">
+      <Filter>src\Framework\UIManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Framework\UIManager\UIValDefine.h">
+      <Filter>src\Framework\UIManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Views\define_views.h">
+      <Filter>src\Views</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Views\Menus\define_menu.h">
+      <Filter>src\Views\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Views\Login\define_login.h">
+      <Filter>src\Views\Login</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Views\Login\LayerLogin.h">
+      <Filter>src\Views\Login</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Views\Login\LayerReg.h">
+      <Filter>src\Views\Login</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Views\Login\SceneLogin.h">
+      <Filter>src\Views\Login</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Views\Game\define_game.h">
+      <Filter>src\Views\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\define_.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Views\Test\define_test.h">
+      <Filter>src\Views\Test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Views\Test\LayerTest.h">
+      <Filter>src\Views\Test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Views\Test\SceneTest.h">
+      <Filter>src\Views\Test</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="game.rc">
+      <Filter>resource</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>
