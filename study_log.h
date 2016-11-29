@@ -812,7 +812,7 @@ E:\android\jdk1.8.0_101\jre\bin
 1. 导入android项目，import project: cocos2d\cocos\platform\android\java
 2. 右键project->properties->android->library， add libray路径 解决error
 3. java build path -> libraries-> add jars
-4. builders 勾选 CDT Builders 开启c++编译,  Build command，默认 python ${ProjDirPath}/build_native.py -b release
+4. builders 勾选 CDT Builders 开启c++编译, C/C++ Build下Build command，默认 python ${ProjDirPath}/build_native.py -b release
 5. C/C++ Build->Environment add:
 PATH -> E:\fjut\cocos2d-x-3.8.1\cocos2d-x-3.8.1\tools\cocos2d-console\bin;D:\Python27
 ANT_ROOT ->  E:\android\apache-ant-1.9.7\bin
@@ -835,9 +835,9 @@ or that its path is correct
 《NDK_TOOLCHAIN_VERSION （编译器类型、版本）默认采用的是GCC编译器，对于GCC版本的选择与 NDK版本有关系，
 NDK R12，在64位ABI默认是GCC 4.9，32位ABI默认是GCC4.8 》
 
-
-
-
+47. 修改cocos2dx 安装apk时 上传apk到手机存储位置为sdcard (/sdcard/tmp/), 默认存放位置是在系统空间/data/local/tmp/
+ 打开cocos2d-x-3.13.1\tools\cocos2d-console\plugins\plugin_deploy.py 找到 adb_install = "%s install \"%s\"" % (adb_path, apk_path) 改为：
+ adb_install = "%s install -s \"%s\"" % (adb_path, apk_path)
 
 
 
