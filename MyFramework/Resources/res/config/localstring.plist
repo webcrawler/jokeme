@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+
+<dict>
+	<key>res_ver</key>
+	<string>1</string>
+	<key>lua_debug</key>
+	<string>true</string>
+	<key>lua_graph_debug</key>
+	<string>true</string>
+	<key>lua_msg_log</key>
+	<string>true</string>
+	<key>lua_err_log</key>
+	<string>true</string>
+	<key>lua_all_log</key>
+	<string>false</string>
+	<key>sdk_platform_id</key>
+	<string>1</string>
+	<key>is_update</key>
+	<string>false</string>
+</dict>
+</plist>

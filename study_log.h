@@ -839,7 +839,9 @@ NDK R12，在64位ABI默认是GCC 4.9，32位ABI默认是GCC4.8 》
  打开cocos2d-x-3.13.1\tools\cocos2d-console\plugins\plugin_deploy.py 找到 adb_install = "%s install \"%s\"" % (adb_path, apk_path) 改为：
  adb_install = "%s install -s \"%s\"" % (adb_path, apk_path)
 
+48. adb install apk时提示： adb: error: connect failed: more than one device/emulator。 解决： adb kill-server 再来。adb devices
 
+49. 
 
 
 
