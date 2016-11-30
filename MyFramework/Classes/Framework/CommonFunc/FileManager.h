@@ -1,43 +1,45 @@
+/**
+*  @brief: 文件读写
+*  @Created by fjut on 16-11-28
+*/
 
-#ifndef _FILE_MANAGER_H_
-#define _FILE_MANAGER_H_
+#ifndef __H_FILE_MANAGER_H__
+#define __H_FILE_MANAGER_H__
 
 #include "cocos2d.h"
-#include <iostream>
-#include <fstream>
 
 using namespace cocos2d;
-using namespace std;
 
-// 鐢ㄦ埛淇℃伅
+// 用户信息
 typedef struct _AccountInf
 {
-    char uid[128];
-	char name[128];
+	std::string name;
+	std::string pwd;
+	// todo add
 }AccountInf;
+typedef std::map<std::string, AccountInf> AccountArr;
 
-class CFileManager
+class FileManager
 {
 public:
-	static CFileManager* instance(); 
-	static void freeInstance();
+	FileManager();
+	static FileManager& getInstance();
+	static void destroyInstance();
+
+private:
+	void writeDataToFile(const Data& data, const std::string& path);
+	Data readDataFromFile(const std::string& path);
 
 public:
-	CFileManager();
-	virtual ~CFileManager();
+	void writeUserData(AccountArr& accArr);
+	AccountArr readUserData();
+	void deleteUserByName(const std::string& name);
+	void deleteAllUsers();
 
-public:
-	bool checkFileIsExit(const std::string& fullPathName);
-    
-public:
-    AccountInf readAccountInf(const char* uid, const char* defaultName = "");
-    bool writeAccountInf(const char* uid, const char* name);
-
-public:
-	void saveUserInfo(string& name, string& pwd);
-	vector<string> getUserInfo();
+private:
+	std::string writablePath;
 };
 
-#define g_fileMgr CFileManager::instance()
+#define g_file FileManager::getInstance()
 
-#endif
+#endif 

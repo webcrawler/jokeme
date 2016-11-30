@@ -1,104 +1,89 @@
+/**
+*  @brief: ÎÄ¼þ¶ÁÐ´
+*  @Created by fjut on 16-11-28
+*/
 
 #include "FileManager.h"
 
-static const std::string ACCOUNTDATA = "accountData";
+static const char* filePath = "FILEMANAGER";
+static const char* AccFile = "ACCOUNT";
 
-static CFileManager* _instance = NULL;
-
-CFileManager::CFileManager()
+FileManager::FileManager()
 {
-}
-
-CFileManager::~CFileManager()
-{
-
-}
-
-CFileManager* CFileManager::instance()
-{
-	if(_instance == NULL)
+	writablePath = FileUtils::getInstance()->getWritablePath() + filePath + "/";
+	if (!FileUtils::getInstance()->isDirectoryExist(writablePath))
 	{
-		_instance = new CFileManager();
+		FileUtils::getInstance()->createDirectory(writablePath);
 	}
+}
 
+FileManager& FileManager::getInstance()
+{
+	static FileManager _instance;
 	return _instance;
 }
 
-void CFileManager::freeInstance()
+void FileManager::destroyInstance()
 {
-	if(_instance != NULL)
+
+}
+
+void FileManager::writeDataToFile(const Data& data, const std::string& path)
+{
+	std::string fullPath = writablePath + path;
+	FileUtils::getInstance()->writeDataToFile(data, fullPath.c_str());
+}
+
+Data FileManager::readDataFromFile(const std::string& path)
+{
+	std::string fullPath = writablePath + path;
+	Data data = FileUtils::getInstance()->getDataFromFile(fullPath);
+	return data;
+}
+
+void FileManager::writeUserData(AccountArr& accArr)
+{
+	Data writeData;
+	writeData.copy((unsigned char *)&accArr, sizeof(AccountArr));
+	writeDataToFile(writeData, AccFile);
+}
+
+AccountArr FileManager::readUserData()
+{
+	Data readData = readDataFromFile(AccFile);
+	if (readData.isNull())
 	{
-		delete _instance;
-		_instance = NULL;
+		AccountArr arr;
+		return arr;
 	}
+	AccountArr* buffer = (AccountArr*)malloc(sizeof(AccountArr)*(readData.getSize() + 1));
+	memcpy(buffer, readData.getBytes(), readData.getSize());
+	AccountArr arr = *buffer;
+	free(buffer);
+	return arr;
+
+	//Data readData = FileUtils::getInstance()->getDataFromFile(fullPath);
+	//buffer = (unsigned char*)malloc(sizeof(unsigned char) * (readData.getSize() + 1));
+	//memcpy(buffer, readData.getBytes(), readData.getSize());
+	//buffer[readData.getSize()] = '\0';
+	//std::string readDataStr((const char*)buffer);
+	//free(buffer);
 }
 
-bool CFileManager::checkFileIsExit(const std::string& fullPathName)
+void FileManager::deleteUserByName(const std::string& name)
 {
-	return cocos2d::FileUtils::getInstance()->isFileExist(fullPathName);
+	AccountArr arr = readUserData();
+	auto it = arr.find(name);
+	if (it == arr.end())
+	{
+		CCLOG("deleteUserByName fail, can't find the user by the name %s", name.c_str());
+		return;
+	}
+	arr.erase(it);
+	writeUserData(arr);
 }
 
-AccountInf CFileManager::readAccountInf(const char* uid, const char* defaultName)
+void FileManager::deleteAllUsers()
 {
-    FILE* fp = nullptr;
-    AccountInf inf;
-    
-    std::string fullPath = cocos2d::FileUtils::getInstance()->getWritablePath();
-    fullPath = fullPath.append(std::string(uid) + "/" + ACCOUNTDATA);
-    
-    if( !checkFileIsExit(fullPath) )
-    {
-        if (!writeAccountInf(uid, defaultName))
-        {
-            strcpy(inf.uid, uid);
-            strcpy(inf.name, defaultName);
-            return inf;
-        }
-    }
-    
-    if( (fp = fopen(fullPath.c_str(), "rb")) != NULL )
-    {
-        fread(&inf, sizeof(inf), 1, fp);
-    }
-    
-    fclose(fp);
-    
-    return inf;
-}
 
-bool CFileManager::writeAccountInf(const char* uid, const char* name)
-{
-    AccountInf inf;
-    strcpy(inf.uid, uid);
-    strcpy(inf.name, name);
-    
-    FILE* fp;
-    std::string fullPath = cocos2d::FileUtils::getInstance()->getWritablePath();
-    fullPath = fullPath.append(std::string(uid) + "/" + ACCOUNTDATA);
-    
-    if( (fp = fopen(fullPath.c_str(), "wb")) != NULL && fwrite(&inf, sizeof(inf), 1, fp) != 0)
-    {
-        fclose(fp);
-        return true;
-    }
-    
-    fclose(fp);
-    return false;
-}
-
-void CFileManager::saveUserInfo(string& name, string& pwd)
-{
-	UserDefault::getInstance()->setStringForKey("account", name);
-	UserDefault::getInstance()->setStringForKey("pwd", pwd);
-	UserDefault::getInstance()->flush();
-}
-
-vector<string> CFileManager::getUserInfo()
-{
-	auto acc = UserDefault::getInstance()->getStringForKey("account", "");
-	auto pwd = UserDefault::getInstance()->getStringForKey("pwd", "");
-	vector<string> vec;
-	vec.push_back(acc);
-	vec.push_back(pwd);
-	return vec;
 }
