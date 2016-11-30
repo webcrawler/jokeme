@@ -91,6 +91,8 @@ void LayerTest::updateUI()
 	panel->addChild(scroll);
 	*/
 
+	//g_file.deleteFile();
+
 	string str = g_local.getStr("res_ver");
 	bool b = g_local.getBool("lua_debug");
 
@@ -101,9 +103,9 @@ void LayerTest::updateUI()
 	inf.pwd = "pwd1";
 	arr["name1"] = inf;
 
-	inf.name = "name2";
-	inf.pwd = "pwd2";
-	arr["name2"] = inf;
+	//inf.name = "name2";
+	//inf.pwd = "pwd2";
+	//arr["name2"] = inf;
 	g_file.writeUserData(arr);
 
 	arr = g_file.readUserData();

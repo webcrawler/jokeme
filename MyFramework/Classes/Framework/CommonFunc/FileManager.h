@@ -36,6 +36,8 @@ public:
 	void deleteUserByName(const std::string& name);
 	void deleteAllUsers();
 
+	void deleteFile();
+
 private:
 	std::string writablePath;
 };

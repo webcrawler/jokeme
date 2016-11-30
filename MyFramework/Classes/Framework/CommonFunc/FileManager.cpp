@@ -44,7 +44,7 @@ Data FileManager::readDataFromFile(const std::string& path)
 void FileManager::writeUserData(AccountArr& accArr)
 {
 	Data writeData;
-	writeData.copy((unsigned char *)&accArr, sizeof(AccountArr));
+	writeData.copy((unsigned char *)&accArr, sizeof(AccountInf)*accArr.size());
 	writeDataToFile(writeData, AccFile);
 }
 
@@ -56,7 +56,7 @@ AccountArr FileManager::readUserData()
 		AccountArr arr;
 		return arr;
 	}
-	AccountArr* buffer = (AccountArr*)malloc(sizeof(AccountArr)*(readData.getSize() + 1));
+	AccountArr* buffer = (AccountArr*)malloc(sizeof(AccountInf)*1);
 	memcpy(buffer, readData.getBytes(), readData.getSize());
 	AccountArr arr = *buffer;
 	free(buffer);
@@ -86,4 +86,13 @@ void FileManager::deleteUserByName(const std::string& name)
 void FileManager::deleteAllUsers()
 {
 
+}
+
+void FileManager::deleteFile()
+{
+	std::string file = writablePath + AccFile;
+	if (FileUtils::getInstance()->isFileExist(file))
+	{
+		FileUtils::getInstance()->removeFile(file);
+	}
 }
