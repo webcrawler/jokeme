@@ -91,6 +91,9 @@ void LayerTest::updateUI()
 	panel->addChild(scroll);
 	*/
 
+	string str = g_local.getStr("res_ver");
+	bool b = g_local.getBool("lua_debug");
+
 
 }
 

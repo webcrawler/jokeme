@@ -4,6 +4,6 @@
 #include "FileManager.h"
 #include "UIFunc.h"
 #include "Game_Val_Define.h"
-
+#include "LocalizedString.h"
 
 #endif 

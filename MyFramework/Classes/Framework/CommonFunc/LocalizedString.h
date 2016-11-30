@@ -1,28 +1,34 @@
 /**
-*  @brief: 汉字配置
-*  @Created by fjut on 16-11-03
+*  @brief: 本地化配置文件读取
+*  @Created by fjut on 16-11-28
 */
 
-#ifndef __LOCALLIZED_STRING_H__
-#define __LOCALLIZED_STRING_H__
+#ifndef __H_LOCAL_STRING_H__
+#define __H_LOCAL_STRING_H__
 
 #include "cocos2d.h"
 
 using namespace cocos2d;
-using namespace std;
 
 class LocalizedString
 {
 public:
-	LocalizedString() { };
+	LocalizedString();
 	static LocalizedString& getInstance();
 	static void destroyInstance();
 
+public:
+	Value getValue(const std::string& str);
+	std::string getStr(const std::string& str);
+	int getInt(const std::string& str);
+	float getFloat(const std::string& str);
+	bool getBool(const std::string& str);
+
 private:
-	ValueMap plist;
+	ValueMap m_plist;
 
 };
 
-#define g_Local LocalizedString::getInstance()
+#define g_local LocalizedString::getInstance()
 
 #endif 
