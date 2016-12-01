@@ -4,5 +4,7 @@
 #define LOGINRES "MyRes/login" 
 #define MENURES "MyRes/menu" 
 
+static const char* scheduleKey1 = "updateEveryFrame";
+static const char* scheduleKey2 = "updateEveryInterval";
 
 #endif 

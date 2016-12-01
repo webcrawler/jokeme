@@ -25,7 +25,12 @@ FileManager& FileManager::getInstance()
 
 void FileManager::destroyInstance()
 {
+	getInstance().deleteUserCacheData();
+}
 
+void FileManager::deleteUserCacheData()
+{
+	m_mapUser.clear();
 }
 
 bool FileManager::writeDataToFile(const ValueMap& valueMap, const std::string& path)

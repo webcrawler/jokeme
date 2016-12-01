@@ -122,7 +122,14 @@ void LayerTest::updateUI()
 	allUser = g_file.getAllLocalUsers();
 	user = g_file.getLocalUserByName("name1");
 
+	g_timer.startSchedule();
 
+
+}
+
+void LayerTest::updateEveryFrame(Ref* obj)
+{
+	//CCLOG("%s", "hhhh LayerTest");
 }
 
 void LayerTest::pageViewEvent(Ref* pSender, PageView::EventType type)
@@ -156,6 +163,8 @@ void LayerTest::callback1(Ref* pSender, Widget::TouchEventType type)
 void LayerTest::callback(Ref* pSender, Widget::TouchEventType type)
 {
 	if (type != Widget::TouchEventType::ENDED) return;
+
+	g_ui.closeLayer(this);
 
 	string name = ((Button*)pSender)->getName();
 	if (name == "Button_1")

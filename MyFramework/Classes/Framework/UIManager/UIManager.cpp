@@ -138,6 +138,7 @@ void UIManager::runLayer(Node* layer, UIActionType actionTag, bool bSwallowTouch
 	layer->setLocalZOrder(uiZOrder);
 	sceneInfo.scene->addChild(layer);
 	((LayerBase*)layer)->viewEnter();
+	((LayerBase*)layer)->addUpdateObserver();
 	sceneInfo.layer.push_back(layer);
 
 	if (actionTag != unknowAction)
@@ -194,6 +195,7 @@ void UIManager::closeLayer()
 	}
 	Node* layer = sceneInfo.layer.back();
 	((LayerBase*)layer)->viewUnRegEvents();
+	((LayerBase*)layer)->removeUpdateObserver();
 	((LayerBase*)layer)->viewExit();
 	layer->removeFromParentAndCleanup(true);
 	layer = nullptr;
@@ -265,6 +267,7 @@ void UIManager::closeLayer(string name, UIActionType actionTag)
 	// Ë³Ðò²»¿É±ä
 	Node* layer = getLayerByName(name);
 	((LayerBase*)layer)->viewUnRegEvents();
+	((LayerBase*)layer)->removeUpdateObserver();
 	((LayerBase*)layer)->viewExit();
 
 	removeNodeCallback callback = [=] {
@@ -301,6 +304,7 @@ void UIManager::closeLayer(Node* obj, UIActionType actionTag)
 	Node* layer = getLayerByObj(obj);
 	string name = ((LayerBase*)layer)->getLayerName();
 	((LayerBase*)layer)->viewUnRegEvents();
+	((LayerBase*)layer)->removeUpdateObserver();
 	((LayerBase*)layer)->viewExit();
 
 	removeNodeCallback callback = [=] {
@@ -389,6 +393,7 @@ void UIManager::pushLayer_(Node* layer, UIActionType actionTag, int zOrder, bool
 	layer->setLocalZOrder(zOrder);
 	sceneInfo.scene->addChild(layer);
 	((LayerBase*)layer)->viewEnter();
+	((LayerBase*)layer)->addUpdateObserver();
 	sceneInfo.layer.push_back(layer);
 
 	if (actionTag != unknowAction)

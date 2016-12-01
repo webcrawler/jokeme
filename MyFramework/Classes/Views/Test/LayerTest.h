@@ -17,6 +17,8 @@ public:
 	virtual void viewEnterDone();
 	virtual void viewExitDone();
 
+	virtual void updateEveryFrame(Ref* obj);
+
 	void callback(Ref* pSender, Widget::TouchEventType type);
 	void callback1(Ref* pSender, Widget::TouchEventType type);
 	void pageViewEvent(Ref* pSender, PageView::EventType type);

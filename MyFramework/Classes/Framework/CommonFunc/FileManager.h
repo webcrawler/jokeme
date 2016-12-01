@@ -34,6 +34,7 @@ private:
 private:
 	bool writeUserData(UserMap& userMap);
 	UserMap readUserData();
+	void deleteUserCacheData();
 
 public:
 	void deleteUserByName(const std::string& name);

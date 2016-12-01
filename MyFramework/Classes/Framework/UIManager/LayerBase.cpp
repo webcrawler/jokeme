@@ -4,6 +4,7 @@
 */
 
 #include "LayerBase.h"
+#include "../CommonFunc/Game_Val_Define.h"
 
 LayerBase::LayerBase()
 {
@@ -114,28 +115,19 @@ Widget* LayerBase::regCallbackByName(const string& name, const Widget::ccWidgetT
 	return widget;
 }
 
-//void LayerBase::setViewEnterAndExitCallback(const viewCallback& viewEnter, const viewCallback& viewExit)
-//{
-//	m_viewEnter = viewEnter;
-//	m_viewExit = viewExit;
-//}
+void LayerBase::addUpdateObserver()
+{
+	__NotificationCenter::getInstance()->addObserver(this, CC_CALLFUNCO_SELECTOR(LayerBase::updateEveryFrame),
+		scheduleKey1, nullptr);
+	__NotificationCenter::getInstance()->addObserver(this, CC_CALLFUNCO_SELECTOR(LayerBase::updateEveryInterval),
+		scheduleKey2, nullptr);
+}
 
-//void LayerBase::viewEnter()
-//{
-//	// ¶¯»­
-//	//
-//
-//
-//	if (m_viewEnter != nullptr)
-//	{
-//		m_viewEnter();
-//	}
-//}
-//
-
-//void LayerBase::viewExit()
-//{
-//}
+void LayerBase::removeUpdateObserver()
+{
+	__NotificationCenter::getInstance()->removeObserver(this, scheduleKey1);
+	__NotificationCenter::getInstance()->removeObserver(this, scheduleKey2);
+}
 
 void LayerBase::viewUnRegEvents()
 {

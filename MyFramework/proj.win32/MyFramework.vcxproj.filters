@@ -96,6 +96,9 @@
     <ClCompile Include="..\Classes\Views\Test\SceneTest.cpp">
       <Filter>src\Views\Test</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Framework\CommonFunc\TimeManager.cpp">
+      <Filter>src\Framework\CommonFunc</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -193,6 +196,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Views\Test\SceneTest.h">
       <Filter>src\Views\Test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Framework\CommonFunc\TimeManager.h">
+      <Filter>src\Framework\CommonFunc</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

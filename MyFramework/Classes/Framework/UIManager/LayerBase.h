@@ -39,6 +39,12 @@ public:
 	virtual void updateUI() = 0;
 
 public:
+	void addUpdateObserver();
+	void removeUpdateObserver();
+	virtual void updateEveryFrame(Ref* obj) {};
+	virtual void updateEveryInterval(Ref* obj) {};
+
+public:
 	void swallowTouchs(bool bSwallowTouchs);
 
 public:
