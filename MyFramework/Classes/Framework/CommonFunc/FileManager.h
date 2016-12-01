@@ -11,13 +11,13 @@
 using namespace cocos2d;
 
 // 用户信息
-typedef struct _AccountInf
+typedef struct _UserInf
 {
 	std::string name;
 	std::string pwd;
 	// todo add
-}AccountInf;
-typedef std::map<std::string, AccountInf> AccountArr;
+}UserInf;
+typedef std::map<std::string, UserInf> UserMap;
 
 class FileManager
 {
@@ -27,19 +27,26 @@ public:
 	static void destroyInstance();
 
 private:
-	void writeDataToFile(const Data& data, const std::string& path);
-	Data readDataFromFile(const std::string& path);
+	bool writeDataToFile(const ValueMap& valueMap, const std::string& path);
+	ValueMap readDataFromFile(const std::string& path);
+	bool deleteFile(const std::string& file);
+
+private:
+	bool writeUserData(UserMap& userMap);
+	UserMap readUserData();
+	void deleteUserCacheData();
 
 public:
-	void writeUserData(AccountArr& accArr);
-	AccountArr readUserData();
 	void deleteUserByName(const std::string& name);
 	void deleteAllUsers();
-
-	void deleteFile();
+	UserMap getAllLocalUsers();
+	UserInf getLocalUserByName(const std::string& name);
+	bool addLocalUser(const UserInf& inf);
+	bool modifyLocalUser(const UserInf& inf);
 
 private:
 	std::string writablePath;
+	UserMap m_mapUser;
 };
 
 #define g_file FileManager::getInstance()

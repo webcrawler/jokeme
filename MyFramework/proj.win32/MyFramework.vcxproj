@@ -148,6 +148,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\Control\GameControl.cpp" />
     <ClCompile Include="..\Classes\Framework\CommonFunc\FileManager.cpp" />
     <ClCompile Include="..\Classes\Framework\CommonFunc\LocalizedString.cpp" />
+    <ClCompile Include="..\Classes\Framework\CommonFunc\TimeManager.cpp" />
     <ClCompile Include="..\Classes\Framework\CommonFunc\UIFunc.cpp" />
     <ClCompile Include="..\Classes\Framework\EventDispather\UIEventDispather.cpp" />
     <ClCompile Include="..\Classes\Framework\UIManager\LayerBase.cpp" />
@@ -172,6 +173,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\Framework\CommonFunc\FileManager.h" />
     <ClInclude Include="..\Classes\Framework\CommonFunc\Game_Val_Define.h" />
     <ClInclude Include="..\Classes\Framework\CommonFunc\LocalizedString.h" />
+    <ClInclude Include="..\Classes\Framework\CommonFunc\TimeManager.h" />
     <ClInclude Include="..\Classes\Framework\CommonFunc\UIFunc.h" />
     <ClInclude Include="..\Classes\Framework\define_framework.h" />
     <ClInclude Include="..\Classes\Framework\EventDispather\define_eventdispather.h" />

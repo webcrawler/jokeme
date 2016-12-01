@@ -17,6 +17,8 @@ public:
 	virtual void viewEnterDone();
 	virtual void viewExitDone();
 
+	virtual void updateEveryFrame(Ref* obj);
+
 	void callback(Ref* pSender, Widget::TouchEventType type);
 	void callback1(Ref* pSender, Widget::TouchEventType type);
 	void pageViewEvent(Ref* pSender, PageView::EventType type);
@@ -24,6 +26,11 @@ public:
 public:
 	void eventTest(void* data);
 	void eventTest1(void* data);
+
+public:
+	void timercall1(float dt);
+	void timercall2(float dt);
+
 
 private:
 	cocos2d::ui::EditBox* m_pAccount;

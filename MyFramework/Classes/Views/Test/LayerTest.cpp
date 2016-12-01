@@ -96,23 +96,52 @@ void LayerTest::updateUI()
 	string str = g_local.getStr("res_ver");
 	bool b = g_local.getBool("lua_debug");
 
-	AccountArr arr = g_file.readUserData();
+	//g_file.deleteAllUsers();
+	auto allUser = g_file.getAllLocalUsers();
+	auto user = g_file.getLocalUserByName("name1");
 
-	AccountInf inf;
+	UserInf inf;
 	inf.name = "name1";
 	inf.pwd = "pwd1";
-	arr["name1"] = inf;
+	g_file.addLocalUser(inf);
 
-	//inf.name = "name2";
-	//inf.pwd = "pwd2";
-	//arr["name2"] = inf;
-	g_file.writeUserData(arr);
+	allUser = g_file.getAllLocalUsers();
+	user = g_file.getLocalUserByName("name1");
 
-	arr = g_file.readUserData();
-	//g_file.deleteUserByName("name1");
-	arr = g_file.readUserData();
+	inf.name = "name2";
+	inf.pwd = "pwd2";
+	g_file.addLocalUser(inf);
+	allUser = g_file.getAllLocalUsers();
+	g_file.deleteUserByName("name1");
 
+	g_file.addLocalUser(inf);
+	allUser = g_file.getAllLocalUsers();
+	user = g_file.getLocalUserByName("name1");
 
+	g_file.deleteAllUsers();
+	allUser = g_file.getAllLocalUsers();
+	user = g_file.getLocalUserByName("name1");
+
+	g_timer.startSchedule();
+
+	g_timer.regTimer(5, CC_CALLBACK_1(LayerTest::timercall1, this), CC_CALLBACK_1(LayerTest::timercall2, this), this, "kj");
+	g_timer.regTimer(5, nullptr, nullptr, this, "kj0");
+
+}
+
+void LayerTest::timercall1(float dt)
+{
+	CCLOG("hhhh LayerTest  = %f", dt);
+}
+
+void LayerTest::timercall2(float dt)
+{
+	CCLOG("hhhh LayerTest end  = %f", dt);
+}
+
+void LayerTest::updateEveryFrame(Ref* obj)
+{
+	//CCLOG("%s", "hhhh LayerTest");
 }
 
 void LayerTest::pageViewEvent(Ref* pSender, PageView::EventType type)
@@ -146,6 +175,10 @@ void LayerTest::callback1(Ref* pSender, Widget::TouchEventType type)
 void LayerTest::callback(Ref* pSender, Widget::TouchEventType type)
 {
 	if (type != Widget::TouchEventType::ENDED) return;
+
+	g_ui.closeLayer(this);
+
+	//g_timer.unRegTimer(this, "kj");
 
 	string name = ((Button*)pSender)->getName();
 	if (name == "Button_1")

@@ -5,5 +5,6 @@
 #include "UIFunc.h"
 #include "Game_Val_Define.h"
 #include "LocalizedString.h"
+#include "TimeManager.h"
 
 #endif 
