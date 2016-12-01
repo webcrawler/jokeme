@@ -96,21 +96,31 @@ void LayerTest::updateUI()
 	string str = g_local.getStr("res_ver");
 	bool b = g_local.getBool("lua_debug");
 
-	AccountArr arr = g_file.readUserData();
+	//g_file.deleteAllUsers();
+	auto allUser = g_file.getAllLocalUsers();
+	auto user = g_file.getLocalUserByName("name1");
 
-	AccountInf inf;
+	UserInf inf;
 	inf.name = "name1";
 	inf.pwd = "pwd1";
-	arr["name1"] = inf;
+	g_file.addLocalUser(inf);
 
-	//inf.name = "name2";
-	//inf.pwd = "pwd2";
-	//arr["name2"] = inf;
-	g_file.writeUserData(arr);
+	allUser = g_file.getAllLocalUsers();
+	user = g_file.getLocalUserByName("name1");
 
-	arr = g_file.readUserData();
-	//g_file.deleteUserByName("name1");
-	arr = g_file.readUserData();
+	inf.name = "name2";
+	inf.pwd = "pwd2";
+	g_file.addLocalUser(inf);
+	allUser = g_file.getAllLocalUsers();
+	g_file.deleteUserByName("name1");
+
+	g_file.addLocalUser(inf);
+	allUser = g_file.getAllLocalUsers();
+	user = g_file.getLocalUserByName("name1");
+
+	g_file.deleteAllUsers();
+	allUser = g_file.getAllLocalUsers();
+	user = g_file.getLocalUserByName("name1");
 
 
 }

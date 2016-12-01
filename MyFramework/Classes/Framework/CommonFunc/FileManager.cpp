@@ -28,71 +28,155 @@ void FileManager::destroyInstance()
 
 }
 
-void FileManager::writeDataToFile(const Data& data, const std::string& path)
+bool FileManager::writeDataToFile(const ValueMap& valueMap, const std::string& path)
 {
 	std::string fullPath = writablePath + path;
-	FileUtils::getInstance()->writeDataToFile(data, fullPath.c_str());
+	return FileUtils::getInstance()->writeValueMapToFile(valueMap, fullPath.c_str());
 }
 
-Data FileManager::readDataFromFile(const std::string& path)
+ValueMap FileManager::readDataFromFile(const std::string& path)
 {
 	std::string fullPath = writablePath + path;
-	Data data = FileUtils::getInstance()->getDataFromFile(fullPath);
-	return data;
+	ValueMap readValueMap = FileUtils::getInstance()->getValueMapFromFile(fullPath);
+	return readValueMap;
 }
 
-void FileManager::writeUserData(AccountArr& accArr)
+bool FileManager::deleteFile(const std::string& file)
 {
-	Data writeData;
-	writeData.copy((unsigned char *)&accArr, sizeof(AccountInf)*accArr.size());
-	writeDataToFile(writeData, AccFile);
-}
-
-AccountArr FileManager::readUserData()
-{
-	Data readData = readDataFromFile(AccFile);
-	if (readData.isNull())
+	std::string path = writablePath + file;
+	if (FileUtils::getInstance()->isFileExist(path))
 	{
-		AccountArr arr;
-		return arr;
+		return FileUtils::getInstance()->removeFile(path);
 	}
-	AccountArr* buffer = (AccountArr*)malloc(sizeof(AccountInf)*1);
-	memcpy(buffer, readData.getBytes(), readData.getSize());
-	AccountArr arr = *buffer;
-	free(buffer);
-	return arr;
+	return false;
+}
 
-	//Data readData = FileUtils::getInstance()->getDataFromFile(fullPath);
-	//buffer = (unsigned char*)malloc(sizeof(unsigned char) * (readData.getSize() + 1));
-	//memcpy(buffer, readData.getBytes(), readData.getSize());
-	//buffer[readData.getSize()] = '\0';
-	//std::string readDataStr((const char*)buffer);
-	//free(buffer);
+bool FileManager::writeUserData(UserMap& userMap)
+{
+	if (userMap.size() == 0) return false;
+
+	ValueMap valueMap;
+	for (auto it = userMap.begin(); it != userMap.end(); it++)
+	{
+		ValueVector vec;
+		vec.push_back(Value(it->second.name));
+		vec.push_back(Value(it->second.pwd));
+		// add
+		valueMap[it->first] = vec;
+	}
+	return writeDataToFile(valueMap, AccFile);
+}
+
+UserMap FileManager::readUserData()
+{
+	ValueMap& valueMap = readDataFromFile(AccFile);
+	UserMap userMap;
+	for (auto it = valueMap.begin(); it != valueMap.end(); it++)
+	{
+		UserInf inf;
+		ValueVector& valueVector = it->second.asValueVector();
+		inf.name = valueVector.at(0).asString();
+		inf.pwd = valueVector.at(1).asString();
+		// add
+		userMap[it->first] = inf;
+	}
+	return userMap;
+}
+
+UserMap FileManager::getAllLocalUsers()
+{
+	if (m_mapUser.size() == 0)
+	{
+		m_mapUser = readUserData();
+	}
+	return m_mapUser;
+}
+
+UserInf FileManager::getLocalUserByName(const std::string& name)
+{
+	if (m_mapUser.size() == 0)
+	{
+		m_mapUser = readUserData();
+	}
+	UserInf inf;
+	auto it = m_mapUser.find(name);
+	if (it == m_mapUser.end())
+	{
+		CCLOG("getLocalUserByName fail, can't find the user by the name %s", name.c_str());
+	}
+	else
+	{
+		inf = it->second;
+	}
+	return inf;
+}
+
+bool FileManager::addLocalUser(const UserInf& inf)
+{
+	if (m_mapUser.size() == 0)
+	{
+		m_mapUser = readUserData();
+	}
+	auto it = m_mapUser.find(inf.name);
+	if (it != m_mapUser.end())
+	{
+		CCLOG("addLocalUser fail, user inf is exist by the name %s", inf.name.c_str());
+		return false;
+	}
+	m_mapUser[inf.name] = inf;
+	writeUserData(m_mapUser);
+	return true;
+}
+
+bool FileManager::modifyLocalUser(const UserInf& inf)
+{
+	if (m_mapUser.size() == 0)
+	{
+		m_mapUser = readUserData();
+	}
+	auto it = m_mapUser.find(inf.name);
+	if (it == m_mapUser.end())
+	{
+		CCLOG("modifyLocalUser fail, can't find the user by the name %s", inf.name.c_str());
+		return false;
+	}
+	m_mapUser[inf.name] = inf;
+	writeUserData(m_mapUser);
+	return true;
 }
 
 void FileManager::deleteUserByName(const std::string& name)
 {
-	AccountArr arr = readUserData();
-	auto it = arr.find(name);
-	if (it == arr.end())
+	if (m_mapUser.size() == 0)
+	{
+		m_mapUser = readUserData();
+	}
+	auto it = m_mapUser.find(name);
+	if (it == m_mapUser.end())
 	{
 		CCLOG("deleteUserByName fail, can't find the user by the name %s", name.c_str());
 		return;
 	}
-	arr.erase(it);
-	writeUserData(arr);
+	m_mapUser.erase(it);
+	if (m_mapUser.size() == 0)
+	{
+		deleteFile(AccFile);
+	}
+	else
+	{
+		writeUserData(m_mapUser);
+	}
 }
 
 void FileManager::deleteAllUsers()
 {
-
-}
-
-void FileManager::deleteFile()
-{
-	std::string file = writablePath + AccFile;
-	if (FileUtils::getInstance()->isFileExist(file))
+	if (m_mapUser.size() == 0)
 	{
-		FileUtils::getInstance()->removeFile(file);
+		m_mapUser = readUserData();
+	}
+	UserMap tmpMap = m_mapUser;
+	for (auto it = tmpMap.begin(); it != tmpMap.end(); it++)
+	{
+		deleteUserByName(it->first);
 	}
 }
