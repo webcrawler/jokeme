@@ -18,14 +18,32 @@ public:
 	static void destroyInstance();
 
 public:
-	//void createTimer();
-
-public:
 	void startSchedule();
 	void endSchedule();
 
-	void updateEveryFrame(float dt);
+public:
+	typedef std::function<void(unsigned int)> TimerCallback;
+	//static TimerCallback Null;
+	struct Timer
+	{
+		std::string key;
+		void* target;
+		unsigned int interval;
+		unsigned int total;
+		TimerCallback everyIntervalCall;
+		TimerCallback endCall;
+	};
+	typedef std::vector<Timer> TimerArr;
+	void regTimer(unsigned int interval, const TimerCallback& everyIntervalCall, const TimerCallback& endCall, 
+		void* target, const std::string& key);
+	void unRegTimer(void* target, const std::string& key);
+	void unRegTimerByTarget(void* target);
+
+private:
 	void updateEveryInterval(float dt);
+
+private:
+	TimerArr m_timerArr;
 
 };
 

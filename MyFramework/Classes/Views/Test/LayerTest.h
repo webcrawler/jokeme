@@ -27,6 +27,11 @@ public:
 	void eventTest(void* data);
 	void eventTest1(void* data);
 
+public:
+	void timercall1(float dt);
+	void timercall2(float dt);
+
+
 private:
 	cocos2d::ui::EditBox* m_pAccount;
 	cocos2d::ui::EditBox* m_pPwd;

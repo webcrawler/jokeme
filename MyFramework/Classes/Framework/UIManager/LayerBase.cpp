@@ -5,6 +5,7 @@
 
 #include "LayerBase.h"
 #include "../CommonFunc/Game_Val_Define.h"
+#include "../CommonFunc/TimeManager.h"
 
 LayerBase::LayerBase()
 {
@@ -132,4 +133,5 @@ void LayerBase::removeUpdateObserver()
 void LayerBase::viewUnRegEvents()
 {
 	g_event.unRegEventByTarget(this);
+	g_timer.unRegTimerByTarget(this);
 }

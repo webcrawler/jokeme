@@ -206,7 +206,7 @@ void UIManager::closeLayer()
 Node* UIManager::getLayerByName(string name)
 {
 	SceneInfo& sceneInfo = getCurScene();
-	for (unsigned int k = sceneInfo.layer.size() - 1; k >= 0 ; k--)
+	for (int k = sceneInfo.layer.size() - 1; k >= 0 ; k--)
 	{
 		Node* layer = sceneInfo.layer.at(k);
 		string name_ = ((LayerBase*)layer)->getLayerName();
@@ -221,7 +221,7 @@ Node* UIManager::getLayerByName(string name)
 Node* UIManager::getLayerByObj(Node* obj)
 {
 	SceneInfo& sceneInfo = getCurScene();
-	for (unsigned int k = sceneInfo.layer.size() - 1; k >= 0; k--)
+	for (int k = sceneInfo.layer.size() - 1; k >= 0; k--)
 	{
 		Node* layer = sceneInfo.layer.at(k);
 		if (layer == obj)
@@ -235,8 +235,8 @@ Node* UIManager::getLayerByObj(Node* obj)
 void UIManager::removeLayerFromVec(string name)
 {
 	SceneInfo& sceneInfo = getCurScene();
-	unsigned int idx = -1;
-	for (unsigned int k = sceneInfo.layer.size() - 1; k >= 0; k--)
+	int idx = -1;
+	for (int k = sceneInfo.layer.size() - 1; k >= 0; k--)
 	{
 		Node* layer = sceneInfo.layer.at(k);
 		string name_ = ((LayerBase*)layer)->getLayerName();
