@@ -6,7 +6,8 @@
 #include "FileManager.h"
 
 static const char* filePath = "FILEMANAGER";
-static const char* AccFile = "ACCOUNT";
+static const char* accFile = "ACCOUNT";
+static const char* commonCfgFile = "COMMONCFG";
 
 FileManager::FileManager()
 {
@@ -56,7 +57,7 @@ bool FileManager::deleteFile(const std::string& file)
 	return false;
 }
 
-bool FileManager::writeUserData(UserMap& userMap)
+bool FileManager::writeUserData(const UserMap& userMap)
 {
 	if (userMap.size() == 0) return false;
 
@@ -69,12 +70,12 @@ bool FileManager::writeUserData(UserMap& userMap)
 		// add
 		valueMap[it->first] = vec;
 	}
-	return writeDataToFile(valueMap, AccFile);
+	return writeDataToFile(valueMap, accFile);
 }
 
 UserMap FileManager::readUserData()
 {
-	ValueMap& valueMap = readDataFromFile(AccFile);
+	ValueMap& valueMap = readDataFromFile(accFile);
 	UserMap userMap;
 	for (auto it = valueMap.begin(); it != valueMap.end(); it++)
 	{
@@ -165,7 +166,7 @@ void FileManager::deleteUserByName(const std::string& name)
 	m_mapUser.erase(it);
 	if (m_mapUser.size() == 0)
 	{
-		deleteFile(AccFile);
+		deleteFile(accFile);
 	}
 	else
 	{
@@ -184,4 +185,34 @@ void FileManager::deleteAllUsers()
 	{
 		deleteUserByName(it->first);
 	}
+}
+
+CommonCfg FileManager::getCommonCfg()
+{
+	ValueMap& valueMap = readDataFromFile(commonCfgFile);
+	if (valueMap.size() == 0)
+	{
+		// default false
+		CommonCfg inf;
+		inf.bMusic = false;
+		inf.bEffect = false;
+		if (modifyCommonCfg(inf))
+		{
+			return inf;
+		}
+	}
+	CommonCfg inf;
+	inf.bMusic = valueMap["bMusic"].asBool();
+	inf.bEffect = valueMap["bEffect"].asBool();
+	// add
+	return inf;
+}
+
+bool FileManager::modifyCommonCfg(const CommonCfg& cfg)
+{
+	ValueMap valueMap;
+	valueMap["bMusic"] = cfg.bMusic;
+	valueMap["bEffect"] = cfg.bEffect;
+	// add
+	return writeDataToFile(valueMap, commonCfgFile);
 }

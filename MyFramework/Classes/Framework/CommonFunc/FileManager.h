@@ -19,6 +19,14 @@ typedef struct _UserInf
 }UserInf;
 typedef std::map<std::string, UserInf> UserMap;
 
+// public config
+typedef struct _CommonCfg
+{
+	bool bMusic;
+	bool bEffect;
+	// todo
+}CommonCfg;
+
 class FileManager
 {
 public:
@@ -32,7 +40,7 @@ private:
 	bool deleteFile(const std::string& file);
 
 private:
-	bool writeUserData(UserMap& userMap);
+	bool writeUserData(const UserMap& userMap);
 	UserMap readUserData();
 	void deleteUserCacheData();
 
@@ -43,6 +51,10 @@ public:
 	UserInf getLocalUserByName(const std::string& name);
 	bool addLocalUser(const UserInf& inf);
 	bool modifyLocalUser(const UserInf& inf);
+
+public:
+	CommonCfg getCommonCfg();
+	bool modifyCommonCfg(const CommonCfg& cfg);
 
 private:
 	std::string writablePath;
