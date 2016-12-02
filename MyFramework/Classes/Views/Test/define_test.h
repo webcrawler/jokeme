@@ -3,5 +3,6 @@
 
 #include "SceneTest.h"
 #include "LayerTest.h"
+#include "CocosNetTest.h"
 
 #endif 

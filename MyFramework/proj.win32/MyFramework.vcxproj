@@ -146,6 +146,11 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
   <ItemGroup>
     <ClCompile Include="..\Classes\AppDelegate.cpp" />
     <ClCompile Include="..\Classes\Control\GameControl.cpp" />
+    <ClCompile Include="..\Classes\Framework\CocosNet\CCBuffer.cpp" />
+    <ClCompile Include="..\Classes\Framework\CocosNet\CCInetAddress.cpp" />
+    <ClCompile Include="..\Classes\Framework\CocosNet\CCNetDelegate.cpp" />
+    <ClCompile Include="..\Classes\Framework\CocosNet\CCSocket.cpp" />
+    <ClCompile Include="..\Classes\Framework\CommonFunc\AudioManager.cpp" />
     <ClCompile Include="..\Classes\Framework\CommonFunc\FileManager.cpp" />
     <ClCompile Include="..\Classes\Framework\CommonFunc\LocalizedString.cpp" />
     <ClCompile Include="..\Classes\Framework\CommonFunc\TimeManager.cpp" />
@@ -160,6 +165,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\Views\Login\LayerLogin.cpp" />
     <ClCompile Include="..\Classes\Views\Login\LayerReg.cpp" />
     <ClCompile Include="..\Classes\Views\Login\SceneLogin.cpp" />
+    <ClCompile Include="..\Classes\Views\Test\CocosNetTest.cpp" />
     <ClCompile Include="..\Classes\Views\Test\LayerTest.cpp" />
     <ClCompile Include="..\Classes\Views\Test\SceneTest.cpp" />
     <ClCompile Include="main.cpp" />
@@ -169,6 +175,14 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\Control\define_control.h" />
     <ClInclude Include="..\Classes\Control\GameControl.h" />
     <ClInclude Include="..\Classes\define_.h" />
+    <ClInclude Include="..\Classes\Framework\CocosNet\CCBuffer.h" />
+    <ClInclude Include="..\Classes\Framework\CocosNet\CCInetAddress.h" />
+    <ClInclude Include="..\Classes\Framework\CocosNet\CCNetDelegate.h" />
+    <ClInclude Include="..\Classes\Framework\CocosNet\CCNetMacros.h" />
+    <ClInclude Include="..\Classes\Framework\CocosNet\CCSocket.h" />
+    <ClInclude Include="..\Classes\Framework\CocosNet\cocos-net.h" />
+    <ClInclude Include="..\Classes\Framework\CocosNet\define_cocosnet.h" />
+    <ClInclude Include="..\Classes\Framework\CommonFunc\AudioManager.h" />
     <ClInclude Include="..\Classes\Framework\CommonFunc\define_commonfunc.h" />
     <ClInclude Include="..\Classes\Framework\CommonFunc\FileManager.h" />
     <ClInclude Include="..\Classes\Framework\CommonFunc\Game_Val_Define.h" />
@@ -194,6 +208,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\Views\Login\LayerReg.h" />
     <ClInclude Include="..\Classes\Views\Login\SceneLogin.h" />
     <ClInclude Include="..\Classes\Views\Menus\define_menu.h" />
+    <ClInclude Include="..\Classes\Views\Test\CocosNetTest.h" />
     <ClInclude Include="..\Classes\Views\Test\define_test.h" />
     <ClInclude Include="..\Classes\Views\Test\LayerTest.h" />
     <ClInclude Include="..\Classes\Views\Test\SceneTest.h" />

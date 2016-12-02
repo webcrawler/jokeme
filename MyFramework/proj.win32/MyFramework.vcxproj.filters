@@ -40,6 +40,9 @@
     <Filter Include="src\Views\Test">
       <UniqueIdentifier>{c4920e51-5c0d-4246-add1-4824d0579a47}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Framework\CocosNet">
+      <UniqueIdentifier>{94584dd7-a61a-4c69-8e79-bb866ca16116}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -98,6 +101,24 @@
     </ClCompile>
     <ClCompile Include="..\Classes\Framework\CommonFunc\TimeManager.cpp">
       <Filter>src\Framework\CommonFunc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Framework\CommonFunc\AudioManager.cpp">
+      <Filter>src\Framework\CommonFunc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Framework\CocosNet\CCBuffer.cpp">
+      <Filter>src\Framework\CocosNet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Framework\CocosNet\CCInetAddress.cpp">
+      <Filter>src\Framework\CocosNet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Framework\CocosNet\CCNetDelegate.cpp">
+      <Filter>src\Framework\CocosNet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Framework\CocosNet\CCSocket.cpp">
+      <Filter>src\Framework\CocosNet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Views\Test\CocosNetTest.cpp">
+      <Filter>src\Views\Test</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -199,6 +220,33 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Framework\CommonFunc\TimeManager.h">
       <Filter>src\Framework\CommonFunc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Framework\CommonFunc\AudioManager.h">
+      <Filter>src\Framework\CommonFunc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Framework\CocosNet\CCBuffer.h">
+      <Filter>src\Framework\CocosNet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Framework\CocosNet\CCInetAddress.h">
+      <Filter>src\Framework\CocosNet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Framework\CocosNet\CCNetDelegate.h">
+      <Filter>src\Framework\CocosNet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Framework\CocosNet\CCNetMacros.h">
+      <Filter>src\Framework\CocosNet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Framework\CocosNet\CCSocket.h">
+      <Filter>src\Framework\CocosNet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Framework\CocosNet\cocos-net.h">
+      <Filter>src\Framework\CocosNet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Framework\CocosNet\define_cocosnet.h">
+      <Filter>src\Framework\CocosNet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Views\Test\CocosNetTest.h">
+      <Filter>src\Views\Test</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

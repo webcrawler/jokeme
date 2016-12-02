@@ -79,7 +79,15 @@ bool AppDelegate::applicationDidFinishLaunching() {
     //// run
     //director->runWithScene(scene);
 
+
+#if 1
+	AlphaScene* pScene = new AlphaScene();
+	pScene->init();
+	pScene->autorelease();
+	CCDirector::sharedDirector()->runWithScene(pScene);
+#else
 	g_ctrl.startLoginScene();
+#endif
 
     return true;
 }
