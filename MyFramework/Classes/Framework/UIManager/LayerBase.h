@@ -26,12 +26,18 @@ protected:
 	virtual bool init();
 	virtual bool onTouchBegan(Touch* pTouch, Event* pEvent);
 	virtual Widget* getWidgetByName(const string& name);
-	virtual Button* getBtnByName(const string& name);
+	virtual Button* getBtnByName(const string& name, bool bEffect = true);
 	virtual ImageView* getImgByName(const string& name);
 	virtual Text* getTextByName(const string& name);
 
+public:
+	typedef std::function<void(Button* btn, int tag, const std::string& name)> ccBtnReleaseUp;
+
 protected:
-	virtual Widget* regCallbackByName(const string& name, const Widget::ccWidgetTouchCallback& callback);
+	virtual Button* regBtnUpCall(const string& name, const ccBtnReleaseUp& callback, bool bEffect = true);
+	virtual Button* regBtnUpCall(Widget* widget, const ccBtnReleaseUp& callback, bool bEffect = true);
+	virtual Button* regBtnCall(const string& name, const Widget::ccWidgetTouchCallback& callback, bool bEffect = true);
+	virtual Button* regBtnCall(Widget* widget, const Widget::ccWidgetTouchCallback& callback, bool bEffect = true);
 
 public:
 	virtual string getWidgetFilePath() = 0;

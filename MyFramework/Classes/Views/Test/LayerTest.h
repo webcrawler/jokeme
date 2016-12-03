@@ -22,6 +22,7 @@ public:
 	void callback(Ref* pSender, Widget::TouchEventType type);
 	void callback1(Ref* pSender, Widget::TouchEventType type);
 	void pageViewEvent(Ref* pSender, PageView::EventType type);
+	void callback2(Button* btn, int tag, const std::string& name);
 
 public:
 	void eventTest(void* data);

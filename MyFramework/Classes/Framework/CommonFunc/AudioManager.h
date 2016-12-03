@@ -24,13 +24,20 @@ public:
 public:
 	void playMusic(AudioTag tag);
 	void playEffect(AudioTag tag);
+	void pauseBgMsc();
+	void resumeBgMsc();
+	void setAudioCfgWithMusic(bool bOpen = true);
+	void setAudioCfgWithEffect(bool bOpen = true);
+	bool getMscIsOpen();
+	bool getEffectIsOpen();
 
 private:
-	std::string getAudioFileNameByTag(AudioTag tag, const std::string& type = "mp3");
+	std::string getAudioFileNameByTag(AudioTag tag, bool bMusic, const std::string& type = "mp3");
 
 private:
 	CommonCfg m_cfg;
 	AudioTag m_playingBgMscTag;
+	bool m_bFirst;
 
 };
 

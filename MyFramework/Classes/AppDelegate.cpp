@@ -80,7 +80,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     //director->runWithScene(scene);
 
 
-#if 1
+#if 0
 	AlphaScene* pScene = new AlphaScene();
 	pScene->init();
 	pScene->autorelease();

@@ -977,6 +977,16 @@ ResourceData Button::getDisabledFile()
     return rData;
 }
 
+// add by fjut 2016.12.04
+// for touch event call
+void Button::touchEventListenerCallback()
+{
+	if (btnTouchCallback)
+	{
+		btnTouchCallback(this);
+	}
+}
+
 }
 
 NS_CC_END

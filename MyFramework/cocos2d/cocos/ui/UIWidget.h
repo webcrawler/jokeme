@@ -930,6 +930,11 @@ protected:
     LayoutComponent* getOrCreateLayoutComponent();
 
 protected:
+	// add by fjut 2016.12.04
+	// for touch event call
+	virtual void touchEventListenerCallback() {};
+
+protected:
     bool _usingLayoutComponent;
     bool _unifySize;
     bool _enabled;
