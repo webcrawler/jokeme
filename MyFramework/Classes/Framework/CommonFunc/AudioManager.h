@@ -8,7 +8,10 @@
 
 #include "cocos2d.h"
 #include "FileManager.h"
+#include "Game_Val_Define.h"
+#include "audio/include/SimpleAudioEngine.h"
 
+using namespace CocosDenshion;
 using namespace cocos2d;
 
 class AudioManager
@@ -19,11 +22,15 @@ public:
 	static void destroyInstance();
 
 public:
-	void playMusic(const std::string& name);
-	void playEffect(const std::string& name);
+	void playMusic(AudioTag tag);
+	void playEffect(AudioTag tag);
+
+private:
+	std::string getAudioFileNameByTag(AudioTag tag, const std::string& type = "mp3");
 
 private:
 	CommonCfg m_cfg;
+	AudioTag m_playingBgMscTag;
 
 };
 

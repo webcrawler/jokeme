@@ -8,6 +8,7 @@
 AudioManager::AudioManager()
 {
 	m_cfg = g_file.getCommonCfg();
+	m_playingBgMscTag = music_none;
 }
 
 AudioManager& AudioManager::getInstance()
@@ -21,12 +22,35 @@ void AudioManager::destroyInstance()
 
 }
 
-void AudioManager::playMusic(const std::string& name)
+std::string getAudioFileNameByTag(AudioTag tag, const std::string& type)
 {
-
+	std::string path = StringUtils::format("audio/music_%d", (int)tag) + "." + type;
+	return path;
 }
 
-void AudioManager::playEffect(const std::string& name)
+void AudioManager::playMusic(AudioTag tag)
+{
+	if (!m_cfg.bMusic)
+	{
+		m_playingBgMscTag = tag;
+		return;
+	}
+	std::string audioPath = getAudioFileNameByTag(tag);
+	if (m_playingBgMscTag == music_none)
+	{
+		SimpleAudioEngine::getInstance()->playBackgroundMusic(audioPath.c_str());
+	}
+	else if (m_playingBgMscTag == tag)
+	{
+		SimpleAudioEngine::getInstance()->resumeBackgroundMusic();
+	}
+	else
+	{
+		SimpleAudioEngine::getInstance()->playBackgroundMusic(audioPath.c_str());
+	}
+}
+
+void AudioManager::playEffect(AudioTag tag)
 {
 
 }
