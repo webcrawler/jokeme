@@ -131,7 +131,7 @@ Button* LayerBase::regBtnCall(Widget* widget, const Widget::ccWidgetTouchCallbac
 	auto btn = static_cast<Button*>(widget);
 	if (btn != nullptr)
 	{
-#if 0 // my modify code
+#if 0 // with modify cocos2dx code
 		btn->addTouchEventListener(callback);
 		if (bEffect)
 		{

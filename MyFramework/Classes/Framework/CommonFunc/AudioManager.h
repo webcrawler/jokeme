@@ -9,7 +9,7 @@
 #include "cocos2d.h"
 #include "FileManager.h"
 #include "Game_Val_Define.h"
-#include "audio/include/SimpleAudioEngine.h"
+#include "SimpleAudioEngine.h"
 
 using namespace CocosDenshion;
 using namespace cocos2d;
