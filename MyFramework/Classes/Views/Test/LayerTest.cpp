@@ -29,7 +29,10 @@ void LayerTest::updateUI()
 
 	auto img = getImgByName("Image_1");
 	auto btn = getBtnByName("Button_1");
-	regCallbackByName("Button_1", CC_CALLBACK_2(LayerTest::callback, this));
+	//regBtnUpCall("Button_1", CC_CALLBACK_3(LayerTest::callback2, this));
+	//regBtnUpCall(btn, CC_CALLBACK_3(LayerTest::callback2, this));
+	regBtnCall("Button_1", CC_CALLBACK_2(LayerTest::callback1, this));
+
 	//btn->addTouchEventListener(CC_CALLBACK_2(LayerTest::callback, this));
 
 	//auto btn->addTouchEventListener(CC_CALLBACK_2(LayerTest::callback, this));
@@ -178,13 +181,25 @@ void LayerTest::callback1(Ref* pSender, Widget::TouchEventType type)
 
 }
 
+void LayerTest::callback2(Button* btn, int tag, const std::string& name)
+{
+	CCLOG("tag = %d", tag);
+	CCLOG("name = %s", name.c_str());
+}
+
 void LayerTest::callback(Ref* pSender, Widget::TouchEventType type)
 {
 	if (type != Widget::TouchEventType::ENDED) return;
 
-	g_ui.closeLayer(this);
+	//g_ui.closeLayer(this);
 
 	//g_timer.unRegTimer(this, "kj");
+
+	//g_audio.setAudioCfgWithMusic(true);
+	//g_audio.playMusic(music_bg_1);
+
+	//g_audio.setAudioCfgWithEffect(true);
+	//g_audio.playEffect(effect_common_btn);
 
 	string name = ((Button*)pSender)->getName();
 	if (name == "Button_1")

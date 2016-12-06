@@ -904,6 +904,10 @@ void Widget::releaseUpEvent()
     if (_touchEventCallback)
     {
         _touchEventCallback(this, TouchEventType::ENDED);
+
+		// add by fjut 2016.12.04
+		// for touch event call
+		touchEventListenerCallback();
     }
 
     if (_touchEventListener && _touchEventSelector)

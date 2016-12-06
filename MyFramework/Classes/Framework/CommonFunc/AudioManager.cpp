@@ -9,6 +9,7 @@ AudioManager::AudioManager()
 {
 	m_cfg = g_file.getCommonCfg();
 	m_playingBgMscTag = music_none;
+	m_bFirst = true;
 }
 
 AudioManager& AudioManager::getInstance()
@@ -22,35 +23,77 @@ void AudioManager::destroyInstance()
 
 }
 
-std::string getAudioFileNameByTag(AudioTag tag, const std::string& type)
+std::string AudioManager::getAudioFileNameByTag(AudioTag tag, bool bMusic, const std::string& type)
 {
-	std::string path = StringUtils::format("audio/music_%d", (int)tag) + "." + type;
+	std::string path = StringUtils::format("%d", (int)tag) + "." + type;
+	path = ( (bMusic) ? "audio/music_" : "audio/effect_" ) + path;
 	return path;
 }
 
 void AudioManager::playMusic(AudioTag tag)
 {
-	if (!m_cfg.bMusic)
+	if (!m_cfg.bMusic || tag == music_none)
 	{
 		m_playingBgMscTag = tag;
 		return;
 	}
-	std::string audioPath = getAudioFileNameByTag(tag);
+	std::string audioPath = getAudioFileNameByTag(tag, true);
 	if (m_playingBgMscTag == music_none)
 	{
-		SimpleAudioEngine::getInstance()->playBackgroundMusic(audioPath.c_str());
+		SimpleAudioEngine::getInstance()->playBackgroundMusic(audioPath.c_str(), true);
+		m_playingBgMscTag = tag;
+		m_bFirst = false;
+		return;
 	}
-	else if (m_playingBgMscTag == tag)
+	if (m_playingBgMscTag == tag && !m_bFirst) // && SimpleAudioEngine::getInstance()->isBackgroundMusicPlaying()
 	{
 		SimpleAudioEngine::getInstance()->resumeBackgroundMusic();
+		return;
 	}
-	else
-	{
-		SimpleAudioEngine::getInstance()->playBackgroundMusic(audioPath.c_str());
-	}
+	SimpleAudioEngine::getInstance()->playBackgroundMusic(audioPath.c_str(), true);
+	m_playingBgMscTag = tag;
+	m_bFirst = false;
 }
 
 void AudioManager::playEffect(AudioTag tag)
 {
-
+	if (!m_cfg.bEffect)
+	{
+		return;
+	}
+	std::string audioPath = getAudioFileNameByTag(tag, false);
+	SimpleAudioEngine::getInstance()->playEffect(audioPath.c_str());
 }
+
+void AudioManager::pauseBgMsc()
+{
+	SimpleAudioEngine::getInstance()->pauseBackgroundMusic();
+}
+
+void AudioManager::resumeBgMsc()
+{
+	SimpleAudioEngine::getInstance()->resumeBackgroundMusic();
+}
+
+void AudioManager::setAudioCfgWithMusic(bool bOpen)
+{
+	m_cfg.bMusic = bOpen;
+	g_file.modifyCommonCfg(m_cfg);
+}
+
+void AudioManager::setAudioCfgWithEffect(bool bOpen)
+{
+	m_cfg.bEffect = bOpen;
+	g_file.modifyCommonCfg(m_cfg);
+}
+
+bool AudioManager::getMscIsOpen()
+{
+	return m_cfg.bMusic;
+}
+
+bool AudioManager::getEffectIsOpen()
+{
+	return m_cfg.bEffect;
+}
+

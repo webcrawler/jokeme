@@ -374,6 +374,17 @@ protected:
     TextureResType _pressedTexType;
     TextureResType _disabledTexType;
 
+	// add by fjut 2016.12.04
+	// for touch event call
+	protected:
+		virtual void touchEventListenerCallback();
+	public:
+		typedef std::function<void(Ref*)> ccBtnTouchCallback;
+		virtual void addTouchEventForReleaseUp(const ccBtnTouchCallback& callback) { btnTouchCallback = callback; };
+	private:
+		ccBtnTouchCallback btnTouchCallback;
+	// add end
+
 private:
     enum class FontType
     {

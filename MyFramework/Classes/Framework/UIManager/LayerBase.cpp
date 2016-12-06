@@ -6,6 +6,7 @@
 #include "LayerBase.h"
 #include "../CommonFunc/Game_Val_Define.h"
 #include "../CommonFunc/TimeManager.h"
+#include "../CommonFunc/AudioManager.h"
 
 LayerBase::LayerBase()
 {
@@ -76,14 +77,79 @@ Widget* LayerBase::getWidgetByName(const string& name)
 	return Helper::seekWidgetByName(mRoot, name);
 }
 
-Button* LayerBase::getBtnByName(const string& name)
+Button* LayerBase::getBtnByName(const string& name, bool bEffect)
 {
 	auto widget = getWidgetByName(name);
 	if (widget != nullptr)
 	{
-		return static_cast<Button*>(widget);
+		auto btn = static_cast<Button*>(widget);
+		//if (bEffect)
+		//{
+		//	btn->addTouchEventForReleaseUp([=](Ref* pSender) {
+		//		g_audio.playEffect(effect_common_btn);
+		//	});
+		//}
+		return btn;
 	}
 	return nullptr;
+}
+
+Button* LayerBase::regBtnUpCall(const string& name, const ccBtnReleaseUp& callback, bool bEffect)
+{
+	auto widget = getWidgetByName(name);
+	return regBtnUpCall(widget, callback, bEffect);
+}
+
+Button* LayerBase::regBtnUpCall(Widget* widget, const ccBtnReleaseUp& callback, bool bEffect)
+{
+	auto btn = static_cast<Button*>(widget);
+	if (btn != nullptr)
+	{
+		btn->addTouchEventListener([=](Ref* pSender, Widget::TouchEventType type) {
+			if (type != Widget::TouchEventType::ENDED) return;
+			if (bEffect)
+			{
+				g_audio.playEffect(effect_common_btn);
+			}
+			if (callback)
+			{
+				callback(btn, btn->getTag(), btn->getName());
+			}
+		});
+	}
+	return btn;
+}
+
+Button* LayerBase::regBtnCall(const string& name, const Widget::ccWidgetTouchCallback& callback, bool bEffect)
+{
+	auto widget = getWidgetByName(name);
+	return regBtnCall(widget, callback, bEffect);
+}
+
+Button* LayerBase::regBtnCall(Widget* widget, const Widget::ccWidgetTouchCallback& callback, bool bEffect)
+{
+	auto btn = static_cast<Button*>(widget);
+	if (btn != nullptr)
+	{
+#if 0 // with modify cocos2dx code
+		btn->addTouchEventListener(callback);
+		if (bEffect)
+		{
+			btn->addTouchEventForReleaseUp([=](Ref* pSender) {
+				g_audio.playEffect(effect_common_btn);
+			});
+		}
+#else
+		btn->addTouchEventListener([=](Ref* pSender, Widget::TouchEventType type) {
+			callback(pSender, type);
+			if (type == Widget::TouchEventType::ENDED)
+			{
+				g_audio.playEffect(effect_common_btn);
+			}
+		});
+#endif
+	}
+	return btn;
 }
 
 ImageView* LayerBase::getImgByName(const string& name)
@@ -104,16 +170,6 @@ Text* LayerBase::getTextByName(const string& name)
 		return static_cast<Text*>(widget);
 	}
 	return nullptr;
-}
-
-Widget* LayerBase::regCallbackByName(const string& name, const Widget::ccWidgetTouchCallback& callback)
-{
-	auto widget = getWidgetByName(name);
-	if (widget != nullptr)
-	{
-		widget->addTouchEventListener(callback);
-	}
-	return widget;
 }
 
 void LayerBase::addUpdateObserver()
