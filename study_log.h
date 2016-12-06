@@ -844,8 +844,16 @@ NDK R12，在64位ABI默认是GCC 4.9，32位ABI默认是GCC4.8 》
 49. 查看.keystore签名信息： keytool -list -v -keystore E:\MyWork\android_keystore\xx.keystore -storepass 123654 (密码)
 	查看apk签名信息： 解压apk，找到META-INF\CERT.RSA， keytool -printcert -file E:\MyWork\xxx\bin\release\android\xxx-release-signed\META-INF\CERT.RSA 
 
+50. 修改android打包拷贝资源到asserts的配置文件 proj.android/build-cfg.json,     
+"copy_resources": 
+[
+	{
+		"from": "../My_Android_Resources",
+		"to": ""
+	}
+]
 
-
+51. 
 
 
 
