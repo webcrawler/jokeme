@@ -151,6 +151,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\Framework\CocosNet\CCNetDelegate.cpp" />
     <ClCompile Include="..\Classes\Framework\CocosNet\CCSocket.cpp" />
     <ClCompile Include="..\Classes\Framework\CommonFunc\AudioManager.cpp" />
+    <ClCompile Include="..\Classes\Framework\CommonFunc\DownloaderManager.cpp" />
     <ClCompile Include="..\Classes\Framework\CommonFunc\FileManager.cpp" />
     <ClCompile Include="..\Classes\Framework\CommonFunc\LocalizedString.cpp" />
     <ClCompile Include="..\Classes\Framework\CommonFunc\TimeManager.cpp" />
@@ -184,6 +185,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\Framework\CocosNet\define_cocosnet.h" />
     <ClInclude Include="..\Classes\Framework\CommonFunc\AudioManager.h" />
     <ClInclude Include="..\Classes\Framework\CommonFunc\define_commonfunc.h" />
+    <ClInclude Include="..\Classes\Framework\CommonFunc\DownloaderManager.h" />
     <ClInclude Include="..\Classes\Framework\CommonFunc\FileManager.h" />
     <ClInclude Include="..\Classes\Framework\CommonFunc\Game_Val_Define.h" />
     <ClInclude Include="..\Classes\Framework\CommonFunc\LocalizedString.h" />

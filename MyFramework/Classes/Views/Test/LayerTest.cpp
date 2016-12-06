@@ -135,6 +135,35 @@ void LayerTest::updateUI()
 	g_file.modifyCommonCfg(cfg);
 	cfg = g_file.getCommonCfg();
 
+	DownloaderManager::DownloaderParam param;
+	param.srcUrl = "http://www.cocos2d-x.org/attachments/802/cocos2dx_landscape.png";
+	param.storagePath = FileUtils::getInstance()->getWritablePath() + "DownloaderManager/123.png";
+	//param.identifier = ""
+	param.onDataTaskSuccess = [=](const DownloadTask& task,
+		std::vector<unsigned char>& data)
+	{
+		CCLOG("onDataTaskSuccess++++: %s", task.requestURL.c_str());
+	};
+	param.onFileTaskSuccess = [=](const DownloadTask& task)
+	{
+		CCLOG("onFileTaskSuccess++++: %s", task.requestURL.c_str());
+	};
+	param.onTaskProgress = [=](const DownloadTask& task,
+		int64_t bytesReceived,
+		int64_t totalBytesReceived,
+		int64_t totalBytesExpected)
+	{
+		CCLOG("onTaskProgress %.2f", totalBytesReceived*100.0f/ totalBytesExpected);
+	};
+	param.onTaskError = [=](const DownloadTask& task,
+		int errorCode,
+		int errorCodeInternal,
+		const std::string& errorStr)
+	{
+		CCLOG("onTaskError++++: %s", task.requestURL.c_str());
+	};
+	g_downloader.createDownloaderFileTask(param);
+
 
 }
 

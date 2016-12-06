@@ -7,5 +7,6 @@
 #include "LocalizedString.h"
 #include "TimeManager.h"
 #include "AudioManager.h"
+#include "DownloaderManager.h"
 
 #endif 
