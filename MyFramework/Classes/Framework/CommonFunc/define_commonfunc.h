@@ -8,5 +8,6 @@
 #include "TimeManager.h"
 #include "AudioManager.h"
 #include "DownloaderManager.h"
+#include "MyAssertManager.h"
 
 #endif 
