@@ -71,7 +71,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>$(EngineRoot)external;$(EngineRoot)cocos\audio\include;$(EngineRoot)external\chipmunk\include\chipmunk;$(EngineRoot)extensions;..\Classes;..;%(AdditionalIncludeDirectories);$(_COCOS_HEADER_WIN32_BEGIN);$(_COCOS_HEADER_WIN32_END)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(EngineRoot);$(EngineRoot)external;$(EngineRoot)cocos\audio\include;$(EngineRoot)external\chipmunk\include\chipmunk;$(EngineRoot)extensions;..\Classes;..;%(AdditionalIncludeDirectories);$(_COCOS_HEADER_WIN32_BEGIN);$(_COCOS_HEADER_WIN32_END)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USE_MATH_DEFINES;GL_GLEXT_PROTOTYPES;CC_ENABLE_CHIPMUNK_INTEGRATION=1;COCOS2D_DEBUG=1;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -151,8 +151,11 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\Framework\CocosNet\CCNetDelegate.cpp" />
     <ClCompile Include="..\Classes\Framework\CocosNet\CCSocket.cpp" />
     <ClCompile Include="..\Classes\Framework\CommonFunc\AudioManager.cpp" />
+    <ClCompile Include="..\Classes\Framework\CommonFunc\DownloaderManager.cpp" />
     <ClCompile Include="..\Classes\Framework\CommonFunc\FileManager.cpp" />
     <ClCompile Include="..\Classes\Framework\CommonFunc\LocalizedString.cpp" />
+    <ClCompile Include="..\Classes\Framework\CommonFunc\MyAssertManager.cpp" />
+    <ClCompile Include="..\Classes\Framework\CommonFunc\SocketIOManager.cpp" />
     <ClCompile Include="..\Classes\Framework\CommonFunc\TimeManager.cpp" />
     <ClCompile Include="..\Classes\Framework\CommonFunc\UIFunc.cpp" />
     <ClCompile Include="..\Classes\Framework\EventDispather\UIEventDispather.cpp" />
@@ -184,9 +187,12 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\Framework\CocosNet\define_cocosnet.h" />
     <ClInclude Include="..\Classes\Framework\CommonFunc\AudioManager.h" />
     <ClInclude Include="..\Classes\Framework\CommonFunc\define_commonfunc.h" />
+    <ClInclude Include="..\Classes\Framework\CommonFunc\DownloaderManager.h" />
     <ClInclude Include="..\Classes\Framework\CommonFunc\FileManager.h" />
     <ClInclude Include="..\Classes\Framework\CommonFunc\Game_Val_Define.h" />
     <ClInclude Include="..\Classes\Framework\CommonFunc\LocalizedString.h" />
+    <ClInclude Include="..\Classes\Framework\CommonFunc\MyAssertManager.h" />
+    <ClInclude Include="..\Classes\Framework\CommonFunc\SocketIOManager.h" />
     <ClInclude Include="..\Classes\Framework\CommonFunc\TimeManager.h" />
     <ClInclude Include="..\Classes\Framework\CommonFunc\UIFunc.h" />
     <ClInclude Include="..\Classes\Framework\define_framework.h" />
