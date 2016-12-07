@@ -855,7 +855,54 @@ NDK R12，在64位ABI默认是GCC 4.9，32位ABI默认是GCC4.8 》
 
 51. #include "cocos-ext.h"  vs 项目->属性->c/c++ ->常规->调价附加包含目录：$(EngineRoot)
 
-52. 
+52. node.js 服务器搭建：
+http://www.nodejs.org/ 下载安装
+命令行查看 node -v ，npm -v 版本号。
+创建工作目录命令行cd进入，创建package.json:
+{
+  "name": "realtime-server",
+  "version": "0.0.1",
+  "description": "my first realtime server",
+  "dependencies": {}
+}
+使用npm命令安装express和socket.io
+npm install --save express
+npm install --save socket.io
+工作目录下创建socket.js :
+// 引入需要的模块：http和socket.io
+var http = require('http'), io = require('socket.io');
+//创建server
+var server = http.createServer(function(req, res){
+  // Send HTML headers and message
+  res.writeHead(200,{ 'Content-Type': 'text/html' });
+  res.end('# Hello Socket Lover!');
+});
+//端口8000
+server.listen(8080);
+//创建socket
+var io = io.listen(server);
+//添加连接监听
+io.on('connection', function(socket){
+	//socket.emit('news', "from server joke me!");
+	socket.send('messages', "Hi I had get your req -- from server joke me!");
+    //连接成功则执行下面的监听
+    socket.on('message',function(event){
+        console.log('Received message from client!',event);
+    });
+    //断开连接callback
+    socket.on('disconnect',function(){
+        console.log('Server has disconnected');
+    });
+	
+	socket.on('login',function(event){
+        console.log('yes you had login success!',event);
+    });
+	socket.send('login', "yes you had login success!");
+});
+浏览器打开 http://localhost:8080 显示 # Hello Socket Lover!  成功
+客户端发起连接： SocketIO::connect("ws://tools.itharbors.com:4000/testpoint", *this); 见 MyFrameWork
+
+
 
 
 

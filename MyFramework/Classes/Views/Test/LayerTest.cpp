@@ -164,6 +164,9 @@ void LayerTest::updateUI()
 	};
 	g_downloader.createDownloaderFileTask(param);
 
+	// socket io test
+	g_socketio.testSocketOpen();
+
 
 }
 
