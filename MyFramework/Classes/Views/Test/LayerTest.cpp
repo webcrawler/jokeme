@@ -210,7 +210,7 @@ void LayerTest::callback1(Ref* pSender, Widget::TouchEventType type)
 	int tag = ((Button*)pSender)->getTag();
 	CCLOG("tag = %d \n", tag);
 
-
+	//g_socketio.testSocketSend();
 }
 
 void LayerTest::callback2(Button* btn, int tag, const std::string& name)

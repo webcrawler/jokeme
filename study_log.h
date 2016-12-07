@@ -856,6 +856,9 @@ NDK R12，在64位ABI默认是GCC 4.9，32位ABI默认是GCC4.8 》
 51. #include "cocos-ext.h"  vs 项目->属性->c/c++ ->常规->调价附加包含目录：$(EngineRoot)
 
 52. node.js 服务器搭建：
+参考：http://www.plhwin.com/2014/05/28/nodejs-socketio/
+	  http://js8.in/2011/09/28/%E4%BD%BF%E7%94%A8socket-io%E5%92%8Cnode-js%E6%90%AD%E5%BB%BAwebsocket%E5%BA%94%E7%94%A8/
+
 http://www.nodejs.org/ 下载安装
 命令行查看 node -v ，npm -v 版本号。
 创建工作目录命令行cd进入，创建package.json:

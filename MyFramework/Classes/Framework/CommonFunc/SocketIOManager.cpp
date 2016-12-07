@@ -45,7 +45,7 @@ void SocketIOManager::testSocketSend()
 
 void SocketIOManager::testSocketEmit()
 {
-	if (m_sioClient != nullptr) m_sioClient->emit("login", "I am client emit");
+	if (m_sioClient != nullptr) m_sioClient->emit("login", "{\"name\":\"fjut\",\"type\":\"hehe\"}");
 }
 
 //test event callback handlers, these will be registered with socket.io
