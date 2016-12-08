@@ -905,6 +905,10 @@ io.on('connection', function(socket){
 浏览器打开 http://localhost:8080 显示 # Hello Socket Lover!  成功
 客户端发起连接： SocketIO::connect("ws://tools.itharbors.com:4000/testpoint", *this); 见 MyFrameWork
 
+53. 打开android sdk manager界面 cmd 进入xxxx\adt-bundle-windows-x86-20140702\sdk\tools 执行 android sdk 
+
+54. 
+
 
 
 
