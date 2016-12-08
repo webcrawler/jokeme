@@ -259,7 +259,6 @@ bool CCNetDelegate::runRead()
 				CCLOGERROR("invalidate head length");
 				m_oReadBuffer.moveLeft(sizeof(int));
 			}
-
 			int n_content_len = (int)m_oReadBuffer.length();
 			if( n_content_len - (int)(sizeof(int)) >= n_head_len )
 			{

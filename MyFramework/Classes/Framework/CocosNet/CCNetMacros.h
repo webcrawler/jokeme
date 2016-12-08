@@ -55,7 +55,7 @@ typedef unsigned int          SOCKET;
 #endif
 
 #ifndef USING_PACKAGE_HEAD_LENGTH
-#define USING_PACKAGE_HEAD_LENGTH 0
+#define USING_PACKAGE_HEAD_LENGTH 1
 #endif
 #ifndef SOCKET_SOTIMEOUT
 #define SOCKET_SOTIMEOUT 30.0f

@@ -79,13 +79,28 @@ bool AppDelegate::applicationDidFinishLaunching() {
     //// run
     //director->runWithScene(scene);
 
+	char p_temp[sizeof(int)] = {0};
+	char* _p_buffer = "0x50";
+	memcpy(p_temp, _p_buffer, sizeof(int));
+	int hh = *((int*)p_temp);
+	int joke = 0;
 
-#if 0
+	unsigned short host_port = 0x1234, net_port;
+	unsigned long host_addr = 0x12345678, net_addr;
+	net_port = htons(host_port);
+	net_addr = htonl(host_addr);
+	printf("Host ordered port: %#x\n", host_port);
+	printf("Network ordered port: %#x\n", net_port);
+	printf("Host ordered address: %#lx\n", host_addr);
+	printf("Network ordered address: %#lx\n", net_addr);
+
+
+#if 1
 	AlphaScene* pScene = new AlphaScene();
 	pScene->init();
 	pScene->autorelease();
 	CCDirector::sharedDirector()->runWithScene(pScene);
-#else
+#else 
 	g_ctrl.startLoginScene();
 #endif
 

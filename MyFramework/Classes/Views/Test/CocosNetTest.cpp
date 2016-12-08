@@ -2,8 +2,8 @@
 
 // http://blog.csdn.net/cocosviva/article/details/18970717
 
-static const char* ip = "10.253.250.8";
-static unsigned short port = 4000;
+static const char* ip = "127.0.0.1"; // "10.253.250.24";
+static unsigned short port = 6969;
 
 GameNetDelegate::GameNetDelegate()
 {
@@ -22,11 +22,12 @@ void GameNetDelegate::onMessageReceived(CCBuffer& oBuffer)
 	//CCLOG("%s", p);
 	//delete p;
 
-	int n = oBuffer.readInt();
-	CCLOG("tag = %d", n);
+	//int n = oBuffer.readInt();
+	//CCLOG("tag = %d", n);
 
 	std::string ss = oBuffer.readString(5);
 	
+	int n = 1111;
 	switch( n)
 	{
 	case 10:
@@ -78,6 +79,7 @@ void GameNetDelegate::onExceptionCaught(CCSocketStatus eStatus)
 void GameNetDelegate::CS_Test()
 {
 	CCBuffer buffer;
+	//buffer.writeInt(8);
 	buffer.writeInt(10);
 	buffer.writeLongLong(999999999L);
 	buffer.writeFloat(77.7f);

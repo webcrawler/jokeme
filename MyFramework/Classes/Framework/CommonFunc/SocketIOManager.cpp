@@ -75,7 +75,7 @@ void SocketIOManager::echotest(SIOClient *client, const std::string& data)
 
 // onMessage is no longer a required override from the delegate class
 // 'message' events and handlers are now registered in the same way that other events are
-void SocketIOManager::message(network::SIOClient* client, const std::string& data)
+void SocketIOManager::message(SIOClient* client, const std::string& data)
 {
 	CCLOGINFO("SocketIOManager::message received: %s", data.c_str());
 
@@ -83,7 +83,7 @@ void SocketIOManager::message(network::SIOClient* client, const std::string& dat
 	s << client->getTag() << " received message with content: " << data.c_str();
 }
 
-void SocketIOManager::json(network::SIOClient* client, const std::string& data)
+void SocketIOManager::json(SIOClient* client, const std::string& data)
 {
 	CCLOGINFO("SocketIOManager::json received: %s", data.c_str());
 
@@ -91,7 +91,7 @@ void SocketIOManager::json(network::SIOClient* client, const std::string& data)
 	s << client->getTag() << " received json message with content: " << data.c_str();
 }
 
-void SocketIOManager::connect(network::SIOClient* client, const std::string& data)
+void SocketIOManager::connect(SIOClient* client, const std::string& data)
 {
 	CCLOGINFO("SocketIOManager::connect called");
 
@@ -103,7 +103,7 @@ void SocketIOManager::connect(network::SIOClient* client, const std::string& dat
 	testSocketEmit();
 }
 
-void SocketIOManager::disconnect(network::SIOClient* client, const std::string& data)
+void SocketIOManager::disconnect(SIOClient* client, const std::string& data)
 {
 	CCLOGINFO("SocketIOManager::disconnect called");
 
@@ -113,7 +113,7 @@ void SocketIOManager::disconnect(network::SIOClient* client, const std::string& 
 	this->closedSocketAction(client);
 }
 
-void SocketIOManager::closedSocketAction(network::SIOClient* client)
+void SocketIOManager::closedSocketAction(SIOClient* client)
 {
 	//set the local pointer to nullptr or connect to another client
 	//the client object will be released on its own after this method completes
@@ -124,7 +124,7 @@ void SocketIOManager::closedSocketAction(network::SIOClient* client)
 }
 
 // SIODelegate methods to catch network/socket level events outside of the socket.io events
-void SocketIOManager::onClose(network::SIOClient* client)
+void SocketIOManager::onClose(SIOClient* client)
 {
 	CCLOGINFO("SocketIOTest::onClose called");
 
@@ -134,7 +134,7 @@ void SocketIOManager::onClose(network::SIOClient* client)
 	this->closedSocketAction(client);
 }
 
-void SocketIOManager::onError(network::SIOClient* client, const std::string& data)
+void SocketIOManager::onError(SIOClient* client, const std::string& data)
 {
 	CCLOGERROR("SocketIOTest::onError received: %s", data.c_str());
 
