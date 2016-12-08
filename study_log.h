@@ -906,6 +906,9 @@ io.on('connection', function(socket){
 客户端发起连接： SocketIO::connect("ws://tools.itharbors.com:4000/testpoint", *this); 见 MyFrameWork
 
 53. 打开android sdk manager界面 cmd 进入xxxx\adt-bundle-windows-x86-20140702\sdk\tools 执行 android sdk 
+国内sdk镜像下载：android-mirror.bugly.qq.com 端口8080 ，务必选择: Force https://... sources to be fetched using http://... 
+然后 点击菜单Package>Reload，如果能获取新版本，表明可以正常访问镜像 
+http://android-mirror.bugly.qq.com:8080/include/usage.html
 
 54. 
 
