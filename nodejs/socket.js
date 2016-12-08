@@ -30,7 +30,7 @@ io.on('connection', function(socket){
 });
 
 /*
-F:
-cd F:\nodejs
+E:
+cd E:\MyGithub\jokeme\nodejs
 node socket.js
 */

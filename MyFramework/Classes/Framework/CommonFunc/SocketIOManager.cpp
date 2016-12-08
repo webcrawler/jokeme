@@ -36,6 +36,10 @@ void SocketIOManager::testSocketOpen()
 	m_sioClient->on("json", CC_CALLBACK_2(SocketIOManager::json, this));
 	m_sioClient->on("connect", CC_CALLBACK_2(SocketIOManager::connect, this));
 	m_sioClient->on("disconnect", CC_CALLBACK_2(SocketIOManager::disconnect, this));
+
+	m_sioClient->on("heartbeat", [=](SIOClient* client, const std::string& data) {
+		CCLOG("heartbeat: %d", data.c_str());
+	});
 }
 
 void SocketIOManager::testSocketSend()
@@ -46,6 +50,11 @@ void SocketIOManager::testSocketSend()
 void SocketIOManager::testSocketEmit()
 {
 	if (m_sioClient != nullptr) m_sioClient->emit("login", "{\"name\":\"fjut\",\"type\":\"hehe\"}");
+}
+
+void SocketIOManager::disconnect1()
+{
+	if (m_sioClient != nullptr) m_sioClient->disconnect();
 }
 
 //test event callback handlers, these will be registered with socket.io
@@ -130,5 +139,5 @@ void SocketIOManager::onError(network::SIOClient* client, const std::string& dat
 	CCLOGERROR("SocketIOTest::onError received: %s", data.c_str());
 
 	std::stringstream s;
-	s << client->getTag() << " received error with content: " << data.c_str();;
+	s << client->getTag() << " received error with content: " << data.c_str();
 }

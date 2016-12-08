@@ -1,17 +1,25 @@
-var app = require('express').createServer(),
-    io = require('socket.io').listen(app);
-app.listen(80);
+var app = require('express')()
+ , server = require('http').createServer(app)
+ , io = require('socket.io').listen(server);
+
+server.listen(8080);
+
 app.get('/', function (req, res) {
-    res.sendfile(__dirname + '/index.html');
+ //res.sendfile(__dirname + '/index.html');
+   // Send HTML headers and message
+  res.writeHead(200,{ 'Content-Type': 'text/html' });
+  res.end('# Hello Socket Lover!');
 });
+
 io.sockets.on('connection', function (socket) {
-    //发送消息给客户端
-    socket.emit('news', { hello: 'world' });
-    socket.on('my other event', function (data) {
-        console.log(data);
-    });
-    //广播信息给除当前用户之外的用户
-    socket.broadcast.emit('user connected');
-    //广播给全体客户端
-    io.sockets.emit('all users');
+ socket.emit('news', { hello: 'world' });
+ socket.on('my other event', function (data) {
+   console.log(data);
+ });
 });
+
+/*
+E:
+cd E:\MyGithub\jokeme\nodejs
+node express.js
+*/

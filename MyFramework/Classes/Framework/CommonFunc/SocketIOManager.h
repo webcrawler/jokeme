@@ -25,6 +25,7 @@ public:
 	void testSocketOpen();
 	void testSocketSend();
 	void testSocketEmit();
+	void disconnect1();
 
 private:
 	/**
