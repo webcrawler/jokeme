@@ -910,7 +910,10 @@ io.on('connection', function(socket){
 然后 点击菜单Package>Reload，如果能获取新版本，表明可以正常访问镜像 
 http://android-mirror.bugly.qq.com:8080/include/usage.html
 
-54. 
+54. vs build error: C2259 “xx 类”: 不能实例化抽象类。
+继承的父类里边有纯虚函数在子类没有实现。public EditBoxDelegate，子类必须实现editBoxReturn。
+
+55. 
 
 
 
