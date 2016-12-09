@@ -11,9 +11,24 @@ LOCAL_MODULE := MyGame_shared
 
 LOCAL_MODULE_FILENAME := libMyGame
 
-LOCAL_SRC_FILES := hellocpp/main.cpp \
-                   ../../Classes/AppDelegate.cpp \
-                   ../../Classes/HelloWorldScene.cpp
+LOCAL_IGNORE_LIST := ODSocket.cpp \
+ODSocketTest.cpp
+
+MY_FILES_PATH := $(LOCAL_PATH) \
+$(LOCAL_PATH)/../../Classes
+
+MY_FILES_SUFFIX := %.cpp
+rwildcard=$(wildcard $1$2) $(foreach d,$(wildcard $1*),$(call rwildcard,$d/,$2))
+MY_ALL_FILES := $(foreach src_path,$(MY_FILES_PATH), $(call rwildcard,$(src_path),*.*) ) 
+MY_ALL_FILES := $(MY_ALL_FILES:$(MY_CPP_PATH)/./%=$(MY_CPP_PATH)%)
+MY_SRC_LIST := $(filter $(MY_FILES_SUFFIX),$(MY_ALL_FILES)) 
+MY_SRC_LIST := $(MY_SRC_LIST:$(LOCAL_PATH)/%=%)
+define uniq =
+  $(eval seen :=)
+  $(foreach _,$1,$(if $(filter $_,${seen}),,$(eval seen += $_)))
+  ${seen}
+endef
+LOCAL_SRC_FILES := $(MY_SRC_LIST)
 
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../Classes
 

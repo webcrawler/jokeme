@@ -2,9 +2,8 @@
 
 // http://blog.csdn.net/cocosviva/article/details/18970717
 
-//static const char* ip = "127.0.0.1"; 
-static const char* ip = "10.253.250.24";
-static unsigned short port = 6969;
+static const char* ip = "127.0.0.1"; 
+static unsigned short port = 1234;
 
 GameNetDelegate::GameNetDelegate()
 {

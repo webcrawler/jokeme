@@ -25,7 +25,7 @@ void DownloaderManager::removeDownloaderTask(const std::string& srcUrl)
 	auto it = m_downloaderMap.find(srcUrl);
 	if (it == m_downloaderMap.end())
 	{
-		CCLOG("removeDownloaderTask fail, the task = %s is not found !", srcUrl);
+		CCLOG("removeDownloaderTask fail, the task = %s is not found !", srcUrl.c_str());
 	}
 	delete m_downloaderMap[srcUrl];
 	m_downloaderMap.erase(it);
@@ -87,7 +87,7 @@ Downloader* DownloaderManager::createDownloaderFileTask(DownloaderParam& downloa
 {
 	if (m_downloaderMap.find(downloaderParam.srcUrl) != m_downloaderMap.end())
 	{
-		CCLOG("createDownloaderFileTask fail, the task = %s is downloading", downloaderParam.srcUrl);
+		CCLOG("createDownloaderFileTask fail, the task = %s is downloading", downloaderParam.srcUrl.c_str());
 		return nullptr;
 	}
 
@@ -102,7 +102,7 @@ Downloader* DownloaderManager::createDownloadDataTask(DownloaderParam& downloade
 {
 	if (m_downloaderMap.find(downloaderParam.srcUrl) != m_downloaderMap.end())
 	{
-		CCLOG("createDownloadDataTask fail, the task = %s is downloading", downloaderParam.srcUrl);
+		CCLOG("createDownloadDataTask fail, the task = %s is downloading", downloaderParam.srcUrl.c_str());
 		return nullptr;
 	}
 

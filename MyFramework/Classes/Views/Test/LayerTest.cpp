@@ -130,7 +130,7 @@ void LayerTest::updateUI()
 	g_timer.regTimer(5, CC_CALLBACK_1(LayerTest::timercall1, this), CC_CALLBACK_1(LayerTest::timercall2, this), this, "kj");
 	g_timer.regTimer(5, nullptr, nullptr, this, "kj0");\
 
-	CommonCfg& cfg = g_file.getCommonCfg();
+	CommonCfg cfg = g_file.getCommonCfg();
 	cfg.bEffect = true;
 	g_file.modifyCommonCfg(cfg);
 	cfg = g_file.getCommonCfg();

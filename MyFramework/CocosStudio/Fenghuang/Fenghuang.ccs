@@ -3,6 +3,12 @@
   <SolutionFolder>
     <Group ctype="ResourceGroup">
       <RootFolder Name=".">
+        <Folder Name="csb">
+          <Project Name="layer_login.csd" Type="Layer" />
+          <Project Name="layer_reg.csd" Type="Layer" />
+          <Project Name="layer_test.csd" Type="Layer" />
+          <Project Name="layer_odsocket.csd" Type="Layer" />
+        </Folder>
         <Folder Name="MyRes">
           <Folder Name="gamemenu">
             <Image Name="game_baccaratnew.png" />
@@ -113,11 +119,6 @@
             <Image Name="room_4.png" />
             <Image Name="room_5.png" />
           </Folder>
-        </Folder>
-        <Folder Name="csb">
-          <Project Name="layer_login.csd" Type="Layer" />
-          <Project Name="layer_reg.csd" Type="Layer" />
-          <Project Name="layer_test.csd" Type="Layer" />
         </Folder>
       </RootFolder>
     </Group>

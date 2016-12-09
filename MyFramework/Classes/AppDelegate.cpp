@@ -72,6 +72,8 @@ bool AppDelegate::applicationDidFinishLaunching() {
         director->setContentScaleFactor(MIN(smallResolutionSize.height/designResolutionSize.height, smallResolutionSize.width/designResolutionSize.width));
     }
 
+	FileUtils::getInstance()->addSearchPath("res");
+
     register_all_packages();
 
     // create a scene. it's an autorelease object
@@ -100,7 +102,14 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	pScene->init();
 	pScene->autorelease();
 	CCDirector::sharedDirector()->runWithScene(pScene);
-#else 
+#endif
+
+#if 0
+	auto scene = ODSocketTest::createScene();
+	director->runWithScene(scene);
+#endif 
+
+#if 0
 	g_ctrl.startLoginScene();
 #endif
 

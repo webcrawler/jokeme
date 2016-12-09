@@ -33,8 +33,9 @@
         <OpenedDocuments>
           <FilePathData Path="csb/layer_login.csd" />
           <FilePathData Path="csb/layer_test.csd" />
+          <FilePathData Path="csb/layer_odsocket.csd" />
         </OpenedDocuments>
-        <ActiveDocument Path="csb/layer_test.csd" />
+        <ActiveDocument Path="csb/layer_odsocket.csd" />
       </Value>
     </Item>
   </Properties>

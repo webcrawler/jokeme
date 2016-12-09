@@ -75,7 +75,7 @@ bool FileManager::writeUserData(const UserMap& userMap)
 
 UserMap FileManager::readUserData()
 {
-	ValueMap& valueMap = readDataFromFile(accFile);
+	ValueMap valueMap = readDataFromFile(accFile);
 	UserMap userMap;
 	for (auto it = valueMap.begin(); it != valueMap.end(); it++)
 	{
@@ -189,7 +189,7 @@ void FileManager::deleteAllUsers()
 
 CommonCfg FileManager::getCommonCfg()
 {
-	ValueMap& valueMap = readDataFromFile(commonCfgFile);
+	ValueMap valueMap = readDataFromFile(commonCfgFile);
 	if (valueMap.size() == 0)
 	{
 		// default false
