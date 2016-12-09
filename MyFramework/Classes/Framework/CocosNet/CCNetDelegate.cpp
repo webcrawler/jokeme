@@ -234,6 +234,20 @@ void CCNetDelegate::runSchedule(float dt)
 
 bool CCNetDelegate::runRead()
 {
+	// test
+#if 0
+	struct Data
+	{
+		int head;
+		int data1;
+		//int data2;
+	};
+	char p_temp[sizeof(Data)] = { 0 };
+	int nRet11 = m_oSocket.ccRead(p_temp, sizeof(Data));
+	Data* data = (Data*)p_temp;
+#endif
+	// test end
+
 	int nRet = m_oSocket.ccRead(m_pReadBuffer, SOCKET_READ_BUFFER_SIZE);
 	if( nRet == eSocketIoError || nRet == eSocketIoClosed )
 	{
@@ -249,6 +263,7 @@ bool CCNetDelegate::runRead()
 		CCLOG("CCSOCKET READ %d", nRet);
 #endif
 		m_oReadBuffer.writeData(m_pReadBuffer, (unsigned int)nRet);
+
 #if USING_PACKAGE_HEAD_LENGTH
 		while( m_oReadBuffer.isReadable(sizeof(int)) )
 		{
