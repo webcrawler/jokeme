@@ -902,6 +902,7 @@ io.on('connection', function(socket){
     });
 	socket.send('login', "yes you had login success!");
 });
+运行：node socket.js
 浏览器打开 http://localhost:8080 显示 # Hello Socket Lover!  成功
 客户端发起连接： SocketIO::connect("ws://tools.itharbors.com:4000/testpoint", *this); 见 MyFrameWork
 

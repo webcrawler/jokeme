@@ -5,9 +5,9 @@
       <RootFolder Name=".">
         <Folder Name="csb">
           <Project Name="layer_login.csd" Type="Layer" />
+          <Project Name="layer_odsocket.csd" Type="Layer" />
           <Project Name="layer_reg.csd" Type="Layer" />
           <Project Name="layer_test.csd" Type="Layer" />
-          <Project Name="layer_odsocket.csd" Type="Layer" />
         </Folder>
         <Folder Name="MyRes">
           <Folder Name="gamemenu">
