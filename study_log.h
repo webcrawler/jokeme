@@ -914,8 +914,9 @@ http://android-mirror.bugly.qq.com:8080/include/usage.html
 54. vs build error: C2259 “xx 类”: 不能实例化抽象类。
 继承的父类里边有纯虚函数在子类没有实现。public EditBoxDelegate，子类必须实现editBoxReturn。
 
-55. 
+55. My Google AppID:  myappid7-1183  myappid8-1185  myappid9-1185  myappid10-1185  myappid11-1185
 
+56. 
 
 
 
