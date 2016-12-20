@@ -129,6 +129,9 @@
     <ClCompile Include="..\Classes\Framework\CommonFunc\SocketIOManager.cpp">
       <Filter>src\Framework\CommonFunc</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Views\Test\Mutithread_Test.cpp">
+      <Filter>src\Views\Test</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -265,6 +268,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Framework\CommonFunc\SocketIOManager.h">
       <Filter>src\Framework\CommonFunc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Views\Test\Mutithread_Test.h">
+      <Filter>src\Views\Test</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

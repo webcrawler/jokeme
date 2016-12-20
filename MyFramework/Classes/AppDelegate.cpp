@@ -97,7 +97,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	printf("Network ordered address: %#lx\n", net_addr);
 
 
-#if 1
+#if 0
 	AlphaScene* pScene = new AlphaScene();
 	pScene->init();
 	pScene->autorelease();
@@ -109,7 +109,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	director->runWithScene(scene);
 #endif 
 
-#if 0
+#if 1
 	g_ctrl.startLoginScene();
 #endif
 

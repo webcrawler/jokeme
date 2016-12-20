@@ -852,6 +852,7 @@ NDK R12，在64位ABI默认是GCC 4.9，32位ABI默认是GCC4.8 》
 		"to": ""
 	}
 ]
+(调用在cocos2d-x-3.13.1\tools\cocos2d-console\bin\cocos.py)
 
 51. #include "cocos-ext.h"  vs 项目->属性->c/c++ ->常规->调价附加包含目录：$(EngineRoot)
 
