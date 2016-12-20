@@ -917,7 +917,19 @@ http://android-mirror.bugly.qq.com:8080/include/usage.html
 
 55. My Google AppID:  myappid7-1183  myappid8-1185  myappid9-1185  myappid10-1185  myappid11-1185
 
-56. 
+56. 打包apk 指定拷贝res资源目录：
+打开cocos2d-x-3.13.1\tools\cocos2d-console\bin\cocos.py 在 def copy_files_with_config(config, src_root, dst_root): 
+下首行添加（注意不要用tab键盘，用4个空格代替）：
+os.system('E:\xxxx\copy_res_for_android.bat') 
+copy_res_for_android.bat 如下：
+%该目录下从Resources拷贝资源到My_Android_Resources下，踢出*.tmp *.zip *.svn *.bak这些文件%
+robocopy Resources My_Android_Resources /e /xf /mir /xa:h *.tmp *.zip *.svn *.bak
+set path=E:\xxxx\My_Android_Resources\res\Game\
+%删除abc目录和cdf目录%
+rd /s /q %path%abc
+rd /s /q %path%cdf
+
+57. 
 
 
 
