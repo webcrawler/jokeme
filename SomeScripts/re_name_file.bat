@@ -1,5 +1,5 @@
 
-echo 批量重命名文件夹下所有png jpg文件
+@echo 批量重命名文件夹下所有.png .jpg文件
 @echo off
 set /p var=请输入命名前缀:
 setlocal enabledelayedexpansion
@@ -13,5 +13,5 @@ for /f %%i in ('dir /b *.jpg') do (
 ren "%%i" %var%_!n!.jpg
 set /a n+=1)
 
-echo 批量重命名完成！ 
+@echo 批量重命名完成！ 
 pause
