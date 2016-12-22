@@ -929,7 +929,14 @@ set path=E:\xxxx\My_Android_Resources\res\Game\
 rd /s /q %path%abc
 rd /s /q %path%cdf
 
-57. 
+57. windows tortoisegit 记住密码：
+打开项目目录下 .git/config 加入
+	[credential]   
+	 helper = store
+保存，输入一次密码后第二次就会记住密码了
+
+58. 
+
 
 
 
