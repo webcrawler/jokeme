@@ -962,7 +962,7 @@ mypaths = $(mymkpath)/$(mymkfile)
 #输出变量方式为：$(warning  $(XXX)) 
 
 60. arm-Linux-androideabi-g++.exe: error: CreateProcess: No such file or directory
-module源文件太多。解决:
+module源文件太多的原因。解决:
 Android.mk $(call import-module,.) 前添加 LOCAL_SHORT_COMMANDS := true 
 Application.mk添加 APP_SHORT_COMMANDS := true 
 
