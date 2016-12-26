@@ -833,6 +833,7 @@ or that its path is correct
 解决：NDK找不到4.9版本的toolchain (在cocos2d-x-3.13.1\tools\cocos2d-console\plugins\plugin_compile\build_android.py下：
 def get_toolchain_version(self, ndk_root, compile_obj) 官方指定的toochain为4.9,本地ndk下toolchain目录找不到对应4.9的toolchain), 指定toolchain为4.8版本，或者升级ndk版本。 
 cocos compile -p android --ap android-15 --ndk-toolchain arm-linux-androideabi-4.8
+// eclipse工程可以在 Android.mk 加入： NDK_TOOLCHAIN_VERSION = 4.8
 (arm-linux-androideabi-4.8 在ndk下toolchain目录)
 《NDK_TOOLCHAIN_VERSION （编译器类型、版本）默认采用的是GCC编译器，对于GCC版本的选择与 NDK版本有关系，
 NDK R12，在64位ABI默认是GCC 4.9，32位ABI默认是GCC4.8 》
@@ -940,7 +941,34 @@ rd /s /q %path%cdf
 	 helper = store
 保存，输入一次密码后第二次就会记住密码了
 
-58. 
+58. NDK自带的iconv的>> android-ndk-r9d/sources/android/support/include/iconv.h
+Android.mk 添加：
+LOCAL_WHOLE_STATIC_LIBRARIES += android_support
+$(call import-module,android/support)
+
+59. makefile 包含其他makefile :
+joke1.mk 内容:
+mymkpath = E:/xx/cocos2d/external
+mymkfile = prebuilt/android
+// joke2 包含joke1
+joke2.mk 内容:
+include E:/xxx/joke1.mk
+#输出
+$(warning  $(mymkpath))
+mypaths = $(mymkpath)/$(mymkfile)
+
+#在makefile中打印警告或者错误消息的方法：
+#$(warning xxxxx)或者$(error xxxxx) 
+#输出变量方式为：$(warning  $(XXX)) 
+
+60. arm-Linux-androideabi-g++.exe: error: CreateProcess: No such file or directory
+module源文件太多。解决:
+Android.mk $(call import-module,.) 前添加 LOCAL_SHORT_COMMANDS := true 
+Application.mk添加 APP_SHORT_COMMANDS := true 
+
+61. error: gnu-libstdc++/4.8/libs/armeabi/libgnustl_static.a(math_stubs_long_double.o): multiple definition of 'frexpl'
+这里把 LOCAL_STATIC_LIBRARIES += android_support 改为：LOCAL_WHOLE_STATIC_LIBRARIES += android_support
+
 
 
 
