@@ -969,6 +969,15 @@ Application.mk添加 APP_SHORT_COMMANDS := true
 61. error: gnu-libstdc++/4.8/libs/armeabi/libgnustl_static.a(math_stubs_long_double.o): multiple definition of 'frexpl'
 这里把 LOCAL_STATIC_LIBRARIES += android_support 改为：LOCAL_WHOLE_STATIC_LIBRARIES += android_support
 
+62. apk打包显示apk大小：
+ 打开cocos2d-x-3.13.1\tools\cocos2d-console\plugins\plugin_deploy.py 找到 adb_install = "%s install \"%s\"" % (adb_path, apk_path) 
+ 在前面添加：
+#os.path.getsize
+apk_size = os.path.getsize(apk_path)
+apk_size_ = (apk_size//(1000*1000))
+print("<<<<APK size>>>>: %d MB\n" % apk_size_)
+
+63. 
 
 
 
