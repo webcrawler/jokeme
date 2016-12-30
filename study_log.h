@@ -215,6 +215,7 @@ Path   %NDK_ROOT%;%ANT_ROOT%;%ANDROID_SDK_ROOT%;%ANDROID_SDK_ROOT%\tools;%ANDROI
 2. cocos compile -p android –-ap 20
 3. 生成包 F:\cocos2d-x-3.2alpha0\cocos2d-x-3.2alpha0\tests\cpp-empty-test\publish\android\CppEmptyTest-debug.apk
 4. cd到apk目录 adb install CppEmptyTest-debug.apk(安装到内置存储), adb install -s CppEmptyTest-debug.apk(安装到sdcard)
+（安装内置还是sdcard和手机设置有关系，install -s 会上传apk到手机sdcard，而install则是上传到手机内置存储位置）
 编译打包(2)(旧方法):
 1. 进入 F:\cocos2d-x-3.2alpha0\cocos2d-x-3.2alpha0\build
 2. 查看当前sdk中所包含的target以及相应id: android list targets
