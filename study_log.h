@@ -978,8 +978,30 @@ apk_size = os.path.getsize(apk_path)
 apk_size_ = (apk_size//(1000*1000))
 print("<<<<APK size>>>>: %d MB\n" % apk_size_)
 
-63. 
+63. 创建目录，穿入的path不能带目录结构，只能是单层目录，eg："res"可以。 "res/game"不行
+要创建多层目录可以一层一层创建。
+static std::string createDownloadedDir(const std::string& path)
+{
+	std::string pathToSave = CCFileUtils::sharedFileUtils()->getWritablePath();
+	pathToSave += path;
+	// Create the folder if it doesn't exist
+#if (CC_TARGET_PLATFORM != CC_PLATFORM_WIN32)
+	DIR* pDir = NULL;
+	pDir = opendir(pathToSave.c_str());
+	if (!pDir)
+	{
+		mkdir(pathToSave.c_str(), S_IRWXU | S_IRWXG | S_IRWXO);
+	}
+#else
+	if ((GetFileAttributesA(pathToSave.c_str())) == INVALID_FILE_ATTRIBUTES)
+	{
+		CreateDirectoryA(pathToSave.c_str(), 0);
+	}
+#endif
+	return pathToSave;
+}
 
+64. 
 
 
 
