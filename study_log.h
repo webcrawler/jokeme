@@ -1001,7 +1001,19 @@ static std::string createDownloadedDir(const std::string& path)
 	return pathToSave;
 }
 
-64. 
+64. 下载apk安装issues:
+apk下载到sdcard,安装正常。
+apk下载到getWritablePath(), 调用包安装前需要取得该目录权限：
+String[] command = {"chmod", "777", storePath};  
+ProcessBuilder builder = new ProcessBuilder(command);  
+try {  
+	builder.start();  
+} catch (IOException e) {  
+	// TODO Auto-generated catch block  
+	e.printStackTrace(); 
+}  
+
+65. 
 
 
 
