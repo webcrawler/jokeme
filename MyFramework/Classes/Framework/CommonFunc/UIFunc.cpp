@@ -421,10 +421,17 @@ EditBox* UIFunc::getEditBoxForPwd(const string& img, EditBoxDelegate* pDelegate,
 	return editbox;
 }
 
+// eg:
+//auto clip = g_uifunc.getStencilNode(res_add("playerinfo_12.png"));
+//ImageView* sp = ImageView::create(filePath);
+//clip->addChild(sp);
+//root->addChild(clip);
 ClippingNode* UIFunc::getStencilNode(const string& charImg)
 {
+	if (charImg.size() == 0) return nullptr;
 	auto clip = ClippingNode::create(Sprite::create(charImg));
-	// todo
+	clip->setInverted(false);
+	clip->setAlphaThreshold(0);
 	return clip;
 }
 
