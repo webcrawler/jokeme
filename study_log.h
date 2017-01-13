@@ -1004,8 +1004,8 @@ static std::string createDownloadedDir(const std::string& path)
 64. 下载apk安装issues:
 apk下载到sdcard,安装正常。
 apk下载到getWritablePath(), 调用包安装前需要取得该目录权限：
-String[] command = {"chmod", "777", storePath};  
-ProcessBuilder builder = new ProcessBuilder(command);  
+String[] cmd = {"chmod", "777", storePath};  
+ProcessBuilder builder = new ProcessBuilder(cmd);  
 try {  
 	builder.start();  
 } catch (IOException e) {  
@@ -1013,7 +1013,12 @@ try {
 	e.printStackTrace(); 
 }  
 
-65. 
+65. python pause
+# fjut add
+print("%s\n" % "install apk? enter any key then continue")
+os.system("pause")
+
+66. 
 
 
 
