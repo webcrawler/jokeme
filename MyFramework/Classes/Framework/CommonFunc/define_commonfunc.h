@@ -10,5 +10,6 @@
 #include "DownloaderManager.h"
 #include "MyAssertManager.h"
 #include "SocketIOManager.h"
+#include "WebFileSizeManager.h"
 
 #endif 

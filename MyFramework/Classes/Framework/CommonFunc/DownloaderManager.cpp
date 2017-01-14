@@ -26,6 +26,7 @@ void DownloaderManager::removeDownloaderTask(const std::string& srcUrl)
 	if (it == m_downloaderMap.end())
 	{
 		CCLOG("removeDownloaderTask fail, the task = %s is not found !", srcUrl.c_str());
+		return;
 	}
 	delete m_downloaderMap[srcUrl];
 	m_downloaderMap.erase(it);

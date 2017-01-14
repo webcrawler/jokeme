@@ -71,7 +71,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>$(EngineRoot);$(EngineRoot)external;$(EngineRoot)cocos\audio\include;$(EngineRoot)external\chipmunk\include\chipmunk;$(EngineRoot)extensions;..\Classes;..;%(AdditionalIncludeDirectories);$(_COCOS_HEADER_WIN32_BEGIN);$(_COCOS_HEADER_WIN32_END)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(EngineRoot)external\curl\include\win32;$(EngineRoot);$(EngineRoot)external;$(EngineRoot)cocos\audio\include;$(EngineRoot)external\chipmunk\include\chipmunk;$(EngineRoot)extensions;..\Classes;..;%(AdditionalIncludeDirectories);$(_COCOS_HEADER_WIN32_BEGIN);$(_COCOS_HEADER_WIN32_END)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USE_MATH_DEFINES;GL_GLEXT_PROTOTYPES;CC_ENABLE_CHIPMUNK_INTEGRATION=1;COCOS2D_DEBUG=1;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -84,7 +84,7 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>%(AdditionalDependencies);$(_COCOS_LIB_WIN32_BEGIN);$(_COCOS_LIB_WIN32_END)</AdditionalDependencies>
+      <AdditionalDependencies>%(AdditionalDependencies);$(_COCOS_LIB_WIN32_BEGIN);$(_COCOS_LIB_WIN32_END);libcurl_imp.lib</AdditionalDependencies>
       <OutputFile>$(OutDir)$(ProjectName).exe</OutputFile>
       <AdditionalLibraryDirectories>$(OutDir);%(AdditionalLibraryDirectories);$(_COCOS_LIB_PATH_WIN32_BEGIN);$(_COCOS_LIB_PATH_WIN32_END)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -158,6 +158,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\Framework\CommonFunc\SocketIOManager.cpp" />
     <ClCompile Include="..\Classes\Framework\CommonFunc\TimeManager.cpp" />
     <ClCompile Include="..\Classes\Framework\CommonFunc\UIFunc.cpp" />
+    <ClCompile Include="..\Classes\Framework\CommonFunc\WebFileSizeManager.cpp" />
     <ClCompile Include="..\Classes\Framework\EventDispather\UIEventDispather.cpp" />
     <ClCompile Include="..\Classes\Framework\UIManager\LayerBase.cpp" />
     <ClCompile Include="..\Classes\Framework\UIManager\LoadingUI.cpp" />
@@ -196,6 +197,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\Framework\CommonFunc\SocketIOManager.h" />
     <ClInclude Include="..\Classes\Framework\CommonFunc\TimeManager.h" />
     <ClInclude Include="..\Classes\Framework\CommonFunc\UIFunc.h" />
+    <ClInclude Include="..\Classes\Framework\CommonFunc\WebFileSizeManager.h" />
     <ClInclude Include="..\Classes\Framework\define_framework.h" />
     <ClInclude Include="..\Classes\Framework\EventDispather\define_eventdispather.h" />
     <ClInclude Include="..\Classes\Framework\EventDispather\UIEventDefine.h" />

@@ -96,6 +96,13 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	printf("Host ordered address: %#lx\n", host_addr);
 	printf("Network ordered address: %#lx\n", net_addr);
 
+	g_webfilesize.addWebFileSizeTask("http://www.cocos2d-x.org/attachments/802/cocos2dx_landscape.png", [=](float fileSize) {
+	CCLOG("fileSize1 = %.5f", fileSize);
+	});
+	g_webfilesize.addWebFileSizeTask("http://cdn.cocimg.com/assets/images/logo.png", [=](float fileSize) {
+		CCLOG("fileSize2 = %.5f", fileSize);
+	});
+
 
 #if 0
 	AlphaScene* pScene = new AlphaScene();
@@ -109,7 +116,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	director->runWithScene(scene);
 #endif 
 
-#if 1
+#if 0
 	g_ctrl.startLoginScene();
 #endif
 
