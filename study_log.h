@@ -1018,7 +1018,11 @@ try {
 print("%s\n" % "install apk? enter any key then continue")
 os.system("pause")
 
-66. 
+66. win使用curl:
+#include <curl/curl.h>
+#include <curl/easy.h>
+// 属性->c/c++->常规->附加包含目录 添加: $(EngineRoot)external\curl\include\win32
+// 属性->链接器->常规->附加依赖项 添加: libcurl_imp.lib
 
 
 
