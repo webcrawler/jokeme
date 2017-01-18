@@ -158,6 +158,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\Framework\CommonFunc\SocketIOManager.cpp" />
     <ClCompile Include="..\Classes\Framework\CommonFunc\TimeManager.cpp" />
     <ClCompile Include="..\Classes\Framework\CommonFunc\UIFunc.cpp" />
+    <ClCompile Include="..\Classes\Framework\CommonFunc\WebFileSize.cpp" />
     <ClCompile Include="..\Classes\Framework\CommonFunc\WebFileSizeManager.cpp" />
     <ClCompile Include="..\Classes\Framework\EventDispather\UIEventDispather.cpp" />
     <ClCompile Include="..\Classes\Framework\UIManager\LayerBase.cpp" />
@@ -197,6 +198,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\Framework\CommonFunc\SocketIOManager.h" />
     <ClInclude Include="..\Classes\Framework\CommonFunc\TimeManager.h" />
     <ClInclude Include="..\Classes\Framework\CommonFunc\UIFunc.h" />
+    <ClInclude Include="..\Classes\Framework\CommonFunc\WebFileSize.h" />
     <ClInclude Include="..\Classes\Framework\CommonFunc\WebFileSizeManager.h" />
     <ClInclude Include="..\Classes\Framework\define_framework.h" />
     <ClInclude Include="..\Classes\Framework\EventDispather\define_eventdispather.h" />

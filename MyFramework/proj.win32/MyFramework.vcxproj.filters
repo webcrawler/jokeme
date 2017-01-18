@@ -135,6 +135,9 @@
     <ClCompile Include="..\Classes\Framework\CommonFunc\WebFileSizeManager.cpp">
       <Filter>src\Framework\CommonFunc</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Framework\CommonFunc\WebFileSize.cpp">
+      <Filter>src\Framework\CommonFunc</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -276,6 +279,9 @@
       <Filter>src\Views\Test</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Framework\CommonFunc\WebFileSizeManager.h">
+      <Filter>src\Framework\CommonFunc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Framework\CommonFunc\WebFileSize.h">
       <Filter>src\Framework\CommonFunc</Filter>
     </ClInclude>
   </ItemGroup>
