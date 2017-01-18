@@ -183,6 +183,7 @@ void LayerTest::updateUI()
 	//});
 	//assertMgr->checkUpdate();
 	//assertMgr->update();
+
 }
 
 void LayerTest::timercall1(float dt)

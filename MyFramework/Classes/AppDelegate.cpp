@@ -2,6 +2,10 @@
 #include "HelloWorldScene.h"
 #include "define_.h"
 
+#include "cocos-ext.h"
+#include "network/HttpClient.h"
+
+using namespace cocos2d::network;
 USING_NS_CC;
 
 static cocos2d::Size designResolutionSize = cocos2d::Size(1136, 640);  //cocos2d::Size(480, 320);
@@ -96,12 +100,22 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	printf("Host ordered address: %#lx\n", host_addr);
 	printf("Network ordered address: %#lx\n", net_addr);
 
-	g_webfilesize.addWebFileSizeTask("http://www.cocos2d-x.org/attachments/802/cocos2dx_landscape.png", [=](float fileSize) {
-	CCLOG("fileSize1 = %.5f", fileSize);
-	});
-	g_webfilesize.addWebFileSizeTask("http://cdn.cocimg.com/assets/images/logo.png", [=](float fileSize) {
-		CCLOG("fileSize2 = %.5f", fileSize);
-	});
+	//g_webfilesize.addWebFileSizeTask("http://www.cocos2d-x.org/attachments/802/cocos2dx_landscape.png", [=](float fileSize) {
+	//CCLOG("fileSize1 = %.5f", fileSize);
+	//});
+	//g_webfilesize.addWebFileSizeTask("http://cdn.cocimg.com/assets/images/logo.png", [=](float fileSize) {
+	//	CCLOG("fileSize2 = %.5f", fileSize);
+	//});
+
+	// win32
+	//cocos2d::network::HttpClient::addWebFileSizeTask("http://www.kuu789.com/downloads/game.apk", [=](float fileSize) {
+	//	CCLOG("fileSize3 = %.5f", fileSize);
+	//	auto scene = Scene::create();
+	//	auto label = Text::create(StringUtils::format("%.2f", fileSize), "Aril", 35);
+	//	label->setPosition(Vec2(200, 200));
+	//	scene->addChild(label);
+	//	Director::getInstance()->runWithScene(scene);
+	//});
 
 
 #if 0

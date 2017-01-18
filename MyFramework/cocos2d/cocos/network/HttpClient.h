@@ -149,6 +149,11 @@ public:
     std::mutex& getCookieFileMutex() {return _cookieFileMutex;}
 
     std::mutex& getSSLCaFileMutex() {return _sslCaFileMutex;}
+
+	// add by fjut 2017.01.18  win32
+	static void addWebFileSizeTask(const std::string& url, const std::function<void(float fileSize)>& callback_ = nullptr);
+	// add end 
+
 private:
     HttpClient();
     virtual ~HttpClient();
