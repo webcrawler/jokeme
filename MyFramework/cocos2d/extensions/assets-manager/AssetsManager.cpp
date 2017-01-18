@@ -122,31 +122,70 @@ AssetsManager::AssetsManager(const char* packageUrl/* =nullptr */, const char* v
             _isDownloading = false;
             return;
         }
+		// add by fjut 2016.12.20
+		else
+		{
+			//if (_delegate) _delegate->onNewVersion(_version, [=](bool bUpdate) {
+			//	if (bUpdate)
+			//	{
+			//		// start download new version assets
+			//		// 1. Urls of package and version should be valid;
+			//		// 2. Package should be a zip file.
+			//		if (_versionFileUrl.empty()
+			//			|| _packageUrl.empty()
+			//			|| FileUtils::getInstance()->getFileExtension(_packageUrl) != ".zip"
+			//			)
+			//		{
+			//			CCLOG("no version file url, or no package url, or the package is not a zip file");
+			//			_isDownloading = false;
+			//			return;
+			//		}
 
-        // start download new version assets
-        // 1. Urls of package and version should be valid;
-        // 2. Package should be a zip file.
-        if (_versionFileUrl.empty()
-            || _packageUrl.empty()
-            || FileUtils::getInstance()->getFileExtension(_packageUrl) != ".zip"
-            )
-        {
-            CCLOG("no version file url, or no package url, or the package is not a zip file");
-            _isDownloading = false;
-            return;
-        }
-        
-        // Is package already downloaded?
-        _downloadedVersion = UserDefault::getInstance()->getStringForKey(keyOfDownloadedVersion().c_str());
-        if (_downloadedVersion == _version)
-        {
-            downloadAndUncompress();
-            return;
-        }
-        
-        // start download;
-        const string outFileName = _storagePath + TEMP_PACKAGE_FILE_NAME;
-        _downloader->createDownloadFileTask(_packageUrl, outFileName);
+			//		// Is package already downloaded?
+			//		_downloadedVersion = UserDefault::getInstance()->getStringForKey(keyOfDownloadedVersion().c_str());
+			//		if (_downloadedVersion == _version)
+			//		{
+			//			downloadAndUncompress();
+			//			return;
+			//		}
+
+			//		// start download;
+			//		const string outFileName = _storagePath + TEMP_PACKAGE_FILE_NAME;
+			//		_downloader->createDownloadFileTask(_packageUrl, outFileName);
+			//	}
+			//	else
+			//	{
+			//		// Set resource search path.
+			//		setSearchPath();
+			//		_isDownloading = false;
+			//	}
+			//});
+		}
+
+		// start download new version assets
+		// 1. Urls of package and version should be valid;
+		// 2. Package should be a zip file.
+		if (_versionFileUrl.empty()
+			|| _packageUrl.empty()
+			|| FileUtils::getInstance()->getFileExtension(_packageUrl) != ".zip"
+			)
+		{
+			CCLOG("no version file url, or no package url, or the package is not a zip file");
+			_isDownloading = false;
+			return;
+		}
+
+		// Is package already downloaded?
+		_downloadedVersion = UserDefault::getInstance()->getStringForKey(keyOfDownloadedVersion().c_str());
+		if (_downloadedVersion == _version)
+		{
+			downloadAndUncompress();
+			return;
+		}
+
+		// start download;
+		const string outFileName = _storagePath + TEMP_PACKAGE_FILE_NAME;
+		_downloader->createDownloadFileTask(_packageUrl, outFileName);
     };
     
     // after download package, do uncompress operation

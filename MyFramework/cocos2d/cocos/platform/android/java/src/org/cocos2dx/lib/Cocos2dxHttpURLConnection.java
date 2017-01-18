@@ -63,6 +63,12 @@ public class Cocos2dxHttpURLConnection
         try {
             url = new URL(linkURL);
             urlConnection = (HttpURLConnection) url.openConnection();
+			
+			// test code
+			//int length = url.getContentLength();  //获取contentLength
+			//String len = urlConnection.getHeaderField("content-length");  
+			// test end
+			
             //Accept-Encoding
             urlConnection.setRequestProperty("Accept-Encoding", "identity");
             urlConnection.setDoInput(true);

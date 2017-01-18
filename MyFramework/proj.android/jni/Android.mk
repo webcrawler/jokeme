@@ -11,8 +11,7 @@ LOCAL_MODULE := MyGame_shared
 
 LOCAL_MODULE_FILENAME := libMyGame
 
-LOCAL_IGNORE_LIST := ODSocket.cpp \
-ODSocketTest.cpp
+LOCAL_IGNORE_LIST := $(LOCAL_PATH)/../../Classes/Framework/CommonFunc/WebFileSize.cpp \
 
 MY_FILES_PATH := $(LOCAL_PATH) \
 $(LOCAL_PATH)/../../Classes

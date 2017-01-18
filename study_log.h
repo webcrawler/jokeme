@@ -215,6 +215,7 @@ Path   %NDK_ROOT%;%ANT_ROOT%;%ANDROID_SDK_ROOT%;%ANDROID_SDK_ROOT%\tools;%ANDROI
 2. cocos compile -p android –-ap 20
 3. 生成包 F:\cocos2d-x-3.2alpha0\cocos2d-x-3.2alpha0\tests\cpp-empty-test\publish\android\CppEmptyTest-debug.apk
 4. cd到apk目录 adb install CppEmptyTest-debug.apk(安装到内置存储), adb install -s CppEmptyTest-debug.apk(安装到sdcard)
+（安装内置还是sdcard和手机设置有关系，install -s 会上传apk到手机sdcard，而install则是上传到手机内置存储位置）
 编译打包(2)(旧方法):
 1. 进入 F:\cocos2d-x-3.2alpha0\cocos2d-x-3.2alpha0\build
 2. 查看当前sdk中所包含的target以及相应id: android list targets
@@ -830,7 +831,10 @@ leading to the following error when I try to compile with APP_STL=gnustl_static 
 Android NDK: ERROR:C:/AndroidNDK/sources/cxx-stl/gnu-libstdc++/Android.mk:gnustl_static: LOCAL_SRC_FILES points to a missing file
 Android NDK: Check that C:/AndroidNDK/sources/cxx-stl/gnu-libstdc++/4.9/libs/armeabi-v7a/thumb/libgnustl_static.a exists 
 or that its path is correct
-解决：NDK找不到4.9版本的toolchain, 指定toolchain为4.8版本，或者升级ndk版本。 cocos compile -p android --ap android-15 --ndk-toolchain arm-linux-androideabi-4.8
+解决：NDK找不到4.9版本的toolchain (在cocos2d-x-3.13.1\tools\cocos2d-console\plugins\plugin_compile\build_android.py下：
+def get_toolchain_version(self, ndk_root, compile_obj) 官方指定的toochain为4.9,本地ndk下toolchain目录找不到对应4.9的toolchain), 指定toolchain为4.8版本，或者升级ndk版本。 
+cocos compile -p android --ap android-15 --ndk-toolchain arm-linux-androideabi-4.8
+// eclipse工程可以在 Android.mk 加入： NDK_TOOLCHAIN_VERSION = 4.8
 (arm-linux-androideabi-4.8 在ndk下toolchain目录)
 《NDK_TOOLCHAIN_VERSION （编译器类型、版本）默认采用的是GCC编译器，对于GCC版本的选择与 NDK版本有关系，
 NDK R12，在64位ABI默认是GCC 4.9，32位ABI默认是GCC4.8 》
@@ -852,6 +856,7 @@ NDK R12，在64位ABI默认是GCC 4.9，32位ABI默认是GCC4.8 》
 		"to": ""
 	}
 ]
+(调用在cocos2d-x-3.13.1\tools\cocos2d-console\bin\cocos.py)
 
 51. #include "cocos-ext.h"  vs 项目->属性->c/c++ ->常规->调价附加包含目录：$(EngineRoot)
 
@@ -914,8 +919,110 @@ http://android-mirror.bugly.qq.com:8080/include/usage.html
 54. vs build error: C2259 “xx 类”: 不能实例化抽象类。
 继承的父类里边有纯虚函数在子类没有实现。public EditBoxDelegate，子类必须实现editBoxReturn。
 
-55. 
+55. My Google AppID:  myappid7-1183  myappid8-1185  myappid9-1185  myappid10-1185  myappid11-1185
 
+56. 打包apk 指定拷贝res资源目录：
+打开cocos2d-x-3.13.1\tools\cocos2d-console\plugins\plugin_compile\build_android.py 在 
+# copy resources
+for cfg in res_files:
+	cocos.copy_files_with_config(cfg, app_android_root, assets_dir) 
+前面添加（注意不要用tab键盘，用4个空格代替）：
+os.system('E:\xxxx\copy_res_for_android.bat') 
+copy_res_for_android.bat 如下：
+%该目录下从Resources拷贝资源到My_Android_Resources下，踢出*.tmp *.zip *.svn *.bak这些文件%
+robocopy Resources My_Android_Resources /e /xf /mir /xa:h *.tmp *.zip *.svn *.bak
+set path=E:\xxxx\My_Android_Resources\res\Game\
+%删除abc目录和cdf目录%
+rd /s /q %path%abc
+rd /s /q %path%cdf
+
+57. windows tortoisegit 记住密码：
+打开项目目录下 .git/config 加入
+	[credential]   
+	 helper = store
+保存，输入一次密码后第二次就会记住密码了
+
+58. NDK自带的iconv的>> android-ndk-r9d/sources/android/support/include/iconv.h
+Android.mk 添加：
+LOCAL_WHOLE_STATIC_LIBRARIES += android_support
+$(call import-module,android/support)
+
+59. makefile 包含其他makefile :
+joke1.mk 内容:
+mymkpath = E:/xx/cocos2d/external
+mymkfile = prebuilt/android
+// joke2 包含joke1
+joke2.mk 内容:
+include E:/xxx/joke1.mk
+#输出
+$(warning  $(mymkpath))
+mypaths = $(mymkpath)/$(mymkfile)
+
+#在makefile中打印警告或者错误消息的方法：
+#$(warning xxxxx)或者$(error xxxxx) 
+#输出变量方式为：$(warning  $(XXX)) 
+
+60. arm-Linux-androideabi-g++.exe: error: CreateProcess: No such file or directory
+module源文件太多的原因。解决:
+Android.mk $(call import-module,.) 前添加 LOCAL_SHORT_COMMANDS := true 
+Application.mk添加 APP_SHORT_COMMANDS := true 
+
+61. error: gnu-libstdc++/4.8/libs/armeabi/libgnustl_static.a(math_stubs_long_double.o): multiple definition of 'frexpl'
+这里把 LOCAL_STATIC_LIBRARIES += android_support 改为：LOCAL_WHOLE_STATIC_LIBRARIES += android_support
+
+62. apk打包显示apk大小：
+ 打开cocos2d-x-3.13.1\tools\cocos2d-console\plugins\plugin_deploy.py 找到 apk_path = compile_dep.apk_path
+ 在其后面添加：
+#os.path.getsize
+apk_size = os.path.getsize(apk_path)
+apk_size_ = (apk_size//(1000*1000))
+print("<<<<APK size>>>>: %d MB\n" % apk_size_)
+
+63. 创建目录，穿入的path不能带目录结构，只能是单层目录，eg："res"可以。 "res/game"不行
+要创建多层目录可以一层一层创建。
+static std::string createDownloadedDir(const std::string& path)
+{
+	std::string pathToSave = CCFileUtils::sharedFileUtils()->getWritablePath();
+	pathToSave += path;
+	// Create the folder if it doesn't exist
+#if (CC_TARGET_PLATFORM != CC_PLATFORM_WIN32)
+	DIR* pDir = NULL;
+	pDir = opendir(pathToSave.c_str());
+	if (!pDir)
+	{
+		mkdir(pathToSave.c_str(), S_IRWXU | S_IRWXG | S_IRWXO);
+	}
+#else
+	if ((GetFileAttributesA(pathToSave.c_str())) == INVALID_FILE_ATTRIBUTES)
+	{
+		CreateDirectoryA(pathToSave.c_str(), 0);
+	}
+#endif
+	return pathToSave;
+}
+
+64. 下载apk安装issues:
+apk下载到sdcard,安装正常。
+apk下载到getWritablePath(), 调用包安装前需要取得该目录权限：
+String[] cmd = {"chmod", "777", storePath};  
+ProcessBuilder builder = new ProcessBuilder(cmd);  
+try {  
+	builder.start();  
+} catch (IOException e) {  
+	// TODO Auto-generated catch block  
+	e.printStackTrace(); 
+}  
+
+65. python pause
+# fjut add
+print("%s\n" % "install apk? enter any key then continue")
+os.system("pause")
+
+66. win使用curl:
+#include <curl/curl.h>
+#include <curl/easy.h>
+// 属性->c/c++->常规->附加包含目录 添加: $(EngineRoot)external\curl\include\win32
+// 属性->链接器->常规->附加依赖项 添加: libcurl_imp.lib
 
 
 

@@ -219,6 +219,9 @@ public:
      * @lua NA
      */
     virtual void onSuccess() {};
+
+	//typedef std::function<void(bool bUpdate)> OnNewVersionCallback;
+	//virtual void onNewVersion(const string& version) {};
 };
 
 // Deprecated declaration

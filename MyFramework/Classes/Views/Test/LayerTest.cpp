@@ -162,12 +162,27 @@ void LayerTest::updateUI()
 	{
 		CCLOG("onTaskError++++: %s", task.requestURL.c_str());
 	};
-	g_downloader.createDownloaderFileTask(param);
+	//g_downloader.createDownloaderFileTask(param);
 
 	// socket io test
 	g_socketio.testSocketOpen();
 	// test for git branch
 
+	//const char* ver_addr = "http://14.18.141.29/File/Resources.aspx?TypeID=1";
+	//const char* game_addr = "http://14.18.141.29/downloads/AllHappy.zip";
+	//const char* storagePath = "res/game";
+	//auto assertMgr = g_assert.create(game_addr, ver_addr, storagePath,
+	//	[=](int errorcode) {
+	//	CCLOG("errorcode = %d", errorcode);
+	//},
+	//	[=](int per) {
+	//	CCLOG("per = %d", per);
+	//},
+	//	[=]() {
+	//	CCLOG("success update");
+	//});
+	//assertMgr->checkUpdate();
+	//assertMgr->update();
 
 }
 

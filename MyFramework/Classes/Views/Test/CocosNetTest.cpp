@@ -2,8 +2,8 @@
 
 // http://blog.csdn.net/cocosviva/article/details/18970717
 
-static const char* ip = "127.0.0.1"; 
-static unsigned short port = 1234;
+static const char* ip = "192.192.168.242"; 
+static unsigned short port = 8300;
 
 GameNetDelegate::GameNetDelegate()
 {
@@ -78,16 +78,18 @@ void GameNetDelegate::onExceptionCaught(CCSocketStatus eStatus)
 
 void GameNetDelegate::CS_Test()
 {
-	CCBuffer buffer;
-	//buffer.writeInt(8);
-	buffer.writeInt(10);
-	buffer.writeLongLong(999999999L);
-	buffer.writeFloat(77.7f);
-	buffer.writeDouble(99.9);
-	buffer.writeChar('h');
-	buffer.writeLengthAndString("hahahahaha");
+	//CCBuffer buffer;
+	//buffer.writeInt(10);
+	//buffer.writeLongLong(999999999L);
+	//buffer.writeFloat(77.7f);
+	//buffer.writeDouble(99.9);
+	//buffer.writeChar('h');
+	//buffer.writeLengthAndString("hahahahaha");
+	//this->send(&buffer);
 
-	this->send(&buffer);
+	CCBuffer buffer;
+	buffer.writeString("joke");
+	send(&buffer);
 }
 
 void GameNetDelegate::CS_LargePackage()

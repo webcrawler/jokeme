@@ -5,5 +5,6 @@
 #include "LayerTest.h"
 #include "CocosNetTest.h"
 //#include "ODSocketTest.h"
+#include "Mutithread_Test.h"
 
 #endif 

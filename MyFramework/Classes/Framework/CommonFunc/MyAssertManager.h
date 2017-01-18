@@ -12,18 +12,46 @@
 USING_NS_CC;
 USING_NS_CC_EXT;
 
-class MyAssertManager
-{
-public:
-	MyAssertManager();
-	static MyAssertManager& getInstance();
-	static void destroyInstance();
-
-public:
-	AssetsManager* create(const char* packageUrl, const char* versionFileUrl, const char* storagePath,
-		AssetsManager::ErrorCallback errorCallback, AssetsManager::ProgressCallback progressCallback, AssetsManager::SuccessCallback successCallback);
-};
-
-#define g_assert MyAssertManager::getInstance()
+//class MyAssert : public AssetsManagerDelegateProtocol    // todo
+//{
+//public:
+//	MyAssert();
+//	~MyAssert();
+//
+//public:
+//	virtual void onError(AssetsManager::ErrorCode errorCode);
+//	virtual void onProgress(int percent);
+//	virtual void onSuccess();
+//	//virtual void onNewVersion(const string& version);
+//
+//public:
+//	AssetsManager* createAssert(const string& packageUrl, const string& versionFileUrl, const string& storagePath,
+//		const AssetsManager::ErrorCallback& errorCallback, const AssetsManager::ProgressCallback& progressCallback, 
+//		const AssetsManager::SuccessCallback& successCallback);
+//
+//private:
+//	AssetsManager* assert_;
+//	AssetsManager::ErrorCallback errorCallback_;
+//	AssetsManager::ProgressCallback progressCallback_;
+//	AssetsManager::SuccessCallback successCallback_;
+//};
+//
+//class MyAssertManager
+//{
+//public:
+//	MyAssertManager();
+//	static MyAssertManager& getInstance();
+//	static void destroyInstance();
+//
+//public:
+//	void createAssertTask(const string& packageUrl, const string& versionFileUrl, const string& storagePath,
+//		const AssetsManager::ErrorCallback& errorCallback, const AssetsManager::ProgressCallback& progressCallback,
+//		const AssetsManager::SuccessCallback& successCallback);
+//
+//public:
+//	std::map<string, MyAssert> m_map;
+//};
+//
+//#define g_assert MyAssertManager::getInstance()
 
 #endif 
