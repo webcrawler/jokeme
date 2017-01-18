@@ -11,5 +11,6 @@
 #include "MyAssertManager.h"
 #include "SocketIOManager.h"
 #include "WebFileSizeManager.h"
+#include "WebFileSize.h"
 
 #endif 

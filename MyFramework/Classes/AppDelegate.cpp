@@ -117,6 +117,35 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	//	Director::getInstance()->runWithScene(scene);
 	//});
 
+	//HttpRequest* request = new HttpRequest();
+	//request->setRequestType(HttpRequest::Type::GET);
+	//request->setUrl("http://www.kuu789.com/downloads/game.apk");
+	//request->setResponseCallback([=](HttpClient* client, HttpResponse* response) {
+	//	if (!response)
+	//	{
+	//		return;
+	//	}
+	//	std::string tag = response->getHttpRequest()->getTag();
+	//	if (!response->isSucceed())
+	//	{
+	//		return;
+	//	}
+	//	std::vector<char> respData = *response->getResponseData();
+	//	string onlineVer = "1.0.0";
+	//	onlineVer.assign(respData.begin(), respData.end());
+	//});
+	//HttpClient::getInstance()->send(request);
+	//request->release();
+
+	WebFileSize::addWebFileSizeTask("http://www.kuu789.com/downloads/game.apk", [=](float fileSize) {
+		CCLOG("fileSize3 = %.5f", fileSize);
+		auto scene = Scene::create();
+		auto label = Text::create(StringUtils::format("%.2f", fileSize), "Aril", 35);
+		label->setPosition(Vec2(200, 200));
+		scene->addChild(label);
+		Director::getInstance()->runWithScene(scene);
+	});
+
 
 #if 0
 	AlphaScene* pScene = new AlphaScene();
