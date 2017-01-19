@@ -8,7 +8,7 @@
 
 #include "cocos2d.h"
 #include "ui/CocosGUI.h"
-#include "cocostudio/CocoStudio.h"
+#include "editor-support/cocostudio/CocoStudio.h"
 
 using namespace cocostudio;
 using namespace cocos2d;
