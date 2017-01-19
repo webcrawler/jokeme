@@ -815,7 +815,7 @@ E:\android\jdk1.8.0_101\jre\bin
 3. java build path -> libraries-> add jars
 4. builders 勾选 CDT Builders 开启c++编译, C/C++ Build下Build command，默认 python ${ProjDirPath}/build_native.py -b release
 5. C/C++ Build->Environment add:
-PATH -> E:\fjut\cocos2d-x-3.8.1\cocos2d-x-3.8.1\tools\cocos2d-console\bin;D:\Python27
+PATH -> E:\fjut\cocos2d-x-3.13.1\cocos2d-x-3.13.1\tools\cocos2d-console\bin;D:\Python27
 ANT_ROOT ->  E:\android\apache-ant-1.9.7\bin
 ANDROID_SDK_ROOT -> E:\android\adt-bundle-windows-x86_64\sdk
 NDK_ROOT ->  E:\android\android-ndk-r10b
