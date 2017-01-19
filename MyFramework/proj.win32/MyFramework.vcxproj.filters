@@ -144,6 +144,12 @@
     <ClCompile Include="..\Classes\Views\Test\Layer3DTest.cpp">
       <Filter>src\Views\Test</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Views\Game\SceneGame.cpp">
+      <Filter>src\Views\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Views\Game\LayerGame.cpp">
+      <Filter>src\Views\Game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -292,6 +298,12 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Views\Test\Layer3DTest.h">
       <Filter>src\Views\Test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Views\Game\SceneGame.h">
+      <Filter>src\Views\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Views\Game\LayerGame.h">
+      <Filter>src\Views\Game</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

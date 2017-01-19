@@ -85,6 +85,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     //// run
     //director->runWithScene(scene);
 
+#if 0
 	char p_temp[sizeof(int)] = {0};
 	char* _p_buffer = "0x50";
 	memcpy(p_temp, _p_buffer, sizeof(int));
@@ -99,23 +100,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	printf("Network ordered port: %#x\n", net_port);
 	printf("Host ordered address: %#lx\n", host_addr);
 	printf("Network ordered address: %#lx\n", net_addr);
-
-	//g_webfilesize.addWebFileSizeTask("http://www.cocos2d-x.org/attachments/802/cocos2dx_landscape.png", [=](float fileSize) {
-	//CCLOG("fileSize1 = %.5f", fileSize);
-	//});
-	//g_webfilesize.addWebFileSizeTask("http://cdn.cocimg.com/assets/images/logo.png", [=](float fileSize) {
-	//	CCLOG("fileSize2 = %.5f", fileSize);
-	//});
-
-	// win32
-	//cocos2d::network::HttpClient::addWebFileSizeTask("http://www.kuu789.com/downloads/game.apk", [=](float fileSize) {
-	//	CCLOG("fileSize3 = %.5f", fileSize);
-	//	auto scene = Scene::create();
-	//	auto label = Text::create(StringUtils::format("%.2f", fileSize), "Aril", 35);
-	//	label->setPosition(Vec2(200, 200));
-	//	scene->addChild(label);
-	//	Director::getInstance()->runWithScene(scene);
-	//});
+#endif
 
 	//HttpRequest* request = new HttpRequest();
 	//request->setRequestType(HttpRequest::Type::GET);
@@ -160,12 +145,12 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	director->runWithScene(scene);
 #endif 
 
-#if 0
+#if 1
 	g_ctrl.startLoginScene();
 #endif
 
 	// test 3d
-#if 1
+#if 0
 	g_ui.runScene(SceneTest::create());
 	g_ui.runLayer(Layer3DTest::create(), uiAction_open);
 #endif

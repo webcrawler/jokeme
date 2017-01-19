@@ -24,7 +24,7 @@ GameControl::GameControl()
 
 void GameControl::startLoginScene()
 {
-#if TEST
+#if 0
 	auto scene = Director::getInstance()->getRunningScene();
 	if (scene == nullptr)
 	{

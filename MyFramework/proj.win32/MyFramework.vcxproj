@@ -168,6 +168,8 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\Framework\UIManager\ShelterUI.cpp" />
     <ClCompile Include="..\Classes\Framework\UIManager\UIManager.cpp" />
     <ClCompile Include="..\Classes\HelloWorldScene.cpp" />
+    <ClCompile Include="..\Classes\Views\Game\LayerGame.cpp" />
+    <ClCompile Include="..\Classes\Views\Game\SceneGame.cpp" />
     <ClCompile Include="..\Classes\Views\Login\LayerLogin.cpp" />
     <ClCompile Include="..\Classes\Views\Login\LayerReg.cpp" />
     <ClCompile Include="..\Classes\Views\Login\SceneLogin.cpp" />
@@ -216,6 +218,8 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\HelloWorldScene.h" />
     <ClInclude Include="..\Classes\Views\define_views.h" />
     <ClInclude Include="..\Classes\Views\Game\define_game.h" />
+    <ClInclude Include="..\Classes\Views\Game\LayerGame.h" />
+    <ClInclude Include="..\Classes\Views\Game\SceneGame.h" />
     <ClInclude Include="..\Classes\Views\Login\define_login.h" />
     <ClInclude Include="..\Classes\Views\Login\LayerLogin.h" />
     <ClInclude Include="..\Classes\Views\Login\LayerReg.h" />

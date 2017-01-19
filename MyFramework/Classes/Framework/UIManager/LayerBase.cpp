@@ -37,6 +37,7 @@ bool LayerBase::init()
 
 void LayerBase::swallowTouchs(bool bSwallowTouchs)
 {
+	if (!bSwallowTouchs) return; // todo
 	auto listener = EventListenerTouchOneByOne::create();
 	listener->setSwallowTouches(bSwallowTouchs);
 	listener->onTouchBegan = CC_CALLBACK_2(LayerBase::onTouchBegan, this);

@@ -222,6 +222,9 @@ void LayerLogin::viewEnter()
 	g_event.regEvent(event_register, CC_CALLBACK_1(LayerLogin::eventTest, this), this);
 	g_event.regEvent(event_login, std::bind(&LayerLogin::eventTest1, this, placeholders::_1), this);
 	CCLOG("%s\n", "LayerLogin::viewEnter()");
+
+	g_ui.runScene(SceneGame::create());
+	g_ui.runLayer(LayerGame::create(), unknowAction, false);
 }
 
 void LayerLogin::viewExit()
