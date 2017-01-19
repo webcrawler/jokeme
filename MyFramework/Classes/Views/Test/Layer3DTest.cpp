@@ -32,7 +32,7 @@ void Layer3DTest::updateUI()
 	//orc->setPositionZ(40);
 	//orc->setRotation3D(Vec3(0, 180, 0));
 	//orc->setGlobalZOrder(-1);
-	//addChild(orc);
+	//addChild(orc); 
 
 	//auto ship = Sprite3D::create("Sprite3DTest/boss1.obj");
 	//ship->setScale(5);
