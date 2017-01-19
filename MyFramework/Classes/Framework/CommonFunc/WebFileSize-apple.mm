@@ -15,7 +15,7 @@ void WebFileSize::addWebFileSizeTask(const std::string& url, const std::function
     NSString* urlstring = [NSString stringWithUTF8String:url];
     NSURL* url_ = [NSURL URLWithString:urlstring];
 	
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url_ 
+    NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:url_ 
                                             cachePolicy:NSURLRequestReloadIgnoringCacheData 
                                         timeoutInterval:3.0f];
     // 设置为头信息请求
