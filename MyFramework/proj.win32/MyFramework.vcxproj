@@ -158,6 +158,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\Framework\CommonFunc\SocketIOManager.cpp" />
     <ClCompile Include="..\Classes\Framework\CommonFunc\TimeManager.cpp" />
     <ClCompile Include="..\Classes\Framework\CommonFunc\UIFunc.cpp" />
+    <ClCompile Include="..\Classes\Framework\CommonFunc\WebFileSize-android.cpp" />
     <ClCompile Include="..\Classes\Framework\CommonFunc\WebFileSize.cpp" />
     <ClCompile Include="..\Classes\Framework\CommonFunc\WebFileSizeManager.cpp" />
     <ClCompile Include="..\Classes\Framework\EventDispather\UIEventDispather.cpp" />

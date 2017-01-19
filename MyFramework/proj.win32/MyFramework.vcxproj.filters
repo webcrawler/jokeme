@@ -138,6 +138,9 @@
     <ClCompile Include="..\Classes\Framework\CommonFunc\WebFileSize.cpp">
       <Filter>src\Framework\CommonFunc</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Framework\CommonFunc\WebFileSize-android.cpp">
+      <Filter>src\Framework\CommonFunc</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
