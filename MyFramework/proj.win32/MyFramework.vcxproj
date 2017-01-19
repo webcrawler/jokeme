@@ -171,6 +171,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\Views\Login\LayerLogin.cpp" />
     <ClCompile Include="..\Classes\Views\Login\LayerReg.cpp" />
     <ClCompile Include="..\Classes\Views\Login\SceneLogin.cpp" />
+    <ClCompile Include="..\Classes\Views\Test\Layer3DTest.cpp" />
     <ClCompile Include="..\Classes\Views\Test\CocosNetTest.cpp" />
     <ClCompile Include="..\Classes\Views\Test\LayerTest.cpp" />
     <ClCompile Include="..\Classes\Views\Test\Mutithread_Test.cpp" />
@@ -220,6 +221,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\Views\Login\LayerReg.h" />
     <ClInclude Include="..\Classes\Views\Login\SceneLogin.h" />
     <ClInclude Include="..\Classes\Views\Menus\define_menu.h" />
+    <ClInclude Include="..\Classes\Views\Test\Layer3DTest.h" />
     <ClInclude Include="..\Classes\Views\Test\CocosNetTest.h" />
     <ClInclude Include="..\Classes\Views\Test\define_test.h" />
     <ClInclude Include="..\Classes\Views\Test\LayerTest.h" />
