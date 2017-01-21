@@ -64,4 +64,8 @@ void Layer3DTest::updateUI()
 	//auto seq = Sequence::create(action, action_back, nullptr);
 	//sprite->runAction(RepeatForever::create(seq));
 
+	FileUtils::getInstance()->getWritablePath();
+
+	
+
 }

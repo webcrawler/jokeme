@@ -160,12 +160,12 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	director->runWithScene(scene);
 #endif 
 
-#if 0
+#if 1
 	g_ctrl.startLoginScene();
 #endif
 
 	// test 3d
-#if 1
+#if 0
 	g_ui.runScene(SceneTest::create());
 	g_ui.runLayer(Layer3DTest::create(), uiAction_open);
 #endif

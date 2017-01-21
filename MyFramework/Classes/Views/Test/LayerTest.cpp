@@ -136,8 +136,8 @@ void LayerTest::updateUI()
 	cfg = g_file.getCommonCfg();
 
 	DownloaderManager::DownloaderParam param;
-	param.srcUrl = "http://www.cocos2d-x.org/attachments/802/cocos2dx_landscape.png";
-	param.storagePath = FileUtils::getInstance()->getWritablePath() + "DownloaderManager/123.png";
+	param.srcUrl = "http://www.kuu789.com/downloads/game.apk"; //"http://www.cocos2d-x.org/attachments/802/cocos2dx_landscape.png";
+	param.storagePath = FileUtils::getInstance()->getWritablePath() + "DownloaderManager/joke.apk"; //"DownloaderManager/123.png";
 	//param.identifier = ""
 	param.onDataTaskSuccess = [=](const DownloadTask& task,
 		std::vector<unsigned char>& data)
@@ -148,12 +148,18 @@ void LayerTest::updateUI()
 	{
 		CCLOG("onFileTaskSuccess++++: %s", task.requestURL.c_str());
 	};
+	auto label = Text::create("", "Aril", 35);
+	auto size = Director::getInstance()->getVisibleSize();
+	label->setPosition(Vec2(size.width, size.height)*0.5f);
+	addChild(label);
 	param.onTaskProgress = [=](const DownloadTask& task,
 		int64_t bytesReceived,
 		int64_t totalBytesReceived,
 		int64_t totalBytesExpected)
 	{
 		CCLOG("onTaskProgress %.2f", totalBytesReceived*100.0f/ totalBytesExpected);
+		string sstr = StringUtils::format("%.2f", totalBytesReceived*100.0f / totalBytesExpected);
+		label->setText(sstr);
 	};
 	param.onTaskError = [=](const DownloadTask& task,
 		int errorCode,
@@ -163,6 +169,10 @@ void LayerTest::updateUI()
 		CCLOG("onTaskError++++: %s", task.requestURL.c_str());
 	};
 	//g_downloader.createDownloaderFileTask(param);
+	//string delFile = FileUtils::getInstance()->getWritablePath() + "joke.apk";
+	//FileUtils::getInstance()->removeFile(delFile);
+	//string delFile1 = FileUtils::getInstance()->getWritablePath() + "DownloaderManager/";
+	//FileUtils::getInstance()->removeDirectory(delFile1);
 
 	// socket io test
 	g_socketio.testSocketOpen();
@@ -227,7 +237,12 @@ void LayerTest::callback1(Ref* pSender, Widget::TouchEventType type)
 	CCLOG("tag = %d \n", tag);
 
 	//g_socketio.testSocketSend();
-	g_socketio.disconnect1();
+	//g_socketio.disconnect1();
+
+	//string delFile = FileUtils::getInstance()->getWritablePath() + "joke.apk";
+	//FileUtils::getInstance()->removeFile(delFile);
+	//string delFile1 = FileUtils::getInstance()->getWritablePath() + "DownloaderManager/";
+	//FileUtils::getInstance()->removeDirectory(delFile1);
 }
 
 void LayerTest::callback2(Button* btn, int tag, const std::string& name)
