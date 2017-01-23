@@ -1,5 +1,5 @@
 /**
-*  @brief: ui¹ÜÀíÀà
+*  @brief: uiç®¡ç†ç±»
 *  @Created by fjut on 16-11-03
 */
 
@@ -88,7 +88,7 @@ void UIManager::runScene(Node* scene)
 	m_vecScene.push_back(sceneInfo);
 }
 
-// »ñÈ¡µ±Ç°³¡¾°ĞÅÏ¢
+// è·å–å½“å‰åœºæ™¯ä¿¡æ¯
 SceneInfo& UIManager::getCurScene()
 {
 	if (m_vecScene.size() == 0)
@@ -99,7 +99,7 @@ SceneInfo& UIManager::getCurScene()
 	return m_vecScene.back();
 }
 
-// ¹Ø±ÕËùÓĞ³¡¾°
+// å…³é—­æ‰€æœ‰åœºæ™¯
 void UIManager::closeAllScenes()
 {
 	for (unsigned int k = 0; k < m_vecScene.size(); k++)
@@ -108,7 +108,7 @@ void UIManager::closeAllScenes()
 	}
 }
 
-// ¹Ø±Õµ±Ç°³¡¾°
+// å…³é—­å½“å‰åœºæ™¯
 void UIManager::closeScene()
 {
 	SceneInfo& sceneInfo = getCurScene();
@@ -264,7 +264,7 @@ void UIManager::closeLayer(string name, UIActionType actionTag)
 		CCLOG("%s\n", "closeLayerByName fail, running scene is nil");
 		return;
 	}
-	// Ë³Ğò²»¿É±ä
+	// é¡ºåºä¸å¯å˜
 	Node* layer = getLayerByName(name);
 	((LayerBase*)layer)->viewUnRegEvents();
 	((LayerBase*)layer)->removeUpdateObserver();
@@ -300,7 +300,7 @@ void UIManager::closeLayer(Node* obj, UIActionType actionTag)
 		CCLOG("%s\n", "closeLayerByLayer fail, running scene is nil");
 		return;
 	}
-	// Ë³Ğò²»¿É±ä
+	// é¡ºåºä¸å¯å˜
 	Node* layer = getLayerByObj(obj);
 	string name = ((LayerBase*)layer)->getLayerName();
 	((LayerBase*)layer)->viewUnRegEvents();

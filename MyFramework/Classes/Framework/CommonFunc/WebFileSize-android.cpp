@@ -1,5 +1,5 @@
 /**
-*  @brief: 获取远程文件大小
+*  @brief: 鑾峰彇杩滅▼鏂囦欢澶у皬
 *  @Created by fjut on 17-01-14
 */
 

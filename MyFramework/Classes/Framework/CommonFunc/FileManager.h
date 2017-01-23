@@ -1,5 +1,5 @@
 /**
-*  @brief: 文件读写
+*  @brief: 鏂囦欢璇诲啓
 *  @Created by fjut on 16-11-28
 */
 
@@ -10,7 +10,7 @@
 
 using namespace cocos2d;
 
-// 用户信息
+// 鐢ㄦ埛淇℃伅
 typedef struct _UserInf
 {
 	std::string name;

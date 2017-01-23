@@ -1,5 +1,5 @@
 /**
-*  @brief: ui场景基类
+*  @brief: ui鍦烘櫙鍩虹被
 *  @Created by fjut on 16-11-02
 */
 

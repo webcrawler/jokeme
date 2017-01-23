@@ -1,5 +1,5 @@
 /**
-*  @brief: ui事件管理
+*  @brief: ui浜嬩欢绠＄悊
 *  @Created by fjut on 16-11-04
 */
 

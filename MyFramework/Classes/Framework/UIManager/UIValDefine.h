@@ -1,5 +1,5 @@
 /**
-*  @brief: 游戏常量定义
+*  @brief: 娓告垙甯搁噺瀹氫箟
 *  @Created by fjut on 16-11-03
 */
 
