@@ -14,6 +14,7 @@ public:
 
 public:
 	void test3D();
+	void afterCaptured(bool succeed, const std::string& outputFile);
 
 private:
 };

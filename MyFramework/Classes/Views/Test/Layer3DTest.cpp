@@ -66,6 +66,29 @@ void Layer3DTest::updateUI()
 
 	FileUtils::getInstance()->getWritablePath();
 
-	
 
+	auto action = CallFunc::create([=] {
+		utils::captureScreen(CC_CALLBACK_2(Layer3DTest::afterCaptured, this), "123.png");
+	});
+	runAction(action);
+	
+	//atitc_decode();
+
+}
+
+void Layer3DTest::afterCaptured(bool succeed, const std::string& outputFile)
+{
+	if (succeed)
+	{
+		// show screenshot
+		auto sp = Sprite::create(outputFile);
+		addChild(sp);
+		Size s = Director::getInstance()->getWinSize();
+		sp->setPosition(s.width / 2, s.height / 2);
+		sp->setScale(0.25);
+	}
+	else
+	{
+		log("Capture screen failed.");
+	}
 }

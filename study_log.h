@@ -1024,8 +1024,50 @@ os.system("pause")
 // 属性->c/c++->常规->附加包含目录 添加: $(EngineRoot)external\curl\include\win32
 // 属性->链接器->常规->附加依赖项 添加: libcurl_imp.lib
 
+67. Android Studio 
+/proj.android-studio/app/build.gradle 下指定 ABI
+默认情况下，Gradle会针对NDK支持的ABI将您的原生库构建到单独的.so文件中，并将其全部封装到您的APK中。
+如果您希望Gradle仅构建和封装原生库的特定ABI配置，您可以在模块级build.gradle文件中使用ndk.abiFilters标志指定这些配置，如下所示：
+android {
+  ...
+  defaultConfig {
+    ...
+    externalNativeBuild {
+      cmake {...}
+      // or ndkBuild {...}
+    }
 
+    ndk {
+      // Specifies the ABI configurations of your native
+      // libraries Gradle should build and package with your APK.
+      abiFilters 'x86', 'x86_64', 'armeabi', 'armeabi-v7a',
+                   'arm64-v8a'
+    }
+  }
+  buildTypes {...}
+  externalNativeBuild {...}
+}
 
+68. Configure multiple APKs for ABIs :
+
+splits {
+	// Configures multiple APKs based on ABI.
+	abi {
+		// Enables building multiple APKs per ABI.
+		enable true
+		// By default all ABIs are included, so use reset() and include to specify that we only
+		// want APKs for x86, armeabi-v7a, and mips.
+		// Resets the list of ABIs that Gradle should create APKs for to none.
+		reset()
+		// Specifies a list of ABIs that Gradle should create APKs for.
+	    // (生成2个包含对应abi的apk)
+		include "x86", "armeabi-v7a"    
+		// Specifies that we do not want to also generate a universal APK that includes all ABIs.
+		universalApk false
+	}
+}
+
+69. 
 
 
 
