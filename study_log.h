@@ -1063,6 +1063,7 @@ splits {
 	    // (生成2个包含对应abi的apk)
 		include "x86", "armeabi-v7a"    
 		// Specifies that we do not want to also generate a universal APK that includes all ABIs.
+		// 为true则同时也生成一个包含全部可用的（app/libs/工程找得到的abi目录，确不为空目录）abi的apk
 		universalApk false
 	}
 }
