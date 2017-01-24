@@ -1032,7 +1032,7 @@ android {
   ...
   defaultConfig {
     ...
-    externalNativeBuild {
+    externalNativeBuild { 
       cmake {...}
       // or ndkBuild {...}
     }
