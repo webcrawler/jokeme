@@ -1068,7 +1068,39 @@ splits {
 	}
 }
 
-69. 
+69. cocos2dx 使用Android Studio，先生成so，再生成apk
+1. cocos compile -p android --ap android-15 --android-studio --ndk-toolchain arm-linux-androideabi-4.8
+2. Android Studio 打开proj.android-studio, 直接run.
+
+70. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
