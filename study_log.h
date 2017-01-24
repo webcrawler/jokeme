@@ -1072,8 +1072,31 @@ splits {
 1. cocos compile -p android --ap android-15 --android-studio --ndk-toolchain arm-linux-androideabi-4.8
 2. Android Studio 打开proj.android-studio, 直接run.
 
-70. 
+70. Android Studio 导入package，alt+enter
 
+71. android 渠道号配置：
+AndroidManifest.xml配置渠道号：
+<application xxxxx>
+	<meta-data android:name="CHANNEL" android:value="fjut" />
+</application>
+// 获取渠道号
+public class AppActivity extends Cocos2dxActivity {
+    private static Activity activity = null;
+    @Override
+    protected void onCreate(final Bundle icicle) {
+        super.onCreate(icicle);
+        try {
+            ApplicationInfo appInfo = this.getPackageManager().getApplicationInfo(this.getPackageName(), PackageManager.GET_META_DATA);
+            String msg = appInfo.metaData.getString("CHANNEL");
+            System.out.println("my_channel:" + msg);
+        }
+        catch (PackageManager.NameNotFoundException e) {
+        }
+    }
+}
+批量配置渠道号：http://tech.meituan.com/mt-apk-packaging.html
+
+72. 
 
 
 
