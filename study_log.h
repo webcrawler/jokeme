@@ -1048,6 +1048,8 @@ android {
   externalNativeBuild {...}
 }
 
+cocos compile -p android --ap android-15 --android-studio --ndk-toolchain arm-linux-androideabi-4.8
+
 68. Configure multiple APKs for ABIs :
 
 splits {
