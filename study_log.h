@@ -1098,8 +1098,10 @@ public class AppActivity extends Cocos2dxActivity {
 }
 批量配置渠道号：http://tech.meituan.com/mt-apk-packaging.html
 
-72. 
+72. python使用import xxtea, 先安装pip(python3.4自带pip可省略下载安装pip): https://bootstrap.pypa.io/get-pip.py
+然后安装xxtea：pip install xxtea-py  
 
+73.  
 
 
 
