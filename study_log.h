@@ -980,6 +980,10 @@ print("<<<<APK size>>>>: %d MB\n" % apk_size_)
 
 63. 创建目录，穿入的path不能带目录结构，只能是单层目录，eg："res"可以。 "res/game"不行
 要创建多层目录可以一层一层创建。
+#if (CC_TARGET_PLATFORM != CC_PLATFORM_WIN32)
+#include <dirent.h>
+#include <sys/stat.h>
+#endif
 static std::string createDownloadedDir(const std::string& path)
 {
 	std::string pathToSave = CCFileUtils::sharedFileUtils()->getWritablePath();
@@ -1099,9 +1103,15 @@ public class AppActivity extends Cocos2dxActivity {
 批量配置渠道号：http://tech.meituan.com/mt-apk-packaging.html
 
 72. python使用import xxtea, 先安装pip(python3.4自带pip可省略下载安装pip): https://bootstrap.pypa.io/get-pip.py
-然后安装xxtea：pip install xxtea-py  
+然后安装xxtea：pip install xxtea -U
+假如提示：“command 'cl.exe' failed: No such file or directory”  见 
+http://stackoverflow.com/questions/38059732/error-command-cl-exe-failed-no-such-file-or-directory  
+http://stackoverflow.com/questions/29909330/microsoft-visual-c-compiler-for-python-3-4
+下载安装针对python27: https://www.microsoft.com/en-gb/download/confirmation.aspx?id=44266
+提示： “fatal error C1083: Cannot open include file: 'stdint.h': No such file or directory”
+下载stdint.h文件 放到C:\Users\xxx\AppData\Local\Programs\Common\Microsoft\Visual C++ for Python\9.0\VC\include\stdint.h
 
-73.  
+73. 
 
 
 
