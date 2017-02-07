@@ -1,5 +1,5 @@
 /**
-*  @brief: ui¹«¹²º¯Êý
+*  @brief: uiå…¬å…±å‡½æ•°
 *  @Created by fjut on 16-11-19
 */
 
@@ -8,7 +8,7 @@
 
 #include "cocos2d.h"
 #include "ui/CocosGUI.h"
-#include "cocostudio/CocoStudio.h"
+#include "editor-support/cocostudio/CocoStudio.h"
 
 using namespace cocostudio;
 using namespace cocos2d;

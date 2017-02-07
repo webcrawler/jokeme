@@ -815,7 +815,7 @@ E:\android\jdk1.8.0_101\jre\bin
 3. java build path -> libraries-> add jars
 4. builders 勾选 CDT Builders 开启c++编译, C/C++ Build下Build command，默认 python ${ProjDirPath}/build_native.py -b release
 5. C/C++ Build->Environment add:
-PATH -> E:\fjut\cocos2d-x-3.8.1\cocos2d-x-3.8.1\tools\cocos2d-console\bin;D:\Python27
+PATH -> E:\fjut\cocos2d-x-3.13.1\cocos2d-x-3.13.1\tools\cocos2d-console\bin;D:\Python27
 ANT_ROOT ->  E:\android\apache-ant-1.9.7\bin
 ANDROID_SDK_ROOT -> E:\android\adt-bundle-windows-x86_64\sdk
 NDK_ROOT ->  E:\android\android-ndk-r10b
@@ -980,6 +980,10 @@ print("<<<<APK size>>>>: %d MB\n" % apk_size_)
 
 63. 创建目录，穿入的path不能带目录结构，只能是单层目录，eg："res"可以。 "res/game"不行
 要创建多层目录可以一层一层创建。
+#if (CC_TARGET_PLATFORM != CC_PLATFORM_WIN32)
+#include <dirent.h>
+#include <sys/stat.h>
+#endif
 static std::string createDownloadedDir(const std::string& path)
 {
 	std::string pathToSave = CCFileUtils::sharedFileUtils()->getWritablePath();
@@ -1023,6 +1027,114 @@ os.system("pause")
 #include <curl/easy.h>
 // 属性->c/c++->常规->附加包含目录 添加: $(EngineRoot)external\curl\include\win32
 // 属性->链接器->常规->附加依赖项 添加: libcurl_imp.lib
+
+67. Android Studio 
+/proj.android-studio/app/build.gradle 下指定 ABI
+默认情况下，Gradle会针对NDK支持的ABI将您的原生库构建到单独的.so文件中，并将其全部封装到您的APK中。
+如果您希望Gradle仅构建和封装原生库的特定ABI配置，您可以在模块级build.gradle文件中使用ndk.abiFilters标志指定这些配置，如下所示：
+android {
+  ...
+  defaultConfig {
+    ...
+    externalNativeBuild { 
+      cmake {...}
+      // or ndkBuild {...}
+    }
+
+    ndk {
+      // Specifies the ABI configurations of your native
+      // libraries Gradle should build and package with your APK.
+      abiFilters 'x86', 'x86_64', 'armeabi', 'armeabi-v7a',
+                   'arm64-v8a'
+    }
+  }
+  buildTypes {...}
+  externalNativeBuild {...}
+}
+
+cocos compile -p android --ap android-15 --android-studio --ndk-toolchain arm-linux-androideabi-4.8
+
+68. Configure multiple APKs for ABIs :
+
+splits {
+	// Configures multiple APKs based on ABI.
+	abi {
+		// Enables building multiple APKs per ABI.
+		enable true
+		// By default all ABIs are included, so use reset() and include to specify that we only
+		// want APKs for x86, armeabi-v7a, and mips.
+		// Resets the list of ABIs that Gradle should create APKs for to none.
+		reset()
+		// Specifies a list of ABIs that Gradle should create APKs for.
+	    // (生成2个包含对应abi的apk)
+		include "x86", "armeabi-v7a"    
+		// Specifies that we do not want to also generate a universal APK that includes all ABIs.
+		// 为true则同时也生成一个包含全部可用的（app/libs/工程找得到的abi目录，确不为空目录）abi的apk
+		universalApk false
+	}
+}
+
+69. cocos2dx 使用Android Studio，先生成so，再生成apk
+1. cocos compile -p android --ap android-15 --android-studio --ndk-toolchain arm-linux-androideabi-4.8
+2. Android Studio 打开proj.android-studio, 直接run.
+
+70. Android Studio 导入package，alt+enter
+
+71. android 渠道号配置：
+AndroidManifest.xml配置渠道号：
+<application xxxxx>
+	<meta-data android:name="CHANNEL" android:value="fjut" />
+</application>
+// 获取渠道号
+public class AppActivity extends Cocos2dxActivity {
+    private static Activity activity = null;
+    @Override
+    protected void onCreate(final Bundle icicle) {
+        super.onCreate(icicle);
+        try {
+            ApplicationInfo appInfo = this.getPackageManager().getApplicationInfo(this.getPackageName(), PackageManager.GET_META_DATA);
+            String msg = appInfo.metaData.getString("CHANNEL");
+            System.out.println("my_channel:" + msg);
+        }
+        catch (PackageManager.NameNotFoundException e) {
+        }
+    }
+}
+批量配置渠道号：http://tech.meituan.com/mt-apk-packaging.html
+
+72. python使用import xxtea, 先安装pip(python3.4自带pip可省略下载安装pip): https://bootstrap.pypa.io/get-pip.py
+然后安装xxtea：pip install xxtea -U
+假如提示：“command 'cl.exe' failed: No such file or directory”  见 
+http://stackoverflow.com/questions/38059732/error-command-cl-exe-failed-no-such-file-or-directory  
+http://stackoverflow.com/questions/29909330/microsoft-visual-c-compiler-for-python-3-4
+下载安装针对python27: https://www.microsoft.com/en-gb/download/confirmation.aspx?id=44266
+提示： “fatal error C1083: Cannot open include file: 'stdint.h': No such file or directory”
+下载stdint.h文件 放到C:\Users\xxx\AppData\Local\Programs\Common\Microsoft\Visual C++ for Python\9.0\VC\include\stdint.h
+
+73. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

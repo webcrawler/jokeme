@@ -11,17 +11,23 @@ public class WebFileSize
     {
         URL url;
         HttpURLConnection urlConnection;
+        String len = "0";
         try {
             url = new URL(linkURL);
             urlConnection = (HttpURLConnection) url.openConnection();
-			//int length = url.getContentLength();  
-			String len = urlConnection.getHeaderField("content-length");  
-			System.out.println("length: == " + len);
+            urlConnection.setRequestMethod("HEAD");
+            if (urlConnection.getResponseCode() == 200) 
+            {
+    			len = urlConnection.getHeaderField("content-length");  
+            }
+            System.out.println("length: == " + len);
+			url = null;
 			return len;
 		
         } catch (Exception e) {
             Log.e("URLConnection exception", e.toString());
-            return "0";
+            url = null;
+            return len;
         }
     }
 }

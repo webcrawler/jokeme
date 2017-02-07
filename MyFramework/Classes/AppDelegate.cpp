@@ -137,6 +137,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	//HttpClient::getInstance()->send(request);
 	//request->release();
 
+#if 0
 	WebFileSize::addWebFileSizeTask("http://www.kuu789.com/downloads/game.apk", [=](float fileSize) {
 		CCLOG("fileSize3 = %.5f", fileSize);
 		auto scene = Scene::create();
@@ -145,7 +146,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 		scene->addChild(label);
 		Director::getInstance()->runWithScene(scene);
 	});
-
+#endif
 
 #if 0
 	AlphaScene* pScene = new AlphaScene();
@@ -161,6 +162,12 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
 #if 0
 	g_ctrl.startLoginScene();
+#endif
+
+	// test 3d
+#if 1
+	g_ui.runScene(SceneTest::create());
+	g_ui.runLayer(Layer3DTest::create(), uiAction_open);
 #endif
 
     return true;

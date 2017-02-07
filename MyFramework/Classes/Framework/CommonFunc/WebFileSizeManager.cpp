@@ -1,5 +1,5 @@
 /**
-*  @brief: 获取远程文件大小
+*  @brief: 鑾峰彇杩滅▼鏂囦欢澶у皬
 *  @Created by fjut on 17-01-14
 */
 
@@ -45,7 +45,7 @@
 //			CURLcode return_code = curl_easy_getinfo(curl, CURLINFO_RESPONSE_CODE, &retcode);
 //			//CCLOG("return_code:%ld", retcode);
 //			if ((CURLE_OK != return_code) || !retcode) break;
-//			// 响应内容长度
+//			// 鍝嶅簲鍐呭闀垮害
 //			curl_easy_getinfo(curl, CURLINFO_CONTENT_LENGTH_DOWNLOAD, &downLength);
 //			//CCLOG("downLength:%f", downLength);
 //		}

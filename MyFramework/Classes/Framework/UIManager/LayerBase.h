@@ -1,5 +1,5 @@
 /**
-*  @brief: ui»ùÀà
+*  @brief: uiåŸºç±»
 *  @Created by fjut on 16-11-02
 */
 
@@ -8,7 +8,7 @@
 
 #include "cocos2d.h"
 #include "ui/CocosGUI.h"
-#include "cocostudio/CocoStudio.h"
+#include "editor-support/cocostudio/CocoStudio.h"
 #include "../EventDispather/Define_EventDispather.h"
 
 using namespace cocostudio;

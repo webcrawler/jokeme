@@ -1,5 +1,5 @@
 /**
-*  @brief: ui¹«¹²º¯Êı
+*  @brief: uiå…¬å…±å‡½æ•°
 *  @Created by fjut on 16-11-19
 */
 
@@ -20,15 +20,15 @@ UIFunc::UIFunc()
 {
 }
 
-//-- »ñÈ¡scrollView
+//-- è·å–scrollView
 //-- scrollViewSize: scrollView size
-//-- tbNode : ÏÔÊ¾µÄ½Úµãvector
-//-- rowNum : Ã¿ĞĞÏÔÊ¾¸öÊı(µ±tbNodeÀïµÄNode´óĞ¡²»Í¬Ê±rowNumÖ»ÄÜÎª1)
-//-- tbOffset : vector¸ñÊ½{ a, b, c }->£¨Ñ¡Ìî£©
-//-- a : cellNodeÔÚxÖáÉÏÆ«ÒÆÁ¿, b : cellNodeÖ®¼äÔÚxÖá¼ä¸ôÆ«ÒÆ(Õë¶ÔrowNum²»Îª1), c£ºcellNodeÖ®¼äÔÚyÖá¼ä¸ôÆ«ÒÆ
-//-- cellNodeCall : µã»÷Node call func £¨Ñ¡Ìî£©
-//-- clippingType : ²Ã¼ôÀàĞÍClippingType::STENCIL, ClippingType::SCISSOR(Ñ¡ÌîÄ¬ÈÏSTENCIL)
-//-- bShowBar: ÊÇ·ñÏÔÊ¾¹ö¶¯Ìõ£¨Ñ¡Ìî£©
+//-- tbNode : æ˜¾ç¤ºçš„èŠ‚ç‚¹vector
+//-- rowNum : æ¯è¡Œæ˜¾ç¤ºä¸ªæ•°(å½“tbNodeé‡Œçš„Nodeå¤§å°ä¸åŒæ—¶rowNumåªèƒ½ä¸º1)
+//-- tbOffset : vectoræ ¼å¼{ a, b, c }->ï¼ˆé€‰å¡«ï¼‰
+//-- a : cellNodeåœ¨xè½´ä¸Šåç§»é‡, b : cellNodeä¹‹é—´åœ¨xè½´é—´éš”åç§»(é’ˆå¯¹rowNumä¸ä¸º1), cï¼šcellNodeä¹‹é—´åœ¨yè½´é—´éš”åç§»
+//-- cellNodeCall : ç‚¹å‡»Node call func ï¼ˆé€‰å¡«ï¼‰
+//-- clippingType : è£å‰ªç±»å‹ClippingType::STENCIL, ClippingType::SCISSOR(é€‰å¡«é»˜è®¤STENCIL)
+//-- bShowBar: æ˜¯å¦æ˜¾ç¤ºæ»šåŠ¨æ¡ï¼ˆé€‰å¡«ï¼‰
 ScrollView* UIFunc::getScrollView(const Size& scrollViewSize, const std::vector<Widget*>& tbNode, unsigned rowNum,
 	const std::vector<float>& tbOffset, const Widget::ccWidgetTouchCallback& cellNodeCall,
 	Layout::ClippingType clippingType, bool bShowBar)
@@ -143,15 +143,15 @@ ScrollView* UIFunc::getScrollView(const Size& scrollViewSize, const std::vector<
 	return scroll;
 }
 
-//-- »ñÈ¡ºáÏòscrollView
+//-- è·å–æ¨ªå‘scrollView
 //-- scrollViewSize: scrollView size
-//-- tbNode : ÏÔÊ¾µÄ½Úµãvector
-//-- rowNum : Ã¿ÁĞÏÔÊ¾¸öÊı(µ±tbNodeÀïµÄNode´óĞ¡²»Í¬Ê±rowNumÖ»ÄÜÎª1)
-//-- tbOffset : vector¸ñÊ½{ a, b, c }->£¨Ñ¡Ìî£©
-//-- a : cellNodeÔÚyÖáÉÏÆ«ÒÆÁ¿, b : cellNodeÖ®¼äÔÚyÖá¼ä¸ôÆ«ÒÆ(Õë¶ÔrowNum²»Îª1), c£ºcellNodeÖ®¼äÔÚxÖá¼ä¸ôÆ«ÒÆ
-//-- cellNodeCall : µã»÷Node call func £¨Ñ¡Ìî£©
-//-- clippingType : ²Ã¼ôÀàĞÍClippingType::STENCIL, ClippingType::SCISSOR(Ñ¡ÌîÄ¬ÈÏSTENCIL)
-//-- bShowBar: ÊÇ·ñÏÔÊ¾¹ö¶¯Ìõ£¨Ñ¡Ìî£©
+//-- tbNode : æ˜¾ç¤ºçš„èŠ‚ç‚¹vector
+//-- rowNum : æ¯åˆ—æ˜¾ç¤ºä¸ªæ•°(å½“tbNodeé‡Œçš„Nodeå¤§å°ä¸åŒæ—¶rowNumåªèƒ½ä¸º1)
+//-- tbOffset : vectoræ ¼å¼{ a, b, c }->ï¼ˆé€‰å¡«ï¼‰
+//-- a : cellNodeåœ¨yè½´ä¸Šåç§»é‡, b : cellNodeä¹‹é—´åœ¨yè½´é—´éš”åç§»(é’ˆå¯¹rowNumä¸ä¸º1), cï¼šcellNodeä¹‹é—´åœ¨xè½´é—´éš”åç§»
+//-- cellNodeCall : ç‚¹å‡»Node call func ï¼ˆé€‰å¡«ï¼‰
+//-- clippingType : è£å‰ªç±»å‹ClippingType::STENCIL, ClippingType::SCISSOR(é€‰å¡«é»˜è®¤STENCIL)
+//-- bShowBar: æ˜¯å¦æ˜¾ç¤ºæ»šåŠ¨æ¡ï¼ˆé€‰å¡«ï¼‰
 ScrollView* UIFunc::getScrollViewHorizontal(const Size& scrollViewSize, const std::vector<Widget*>& tbNode, unsigned int rowNum,
 	const std::vector<float>& tbOffset, const Widget::ccWidgetTouchCallback& cellNodeCall,
 	Layout::ClippingType clippingType, bool bShowBar)
@@ -270,14 +270,14 @@ ScrollView* UIFunc::getScrollViewHorizontal(const Size& scrollViewSize, const st
 	return scroll;
 }
 
-//-- »ñÈ¡pageView
+//-- è·å–pageView
 //-- pageViewSize: pageView size
-//-- tbNode : ÏÔÊ¾µÄ½Úµãvector
-//-- tbPagePerNum : {n1, n2}->n1 : ºáÏòNode¸öÊı£¬n2 : ×İÏòNode¸öÊı£¨Ñ¡Ìî£¬Ä¬ÈÏºá×İÏòÖ»ÓĞÒ»¸ö£©
-//-- tbOffset : vector¸ñÊ½{ a, b, c }->£¨Ñ¡Ìî£©
-//-- a : nodeÔÚxÖáÉÏÆ«ÒÆÁ¿(tbPagePerNumÎª1Ôò²»Ìî), b : nodeÖ®¼äÔÚxÖá¼ä¸ôÆ«ÒÆ, c£ºnodeÖ®¼äÔÚyÖá¼ä¸ôÆ«ÒÆ
-//-- nodeCall : µã»÷Node call func £¨Ñ¡Ìî£©
-//-- pageCall : pageView ÍÏ¶¯ÏìÓ¦£¨Ñ¡Ìî£©
+//-- tbNode : æ˜¾ç¤ºçš„èŠ‚ç‚¹vector
+//-- tbPagePerNum : {n1, n2}->n1 : æ¨ªå‘Nodeä¸ªæ•°ï¼Œn2 : çºµå‘Nodeä¸ªæ•°ï¼ˆé€‰å¡«ï¼Œé»˜è®¤æ¨ªçºµå‘åªæœ‰ä¸€ä¸ªï¼‰
+//-- tbOffset : vectoræ ¼å¼{ a, b, c }->ï¼ˆé€‰å¡«ï¼‰
+//-- a : nodeåœ¨xè½´ä¸Šåç§»é‡(tbPagePerNumä¸º1åˆ™ä¸å¡«), b : nodeä¹‹é—´åœ¨xè½´é—´éš”åç§», cï¼šnodeä¹‹é—´åœ¨yè½´é—´éš”åç§»
+//-- nodeCall : ç‚¹å‡»Node call func ï¼ˆé€‰å¡«ï¼‰
+//-- pageCall : pageView æ‹–åŠ¨å“åº”ï¼ˆé€‰å¡«ï¼‰
 PageView* UIFunc::getPageView(const Size& pageViewSize, const std::vector<Widget*>& tbNode, const std::vector<unsigned int>& tbPagePerNum,
 	const std::vector<float>& tbOffset, const Widget::ccWidgetTouchCallback& nodeCall, 
 	const PageView::ccPageViewCallback& pageCall, bool bIndicator)

@@ -4,18 +4,15 @@
 */
 
 #include "WebFileSize.h"
-#if( CC_TARGET_PLATFORM == CC_PLATFORM_IOS )
-// todo
-#endif
 
 #if( CC_TARGET_PLATFORM == CC_PLATFORM_IOS )
 void WebFileSize::addWebFileSizeTask(const std::string& url, const std::function<void(float fileSize)>& callback_)
 {
     // create request with url
-    NSString* urlstring = [NSString stringWithUTF8String:url];
+    NSString* urlstring = [NSString stringWithUTF8String:url.c_str()];
     NSURL* url_ = [NSURL URLWithString:urlstring];
 	
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url_ 
+    NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:url_ 
                                             cachePolicy:NSURLRequestReloadIgnoringCacheData 
                                         timeoutInterval:3.0f];
     // 设置为头信息请求
