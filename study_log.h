@@ -1111,7 +1111,16 @@ http://stackoverflow.com/questions/29909330/microsoft-visual-c-compiler-for-pyth
 提示： “fatal error C1083: Cannot open include file: 'stdint.h': No such file or directory”
 下载stdint.h文件 放到C:\Users\xxx\AppData\Local\Programs\Common\Microsoft\Visual C++ for Python\9.0\VC\include\stdint.h
 
-73. 
+73. Cocos2dxActivity -> onLoadNativeLibraries 加载libcocos2dcpp.so 
+E:\MyGithub\jokeme\MyFramework\proj.android\build.xml 下修改生成的apk名称。
+E:\MyGithub\jokeme\MyFramework\proj.android\res\values\strings.xml 下修改安装后桌面上显示的名称
+E:\MyGithub\jokeme\MyFramework\proj.android\ant.properties 添加keystore配置:
+key.alias.password=joke
+key.store.password=joke
+key.store=../keystore/joke.keystore
+key.alias=android
+
+74. 
 
 
 
