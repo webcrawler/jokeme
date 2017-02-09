@@ -1100,7 +1100,58 @@ public class AppActivity extends Cocos2dxActivity {
         }
     }
 }
+
+另外一种方法: 如果在META-INF目录内添加空文件，可以不用重新签名应用。因此，通过为不同渠道的应用添加不同的空文件，可以唯一标识一个渠道。
+采用这种方式，每打一个渠道包只需复制一个apk，在META-INF中添加一个使用渠道号命名的空文件即可。
+执行python脚本：（1.txt空文件）
+import zipfile
+zipped = zipfile.ZipFile("E:/MyGithub/jokeme/SomeScripts/123.apk", 'a', zipfile.ZIP_DEFLATED) # sys.argv[1]
+empty_channel_file = "META-INF/channel_123"
+zipped.write("E:/MyGithub/jokeme/SomeScripts/1.txt", empty_channel_file)
+zipped.close()
+
+java 代码获取渠道123  "META-INF/channel_123" ：
+public static String getChannel(Context context) {
+	ApplicationInfo appinfo = context.getApplicationInfo();
+	String sourceDir = appinfo.sourceDir;
+	String ret = "";
+	ZipFile zipfile = null;
+	try {
+		zipfile = new ZipFile(sourceDir);
+		Enumeration<?> entries = zipfile.entries();
+		while (entries.hasMoreElements()) {
+			ZipEntry entry = ((ZipEntry) entries.nextElement());
+			String entryName = entry.getName();
+			if (entryName.startsWith("META-INF/channel")) {
+				ret = entryName;
+				break;
+			}
+		}
+	} catch (IOException e) {
+		e.printStackTrace();
+	} finally {
+		if (zipfile != null) {
+			try {
+				zipfile.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+	String[] split = ret.split("_");
+	if (split != null && split.length >= 2) {
+		return ret.substring(split[0].length() + 1);
+
+	} else {
+		return "";
+	}
+}
+测试：String channel = getChannel(this);
+      showDialog("channel", channel);
+
 批量配置渠道号：http://tech.meituan.com/mt-apk-packaging.html
+http://www.cnblogs.com/ct2011/p/4152323.html
 
 72. python使用import xxtea, 先安装pip(python3.4自带pip可省略下载安装pip): https://bootstrap.pypa.io/get-pip.py
 然后安装xxtea：pip install xxtea -U
