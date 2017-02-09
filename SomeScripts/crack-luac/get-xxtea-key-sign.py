@@ -3,7 +3,7 @@
 # https://www.shuax.com/archives/decryptcocos.html
 
 import zipfile
-import xxtea
+#import xxtea
 import re
 import os
 import sys
