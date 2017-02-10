@@ -1168,8 +1168,27 @@ key.store.password=joke
 key.store=../keystore/joke.keystore
 key.alias=android
 
-74. 
+74. std::map find查找：
+auto it = m_downloaderMap.find(srcUrl);
+if (it == m_downloaderMap.end())
+{
+	return;
+}
+delete m_downloaderMap[srcUrl];
+m_downloaderMap.erase(it);
 
+std::vector find查找：
+std::vector<int> vec;
+vec.push_back(0);
+vec.push_back(1);
+vec.push_back(2);
+auto it = std::find(vec.begin(), vec.end(), 1);
+if (it != vec.end())
+{
+	int d = *it;
+}
+
+75. 
 
 
 
