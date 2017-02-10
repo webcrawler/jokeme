@@ -1,6 +1,11 @@
 #!/usr/bin/python
+#coding=utf-8
 
 # https://www.shuax.com/archives/decryptcocos.html
+
+'''
+eg: C:\Windows\System32> E:\MyGithub\jokeme\SomeScripts\crack-luac\get-xxtea-key-sign.py E:\MyGithub\jokeme\SomeScripts\123.apk
+'''
 
 import zipfile
 #import xxtea
@@ -14,7 +19,7 @@ pro_file = []
 for filename in apk.namelist():
 	if filename.endswith(".luac"):
 		pro_file.append(apk.read(filename))
-		print('File:',filename)
+		#print('File:',filename)
 		if len(pro_file)==2:
 			break;
 
@@ -23,6 +28,8 @@ for i in range(len(pro_file[0])):
 	if pro_file[0][i]!=pro_file[1][i]:
 		sign = pro_file[0][:i]
 		break
+		
+print "\n"
 print('Sign:',sign,len(sign))	
 
 
@@ -30,7 +37,7 @@ key = []
 pattern = re.compile("(\w+)\0")
 for filename in apk.namelist():
 	if filename.endswith("libcocos2dlua.so"):
-		print('file:', filename)
+		#print('file:', filename)
 		content = apk.read(filename)
 		pos = content.find(sign)
 		subcontent = content[pos-512:pos+512]
@@ -46,6 +53,7 @@ for filename in apk.namelist():
 #key = key.ljust(16, '\0')
 print('Key:', key)
 
+'''
 for filename in apk.namelist():
 	if filename.endswith(".luac"):
 		content = apk.read(filename)
@@ -56,6 +64,7 @@ for filename in apk.namelist():
 		print(filename)
 		with open(filename, 'wb') as decrypted_file:
 			decrypted_file.write(data)
+'''
 
 
 
