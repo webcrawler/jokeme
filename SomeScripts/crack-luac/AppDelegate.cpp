@@ -3,9 +3,11 @@
 #include "audio/include/SimpleAudioEngine.h"
 #include "cocos2d.h"
 #include "scripting/lua-bindings/manual/lua_module_register.h"
-
+#include <iostream>  
+#include <string>  
+#include <io.h>  
+#include "external/xxtea/xxtea.h"
 using namespace CocosDenshion;
-
 USING_NS_CC;
 using namespace std;
 
@@ -51,13 +53,13 @@ bool AppDelegate::applicationDidFinishLaunching()
     ScriptEngineManager::getInstance()->setScriptEngine(engine);
     lua_State* L = engine->getLuaStack()->getLuaState();
     lua_module_register(L);
-
     register_all_packages();
 
-	 _xxteaSign = "7k7kgame";
-	_xxteaKey = "zhaoxin";
-
-	string filePath = "E:/WDJDownload/Apps/222/assets/src";
+	FileUtils::getInstance()->addSearchPath("res");
+	ValueMap plist = FileUtils::getInstance()->getValueMapFromFile("xxtea.plist");
+	string sign = plist["sign"].asString();
+	string key = plist["key"].asString();
+	string filePath = plist["src-path"].asString(); //"E:/WDJDownload/Apps/222/assets/src";
 
 	string format = ".*";
 	vector<string> files;
@@ -74,26 +76,20 @@ bool AppDelegate::applicationDidFinishLaunching()
 				string sx = files[i].substr(first + 1);
 				if (sx == "luac")
 				{
-					crack(files[i].c_str());
+					crack(files[i], sign, key);
 				}
 			}
 		}
 	}
-
     return true;
 }
 
-#include <iostream>  
-#include <string>  
-#include <io.h>  
-using namespace cocos2d;
-
-//获取特定格式的文件名  
+//鑾峰彇鐗瑰畾鏍煎紡鐨勬枃浠跺悕  
 void AppDelegate::GetAllFormatFiles(string path, vector<string>& files, string format)
 {
-	//文件句柄    
-	long   hFile = 0;
-	//文件信息    
+	//鏂囦欢鍙ユ焺    
+	long hFile = 0;
+	//鏂囦欢淇℃伅    
 	struct _finddata_t fileinfo;
 	string p;
 	if ((hFile = _findfirst(p.assign(path).append("/*" + format).c_str(), &fileinfo)) != -1)
@@ -104,66 +100,17 @@ void AppDelegate::GetAllFormatFiles(string path, vector<string>& files, string f
 			{
 				if (strcmp(fileinfo.name, ".") != 0 && strcmp(fileinfo.name, "..") != 0)
 				{
-					//files.push_back(p.assign(path).append("\\").append(fileinfo.name) );  
 					GetAllFormatFiles(p.assign(path).append("/").append(fileinfo.name), files, format);
 				}
 			}
-			else
-			{
-				
-				//files.push_back(p.assign(fileinfo.name));  //将文件路径保存，也可以只保存文件名:    p.assign(path).append("\\").append(fileinfo.name) 
-				files.push_back(p.assign(path).append("/").append(fileinfo.name));
-			}
+			else files.push_back(p.assign(path).append("/").append(fileinfo.name));
 		} while (_findnext(hFile, &fileinfo) == 0);
 
 		_findclose(hFile);
 	}
 }
 
-
-//深度优先递归遍历当前目录下文件夹和文件及子文件夹和文件  
-void AppDelegate::DfsFolder(std::string path, int layer)
-{
-	_finddata_t file_info;
-	string current_path = path + "/*.*"; //也可以用/*来匹配所有  
-	int handle = _findfirst(current_path.c_str(), &file_info);
-	//返回值为-1则查找失败  
-	if (-1 == handle)
-	{
-		CCLOG ( "cannot match the path" );
-		return;
-	}
-
-	do
-	{
-		//判断是否子目录  
-		if (file_info.attrib == _A_SUBDIR)
-		{
-			//递归遍历子目录  
-			//打印记号反映出深度层次  
-			//for (int i = 0;i<layer;i++)
-			//	CCLOG ("--");
-			//CCLOG (file_info.name);
-			int layer_tmp = layer;
-			if (strcmp(file_info.name, "..") != 0 && strcmp(file_info.name, ".") != 0)  //.是当前目录，..是上层目录，必须排除掉这两种情况  
-				DfsFolder(path + '/' + file_info.name, layer_tmp + 1); //再windows下可以用\\转义分隔符，不推荐  
-		}
-		else
-		{
-			//打印记号反映出深度层次  
-			//for (int i = 0;i < layer;i++)
-			//	CCLOG("--");
-			CCLOG (file_info.name);
-			//crack();
-		}
-	} while (!_findnext(handle, &file_info));  //返回0则遍历完  
-											   //关闭文件句柄  
-	_findclose(handle);
-}
-
-#include "external/xxtea/xxtea.h"
-
-void AppDelegate::crack(const char* filename)
+void AppDelegate::crack(const string& filename, const string& sign, const string& key)
 {
 	static const std::string BYTECODE_FILE_EXT = ".luac";
 	static const std::string NOT_BYTECODE_FILE_EXT = ".lua";
@@ -226,30 +173,31 @@ void AppDelegate::crack(const char* filename)
 		};
 
 		//"2dxLua", strlen("2dxLua"), "XXTEA", strlen("XXTEA")
-		_xxteaSignLen = strlen(_xxteaSign);
-		_xxteaKeyLen = strlen(_xxteaKey);
+		size_t _xxteaSignLen = strlen(sign.c_str());
+		size_t _xxteaKeyLen = strlen(key.c_str());
 
-		if ( strncmp(chunk, _xxteaSign, _xxteaSignLen) == 0)
+		if ( strncmp(chunk, sign.c_str(), _xxteaSignLen) == 0)
 		{
 			// decrypt XXTEA
 			xxtea_long len = 0;
 			unsigned char* result = xxtea_decrypt((unsigned char*)chunk + _xxteaSignLen,
 				(xxtea_long)chunkSize - _xxteaSignLen,
-				(unsigned char*)_xxteaKey,
+				(unsigned char*)key.c_str(),
 				(xxtea_long)_xxteaKeyLen,
 				&len);
 			skipBOM((const char*&)result, (int&)len);
 
-
+			// start crack haha
 			string ss = string(filename);
 			size_t pos = ss.find_first_of(".");
 			string str = ss.substr(0, pos + 1) + "lua";
 
-			// 保存解密后的lua
+			// 淇濆瓨瑙ｅ瘑鍚庣殑lua
 			Data data;
 			data.copy(result, len);
 			utils->writeDataToFile(data, str);
-			// 删除luac
+			CCLOG("瑙ｅ瘑鎴愬姛: %s", str.c_str());
+			// 鍒犻櫎luac
 			FileUtils::getInstance()->removeFile(ss);
 
 			free(result);
@@ -259,33 +207,6 @@ void AppDelegate::crack(const char* filename)
 			skipBOM(chunk, chunkSize);
 		}
 	}
-}
-
-
-#include <sys/stat.h> 
-void AppDelegate::mkdirs(char *muldir)
-{
-	//int i, len;
-	//char str[512];
-	//strncpy(str, muldir, 512);
-	//len = strlen(str);
-	//for (i = 0; i < len; i++)
-	//{
-	//	if (str[i] == '/')
-	//	{
-	//		str[i] = '\0';
-	//		if (access(str, 0) != 0)
-	//		{
-	//			mkdir(str, 0777);
-	//		}
-	//		str[i] = '/';
-	//	}
-	//}
-	//if (len > 0 && access(str, 0) != 0)
-	//{
-	//	mkdir(str, 0777);
-	//}
-	//return;
 }
 
 // This function will be called when the app is inactive. Note, when receiving a phone call it is invoked.

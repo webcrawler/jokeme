@@ -36,18 +36,9 @@ public:
     */
     virtual void applicationWillEnterForeground();
 
-	void crack(const char* filename);
-
-	void DfsFolder(std::string path, int layer);
+private:
+	void crack(const string& filename, const string& sign, const string& key);
 	void GetAllFormatFiles(string path, vector<string>& files, string format);
-	void mkdirs(char *muldir);
-
-	const char* _xxteaSign ;
-	int _xxteaSignLen ;
-	const char* _xxteaKey;
-	int _xxteaKeyLen ;
-
-
 };
 
 #endif  // __APP_DELEGATE_H__
