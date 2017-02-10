@@ -106,8 +106,6 @@ void MyClass::scriptTest()
     _stack->clean();
 }
 
-
-
 2. adb logcat > /Users/admin/Documents/log17.txt   // 输出log到外部文件
 ndk-stack -sym /Users/admin/Documents/git/BatteryClient/Maze2.0.0/proj.android/obj/local/armeabi  -dump /Users/admin/Documents/log17.txt
 
@@ -1055,7 +1053,6 @@ android {
 cocos compile -p android --ap android-15 --android-studio --ndk-toolchain arm-linux-androideabi-4.8
 
 68. Configure multiple APKs for ABIs :
-
 splits {
 	// Configures multiple APKs based on ABI.
 	abi {
