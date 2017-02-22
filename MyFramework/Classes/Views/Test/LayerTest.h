@@ -18,6 +18,7 @@ public:
 	virtual void viewExitDone();
 
 	virtual void updateEveryFrame(Ref* obj);
+	virtual void updateEveryInterval(Ref* obj);
 
 	void callback(Ref* pSender, Widget::TouchEventType type);
 	void callback1(Ref* pSender, Widget::TouchEventType type);

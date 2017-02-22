@@ -49,7 +49,7 @@ void SocketIOManager::testSocketSend()
 
 void SocketIOManager::testSocketEmit()
 {
-	if (m_sioClient != nullptr) m_sioClient->emit("login", "{\"name\":\"fjut\",\"type\":\"hehe\"}");
+	if (m_sioClient != nullptr) m_sioClient->emit("login", "{\"name\":\"fjut\",\"type\":\"hehe8\"}");
 }
 
 void SocketIOManager::disconnect1()

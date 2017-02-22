@@ -211,6 +211,12 @@ void LayerTest::updateEveryFrame(Ref* obj)
 	//CCLOG("%s", "hhhh LayerTest");
 }
 
+void LayerTest::updateEveryInterval(Ref* obj)
+{
+	// test heartbeat
+	g_socketio.testSocketEmit();
+}
+
 void LayerTest::pageViewEvent(Ref* pSender, PageView::EventType type)
 {
 	switch (type)

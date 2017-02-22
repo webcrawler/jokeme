@@ -12,6 +12,13 @@ int WINAPI _tWinMain(HINSTANCE hInstance,
     UNREFERENCED_PARAMETER(hPrevInstance);
     UNREFERENCED_PARAMETER(lpCmdLine);
 
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32) 
+	AllocConsole();
+	freopen("CONIN$", "r", stdin);
+	freopen("CONOUT$", "w", stdout);
+	freopen("CONOUT$", "w", stderr);
+#endif
+
     // create the application instance
     AppDelegate app;
     return Application::getInstance()->run();
