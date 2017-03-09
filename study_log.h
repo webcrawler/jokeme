@@ -917,7 +917,9 @@ http://android-mirror.bugly.qq.com:8080/include/usage.html
 54. vs build error: C2259 “xx 类”: 不能实例化抽象类。
 继承的父类里边有纯虚函数在子类没有实现。public EditBoxDelegate，子类必须实现editBoxReturn。
 
-55. My Google AppID:  myappid7-1183  myappid8-1185  myappid9-1185  myappid10-1185  myappid11-1185
+55. My Google AppID:  
+webcrawler1988 myappid-1180  myappid2-1180  myappid3-1181  myappid4-1181  myappid5-1183  
+myappid6-1183 myappid7-1183  myappid8-1185  myappid9-1185  myappid10-1185  myappid11-1185
 
 56. 打包apk 指定拷贝res资源目录：
 打开cocos2d-x-3.13.1\tools\cocos2d-console\plugins\plugin_compile\build_android.py 在 
