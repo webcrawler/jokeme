@@ -1190,7 +1190,11 @@ if (it != vec.end())
 	int d = *it;
 }
 
-75. 
+75. python搭建http服务器：
+python -m SimpleHTTPServer 8001
+http://localhost:8001/1.txt
+
+76. 
 
 
 
