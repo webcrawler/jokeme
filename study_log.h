@@ -1194,7 +1194,11 @@ if (it != vec.end())
 python -m SimpleHTTPServer 8001
 http://localhost:8001/1.txt
 
-76. 
+76. android 编译找不到libluajit.a 等一些 .a文件。是因为项目从svn checkout下来的，提交的项目默认不提交.a文件。
+从其他项目拷贝external覆盖
+
+77. 
+
 
 
 
