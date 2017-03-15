@@ -19,6 +19,14 @@
   定义namespace与Lua之间的映射关系，否则会报conversion wasn't set错误
   "MyNameSpace::": "MyNameSpace."
   
+  2017.03.15补充：
+  绑定error：
+  path: path: E:\Android\android-ndk-r10e\toolchains\llvm-3.3\prebuilt\windows-x86_64 are not valid!。
+  toolchain目录下找不到llvm-3.3的版本，但是存在3.5版本，则修改genbindings.py 把 3.3改成3.5 。
+  
+  绑定成功后把MyClass.h .cpp 放在cocos2d-x\external\xxx 目录下。添加进工程。hpp和cpp 也添加进工程。
+  注册到lua： 打开cocos2d-x\cocos\scripting\lua-bindings\manual\lua_module_register.cpp 添加头文件：#include "scripting/lua-bindings/auto/MyClass.h".
+  函数int lua_module_register(lua_State* L) 里面添加 register_all_MyClass(L);  ok
   
  error: ImportError: No module named yaml
   解决：readme文件下有：输入下面3条命令 下载安装
