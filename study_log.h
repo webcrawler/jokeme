@@ -1205,8 +1205,11 @@ http://localhost:8001/1.txt
 76. android 编译找不到libluajit.a 等一些 .a文件。是因为项目从svn checkout下来的，提交的项目默认不提交.a文件。
 从其他项目拷贝external覆盖
 
-77. 
-
+77. ios error: The resource could not be loaded because the App Transport Security policy requires the use of a secure connection.
+fix:在Info.plist中添加NSAppTransportSecurity类型Dictionary。
+	在NSAppTransportSecurity下添加NSAllowsArbitraryLoads类型Boolean,值设为YES
+	
+	78. 
 
 
 
