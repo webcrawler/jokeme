@@ -1209,8 +1209,12 @@ http://localhost:8001/1.txt
 fix:在Info.plist中添加NSAppTransportSecurity类型Dictionary。
 	在NSAppTransportSecurity下添加NSAllowsArbitraryLoads类型Boolean,值设为YES
 	
-	78. 
+78. mac 自带svn 使用：
+终端 open ~/.subversion/ 打开config 找到store-passwords = yes  store-auth-creds = yes 设置为yes保存。下次使用不用输密码
+sudo svn up
+svn ci -m "test commit lua" src/123.lua
 
+79. 
 
 
 
