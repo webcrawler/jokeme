@@ -1214,8 +1214,12 @@ fix:在Info.plist中添加NSAppTransportSecurity类型Dictionary。
 sudo svn up
 svn ci -m "test commit lua" src/123.lua
 
-79. 
+79. Skipped 'ApiController.php' -- Node remains in conflict At revision 271. Summary of conflicts: Skipped paths: 1
+解决方法：
+svn remove --force ApiController.php svn resolve --accept=working ApiController.php
+svn update
 
+80. 
 
 
 
