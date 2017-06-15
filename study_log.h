@@ -237,7 +237,7 @@ run 编译和发布，和运行程序
 
 cocos new Hello -p com.fjut.org -l cpp -d E:\
 
-/////////////////// 
+///////////////////
 http://[jenkins-server]/[command] 
 在这里[command]可以是：exit 退出，restart 重启， reload 重载。
 
