@@ -248,7 +248,7 @@ BUILD FAILED: Android Unable to resolve target 'android-8' .
 解决： 打开项目文件project.properties ,修改其 target值，如 target=android-10//(对应的版本) 如果没有project.properties, 自己建立一个。
 
 1、Android NDK: WARNING: APP_PLATFORM android-9 is larger than android:minSdkVersion 8 in ./AndroidManifest.xml
-解决： NDK指定的版本与minSdkVersion不一致,找到proj.android目录下的AndroidManifest.xml，修改其minSdkVersion值  如<uses-sdk android:minSdkVersion="9"/>
+解决： NDK指定的android sdk版本与minSdkVersion不一致,找到proj.android目录下的AndroidManifest.xml，修改其minSdkVersion值  如<uses-sdk android:minSdkVersion="9"/>
 
 3. Installation error: INSTALL_FAILED_INSUFFICIENT_STORAGE
 解决方法1：直接在手机上面卸载该APK
@@ -1219,7 +1219,8 @@ svn ci -m "test commit lua" src/123.lua
 svn remove --force ApiController.php svn resolve --accept=working ApiController.php
 svn update
 
-80. 
+80. 更新android sdk. 国内镜像：mirrors.neusoft.edu.cn 端口: 80. 选中Force https://...sources to be.  packages->Reload，如果能获取新版本，表明可以正常访问镜像
+81. 
 
 
 
