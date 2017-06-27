@@ -1220,7 +1220,11 @@ svn remove --force ApiController.php svn resolve --accept=working ApiController.
 svn update
 
 80. 更新android sdk. 国内镜像：mirrors.neusoft.edu.cn 端口: 80. 选中Force https://...sources to be.  packages->Reload，如果能获取新版本，表明可以正常访问镜像
-81. 
+81. 查看apk信息：
+	首先找到aapt工具，在Android SDK文件夹下的build-tools包里，如下：
+	cd D:/Android/SDK/build-tools/23.0.0_rc3
+	然后使用aapt dump bading XXX.apk就能看到VersionCode等信息
+	aapt dump badging C:/Users/xx/Desktop/app-release_1.0.9.apk
 
 
 
