@@ -1226,6 +1226,28 @@ svn update
 	然后使用aapt dump bading XXX.apk就能看到VersionCode等信息
 	aapt dump badging C:/Users/xx/Desktop/app-release_1.0.9.apk
 
+82. 节点曲线运动，计算节点转动的角度(和x轴夹角)
+    local bezier1 = {
+        cc.p(100, display.height / 2),
+        cc.p(100, display.height / 2),
+        cc.p(1000, 0)
+    }
+    local bezierTo1 = cc.BezierTo:create(20, bezier1)
+    local fish1 = ccui.ImageView:create("imgs/by_follow_2.png")
+    fish1:runAction(bezierTo1)
+    self:addChild(fish1, GameMainOrder.followFishAni)
+    self.prePos = cc.p(fish1:getPosition())
+
+    local function tick(dt)
+        local curPos = cc.p(fish1:getPosition())
+        local subPos  = cc.pSub(curPos, self.prePos)
+        local tanf = math.atan2(subPos.x, subPos.y)
+        local angle = tanf*180/math.pi
+        cclog("angle:"..angle)
+        self.prePos = curPos
+    end
+    cc.Director:getInstance():getScheduler():scheduleScriptFunc(tick, 0, false)
+	
 
 
 
