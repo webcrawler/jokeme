@@ -1248,6 +1248,8 @@ svn update
     end
     cc.Director:getInstance():getScheduler():scheduleScriptFunc(tick, 0, false)
 	
+83. IDA下载 http://www.52pojie.cn/thread-319763-1-1.html
+	
 
 
 
