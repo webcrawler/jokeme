@@ -1249,12 +1249,13 @@ svn update
     cc.Director:getInstance():getScheduler():scheduleScriptFunc(tick, 0, false)
 	
 83. IDA下载 http://www.52pojie.cn/thread-319763-1-1.html
-	
 
+84. 获取系统版本：adb shell getprop ro.build.version.release
+    获取系统api版本：adb shell getprop ro.build.version.sdk
 
-
-
-
+85. 打开SDK Manager，列表尾部找到Extras 更新Android Support Repository。更希完后
+打开目录 adt-bundle-windows-x86_64/sdk/extras/android/support/v4 拷贝android-support-v4.jar到项目libs目录
+打开eclipse界面 选中android-support-v4.jar右键Build Path > Add to Build Path。
 
 
 
