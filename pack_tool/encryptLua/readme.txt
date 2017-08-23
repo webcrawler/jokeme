@@ -1,0 +1,1 @@
+1. ‘À––encrypt_lua.bat

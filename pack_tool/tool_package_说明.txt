@@ -1,0 +1,7 @@
+打更新包步骤：
+1. 更新项目Bale下资源frameworks, res，src
+2. 检查下Bale\src\config.lua 配置文件 AUTO_LOGIN = false (设置为false，关闭游戏自动登录)
+3. 运行pack_tool\tool_file_format_check.exe 检查文件命名是否规范。
+4. 运行pack_tool\tool_package.exe，点击生成小版本更新资源，(可以输入要生成的小版本号资源。不输入的话则生成的更新资源包的小版本号是在线上版本号基础上加1)
+5. 等待生成更新资源完成，显示"更新资源包生成完成" 则完成。
+6. 打开更新资源的svn目录 E:\update_resource\ 手动上传更新资源（全选，并review下要上传的资源）。提示服务端程序更新发布。
