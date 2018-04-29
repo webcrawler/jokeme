@@ -1259,7 +1259,8 @@ svn update
 打开目录 adt-bundle-windows-x86_64/sdk/extras/android/support/v4 拷贝android-support-v4.jar到项目libs目录
 打开eclipse界面 选中android-support-v4.jar右键Build Path > Add to Build Path。
 
-
+86. 大小端模式: https://www.bysocket.com/?p=615
+ 
 
 
 
