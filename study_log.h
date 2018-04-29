@@ -1259,10 +1259,55 @@ svn update
 打开目录 adt-bundle-windows-x86_64/sdk/extras/android/support/v4 拷贝android-support-v4.jar到项目libs目录
 打开eclipse界面 选中android-support-v4.jar右键Build Path > Add to Build Path。
 
-86. 大小端模式: https://www.bysocket.com/?p=615  http://www.ruanyifeng.com/blog/2016/11/byte-order.html
+86. 大小端模式: https://www.bysocket.com/?p=615  
+http://www.ruanyifeng.com/blog/2016/11/byte-order.html 
+https://blog.csdn.net/twlkyao/article/details/11580033
  
+在C/C++程序的编写中，当多个基本数据类型或复合数据结构要占用同一片内存时，我们要使用联合体；
+当多种类型，多个对象，多个事物只取其一时（我们姑且通俗地称其为“n 选1”），
+我们也可以使用联合体来发挥其长处。首先看一段代码：
+union myun   
+{  
+ 　　struct { int x; int y; int z; }u;   
+　　 int k;   
+}a;   
+int main()   
+{   
+　　 a.u.x =4;  
+ 　　a.u.y =5;   
+　　 a.u.z =6;   
+　　 a.k = 0;   
+　　 printf("%d %d %d\n",a.u.x,a.u.y,a.u.z);  
+　　 return 0;  
+}  
+union类型是共享内存的，以size最大的结构作为自己的大小，这样的话，
+myun这个结构就包含u这个结构体，而大小也等于u这个结构体的大小，
+在内存中的排列为声明的顺序x,y,z从低到高，然后赋值的时候，在内存中，
+就是x的位置放置4，y的位置放置5，z的位置放置6，现在对k赋值，对k的赋值因为是union，要共享内存，
+所以从union的首地址开始放置，首地址开始的位置其实是x的位置，这样原来内存中x的位置就被k所赋的值代替了，
+就变为0了，这个时候要进行打印，就直接看内存里就行了，x的位置也就是k的位置是0，而y，z的位置的值没有改变，所以应该是0,5,6。
 
+// 若处理器是Big_endian的，则返回0；若是Little_endian的，则返回1
+// 联合体union的存放顺序是所有成员都从低地址开始存放
+static int checkCPU()
+{
+	{
+		union w
+		{
+			int  a;
+			char b;
+		} c;
+		c.a = 1;
+		return(c.b == 1);
+	}
+}
 
+实现同样的功能，我们来看看Linux 操作系统中相关的源代码是怎么做的：
+static union { char c[4]; unsigned long mylong; } endian_test = {{ 'l', '?', '?', 'b' } };  
+#define ENDIANNESS ((char)endian_test.mylong)  
+
+Linux 的内核作者们仅仅用一个union 变量和一个简单的宏定义就实现了一大段代码同样的功能！
+由以上一段代码我们可以深刻领会到Linux 源代码的精妙之处！(如果ENDIANNESS=’l’表示系统为little endian,为’b’表示big endian )
 
 
 
