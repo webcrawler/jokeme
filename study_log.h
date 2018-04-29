@@ -1262,7 +1262,12 @@ svn update
 86. 大小端模式: https://www.bysocket.com/?p=615  
 http://www.ruanyifeng.com/blog/2016/11/byte-order.html 
 https://blog.csdn.net/twlkyao/article/details/11580033
- 
+
+在计算机系统中，我们是以字节为单位的，每个地址单元都对应着一个字节，一个字节为8bit。
+但是在C语言中除了8bit的char之外，还有16bit的short型，32bit的long型（要看具体的编译器）。
+另外，对于位数大于8位的处理器，例如16位或者32位的处理器，由于寄存器宽度大于一个字节，
+那么必然存在着一个如果将多个字节安排的问题。因此就导致了大端存储模式和小端存储模式。
+
 在C/C++程序的编写中，当多个基本数据类型或复合数据结构要占用同一片内存时，我们要使用联合体；
 当多种类型，多个对象，多个事物只取其一时（我们姑且通俗地称其为“n 选1”），
 我们也可以使用联合体来发挥其长处。首先看一段代码：
@@ -1309,6 +1314,84 @@ static union { char c[4]; unsigned long mylong; } endian_test = {{ 'l', '?', '?'
 Linux 的内核作者们仅仅用一个union 变量和一个简单的宏定义就实现了一大段代码同样的功能！
 由以上一段代码我们可以深刻领会到Linux 源代码的精妙之处！(如果ENDIANNESS=’l’表示系统为little endian,为’b’表示big endian )
 
+87. lua 打包和解包用到的格式串  https://blog.csdn.net/ljxfblog/article/details/44339705 
+ https://blog.csdn.net/lovehappy108/article/details/52070737 
+ http://cloudwu.github.io/lua53doc/manual.html#6.4.2
+用于 string.pack， string.packsize， string.unpack 的第一个参数。 它是一个描述了需要创建或读取的结构之布局。
+格式串是由转换选项构成的序列。 这些转换选项列在后面：
+<: 设为小端编码
+>: 设为大端编码
+=: 大小端遵循本地设置
+
+http://www.luteus.biz/Download/LoriotPro_Doc/LUA/LUA_For_Windows/lpack/   
+https://www.jianshu.com/p/16eec13d3a86
+
+Introduction
+This is a simple Lua library for packing and unpacking binary data.
+The library adds two functions to the string library: pack and unpack.
+
+string.pack
+ret = pack( F, x1, x2, ... )
+Description: Packs binary data into a string.
+Parameters:
+F
+A string describing how the values x1, x2, ... are to be interpreted and formatted. 
+Each letter in the format string F consumes one of the given values. 
+The letter codes understood by pack are listed below (they are inspired by Perl's codes but are not the same). 
+Numbers following letter codes in F indicate repetitions.
+
+x1, x2, ...
+Values to pack into binary. Only values of type number or string are accepted.
+
+Returns: ret
+A (binary) string containing the values packed as described in F.
+
+string.unpack
+val, next = unpack( s, F [,init] )
+
+Description:
+Packs binary data into a string.
+
+Parameters: s
+A (binary) string containing data packed as if by pack.
+
+F
+A format string describing what is to be read from s
+
+init
+An optional init marks where in s to begin reading the values.
+
+Returns: next
+The first value returned by unpack is the next unread position in s, which can be used as the init position 
+in a subsequent call to unpack. This allows you to unpack values in a loop or in several steps. 
+If the position returned by unpack is beyond the end of s, then s has been exhausted;
+ any calls to unpack starting beyond the end of s will always return nil values.
+
+val
+One value per letter in F until F or s is exhausted (the letters codes are the same as for pack,
+ except that numbers following A are interpreted as the number of characters to read into the string, not as repetitions).
+
+Letter Codes
+z : zero-terminated string 
+p : string preceded by length byte 
+P : string preceded by length word 
+a : string preceded by length size_t 
+A : string 
+f : float 
+d : double 
+n : Lua number 
+c : char 
+b : byte (unsigned char) 
+h : short 
+H : unsigned short 
+i : int 
+I : unsigned int 
+l : long 
+L : unsigned long
+
+< : little endian 
+> : big endian 
+= : native endian
 
 
 
