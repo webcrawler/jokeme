@@ -1317,6 +1317,7 @@ Linux 的内核作者们仅仅用一个union 变量和一个简单的宏定义�
 87. lua 打包和解包用到的格式串  https://blog.csdn.net/ljxfblog/article/details/44339705 
  https://blog.csdn.net/lovehappy108/article/details/52070737 
  http://cloudwu.github.io/lua53doc/manual.html#6.4.2
+ https://my.oschina.net/goal/blog/195749
 用于 string.pack， string.packsize， string.unpack 的第一个参数。 它是一个描述了需要创建或读取的结构之布局。
 格式串是由转换选项构成的序列。 这些转换选项列在后面：
 <: 设为小端编码
@@ -1393,7 +1394,9 @@ L : unsigned long
 > : big endian 
 = : native endian
 
+88. "A" 按照ASCII编码是65, 存储在计算机是二进制 01000001
 
+89. 
 
 
 
