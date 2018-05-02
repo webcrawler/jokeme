@@ -1396,7 +1396,7 @@ L : unsigned long
 
 88. "A" 按照ASCII编码是65, 存储在计算机是二进制 01000001
 
-89. 
+89. luasocket  \frameworks\cocos2d-x\external\lua\luasocket\luasocket_scripts.c 
 
 
 
