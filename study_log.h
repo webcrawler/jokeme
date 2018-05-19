@@ -1398,7 +1398,21 @@ L : unsigned long
 
 89. luasocket  \frameworks\cocos2d-x\external\lua\luasocket\luasocket_scripts.c 
 
-
+_dataSize = _size;
+	_packageData = new unsigned char[SIZE_PACK_HEAD + _dataSize];
+	unsigned char *packageData = _packageData;
+	packageData[0] = 0; // Êý¾ÝÀàÐÍ
+	packageData[1] = 0; // Ð§Ñé×Ö¶Î
+						// Êý¾Ý´óÐ¡
+	packageData[2] = _dataSize & 0xff;
+	packageData[3] = _dataSize >> 8 & 0xff;
+	// Ö÷ÃüÁî
+	packageData[4] = _mainId & 0xff;
+	packageData[5] = _mainId >> 8 & 0xff;
+	// ×ÓÃüÁî
+	packageData[6] = _subId & 0xff;
+	packageData[7] = _subId >> 8 & 0xff;
+	memcpy(_packageData + SIZE_PACK_HEAD, _data, _dataSize);
 
 
 
