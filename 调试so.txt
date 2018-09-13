@@ -1,0 +1,30 @@
+﻿C:\Users\dd>adb shell
+shell@android:/ $ su
+root@android:/ # cd /data/local/tmp
+root@android:/data/local/tmp # chmod 777 android_server
+root@android:/data/local/tmp # ./android_server
+IDA Android 32-bit remote debug server(ST) v1.22. Hex-Rays (c) 2004-2017
+Listening on 0.0.0.0:23946...
+
+adb forward tcp:23946 tcp:23946
+
+C:\Users\dd>adb shell am start -D -n com.xxx.game/org.cocos2dx.lua.AppActivity
+Starting: Intent { cmp=com.xxx.game/org.cocos2dx.lua.AppActivity }
+
+C:\Users\fjut>jdb -connect com.sun.jdi.SocketAttach:hostname=127.0.0.1,port=8700
+设置未捕获的java.lang.Throwable
+设置延迟的未捕获的java.lang.Throwable
+正在初始化jdb...
+
+https://blog.csdn.net/pengyan0812/article/details/43990791
+
+http://www.freebuf.com/author/zzwlpx
+
+https://security.tencent.com/index.php/opensource/detail/17
+
+http://www.xuji.pro/index.php/jdb%E9%99%84%E5%8A%A0%E5%A4%B1%E8%B4%A5-%E5%BC%80%E5%90%AF%E8%B0%83%E8%AF%95%E6%A8%A1%E5%BC%8F/
+
+https://blog.csdn.net/feibabeibei_beibei/article/details/52740212
+
+
+
