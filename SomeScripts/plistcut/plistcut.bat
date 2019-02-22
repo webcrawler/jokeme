@@ -1,0 +1,1 @@
+java -jar PlistCut.jar game_zjh_res.png root
