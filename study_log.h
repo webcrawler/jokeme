@@ -1411,7 +1411,13 @@ tools -> build system -> new build system -> 输入：
 保存默认目录 \Sublime Text 3\Packages\User
 执行F7运行项目
 
+93. babelua插件配置:
+BabeLua For 2015 V3.2.2.0.vsix 
+补丁: babelua-compat-1.06-VS2015.zip
 
+lua exe path: E:\work\Projects\client\run\Debug.win32\joke.exe
+working path: E:\work\Projects\client\client
+command line: -workdir "E:\work\Projects\client\client"
 
 
 
