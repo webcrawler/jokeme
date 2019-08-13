@@ -1402,6 +1402,15 @@ L : unsigned long
 
 91. babelua 调试lua断点无效。解决：require路径有问题
 
+92. sublime 配置cocos2dx项目：
+tools -> build system -> new build system -> 输入：
+{
+	"working_dir": "E:/work/Projects/client/client",
+	"shell_cmd":   "E:/work/Projects/client/run/Debug.win32/joke.exe -workdir E:/work/Projects/client/client"
+}
+保存默认目录 \Sublime Text 3\Packages\User
+执行F7运行项目
+
 
 
 
