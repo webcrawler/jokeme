@@ -1419,6 +1419,12 @@ lua exe path: E:\work\Projects\client\run\Debug.win32\joke.exe
 working path: E:\work\Projects\client\client
 command line: -workdir "E:\work\Projects\client\client"
 
+94. luajit off:
+local arc = jit.arch
+print("arc:"..arc)
+jit.off()
+
+
 
 
 
