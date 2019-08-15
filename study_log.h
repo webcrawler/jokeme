@@ -1427,6 +1427,7 @@ jit.off()
 95. 逍遥模拟器看不到data目录：
 打开自带的文件管理器CyanogenMod File Manager. 点击左上角->设置->常规设置->访问模式->选择超级用户访问模式。
 data目录在：根目录/data/data/
+查看模拟器和pc共享目录的时候 访问模式改成 用户提示模式。路径：/storage/emulated/0/Pictures
 
 
 
