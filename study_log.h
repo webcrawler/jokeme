@@ -1429,7 +1429,7 @@ jit.off()
 data目录在：根目录/data/data/
 查看模拟器和pc共享目录的时候 访问模式改成 安全模式。路径：/storage/emulated/0/Pictures。 改完还是找不到，则重启模拟器
 
-
+96. 监测android app http请求：httpcanary.apk  https://github.com/MegatronKing/HttpCanary
 
 
 
