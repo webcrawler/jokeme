@@ -1431,6 +1431,17 @@ data目录在：根目录/data/data/
 
 96. 监测android app http请求：httpcanary.apk  https://github.com/MegatronKing/HttpCanary
 
+97. Gradle build 报错：Received status code 400 from server: Bad Request
+在gradle.properites 里面把代理去掉.如:
+systemProp.https.proxyPort=80
+systemProp.http.proxyHost=mirrors.neusoft.edu.cn
+systemProp.https.proxyHost=mirrors.neusoft.edu.cn
+systemProp.http.proxyPort=80
+
+
+
+
+
 
 
 
