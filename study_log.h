@@ -1438,7 +1438,24 @@ systemProp.http.proxyHost=mirrors.neusoft.edu.cn
 systemProp.https.proxyHost=mirrors.neusoft.edu.cn
 systemProp.http.proxyPort=80
 
+98. android sdkversion解释：
 
+/**
+* compileSdkVersion specifies the Android API level Gradle should use to
+* compile your app. This means your app can use the API features included in
+* this API level and lower.
+*/
+compileSdkVersion 28
+
+// Defines the minimum API level required to run the app.
+minSdkVersion 15
+
+// Specifies the API level used to test the app.
+targetSdkVersion 28
+
+
+
+      
 
 
 
