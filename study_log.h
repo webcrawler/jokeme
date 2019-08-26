@@ -1453,9 +1453,12 @@ minSdkVersion 15
 // Specifies the API level used to test the app.
 targetSdkVersion 28
 
+99. ndkr16 废弃armeabi
+Support for ARM5 (armeabi) is deprecated. It will no longer build by default with ndk-build, but is still buildable if it is explicitly named, and will be included by "all" and "all32".
+Both CMake and ndk-build will issue a warning if you target this ABI.
+https://github.com/android-ndk/ndk/wiki/Changelog-r16-beta1
 
 
-      
 
 
 
