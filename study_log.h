@@ -1461,6 +1461,14 @@ https://github.com/android-ndk/ndk/wiki/Changelog-r16-beta1
 100. Android plugin for Gradle 3.0.0后buildToolsVersion自动指定
 If you're using Android plugin for Gradle 3.0.0 or higher, your project automatically uses a default version of the build tools that the plugin specifies. To use a different version of the build tools, specify it using buildToolsVersion in your module's build.gradle, as follows:
 
+101.
+    repositories {
+        // Gradle 4.1 and higher include support for Google's Maven repo using
+        // the google() method. And you need to include this repo to download
+        // Android Gradle plugin 3.0.0 or higher.
+        google()
+        ...
+    }
 
 
 
