@@ -1458,7 +1458,8 @@ Support for ARM5 (armeabi) is deprecated. It will no longer build by default wit
 Both CMake and ndk-build will issue a warning if you target this ABI.
 https://github.com/android-ndk/ndk/wiki/Changelog-r16-beta1
 
-
+100. Android plugin for Gradle 3.0.0后buildToolsVersion自动指定
+If you're using Android plugin for Gradle 3.0.0 or higher, your project automatically uses a default version of the build tools that the plugin specifies. To use a different version of the build tools, specify it using buildToolsVersion in your module's build.gradle, as follows:
 
 
 
