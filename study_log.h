@@ -1475,6 +1475,26 @@ If you're using Android plugin for Gradle 3.0.0 or higher, your project automati
 2. cmd cd E:\work\android\adt-bundle-windows-x86_64-20140702\sdk\platform-tools 进入platform-tools目录，执行 adb connect 127.0.0.1:21503
 3. android studio 直接运行项目，选择模拟器设备
 
+103. 批处理 清除编译中间文件
+@echo off
+echo 清除所有obj pch idb pdb ncb opt plg res sbr ilk suo文件
+pause
+del /f /s /q .\*.obj
+del /f /s /q .\*.pch
+del /f /s /q .\*.idb
+del /f /s /q .\*.pdb
+del /f /s /q .\*.ncb 
+del /f /s /q .\*.opt 
+del /f /s /q .\*.plg
+del /f /s /q .\*.res
+del /f /s /q .\*.sbr
+del /f /s /q .\*.ilk
+del /f /s /q .\*.aps
+echo 清除文件完成！
+echo. & pause
+
+
+
 
 
 
