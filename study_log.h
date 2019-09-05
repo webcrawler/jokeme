@@ -1493,7 +1493,15 @@ del /f /s /q .\*.aps
 echo 清除文件完成！
 echo. & pause
 
-
+104. 批处理svn提交
+set my_svn_path=E:\work\Projects\PackRes
+:: svn commit
+::for /f %%i in (%my_svn_path%\filelist.txt) do ( 		
+::echo svn file name: %%i
+::TortoiseProc.exe /command:commit /path:%my_svn_path%\%%i /closeonend:2
+::echo.
+::)
+TortoiseProc.exe /command:commit /path:%my_svn_path% /closeonend:2
 
 
 
