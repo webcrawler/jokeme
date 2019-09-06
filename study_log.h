@@ -1503,6 +1503,21 @@ set my_svn_path=E:\work\Projects\PackRes
 ::)
 TortoiseProc.exe /command:commit /path:%my_svn_path% /closeonend:2
 
+105. iOS openURL调用失败
+需要判断下传入的URL连接是否包含http://或https://，如果不包含，则给它添加上即可
+/**
+ * 把string转换成可以URL跳转的类型（指的是带HTTP或者HTTPS）
+ */
+- (NSString *)convertToURLFormatWithString:(NSString *)str {
+    if ([str containsString:@"http"] || [str containsString:@"https"]) {
+        return str;
+    }else {
+        NSMutableString *strM = [NSMutableString stringWithString:str];
+        [strM insertString:@"http://" atIndex:0];
+        return strM.copy;
+    }
+}
+
 
 
 
