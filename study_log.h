@@ -1529,6 +1529,8 @@ targetSdkVersion 是 Android 系统提供前向兼容的主要手段。这是什
 只要 APK 的 targetSdkVersion 不变，即使这个 APK 安装在新 Android 系统上，
 其行为还是保持老的系统上的行为，这样就保证了系统对老应用的前向兼容性。
 https://www.race604.com/android-targetsdkversion/
+https://medium.com/androiddevelopers/picking-your-compilesdkversion-minsdkversion-targetsdkversion-a098a0341ebd#.egywqatjg
+https://chinagdg.org/2016/01/picking-your-compilesdkversion-minsdkversion-targetsdkversion/
 
 107. 
 
