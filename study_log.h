@@ -1518,6 +1518,20 @@ TortoiseProc.exe /command:commit /path:%my_svn_path% /closeonend:2
     }
 }
 
+106. android targetSdkVersion
+compileSdkVersion 和 minSdkVersion 都非常好理解，前者表示编译的 SDK 版本，后者表示应用兼容的最低 SDK 版本。
+但是对于 targetSdkVersion 其实很难一句话解析清楚，原文用了“万能”的词 —— interesting 来描述。
+以前我也有一些迷糊，看到有些人和我有同样的困惑，本文试图彻底解决这个问题。
+原文是这么说的：
+targetSdkVersion is the main way Android provides forward compatibility
+targetSdkVersion 是 Android 系统提供前向兼容的主要手段。这是什么意思呢？随着 Android 系统的升级，
+某个系统的 API 或者模块的行为可能会发生改变，但是为了保证老 APK 的行为还是和以前兼容。
+只要 APK 的 targetSdkVersion 不变，即使这个 APK 安装在新 Android 系统上，
+其行为还是保持老的系统上的行为，这样就保证了系统对老应用的前向兼容性。
+https://www.race604.com/android-targetsdkversion/
+
+107. 
+
 
 
 
