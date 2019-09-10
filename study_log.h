@@ -1533,7 +1533,31 @@ https://medium.com/androiddevelopers/picking-your-compilesdkversion-minsdkversio
 https://chinagdg.org/2016/01/picking-your-compilesdkversion-minsdkversion-targetsdkversion/
 
 107. 
+-- imagePath：被裁减的图片路径
+-- maskPath： 裁剪模板图片路径
+-- 返回Node
+local function getClippNode(imagePath, maskPath)
+	local img = cc.Sprite:create(imagePath)
+	local mask = nil
+	local frame = cc.SpriteFrameCache:getInstance():getSpriteFrame(maskPath)
+	if nil ~= frame then
+		mask = cc.Sprite:createWithSpriteFrame(frame)
+	else
+		mask = cc.Sprite:create(maskPath)
+	end
+	local maskSize = mask:getContentSize()
+	local imgSize = img:getContentSize()
 
+	img:setScaleX(maskSize.width/imgSize.width)
+	img:setScaleY(maskSize.height/imgSize.height)
+
+	local clippingNode = cc.ClippingNode:create()
+	clippingNode:setContentSize(maskSize)
+	clippingNode:setStencil(mask)
+	clippingNode:setAlphaThreshold(0.05) 
+	clippingNode:addChild(img)
+	return clippingNode
+end
 
 
 
