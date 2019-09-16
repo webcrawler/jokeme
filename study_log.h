@@ -1559,8 +1559,13 @@ local function getClippNode(imagePath, maskPath)
 	return clippingNode
 end
 
+108. ios app闪退：Message from debugger: Terminated due to signal 13
+SIGPIPE	13 表示：Broken pipe: write to pipe with no readers
+https://www.lifewire.com/signal-linux-command-4094016
+尝试send到一个已关闭的 socket上两次，就会出现此信号，也就是用协议TCP的socket编程，服务器是不能知道客户机什么时候已经关闭了socket，
+导致还在向该已关 闭的socket上send，导致SIGPIPE。
 
-
+109. 
 
 
 
