@@ -1565,7 +1565,101 @@ https://www.lifewire.com/signal-linux-command-4094016
 尝试send到一个已关闭的 socket上两次，就会出现此信号，也就是用协议TCP的socket编程，服务器是不能知道客户机什么时候已经关闭了socket，
 导致还在向该已关 闭的socket上send，导致SIGPIPE。
 
-109. 
+109. 批处理
+
+::进入当前目录
+cd %~dp0
+E:
+
+set my_path=E:\work
+::调用bat
+call %~dp0my_path\%my_path%-res.bat
+
+::删除目录
+rd /s /q %my_pathxxx%\qq
+
+::删除文件
+del /s /q %my_pathxxx%\qq.zip
+
+::创建文件件
+md %my_path%\joke
+
+::拷贝文件
+COPY /y %my_path%\joke.zip %my_path%\..\joke
+
+::拷贝文件夹及下面所有文件, 不拷贝*.tmp *.zip *.rar *.svn *.bak文件
+robocopy %my_path%\haha %my_path%\client /e /xf /mir /xa:h *.tmp *.zip *.rar *.svn *.bak
+
+::提交svn
+TortoiseProc.exe /command:commit /path:%my_path% /closeonend:2
+
+::打开文件目录
+start %~dp0..\jokeme
+
+::用google Chrome打开 网站
+"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" http://baidu.com
+
+::关闭所有文件夹
+taskkill /f /IM explorer.exe
+start C:\Windows\explorer.exe
+
+
+::解压文件 解压joke.zip到joke目录下 指定秘密
+call WinRAR x -ibck -k -o+ -r -m5 -hp 密码 %my_path%\joke.zip %my_path%\joke
+
+::压缩文件 压缩client目录到client.zip 指定秘密
+call WinRAR a -ibck -k -r -m5 -hp 密码 %my_path%\client.zip client
+
+::删除压缩包内内容 删除压缩包内res\logon和src\logon 2个目录
+call WinRAR d -ibck -hp 密码 %my_path%\client.zip client\res\logon client\src\logon
+
+::改名 %my_path%\下的client.zip 名字重命名为client.jj
+REN %my_path%\client.zip client.jj
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
