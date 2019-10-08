@@ -1616,10 +1616,24 @@ call WinRAR d -ibck -hp 密码 %my_path%\client.zip client\res\logon client\src\
 ::改名 %my_path%\下的client.zip 名字重命名为client.jj
 REN %my_path%\client.zip client.jj
 
+110. 开源库集成器Vcpkg  https://blog.csdn.net/cjmqas/article/details/79282847
+下载：https://github.com/microsoft/vcpkg
+执行 bootstrap-vcpkg.bat 即可编译。编译好以后会在同级目录下生成vcpkg.exe文件
+
+查看Vcpkg支持的开源库列表
+执行命令
+vcpkg search
+
+安装jsoncpp库 执行命令
+vcpkg install jsoncpp
+
+“集成到全局”适用于Visual Studio开发环境和msbuild命令行。执行命令：
+vcpkg integrate install
+
+111. 
 
 
 
- 
 
 
 
