@@ -1630,7 +1630,10 @@ vcpkg install jsoncpp
 “集成到全局”适用于Visual Studio开发环境和msbuild命令行。执行命令：
 vcpkg integrate install
 
-111. 
+111. Android NDK: WARNING: Deprecated NDK_TOOLCHAIN_VERSION value: 4.9. GCC is no longer supported
+NDK版本太高。
+
+112.
 
 
 
