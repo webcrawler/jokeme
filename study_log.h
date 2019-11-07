@@ -1633,7 +1633,24 @@ vcpkg integrate install
 111. Android NDK: WARNING: Deprecated NDK_TOOLCHAIN_VERSION value: 4.9. GCC is no longer supported
 NDK版本太高。
 
-112.
+112. ip地址字符串转整形
+#include <stdint.h>
+static int lua_ipStrToInt(lua_State* L)
+{
+	const char* ipStr = (const char*)luaL_checkstring(L, 1);
+	uint32_t addrInt[4] = {0};
+	uint32_t intVal = 0;
+	sscanf(ipStr, "%d.%d.%d.%d", &addrInt[0], &addrInt[1], &addrInt[2], &addrInt[3]);
+	int i = 0;
+	for (i = 3; i >= 0; --i)
+	{
+		intVal = intVal << 8;
+		intVal += addrInt[i];
+	}
+	//printf("ipInt = %d", intVal);
+	lua_pushinteger(L, intVal);
+	return 1;
+}
 
 
 
