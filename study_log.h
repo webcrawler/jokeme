@@ -1659,7 +1659,12 @@ static int lua_ipStrToInt(lua_State* L)
 115. adb logcat 查看逍遥模拟器log
 1. cmd cd D:\Program Files\Microvirt\MEmu 进入逍遥模拟器安装目录，执行 adb start-server
 2. cmd cd E:\work\android\adt-bundle-windows-x86_64-20140702\sdk\platform-tools 进入platform-tools目录，执行 adb connect 127.0.0.1:21503
-3. cmd adb logcat 
+3. cmd adb logcat 或者输出到文本 adb logcat > E:\log.txt
+
+116. 批处理，输出logcat到文本文件
+set workdir=%~dp0
+del %workdir%log.txt
+adb logcat > %workdir%log.txt
 
 
 
