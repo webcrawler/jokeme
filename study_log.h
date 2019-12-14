@@ -1666,6 +1666,14 @@ set workdir=%~dp0
 del %workdir%log.txt
 adb logcat > %workdir%log.txt
 
+117. cocos2d-x3.16不再支持ADT，Android SDK Tools 25.3.0+去除了ant脚本和android命令 ，使得cocos命令无法打包Android的Eclipse工程（proj.android）。
+cocos2d-x3.17 由于 Google 官方自  Android SDK Tools 25.3.0 (就已放弃 ant 支持。移除旧有的 proj.android ant 工程，新的 proj.android 是 Android Studio 工程。
+NDK r16 (弃用了 armeabi，引擎调整默认的编译架构从 armeabi 为 armeabi-v7a。 https://www.cocos.com/1462
+
+118.
+
+
+
 
 
 
