@@ -1672,6 +1672,27 @@ NDK r16 (弃用了 armeabi，引擎调整默认的编译架构从 armeabi 为 ar
 
 118. cocos2d-x3.17.2 Gradle插件版本3.1.0 Gradle 版本4.4 ndk-r16b
 
+119.配置好Gradle后可以使用Gradle工具命令执行打包
+cd E:\work\MyNew3172\frameworks\runtime-src\proj.android 
+gradlew task-name (task-name在MyNew3172/Tasks/build/下的task)比如 gradlew assemble / gradlew assembleDebug / gradlew assembleRelease
+查看项目的所有可用编译任务的列表：gradlew tasks
+
+120. cocos命令打包错误： Invalid or unsupported command "update project -t android-21。
+sdk版本太高 重新配置下环境变量
+
+121. java找不到 org.apache.http.util.EncodingUtils
+Android6.0 org.apache.http.util.EncodingUtils等相关类被移除。
+在gradle作如下配置, 引入 useLibrary 'org.apache.http.legacy' 即可
+android {
+	...
+    useLibrary 'org.apache.http.legacy'
+    ...
+}
+
+122. 
+
+
+
 
 
 
