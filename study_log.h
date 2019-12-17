@@ -1689,7 +1689,9 @@ android {
     ...
 }
 
-122. android 添加 iconv 支持：LOCAL_WHOLE_STATIC_LIBRARIES += android_support
+122. android 添加 iconv 支持：(NDKr15之后ndk去除了iconv的支持，只能自己下载源码编译使用)
+LOCAL_WHOLE_STATIC_LIBRARIES += android_support
+$(call import-module, android/support)
 eg:
 LOCAL_STATIC_LIBRARIES := cclua_static
 # add iconv support
@@ -1698,7 +1700,10 @@ LOCAL_WHOLE_STATIC_LIBRARIES += android_support
 # _COCOS_LIB_ANDROID_END
 include $(BUILD_SHARED_LIBRARY)
 $(call import-module, cocos/scripting/lua-bindings/proj.android)
+#add iconv support
+$(call import-module, android/support)
 
+123. 
 
 
 
