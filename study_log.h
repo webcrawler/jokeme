@@ -1689,7 +1689,8 @@ android {
     ...
 }
 
-122. android 添加 iconv 支持：(NDKr15之后ndk去除了iconv的支持，只能自己下载源码编译使用)
+122. android 添加 iconv 支持：(NDK r15移除了android_support的iconv功能android_support库在${NDK}/sources/android/support目录，
+相比NDK r14b，NDK r15b删掉了src/musl-locale整个目录。只能自己下载源码编译使用http://ftp.gnu.org/pub/gnu/libiconv/)
 LOCAL_WHOLE_STATIC_LIBRARIES += android_support
 $(call import-module, android/support)
 eg:
@@ -1703,7 +1704,7 @@ $(call import-module, cocos/scripting/lua-bindings/proj.android)
 #add iconv support
 $(call import-module, android/support)
 
-123. 
+123. eclipse工程 import其他依赖工程后 在工程右键properties->android下添加要依赖的工程。
 
 
 
