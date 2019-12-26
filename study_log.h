@@ -1705,6 +1705,10 @@ $(call import-module, cocos/scripting/lua-bindings/proj.android)
 $(call import-module, android/support)
 
 123. eclipse工程 import其他依赖工程后 在工程右键properties->android下添加要依赖的工程。
+124. flashxp ftp命令上传资源
+cd D:\FlashFXP
+D:
+flashfxp.exe -upload ftp://账号:密码@10.10.10.0:21 -localpath="E:\work\Projects\joke\"  -remotepath="\"
 
 
 
