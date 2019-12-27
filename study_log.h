@@ -1710,7 +1710,8 @@ cd D:\FlashFXP
 D:
 flashfxp.exe -upload ftp://账号:密码@10.10.10.0:21 -localpath="E:\work\Projects\joke\"  -remotepath="\"
 
-
+125. lua string.format 会四舍五入。eg：string.format("%0.2f", 10.236) == 10.24。
+不需要四舍五入则可以这样：保留2位小数local myNum = num - num % 0.01。保留3位小数local myNum = num - num % 0.001。
 
 
 
