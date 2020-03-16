@@ -6,7 +6,7 @@
  	[MyClass] （改）
 	prefix           = MyClass
 	target_namespace = MyNameSpace
-	headers          = %(cocosdir)s/../runtime-src/Classes/MyClass.h
+	headers          = %(cocosdir)s/../runtime-src/Classes/MyClass.h 
 	classes          = MyClass
  修改genbindings.py
   cmd_args 加 'MyClass.ini' : ('MyClass', 'lua_MyClass_auto'), \ 把其他注释了
@@ -1712,6 +1712,11 @@ flashfxp.exe -upload ftp://账号:密码@10.10.10.0:21 -localpath="E:\work\Proje
 
 125. lua string.format 会四舍五入。eg：string.format("%0.2f", 10.236) == 10.24。
 不需要四舍五入则可以这样：保留2位小数local myNum = num - num % 0.01。保留3位小数local myNum = num - num % 0.001。
+
+126. 批处理bat 传递接收参数
+传递: call copy_res.bat 123654
+接收(%0~%9)：echo %1 %2 %3
+
 
 
 
