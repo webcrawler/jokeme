@@ -1717,7 +1717,11 @@ flashfxp.exe -upload ftp://账号:密码@10.10.10.0:21 -localpath="E:\work\Proje
 传递: call copy_res.bat 123654
 接收(%0~%9)：echo %1 %2 %3
 
+127. bat处理输出中文乱码
+REM 声明采用UTF-8编码
+chcp 65001
 
+128.
 
 
 
