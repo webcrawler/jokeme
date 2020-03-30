@@ -1721,7 +1721,9 @@ flashfxp.exe -upload ftp://账号:密码@10.10.10.0:21 -localpath="E:\work\Proje
 REM 声明采用UTF-8编码
 chcp 65001
 
-128.
+128. android studio工程下 build.gradle打印 println '你好' 输出在左下角build->toggle view下查看
+
+
 
 
 
