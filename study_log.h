@@ -1723,6 +1723,15 @@ chcp 65001
 
 128. android studio工程下 build.gradle打印 println '你好' 输出在左下角build->toggle view下查看 (run也可以查看)
 
+129. cocos2dx3.17.2 使用ndk-build, android studio版本3.4.1, gradle plugin版本3.1.0, gradle版本4.6 ndk-r16b.
+使用cmake编译, 报错：CMake Error: CMake was unable to find a build program corresponding to "Ninja". 
+CMAKE_MAKE_PROGRAM is not set. You probably need to select a different build tool 
+修改 gradle plugin版本3.2.0 可以编译成功, 但是android assets资源没有拷贝进去。
+
+解决：gradle plugin版本3.1.0 不变。在sdk manager -> sdk tool去掉cmake3.10.2.49884.4 保留cmake3.6.4111459
+编译成功, assets资源也成功拷贝进去。
+
+130. 
 
 
 
