@@ -1735,9 +1735,16 @@ CMAKE_MAKE_PROGRAM is not set. You probably need to select a different build too
 eg:
 if(ANDROID)
 	...
+	...
 	# fjut add
-	list(APPEND GAME_HEADER ${RUNTIME_SRC_ROOT}/Classes/HelloWorldScene.h)
-    list(APPEND GAME_SOURCE ${RUNTIME_SRC_ROOT}/Classes/HelloWorldScene.cpp)
+	list(APPEND GAME_HEADER 
+		${RUNTIME_SRC_ROOT}/Classes/HelloWorldScene.h
+		${RUNTIME_SRC_ROOT}/Classes/joke.h
+	)
+    list(APPEND GAME_SOURCE 
+		${RUNTIME_SRC_ROOT}/Classes/HelloWorldScene.cpp
+		${RUNTIME_SRC_ROOT}/Classes/joke.cpp
+	)
 	
 131. 
 
