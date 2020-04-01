@@ -1731,7 +1731,15 @@ CMAKE_MAKE_PROGRAM is not set. You probably need to select a different build too
 解决：gradle plugin版本3.1.0 不变。在sdk manager -> sdk tool去掉cmake3.10.2.49884.4 保留cmake3.6.4111459
 编译成功, assets资源也成功拷贝进去。
 
-130. 
+130. android native编译方式为cmake, 添加新.h .cpp, 在工程CMakeLists.txt里 GAME_HEADER和GAME_SOURCE添加新加的.h和.cpp文件。
+eg:
+if(ANDROID)
+	...
+	# fjut add
+	list(APPEND GAME_HEADER ${RUNTIME_SRC_ROOT}/Classes/HelloWorldScene.h)
+    list(APPEND GAME_SOURCE ${RUNTIME_SRC_ROOT}/Classes/HelloWorldScene.cpp)
+	
+131. 
 
 
 
