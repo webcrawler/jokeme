@@ -1746,7 +1746,7 @@ if(ANDROID)
 		${RUNTIME_SRC_ROOT}/Classes/joke.cpp
 	)
 	
-131. 
+131. android 关闭多点触控。在appActivity.java  onCreate() 方法后面加 this.getGLSurfaceView().setMultipleTouchEnabled(false)
 
 
 
