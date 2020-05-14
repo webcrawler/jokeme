@@ -1748,7 +1748,11 @@ if(ANDROID)
 	
 131. android 关闭多点触控。在appActivity.java  onCreate() 方法后面加 this.getGLSurfaceView().setMultipleTouchEnabled(false)
 
+132. git包含子项目 git submodule add   
+如果还要初始化、抓取并检出任何嵌套的子模块，请使用简明的 git submodule update --init --recursive
+https://git-scm.com/book/zh/v2/Git-%E5%B7%A5%E5%85%B7-%E5%AD%90%E6%A8%A1%E5%9D%97
 
+133. 
 
 
 
