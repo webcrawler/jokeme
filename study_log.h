@@ -1752,7 +1752,22 @@ if(ANDROID)
 如果还要初始化、抓取并检出任何嵌套的子模块，请使用简明的 git submodule update --init --recursive
 https://git-scm.com/book/zh/v2/Git-%E5%B7%A5%E5%85%B7-%E5%AD%90%E6%A8%A1%E5%9D%97
 
-133. 
+133. win32 改变控制台输出文字颜色:
+static int lua_consoleColor(lua_State* L)
+{
+	WORD color = (WORD)luaL_checknumber(L, -1);
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
+	return 0;
+}
+
+static int lua_consoleColorReset(lua_State* L)
+{
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
+	return 0;
+}
+
+134. 
+
 
 
 
