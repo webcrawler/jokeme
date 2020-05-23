@@ -1766,7 +1766,14 @@ static int lua_consoleColorReset(lua_State* L)
 	return 0;
 }
 
-134. 
+134. lua os.clock() 调用c函数，在不同平台有着不同的定义，有溢出问题，有可能会返回负数。
+用luasocket 或者 c函数gettimeofday 替代：
+local socket = require("socket")
+local start = socket.gettime()
+
+135. 
+
+
 
 
 
