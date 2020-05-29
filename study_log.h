@@ -1771,7 +1771,10 @@ static int lua_consoleColorReset(lua_State* L)
 local socket = require("socket")
 local start = socket.gettime()
 
-135. 
+135. 我们都知道TCP是一个基于字节流的网络传输协议，它并不关注数据的机构。
+而我们所说的粘包/半包指的是接收的消息结构与期望不符，
+既然TCP并不关注消息的结构自然也就不保证消息按结构交付了， 但是TCP会保证数据可靠，顺序的交付。
+粘包/半包指的是应用层对接收到的不符合期望的消息结构的一种描述， 而这个问题本身就该应用层来处理。
 
 
 
