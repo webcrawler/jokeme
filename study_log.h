@@ -1775,6 +1775,9 @@ local start = socket.gettime()
 而我们所说的粘包/半包指的是接收的消息结构与期望不符，
 既然TCP并不关注消息的结构自然也就不保证消息按结构交付了， 但是TCP会保证数据可靠，顺序的交付。
 粘包/半包指的是应用层对接收到的不符合期望的消息结构的一种描述， 而这个问题本身就该应用层来处理。
+https://blog.cc1234.cc/articles/file-descriptor/file-descriptor.html
+
+136. 
 
 
 
