@@ -1802,6 +1802,14 @@ https://blog.csdn.net/xiaoshengqdlg/article/details/44676387
 　　咳......说英语的人终于变“聪明”一些了。为了把全世界人民所有的所有的文字符号都统一进行编码，于是制定了UNICODE标准字符集。UNICODE 使用2个字节表示一个字符(unsigned shor int、WCHAR、_wchar_t、OLECHAR)。这下终于好啦，全世界任何一个地区的软件，可以不用修改地就能在另一个地区运行了。虽然我用 IE 浏览日本网站，显示出我不认识的日文文字，但至少不会是乱码了。UNICODE 的范围是 0x0000 - 0xFFFF 共6万多个字符，其中光汉字就占用了4万多个。嘿嘿，中国人赚大发了:0)
 
 
+137. 安装pip:
+下载pip压缩包 https://pypi.org/project/pip/#files 
+解压cmd进入目录 执行：python setup.py install
+环境变量添加：C:\Pythonxx\Scripts
+pip install + 要安装的项目
+eg: pip install requests
+
+138. 
 
 
 
