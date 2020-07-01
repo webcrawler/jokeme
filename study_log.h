@@ -1809,9 +1809,12 @@ https://blog.csdn.net/xiaoshengqdlg/article/details/44676387
 pip install + 要安装的项目
 eg: pip install requests
 
-138. 
+138. 执行python 错误:SyntaxError: Non-ASCII character '\xe4' 
+#/usr/bin/python
+#encoding=utf-8
+写在最开头顶端，前面不能有换行
 
-
+139. 
 
 
 
