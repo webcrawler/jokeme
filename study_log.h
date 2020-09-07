@@ -1814,7 +1814,7 @@ eg: pip install requests
 #encoding=utf-8
 写在最开头顶端，前面不能有换行
 
-139. 
+139. bat: call a.exe 执行调用a.exe后不会自动关闭cmd窗口。start a.exe 执行后会自动关闭cmd窗口。
 
 
 
