@@ -1822,7 +1822,9 @@ char buffer[MAX_PATH];
 _getcwd(buffer, MAX_PATH);
 std::string workDir = buffer;
 
-141.
+141.cocos2dx 给exe指定工作目录，执行bat：start game.exe -workdir %~dp0../../game
+
+142. 
 
 
 
