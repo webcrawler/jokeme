@@ -1824,7 +1824,10 @@ std::string workDir = buffer;
 
 141.cocos2dx 给exe指定工作目录，执行bat：start game.exe -workdir %~dp0../../game
 
-142. 
+142. typeid是C++的关键字之一，等同于sizeof这类的操作符。typeid操作符的返回结果是名为type_info的标准库类型的对象的引用
+printf("%s\n", typeid(HelloWorld).name()); // "class HelloWorld"
+printf("%s\n", typeid(int).name()); // "int"
+printf("%s\n", typeid(cocos2d::Node).name()); // "class cocos2d::Node"
 
 
 
