@@ -1829,6 +1829,159 @@ printf("%s\n", typeid(HelloWorld).name()); // "class HelloWorld"
 printf("%s\n", typeid(int).name()); // "int"
 printf("%s\n", typeid(cocos2d::Node).name()); // "class cocos2d::Node"
 
+143. cpp绑定到lua 手动绑定(参考引擎做法)：
+MyLuaBindingTest.h:
+	#ifndef _MY_LUA_BINDING_TEST_H_
+	#define _MY_LUA_BINDING_TEST_H_
+
+	#ifdef __cplusplus
+	extern "C"
+	{
+	#endif
+	#include "tolua++.h"
+	#ifdef __cplusplus
+	}
+	#endif
+
+	extern int reg_lua_binding_test1(lua_State* L);
+	extern int reg_lua_binding_test2(lua_State* L);
+	extern int reg_lua_binding_test3(lua_State* L);
+
+	#endif
+	
+MyLuaBindingTest.cpp:
+	#include "MyLuaBindingTest.h"
+
+	#ifdef __cplusplus
+	extern "C"
+	{
+	#endif
+	#include "scripting/lua-bindings/manual/tolua_fix.h"
+	#ifdef __cplusplus
+	}
+	#endif
+
+	#include "cocos2d.h"
+	#include "extensions/cocos-ext.h"
+	#include "scripting/lua-bindings/manual/LuaBasicConversions.h"
+	#include "HelloWorldScene.h"
+
+	#if (CC_TARGET_PLATFORM != CC_PLATFORM_WIN32)
+	#include <dirent.h>
+	#include <sys/stat.h>
+	#endif
+
+	USING_NS_CC;
+	USING_NS_CC_EXT;
+
+	static int lua_cocos2dx_test1(lua_State* L)
+	{
+		if (L == nullptr) return 0;
+
+		int argc = lua_gettop(L);
+		if (argc != 0)
+		{
+			CCLOG("'createDownloadDir' function wrong number of arguments: %d, was expecting %d\n", argc, 0);
+			return 0;
+		}
+
+		std::string pathToSave = FileUtils::getInstance()->getWritablePath();
+		pathToSave = pathToSave + "tmpDir";
+
+		// create dir
+	#if (CC_TARGET_PLATFORM != CC_PLATFORM_WIN32)
+		DIR *pDir = NULL;
+		pDir = opendir(pathToSave.c_str());
+		if (!pDir)
+		{
+			mkdir(pathToSave.c_str(), S_IRWXU | S_IRWXG | S_IRWXO);
+		}
+	#else
+		if ((GetFileAttributesA(pathToSave.c_str())) == INVALID_FILE_ATTRIBUTES)
+		{
+			CreateDirectoryA(pathToSave.c_str(), 0);
+		}
+	#endif
+
+		tolua_pushstring(L, pathToSave.c_str());
+		return 1;
+	}
+
+	static int lua_cocos2dx_test2(lua_State* L)
+	{
+		unsigned int i = 123654;
+		//lua_pushnumber(L, i); 
+		tolua_pushnumber(L, i);
+		return 1;
+	}
+
+	static int lua_cocos2dx_test3(lua_State* L)
+	{
+		unsigned int i = 123654789;
+		//lua_pushnumber(L, i); 
+		tolua_pushnumber(L, i);
+
+		// test
+		printf("%s\n", typeid(HelloWorld).name()); // "class HelloWorld"
+		printf("%s\n", typeid(int).name()); // "int"
+		printf("%s\n", typeid(cocos2d::Node).name()); // "class cocos2d::Node"
+
+		return 1;
+	}
+
+	// lua调用
+	// lua_cocos2dx_test1()
+	int reg_lua_binding_test1(lua_State* L)
+	{
+		tolua_open(L);
+		tolua_module(L, NULL, 0);
+		tolua_beginmodule(L, NULL);
+		tolua_function(L, "lua_cocos2dx_test1", lua_cocos2dx_test1);
+		tolua_endmodule(L);
+		return 0;
+	}
+
+	// lua调用
+	// local jokei2 = cc.JokeClass:new()
+	// print("lua_cocos2dx_test3 = "..jokei2)
+	int reg_lua_binding_test2(lua_State* L)
+	{
+		lua_register(L, "lua_cocos2dx_test2", lua_cocos2dx_test2);
+		return 0;
+	}
+
+	// lua调用
+	// local jokei2 = cc.JokeClass:new()
+	// print("lua_cocos2dx_test3 = "..jokei2)
+	int reg_lua_binding_test3(lua_State* L)
+	{
+		lua_getglobal(L, "_G");
+		if (lua_istable(L, -1))//stack:...,_G,
+		{
+			tolua_open(L);
+			tolua_module(L, "cc", 0);
+			tolua_beginmodule(L, "cc");
+
+			tolua_usertype(L, "cc.JokeClass");
+			tolua_cclass(L, "JokeClass", "cc.JokeClass", "cc.Ref", nullptr);
+
+			tolua_beginmodule(L, "JokeClass");
+			tolua_function(L, "new", lua_cocos2dx_test3);
+			tolua_endmodule(L);
+
+			std::string typeName = "HelloWorldScene"; // typeid(cocos2d::HelloWorldScene).name();
+			g_luaType[typeName] = "cc.JokeClass";
+			g_typeCast["JokeClass"] = "cc.JokeClass";
+
+			tolua_endmodule(L);
+		}
+		lua_pop(L, 1);
+
+		return 0;
+	}
+
+
+
 
 
 
