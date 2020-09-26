@@ -1980,6 +1980,11 @@ MyLuaBindingTest.cpp:
 		return 0;
 	}
 
+144. 限速软件 NetLimiter 注册码:
+Registration Name: Vladimir Putin #2
+Registration Code: XLEVD-PNASB-6A3BD-Z72GJ-SPAH7
+
+145. 
 
 
 
