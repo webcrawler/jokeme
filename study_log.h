@@ -2002,7 +2002,9 @@ https://gameinstitute.qq.com/community/detail/104156
 帧同步既然是在特定时间发送，也就是说每隔一段时间收集用户操作指令，那么要间隔多久内。例如每隔一段时间搜索用户的操作。
 此时，如果时间太快则网络速率达不到要求，如果时间太长则用户操作不流程。那多少才比较合适呢？根据统计玩家至少要在50ms—100ms可以完成一次。
 
-146. c++ 位域 https://docs.microsoft.com/zh-cn/cpp/cpp/cpp-bit-fields?view=vs-2019
+146. c++ 位域 
+https://docs.microsoft.com/zh-cn/cpp/cpp/cpp-bit-fields?view=vs-2019
+http://www.yuan-ji.me/C-C-%E4%BD%8D%E5%9F%9F-Bit-fields-%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/
 
 
 
