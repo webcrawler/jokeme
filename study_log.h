@@ -2024,7 +2024,21 @@ struct joke
 }
 int size = sizeof(joke); // 1个int = 4byte
 
+147. yasio 搭建测试 https://docs.yasio.org/zh_CN/latest/
+bulid.bat:
 
+cd %~dp0
+E:
+
+git clone https://github.com/yasio/yasio
+cd yasio
+git submodule update --init --recursive
+
+cd build
+cmake ..
+cmake --build . --config Debug
+
+148. 
 
 
 
