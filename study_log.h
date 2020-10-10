@@ -2006,7 +2006,23 @@ https://gameinstitute.qq.com/community/detail/104156
 https://docs.microsoft.com/zh-cn/cpp/cpp/cpp-bit-fields?view=vs-2019
 http://www.yuan-ji.me/C-C-%E4%BD%8D%E5%9F%9F-Bit-fields-%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/
 
+struct joke
+{
+	unsigned int a : 30;
+	unsigned int  : 0;	// 跳过int在下个类型排
+	unsigned int b : 2; // 第二个int开始
+	unsigned int c : 31; // 一个int排不下，差1个bits 继续占下一个int的位置
+};
+int size = sizeof(joke); // 3个int = 12byte
 
+struct joke
+{
+	unsigned int ready : 2;
+	unsigned int error : 2;
+	unsigned int command : 4;
+	unsigned int sector_no : 24;  // 总共占1个int 32bits
+}
+int size = sizeof(joke); // 1个int = 4byte
 
 
 
