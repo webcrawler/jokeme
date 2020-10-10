@@ -1984,7 +1984,25 @@ MyLuaBindingTest.cpp:
 Registration Name: Vladimir Putin #2
 Registration Code: XLEVD-PNASB-6A3BD-Z72GJ-SPAH7
 
-145. 
+145. 帧同步
+https://www.jianshu.com/p/8cca5458c45b
+https://blog.csdn.net/jxw167/article/details/71602447
+https://blog.csdn.net/weixin_43405546/article/details/92428696
+https://blog.csdn.net/FlyToCloud/article/details/104650408
+https://gameinstitute.qq.com/community/detail/104156
+
+帧同步模型最大的缺点是对所有玩家的延迟都有要求，一般来说要求在50毫秒以内，如果有一个客户端网络卡住了，所有客户端都要停下来等待。
+另外在帧同步模式中，数据同步的频率较高，网络延迟越小越好。由于TCP的滑动窗口机制和重传机制，导致延时机制，导致延时无法控制。
+因此帧同步一般采用UDP进行网络传输，但UDP又会衍生出可靠性问题，对于客户端，如果某些UDP包没有收到，就会出现丢帧的情况。
+
+客户端A的操作A1与客户端B的操作B1，共同封装成OperateCmd数据发送给PVP服务器，PVP服务器每66毫秒产生一个逻辑祯，在该桢所在时间段内，
+收到A1和B1后，生成一个Frame数据块，在该帧时间结束时，将Frame发送给客户端A和B。Frame数据块内有该帧的帧号，客户端A和B接收到Frame数据后，
+便知道该帧内，客户端A和客户端B都做了什么操作。然后根据接收到的消息A1和B1进行游戏表现，最终呈现给玩家A和B的结果是一致性的，从而实现客户端A和B的数据同步。
+
+帧同步既然是在特定时间发送，也就是说每隔一段时间收集用户操作指令，那么要间隔多久内。例如每隔一段时间搜索用户的操作。
+此时，如果时间太快则网络速率达不到要求，如果时间太长则用户操作不流程。那多少才比较合适呢？根据统计玩家至少要在50ms—100ms可以完成一次。
+
+
 
 
 
