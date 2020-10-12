@@ -2038,7 +2038,9 @@ cd build
 cmake ..
 cmake --build . --config Debug
 
-148. 
+148. Sol2实现cpp和lua绑定
+https://github.com/ThePhD/sol2
+https://hulinhong.com/2018/06/20/lua_cpp_sol2/
 
 
 
