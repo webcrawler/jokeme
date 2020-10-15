@@ -2042,10 +2042,20 @@ cmake --build . --config Debug
 https://github.com/ThePhD/sol2
 https://hulinhong.com/2018/06/20/lua_cpp_sol2/
 
+149. winsock初始化失败 sock = socket(af, type, protocol);返回INVALID_SOCKET
+解决：为了在应用程序当中调用任何一个Winsock API函数，首先第一件事情就是必须通过WSAStartup函数
+完成对Winsock服务的初始化，因此需要调用WSAStartup函数。使用Socket的程序在使用Socket之前必须调用WSAStartup函数。
+	// 初始化WSA
+	WORD sockVersion = MAKEWORD(2, 2);
+	WSADATA wsaData;
+	if (WSAStartup(sockVersion, &wsaData) != 0)
+	{
+		return 0;
+	}
+	// 再调用::socket()
+	sock = socket(af, type, protocol);
 
-
-
-
+150.
 
 
 
