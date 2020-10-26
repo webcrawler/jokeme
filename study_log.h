@@ -2067,7 +2067,100 @@ https://hulinhong.com/2018/06/20/lua_cpp_sol2/
 
 150. androidstudio 使用iconv转码找不到iconv 则ndk使用r14b
 
+151. add tmp:
+// add by joke 
+void yasioClientTest()
+{
+	//io_service service({ "www.ip138.com", 80 });
 
+	// test.yasio.org  5001
+	//  "47.115.77.205"  6801
+	//io_service service({"test.yasio.org", 5001});
+
+	//io_service service({"47.115.77.205", 6801});
+
+	io_service service({"10.10.10.3", 8077});
+
+	//service->set_option(YOPT_C_LFBFD_PARAMS,
+	//	0,     // channelIndex, 信道索引
+	//	65535, // maxFrameLength, 最大包长度
+	//	0,     // lenghtFieldOffset, 长度字段偏移，相对于包起始字节
+	//	4, // lengthFieldLength, 长度字段大小，支持1字节，2字节，3字节，4字节
+	//	0 // lengthAdjustment：如果长度字段字节大小包含包头，则为0， 否则，这里=包头大小
+	//);
+
+	service.set_option(YOPT_S_DEFERRED_EVENT, 0, 65535, 0, 1, 0); // 直接在网络线程分派网络事件
+	//service.set_option(YOPT_S_DEFERRED_EVENT, 0); // 直接在网络线程分派网络事件
+
+	//resolv_fn_t resolv = [&](std::vector<ip::endpoint>& endpoints, const char* hostname, unsigned short port)
+	//{
+	//	int par = service.resolve(endpoints, hostname, port);
+	//	return par;
+	//};
+	//service.set_option(YOPT_S_RESOLV_FN, &resolv);
+
+	service.start([&](event_ptr&& ev) {
+		switch (ev->kind())
+		{
+		case YEK_PACKET: {
+			// ev->packet() 返回全包数据
+			auto packet = std::move(ev->packet());
+			auto tmpData = packet.data();
+
+			// add by joke
+			auto p0 = *tmpData;
+			auto p1 = *(++tmpData);
+			auto p2 = *(++tmpData);
+
+			tmpData--;
+			tmpData--;
+			fwrite(tmpData, packet.size(), 1, stdout);
+			fflush(stdout);
+			break;
+		}
+		case YEK_CONNECT_RESPONSE:
+			if (ev->status() == 0)
+			{
+				auto transport = ev->transport();
+				if (ev->cindex() == 0)
+				{
+					obstream obs;
+
+					// add by joke
+					obs.write_bytes("123");
+
+
+					//obs.write_bytes("GET /index.htm HTTP/1.1\r\n");
+
+					//obs.write_bytes("Host: www.ip138.com\r\n");
+
+					//obs.write_bytes("User-Agent: Mozilla/5.0 (Windows NT 10.0; "
+					//	"WOW64) AppleWebKit/537.36 (KHTML, like Gecko) "
+					//	"Chrome/79.0.3945.117 Safari/537.36\r\n");
+					//obs.write_bytes("Accept: */*;q=0.8\r\n");
+					//obs.write_bytes("Connection: Close\r\n\r\n");
+
+					service.write(transport, std::move(obs.buffer()));
+					int tmp = 0;
+				}
+			}
+			break;
+		case YEK_CONNECTION_LOST:
+			printf("The connection is lost.\n");
+			break;
+		}
+	});
+	// open channel 0 as tcp client
+	service.open(0, YCK_TCP_CLIENT);
+	getchar();
+	
+	// joke add
+	service.stop();
+
+	getchar();
+	getchar();
+	getchar();
+}
 
 
 
