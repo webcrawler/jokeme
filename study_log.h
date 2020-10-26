@@ -2065,7 +2065,7 @@ https://hulinhong.com/2018/06/20/lua_cpp_sol2/
 	// 再调用::socket()
 	sock = socket(af, type, protocol);
 
-150.
+150. androidstudio 使用iconv转码找不到iconv 则ndk使用r14b
 
 
 
