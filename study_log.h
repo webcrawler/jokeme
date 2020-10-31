@@ -2166,6 +2166,9 @@ void yasioClientTest()
 Exception in thread "main" java.lang.RuntimeException: java.util.zip.ZipException: error in opening zip file
 删除gradle zip包,重来， 使用镜像地址重新下载
 
+153. "objs-debug/editor_support_static/__/scripting/js-bindings/auto/jsb_cocos2dx_editor_support_auto.o.d': No such file or directory"
+路径太长问题。ndk改用r17 即可。
+
 
 
 
