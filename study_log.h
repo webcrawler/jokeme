@@ -2169,6 +2169,8 @@ Exception in thread "main" java.lang.RuntimeException: java.util.zip.ZipExceptio
 153. "objs-debug/editor_support_static/__/scripting/js-bindings/auto/jsb_cocos2dx_editor_support_auto.o.d': No such file or directory"
 路径太长问题。ndk改用r17 即可。
 
+154. cocos creator2.1.1, gradel4.10.3, gradle插件3.2.0, ndkr17c 打包成功。打包没有res src一般是gradle插件版本升级导致拷贝资源失败。
+
 
 
 
