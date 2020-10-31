@@ -2162,6 +2162,9 @@ void yasioClientTest()
 	getchar();
 }
 
+152. creator 编译android工程，下载的gradle插件zip包错误了 导致解压失败：
+Exception in thread "main" java.lang.RuntimeException: java.util.zip.ZipException: error in opening zip file
+删除gradle zip包,重来， 使用镜像地址重新下载
 
 
 
