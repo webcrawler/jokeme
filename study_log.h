@@ -2171,7 +2171,7 @@ Exception in thread "main" java.lang.RuntimeException: java.util.zip.ZipExceptio
 
 154. cocos creator2.1.1, gradel4.10.3, gradle插件3.2.0, ndkr17c 打包成功。打包没有res src一般是gradle插件版本升级导致拷贝资源失败。
 
-
+155. cocos creator调试android, chrome打开连接不上：{IP} 为 Android设备的本地IP，{}也要替换，192.168.0.100:6086 哎没注意折腾好久。
 
 
 
