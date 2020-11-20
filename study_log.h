@@ -2173,6 +2173,23 @@ Exception in thread "main" java.lang.RuntimeException: java.util.zip.ZipExceptio
 
 155. cocos creator调试android, chrome打开连接不上：{IP} 为 Android设备的本地IP，{}也要替换，192.168.0.100:6086 哎没注意折腾好久。
 
+156. babelua调试cocos2dlua项目, 断点部分目录无效.
+解决: 修改Cocos2dxLuaLoader.cpp, 把luaL_loadbuffer改luaL_loadfile。
+主要代码:
+//LuaStack* stack = LuaEngine::getInstance()->getLuaStack();
+//stack->luaLoadBuffer(L, reinterpret_cast<const char*>(chunk.getBytes()),
+//                     static_cast<int>(chunk.getSize()), chunkName.c_str());
+
+// 改为 ========>>
+// add by fjut on 2020.11.19
+// 原本代码是直接把lua文件读取出buffer,再调用luaL_loadbuffer,这样没法再文件断点. 
+// 改为直接加载文件luaL_loadfile,这样就可以从文件断点.
+// xxtea解密过程就不能使用了.
+chunkName = utils->fullPathForFilename(chunkName);
+luaL_loadfile(L, chunkName.c_str());
+//CCLOG("luaL_loadfile: %s\n", chunkName.c_str());
+
+157. 
 
 
 
