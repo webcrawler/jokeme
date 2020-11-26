@@ -2189,7 +2189,9 @@ chunkName = utils->fullPathForFilename(chunkName);
 luaL_loadfile(L, chunkName.c_str());
 //CCLOG("luaL_loadfile: %s\n", chunkName.c_str());
 
-157. 
+157. vs断点数值型显示十六进制改为显示十进制：在watch或者locals窗口选中一个变量右键选择 "hexadecimal display"(显示16进制)
+
+
 
 
 
