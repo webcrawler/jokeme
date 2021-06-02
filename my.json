@@ -1,0 +1,8 @@
+{
+   "Res": "http://c-richgd.fhyzhw.com/dzgCnPack/res/dzgCnPack/reslist.json"
+  ,"Act": "http://c-richgd.fhyzhw.com/dzgCnPack/res/dzgCnPack_act/act%s/reslist.json"
+  ,"Ser": "http://richgdcsf2.hnyoulu.com/serverlist.php"
+  ,"isTestPay": "1"
+  ,"timeZone": 8
+  ,"printDebug": "1"
+}
