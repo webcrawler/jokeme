@@ -2013,6 +2013,8 @@ https://gameinstitute.qq.com/community/detail/104156
 此时，如果时间太快则网络速率达不到要求，如果时间太长则用户操作不流程。那多少才比较合适呢？根据统计玩家至少要在50ms—100ms可以完成一次。
 
 146. c++ 位域 
+https://www.runoob.com/cprogramming/c-bit-fields.html
+http://c.biancheng.net/cpp/html/102.html
 https://docs.microsoft.com/zh-cn/cpp/cpp/cpp-bit-fields?view=vs-2019
 http://www.yuan-ji.me/C-C-%E4%BD%8D%E5%9F%9F-Bit-fields-%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/
 
@@ -2191,7 +2193,7 @@ luaL_loadfile(L, chunkName.c_str());
 
 157. vs断点数值型显示十六进制改为显示十进制：在watch或者locals窗口选中一个变量右键选择 "hexadecimal display"(显示16进制)
 
-
+158. 本地搭建web服。逍遥模拟器内部访问http://10.0.2.2:port/xxx
 
 
 
