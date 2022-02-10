@@ -2197,7 +2197,7 @@ luaL_loadfile(L, chunkName.c_str());
 
 159. python2.7 安装后C:\Python27\下没有Scripts。直接安装python2.7.14即可解决此问题。
 C:\Python27\加入环境变量path。C:\Python27\Scripts也加入,方便使用pip。安装pip: easy_install pip.
-使用pip安装包: pip inatall xxx. eg：pip inatall shutil
+使用pip安装包: pip inatall xxx. eg：pip inatall shutil. pip install Pillow
 
 
 
