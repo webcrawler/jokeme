@@ -2199,7 +2199,17 @@ luaL_loadfile(L, chunkName.c_str());
 C:\Python27\加入环境变量path。C:\Python27\Scripts也加入,方便使用pip。安装pip: easy_install pip.
 使用pip安装包: pip inatall xxx. eg：pip inatall shutil. pip install Pillow
 
+160. Android studio,Gradle打包，将so库放在libs\{abi}\下。eg: proj.android-studio\app\libs\armeabi\joke.so
+对应的工程build.gradle里sourceSets.main 指定jniLibs目录为libs。eg:
+sourceSets.main {
+	java.srcDir "src"
+	res.srcDir "res"
+	jniLibs.srcDir "libs"
+	manifest.srcFile "AndroidManifest.xml"
+	assets.srcDir "assets"
+}
 
+161. 
 
 
 
