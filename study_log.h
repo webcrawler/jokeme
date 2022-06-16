@@ -2209,7 +2209,12 @@ sourceSets.main {
 	assets.srcDir "assets"
 }
 
-161. 
+161. github使用 "personal access token" 登录操作：
+在个人信息setting->Developer setting->personal access token->Generate new token->选择失效时间,选中repo。
+使用eg: https://"token"@github.com/webcrawler/jokeme.git
+
+162. 
+
 
 
 
