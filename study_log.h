@@ -2213,7 +2213,7 @@ sourceSets.main {
 在个人信息setting->Developer setting->personal access token->Generate new token->选择失效时间,选中repo。
 使用eg: https://"token"@github.com/webcrawler/jokeme.git
 
-162. 
+162. android studio gradle打包位置：view->tool windows->gradle，在面板选择proj.android-studio->tasks->other->assembleRelease.
 
 
 
