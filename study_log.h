@@ -2215,7 +2215,18 @@ sourceSets.main {
 
 162. android studio gradle打包位置：view->tool windows->gradle，在面板选择proj.android-studio->tasks->other->assembleRelease.
 
+163. bat if else：
 
+set param=%1
+cd %~dp0
+
+if "%param%" == "works" (set workDirSrc=%~dp0..\works)^
+else if "%param%" == "works2" (set workDirSrc=%~dp0..\works1)^
+else if "%param%" == "works3" (set workDirSrc=%~dp0..\works2)^
+else if "%param%" == "works4" (set workDirSrc=%~dp0..\works3)
+
+start %workDirSrc%
+exit
 
 
 
