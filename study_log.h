@@ -2228,6 +2228,8 @@ else if "%param%" == "works4" (set workDirSrc=%~dp0..\works3)
 start %workDirSrc%
 exit
 
+164. pip安装包 使用国内镜像
+pip install xxxxx -i http://pypi.douban.com/simple/ --trusted-host pypi.douban.com
 
 
 
