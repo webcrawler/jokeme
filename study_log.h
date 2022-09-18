@@ -2231,6 +2231,7 @@ exit
 164. pip安装包 使用国内镜像
 pip install xxxxx -i http://pypi.douban.com/simple/ --trusted-host pypi.douban.com
 
+165. cmd adb logcat 输出中文乱码。加入chcp 65001 即可
 
 
 
