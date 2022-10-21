@@ -2233,6 +2233,8 @@ pip install xxxxx -i http://pypi.douban.com/simple/ --trusted-host pypi.douban.c
 
 165. cmd adb logcat 输出中文乱码。加入chcp 65001 即可
 
+166. git设置 autocrlf false  safecrlf true  
+
 
 
 
