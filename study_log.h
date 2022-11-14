@@ -2235,7 +2235,7 @@ pip install xxxxx -i http://pypi.douban.com/simple/ --trusted-host pypi.douban.c
 
 166. git设置 autocrlf false  safecrlf true  
 
-
+167. NetLimiter4 注册名: Vladimir Putin #2  注册码: XLEVD-PNASB-6A3BD-Z72GJ-SPAH7
 
 
 
