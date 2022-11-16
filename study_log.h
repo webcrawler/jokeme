@@ -2237,7 +2237,7 @@ pip install xxxxx -i http://pypi.douban.com/simple/ --trusted-host pypi.douban.c
 
 167. NetLimiter4 注册名: Vladimir Putin #2  注册码: XLEVD-PNASB-6A3BD-Z72GJ-SPAH7
 
-
+168. Android Studio gradle build项目时控制台输出中文乱码。解决：找到 studio64.exe.vmoptions 文件,文件末尾加入：-Dfile.encoding=UTF-8
 
 
 
