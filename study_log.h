@@ -2245,7 +2245,19 @@ pip install xxxxx -i http://pypi.douban.com/simple/ --trusted-host pypi.douban.c
 170. adb连接逍遥模拟器:adb connect 127.0.0.1:21523  端口号在program files\Microvirt\MEmu\MemuHyperv VMs\MEmu_xx\MEmu_xx.memu-prev里：
 <Forwarding name="ADB" proto="1" hostip="127.0.0.1" hostport="21523" guestip="10.0.2.15" guestport="5555"/>。hostip和hostport
 
-
+171. android studio app/build.gradle 修改apk名字：
+android {
+    ... ...
+    defaultConfig{
+        ... ...
+        manifestPlaceholders = [k_appName : "哈啰"]   // 设置默认的k_appName
+		...
+}
+对应的AndroidManifest.xml需要对android:label修改为：
+<application
+    android:icon="@mipmap/ic_launcher"
+    android:label="${k_appName}" // 这里取k_appName
+>
 
 
 
