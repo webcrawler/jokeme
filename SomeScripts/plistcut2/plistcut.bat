@@ -6,12 +6,13 @@ echo off
 color 0B
 
 REM 选择要处理的渠道资源
-echo 请输入要拆分的图片路径(eg: c:\test.png)：
+echo 请输入要拆分的图片路径(eg: c:\test)：
 set /p imgName=
 if "%imgName%"=="" (
 	exit
 )
 
-java -jar PlistCut.jar %imgName% plist_dir
+plistcut.py %imgName%
 
 pause
+
