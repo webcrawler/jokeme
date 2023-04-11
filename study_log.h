@@ -2259,7 +2259,10 @@ android {
     android:label="${k_appName}" // 这里取k_appName
 >
 
-
+172. git设置
+[core]
+	autocrlf = true
+	safecrlf = false
 
 
 
