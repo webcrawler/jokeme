@@ -2264,9 +2264,17 @@ android {
 	autocrlf = true
 	safecrlf = false
 
+173. aws创建aws_access_key_id, aws_secret_access_key
+# Python 3.7及以后
+# 安装：boto3
+# pip install boto3 -i http://pypi.douban.com/simple/ --trusted-host pypi.douban.com
 
+# 创建aws_access_key_id, aws_secret_access_key :
+# 进入aws后台 https://us-east-1.console.aws.amazon.com/iamv2/home?region=us-east-1#/home
+# 选择左边菜单栏"用户"=>"安全凭证"=>"创建访问秘钥"=>"命令行界面(CLI)"=>命名并创建成功。查看秘钥。
 
-
+具体使用：
+https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/cloudfront/client/create_invalidation.html
 
 
 
