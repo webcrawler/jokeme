@@ -2273,10 +2273,139 @@ android {
 # 进入aws后台 https://us-east-1.console.aws.amazon.com/iamv2/home?region=us-east-1#/home
 # 选择左边菜单栏"用户"=>"安全凭证"=>"创建访问秘钥"=>"命令行界面(CLI)"=>命名并创建成功。查看秘钥。
 
-具体使用：
+174. aws 刷新cdn(具体见代码):
 https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/cloudfront/client/create_invalidation.html
+import boto3
 
+session = boto3.Session(
+	aws_access_key_id = awsAccessKeyId,
+	aws_secret_access_key = awsSecretAccessKey,
+	region_name = regionName,
+) 
+# 获取cloudfront
+cloudfront = session.client('cloudfront')
+# 创建失效
+createInvalidation(cloudfront, distributionId, quantity = 1, filesPath = ['/*'])
 
+# 创建失效
+def createInvalidation(cloudfront, distributionId, quantity, filesPath):
+    unique_tag = time.strftime('%Y%m%d%H%M%S', time.localtime())
+    try:
+        response = cloudfront.create_invalidation(
+            DistributionId = distributionId,
+            InvalidationBatch = {
+                'Paths': {
+                     'Quantity': quantity,
+                     'Items': filesPath
+                 },
+                'CallerReference': unique_tag
+            }
+        )
+        strResponse = str(response)
+        print("返回结果: %s %s" %(strResponse, "创建成功 \n"))
+    except cloudfront.exceptions.ClientError as e:
+        print(e.response)
+
+175. Call to unavailable function 'system': not available on iOS
+解决：https://blog.csdn.net/linyang24/article/details/78053626 新引擎有解决
+
+176. Xcode11.0版本编译Argument value 10880 is outside the valid range [0, 255]
+解决：https://blog.csdn.net/ZFY11/article/details/101557310 新引擎有解决
+#define BT_SHUFFLE(x,y,z,w) ((w)<<6 | (z)<<4 | (y)<<2 | (x))
+改为
+#define BT_SHUFFLE(x, y, z, w) (((w) << 6 | (z) << 4 | (y) << 2 | (x)) & 0xff)
+
+177. error: Multiple commands produce：
+解决：prjo->Target ->Build Phases->Copy Bundle Resources  删除非法的LICENSE和Info.plist配置
+
+178. xcode开发者账号登录：
+xcode->preferences->accounts->输入账号密码->manage certificates->没有develop certificates就add一个。添加一次即可。
+选中工程target->signing&capabilities->选中automatically manage signing->选择team ->插入真机调试
+
+179. 证书问题 DemoApp is automatically signed, but provisioning profile 2668e28b-cd73-4405-afff-1e5078bd354d been manually specified
+解决：xxapp.xcodeproj显示包内容->文本编辑器打开 project.pbxproj 查找2668e28b-cd73-4405-afff-1e5078bd354d 改成空字符串
+
+180. Unable to prepare for xxx development
+解决：https://github.com/filsv/iOSDeviceSupport
+拷贝对应的手机系统版本到目录：/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/DeviceSupport
+
+181. 打越狱包:
+选择target->Any ios Device(arm64,armv7)->菜单栏Product->Analyze->编译成功后在Produces文件夹下生成app。新建文件夹名Payload把生成的app拖入文件夹，压缩并改名xx.ipa即可
+
+182. 设备管理设置中不允许在此台iPhone上:
+解决：手机->设置->设备管理->信任描述文件
+
+183. git 命令行操作:
+设置账号密码：
+$ git config user.name "qqqq"
+$ git config user.password "123456"
+$ git config user.email "xxx@qq.com"
+
+查看配置：
+git config --list
+
+git pull 失败提示：
+warning: 不建议在没有为偏离分支指定合并策略时执行pull操作。 
+您可以在执行下一次pull操作之前执行下面一条命令来抑制本消息：
+git config pull.rebase false  # 合并（缺省策略）
+git config pull.rebase true   # 变基
+git config pull.ff only       # 仅快进
+
+您可以将 "git config" 替换为 "git config --global" 以便为所有仓库设置
+缺省的配置项。您也可以在每次执行 pull 命令时添加 --rebase、--no-rebase，
+或者 --ff-only 参数覆盖缺省设置。
+
+首先理解什么是偏离分支：
+当本地的分支落后于远程分支时，本地分支又自行修改项目文件生成了新的提交，这时本地分支再执行git pull命令就不能快进合并，并且还容易发生冲突。这时的本地分支便称为偏离分支，因为这时的本地分支的最新提交跟远程分支的最新提交不同，产生了偏离。
+接着理解什么是合并策略：
+合并策略便是 git merge --ff-only、git merge --no-ff、git merge --rebase这三种常见的合并策略，分别代表着快进合并、非快进普通合并、变基合并。
+而我们执行不带任何选项的git pull命令时，Git就不知道我们到底想用哪种合并策略来执行git pull，因此Git会给出上述的警告文案，建议我们通过git config命令应该按照这三种合并策略的哪种来执行。
+
+git文件 $ git add src/1.txt
+git添加所有文件 $ git add -A
+
+git提交: 
+git commit -m "我的提交" 
+
+git更新:
+$ git pull
+
+git提交:
+$ git push
+
+git文件状态:
+$ git status
+
+git丢去本地修改，回退到上一个版本：
+git reset --hard HEAD^
+
+184. 添加xx.framework 记得添加对应的路径Search Paths->Framework Search Paths
+使用#import <XXFramework/XXHeader.h>
+
+185. 忽略文件夹
+**/xcuserdata
+忽略文件
+.DS_Store
+**/.DS_Store
+.DS_Store?
+
+186. xcode切换开发者账号导致：The app identifier "com.xx.xxx" cannot be registered to your development team because it is not available. Change your bundle identifier to a unique string to try again.
+解决：修改包名，刷新后，再改回原来的包名
+
+187. ios提交appstore问题：App Store Connect Operation Error ERROR ITMS-90474: "Invalid bundle. The “UIInterfaceOrientationPortraitUpsideDown,UIInterfaceOrientationPortrait” orientations were provided for the UISupportedInterfaceOrientations Info.plist key in the com.xx.io bundle, but you need to include all of the “UIInterfaceOrientationPortrait,UIInterfaceOrientationPortraitUpsideDown,UIInterfaceOrientationLandscapeLeft,UIInterfaceOrientationLandscapeRight” orientations to support iPad multitasking. 
+解决：target->General勾选 "Requires full screen"
+
+188. xcode升级到14.3工程问题：The armv7 architecture is deprecated. You should update your ARCHS build setting to remove the armv7 architecture.
+解决：去掉valid_archs里  armv7, 只保留arm64(只支持iphone5s及以后的设备安装,见下表)
+CPU的不同指令集	对应设备：
+i386	模拟器32位处理器
+x86_64	模拟器64位处理器
+armv7	iPhone 3GS，iPhone4，iPhone 4s，iPad，iPad2，iPad3(The New iPad)，iPad mini，iPod Touch 3G，iPod Touch4
+armv7s	iPhone5， iPhone5C，iPad4，iPod5
+arm64	iPhone5s，iPhone6、7、8，iPhone6、7、8 Plus，iPhone X，iPad Air，iPad mini2(iPad mini with Retina Display)
+arm64e	XS/XS Max/XR/ iPhone 11, iPhone 11 pro
+
+189. 
 
 
 
