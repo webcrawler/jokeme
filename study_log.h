@@ -2405,7 +2405,7 @@ armv7s	iPhone5， iPhone5C，iPad4，iPod5
 arm64	iPhone5s，iPhone6、7、8，iPhone6、7、8 Plus，iPhone X，iPad Air，iPad mini2(iPad mini with Retina Display)
 arm64e	XS/XS Max/XR/ iPhone 11, iPhone 11 pro
 
-189. 
+189.xcode修改info.plist文件位置：build setting->info.plist file修改路径
 
 
 
