@@ -2412,8 +2412,37 @@ arm64e	XS/XS Max/XR/ iPhone 11, iPhone 11 pro
 
 191.target ->info添加 App Transport Security->Allow Arbitrary Loads 设置true 兼容http
 
+192. 从字典取整数值，字典key为code的值类型可以为字符串或者数值类型:
+int statusCode = -1;
+if ([dict objectForKey:@"code"]) {
+	statusCode = [[dict valueForKey:@"code"] intValue];
+}
 
+193. NSString* nsStr, std::string str互转:
+std::string str = std::string([nsStr UTF8String]);
+NSString* nsStr = [NSString stringWithUTF8String:str.c_str()];
 
+194. 从字典取值：
+std::string str = std::string([[dict objectForKey:@"email"] UTF8String]);
+int num = [[dict valueForKey:@"num"] intValue];
+double unitPrice = [dict[@"unitPrice"] doubleValue];
+bool bol = [[dict objectForKey:@"bShowFloatingBtn"] boolValue];
+
+195. rapidjson创建json字符串：
+rapidjson::StringBuffer buf;
+rapidjson::Writer<rapidjson::StringBuffer> writer(buf);
+
+writer.StartObject();
+writer.Key("opt"); writer.Bool(opt);
+writer.Key("token"); writer.String(token.c_str());
+writer.Key("statusCode"); writer.Int(statusCode);
+writer.EndObject();
+std::string jsonStr = buf.GetString();
+
+196. git合并：Please enter a commit message to explain why this merge is necessary
+按下esc, 输入:wq回车即可
+
+197. 
 
 
 
