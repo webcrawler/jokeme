@@ -2407,6 +2407,12 @@ arm64e	XS/XS Max/XR/ iPhone 11, iPhone 11 pro
 
 189.xcode修改info.plist文件位置：build setting->info.plist file修改路径
 
+190.xcode多个target使用宏控制：build setting-》 preprocessor macros: 添加tagert_xx=1
+使用 #if tagert_xx == 1     #endif
+
+191.target ->info添加 App Transport Security->Allow Arbitrary Loads 设置true 兼容http
+
+
 
 
 
