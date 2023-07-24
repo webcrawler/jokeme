@@ -2442,8 +2442,16 @@ std::string jsonStr = buf.GetString();
 196. git合并：Please enter a commit message to explain why this merge is necessary
 按下esc, 输入:wq回车即可
 
-197. 
+197. iPhoneX到iPhone13是刘海屏(iphonex iphone11, 12, 13, 14)。iphone8及之前机型没有刘海屏。没有iphone9,10机型
 
+198. git checkout . #本地所有修改的。没有的提交的，都返回到原来的状态
 
+199. python快速搭建web服务：
+REM py2
+REM python -m SimpleHTTPServer 8001
 
+REM py3
+python -m http.server 8001
+
+200. 
 
