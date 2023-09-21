@@ -2453,5 +2453,12 @@ REM python -m SimpleHTTPServer 8001
 REM py3
 python -m http.server 8001
 
-200. 
+200.Android Studio 报错 Invalid Gradle JDK configuration found.
+	删除项目中的如下两个文件：
+	.idea/gradle.xml
+	.idea/workspace.xml
+	然后再重新进行编译。
 
+201. gradle命令打包：
+cd 到目录proj.android
+执行: gradlew assembleDebug 或者 gradlew assembleRelease
