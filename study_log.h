@@ -2462,3 +2462,11 @@ python -m http.server 8001
 201. gradle命令打包：
 cd 到目录proj.android
 执行: gradlew assembleDebug 或者 gradlew assembleRelease
+
+202. android studio打包报错：Program type already present: com.huawei.hms.ads.identifier.AdIdVerifyException
+解决：依赖冲突, 双击shift, 全局查找冲突的这个AdIdVerifyException, 发现有两个包都引入了这个,删掉一个包,重新构建.
+
+203. Your development team, "XXX", does not support the In-App Purchase capability:
+旧的xcode项目报错，cacpability下删除不了 In-App Purchase。 解决: target->Build Phases->Link Binary With Libraries下删除StoreKit.framework。
+
+2.4. 
