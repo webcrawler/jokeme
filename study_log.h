@@ -2469,4 +2469,24 @@ cd 到目录proj.android
 203. Your development team, "XXX", does not support the In-App Purchase capability:
 旧的xcode项目报错，cacpability下删除不了 In-App Purchase。 解决: target->Build Phases->Link Binary With Libraries下删除StoreKit.framework。
 
-2.4. 
+204. cocos2d-x cjson加入工程:
+lua_extensions.c 下static luaL_Reg luax_exts数组加入 {"cjson", luaopen_cjson},
+加头文件#include "cjson/lua_cjson.h"
+win下添加libluacocos2d项目添加过滤器命名cjson,并添加external/lua/cjson下的文件
+android.mk文件添加：
+LOCAL_SRC_FILES加：
+../../../../cocos2d-x/external/lua/cjson/fpconv.c \
+../../../../cocos2d-x/external/lua/cjson/lua_cjson.c \
+../../../../cocos2d-x/external/lua/cjson/strbuf.c
+
+LOCAL_C_INCLUDES加：
+			$(LOCAL_PATH)/../../../../cocos2d-x/external \
+			$(LOCAL_PATH)/../../../../cocos2d-x/external/lua 
+			
+ios：cocos2d_lua_bindings项目下external添加cjson
+ 
+
+205. git pull 问题：You have divergent branches and need to specify how to reconcile them.
+执行：git config pull.rebase false (合并)
+
+206. 
