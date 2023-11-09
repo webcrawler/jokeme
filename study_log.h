@@ -2489,4 +2489,34 @@ ios：cocos2d_lua_bindings项目下external添加cjson
 205. git pull 问题：You have divergent branches and need to specify how to reconcile them.
 执行：git config pull.rebase false (合并)
 
-206. 
+206. git命令遇到冲突不好出来 可以删除 eg：git rm 1.txt
+
+207. TortoiseGit查看log显示 too many files to display。解决：TortoiseGit->setting->Advanceed->LogTooManyItemsThresholad设置大点 比如5000
+
+208. xx.jar' to match attributes {artifactType=processed-jar} using transform JetifyTransform
+ gradle.properties添加：
+# 过滤Msc.jar
+android.jetifier.blacklist=Msc.jar
+
+209. java.lang.ClassNotFoundException: Didn't find class "android.support.v4.app.FragmentActivity
+ gradle.properties添加：
+android.enableJetifier=true
+android.useAndroidX=true
+
+210. android public boolean onKeyDown(int keyCode, KeyEvent event) 没有被调用。则可以使用：
+@Override
+public boolean dispatchKeyEvent(KeyEvent event) {
+    if (event.getAction() == KeyEvent.ACTION_DOWN) {
+        // keydown logic
+        return true;
+    }
+    return false;
+}
+
+211.Android打包出错：java.util.concurrent.ExecutionException: com.android.builder.internal.aapt.v2.Aapt2InternalException: AAPT2 aapt2-3.3.1-5013011-windows Daemon #0: Unexpected error during compile 
+解决：app下build.gradle的buildTypes内添加：
+	aaptOptions.cruncherEnabled = false
+	aaptOptions.useNewCruncher = false
+	
+212. Gradle sync failed: Could not install Gradle distribution from 'https://services.gradle.org/distributions/gradle-6.3-bin.zip'.  
+解决：单独下载以上zip。打开项目gradle\wrapper下gradle-wrapper.properties。distributionUrl下载url,改成本地地址eg: distributionUrl=file:///E:/gradle-6.5-bin.zip
