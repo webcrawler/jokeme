@@ -2520,3 +2520,12 @@ public boolean dispatchKeyEvent(KeyEvent event) {
 	
 212. Gradle sync failed: Could not install Gradle distribution from 'https://services.gradle.org/distributions/gradle-6.3-bin.zip'.  
 解决：单独下载以上zip。打开项目gradle\wrapper下gradle-wrapper.properties。distributionUrl下载url,改成本地地址eg: distributionUrl=file:///E:/gradle-6.5-bin.zip
+
+213. 
+git添加某个文件到暂存区：git add xx.png
+git添加(当前目录)所有已经修改或者删除的tracted文件到暂存区：git add -u
+git添加(当前目录)所有已经修改或者删除或者没有tracted文件到暂存区：git add -A 
+
+214. cpu指令集在线查询 https://www.cpu7.com/soc/high.html
+adb查看设备cpu指令集:  adb shell getprop ro.product.cpu.abi
+
