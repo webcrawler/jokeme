@@ -2529,3 +2529,5 @@ git添加(当前目录)所有已经修改或者删除或者没有tracted文件�
 214. cpu指令集在线查询 https://www.cpu7.com/soc/high.html
 adb查看设备cpu指令集:  adb shell getprop ro.product.cpu.abi
 
+215. xsolla api接入
+https://github.com/webcrawler/jokeme/blob/master/sdk_xsolla_demo.lua
