@@ -2531,3 +2531,10 @@ adb查看设备cpu指令集:  adb shell getprop ro.product.cpu.abi
 
 215. xsolla api接入
 https://github.com/webcrawler/jokeme/blob/master/sdk_xsolla_demo.lua
+
+216.查看远程主机端口是否开放:
+telnet安装：控制面板-程序和功能-启用或关闭Windows功能-勾选Telnet客户端
+telnet 8.135.2.1 18080
+或者在线工具：https://tool.chinaz.com/port
+
+217. 
