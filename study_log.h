@@ -2537,4 +2537,55 @@ telnet安装：控制面板-程序和功能-启用或关闭Windows功能-勾选T
 telnet 8.135.2.1 18080
 或者在线工具：https://tool.chinaz.com/port
 
-217. 
+217. docker相关：
+https://blog.csdn.net/qq_39611230/article/details/108641842
+
+// 下载镜像 ubuntu
+docker pull ubuntu
+// 加载镜像,镜像名为ubuntu, 创建容器名ubuntu-container, 并启动命令行
+docker run -it --name ubuntu-container ubuntu /bin/bash
+
+//在ubuntu上安装编译工具GCC G++。
+sudo apt update
+sudo apt install build-essential
+
+// 安装vim编辑器
+sudo apt-get install vim-gtk
+
+// 全局设置vim下tab键为4个空格(默认是8个)
+打开编辑文件 /etc/vim/vimrc 末尾添加set ts=4
+
+
+// 测试:
+VimTest.h
+VimTest.cpp
+testVim.cpp(调用VimTest打印)
+
+// 生成执行文件
+g++ testVim.cpp VimTest.cpp -o testVim
+// 运行
+./testVim
+
+
+# 查看当前所有正在运行的容器
+docker ps
+# 查看当前所有的容器
+docker ps -a
+
+// 停止，重启，启动容器，
+docker stop 容器名或容器id. eg: docker stop 9e6bef73496d
+docker start 容器名或容器id
+
+docker restart 容器名或容器id. eg: ubuntu-container
+// 开启容器并启动命令行
+docker exec -it ubuntu-container /bin/bash
+
+218. Microsoft Office 2021 ProPlus 专业增强版 简体中文版：
+https://officecdn.microsoft.com/pr/492350f6-3a01-4f97-b9c0-c7c6ddf67d60/media/zh-cn/ProPlus2021Retail.img
+激活工具：https://github.com/zbezj/HEU_KMS_Activator
+
+
+
+
+
+
