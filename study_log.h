@@ -2584,8 +2584,31 @@ docker exec -it ubuntu-container /bin/bash
 https://officecdn.microsoft.com/pr/492350f6-3a01-4f97-b9c0-c7c6ddf67d60/media/zh-cn/ProPlus2021Retail.img
 激活工具：https://github.com/zbezj/HEU_KMS_Activator
 
+219. 查看逍遥模拟器当前运行的app包名：
+连接模拟器:  adb connect 127.0.0.1:21503
+获取当前运行APP的appPackage，appActivity:  adb shell "dumpsys window | grep mCurrentFocus"
 
+220. python快速搭建ftp服务器
+下载包：pip install pyftpdlib -i http://pypi.douban.com/simple/ --trusted-host pypi.douban.com
 
+创建py文件：
+#encoding=utf-8
 
+# pip install pyftpdlib -i http://pypi.douban.com/simple/ --trusted-host pypi.douban.com
+from pyftpdlib.authorizers import DummyAuthorizer
+from pyftpdlib.handlers import FTPHandler
+from pyftpdlib.servers import FTPServer
+ 
+# 实例化DummyAuthorizer来创建ftp用户
+authorizer = DummyAuthorizer()
+# 参数：用户名，密码，目录，权限
+# test为当前目录下的目录
+authorizer.add_user('joke', '000000', 'test', perm='elradfmwMT')
+handler = FTPHandler
+handler.authorizer = authorizer
+# 参数：IP，端口，handler
+server = FTPServer(('127.0.0.1', 211), handler)
+server.serve_forever()
+访问：ftp://127.0.0.1:211 
 
 
