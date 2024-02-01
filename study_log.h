@@ -2611,4 +2611,7 @@ server = FTPServer(('127.0.0.1', 211), handler)
 server.serve_forever()
 访问：ftp://127.0.0.1:211 
 
+221. jenkins配置本地环境变量：
+Dashboard->下拉->Manage jenkins->Configure System->Environment variables下配置PATH, 值eg:C:\Python27;C:\Windows\System32;C:\Program Files\Git\cmd
 
+222. 
