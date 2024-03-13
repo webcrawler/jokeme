@@ -2472,8 +2472,8 @@ cd 到目录proj.android
 204. cocos2d-x cjson加入工程:
 lua_extensions.c 下static luaL_Reg luax_exts数组加入 {"cjson", luaopen_cjson},
 加头文件#include "cjson/lua_cjson.h"
-win下添加libluacocos2d项目添加过滤器命名cjson,并添加external/lua/cjson下的文件
-android.mk文件添加：
+win下添加libluacocos2d项目添加过滤器命名cjson,并添加external/lua/cjson下的文件。
+cocos2d-x\cocos\scripting\lua-bindings\proj.android\android.mk文件添加：
 LOCAL_SRC_FILES加：
 ../../../../cocos2d-x/external/lua/cjson/fpconv.c \
 ../../../../cocos2d-x/external/lua/cjson/lua_cjson.c \
@@ -2528,6 +2528,7 @@ git添加(当前目录)所有已经修改或者删除或者没有tracted文件�
 
 214. cpu指令集在线查询 https://www.cpu7.com/soc/high.html
 adb查看设备cpu指令集:  adb shell getprop ro.product.cpu.abi
+android ABI使用armeabi-v7a:arm64-v8a 在一些cpu指令集是armv8会闪退，则只保留armeabi-v7a。详细参考33条。
 
 215. xsolla api接入
 https://github.com/webcrawler/jokeme/blob/master/sdk_xsolla_demo.lua
@@ -2614,4 +2615,5 @@ server.serve_forever()
 221. jenkins配置本地环境变量：
 Dashboard->下拉->Manage jenkins->Configure System->Environment variables下配置PATH, 值eg:C:\Python27;C:\Windows\System32;C:\Program Files\Git\cmd
 
-222. 
+222. git clone 添加本地目录位置：git clone http://baidu.com/xx.git /Users/admin/Documents/works/hyx
+
