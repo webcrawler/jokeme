@@ -2440,7 +2440,7 @@ writer.EndObject();
 std::string jsonStr = buf.GetString();
 
 196. git合并：Please enter a commit message to explain why this merge is necessary
-按下esc, 输入:wq回车即可
+切换到英文输入法, 按下esc, 输入:wq回车即可
 
 197. iPhoneX到iPhone13是刘海屏(iphonex iphone11, 12, 13, 14)。iphone8及之前机型没有刘海屏。没有iphone9,10机型
 
@@ -2617,3 +2617,42 @@ Dashboard->下拉->Manage jenkins->Configure System->Environment variables下配
 
 222. git clone 添加本地目录位置：git clone http://baidu.com/xx.git /Users/admin/Documents/works/hyx
 
+223. android studio依赖外部工程: 
+工程settings.gradle内添加:
+include ':sub_proj'
+project(':sub_proj').projectDir = new File(settingsDir, '../../sub_proj/platform/android/java')
+项目下build.gradle添加：
+dependencies {
+    implementation project(':sub_proj')
+}
+
+224. xcode引入其他子工程sub_proj add files to... 使用Create folder references. Copy items if needed。
+选中项目，选中target 在 Target Dependencies添加子工程sub_porj iOS, 
+Link Binary With Libraries添加libsub_proj iOS.a
+target下->Complie Souces添加.mm文件(或者在项目下New Group without Folder 然后add Files to 使用Create folder references,会自动添加进Complie Souces)
+target下search path 没有找到这项:framework search paths. 选项选择"ALL"即可查看到全部。
+
+225. Lint found fatal errors while assembling a release target. 
+ app下 build.gradle添加 
+ android {
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
+    }
+}
+
+226.ios 添加app icons: 右键new file ->选择Asset catalog 命名Images。 选择刚创建的Images，右边小窗右键->ios->New Ios App Icons。命名为AppIcon,
+选中AppIcon右边属性窗口选择ios选择All Sizes。拖拉对应的尺寸icon.
+选择target ->General->App Icons and Launch Screen-> App Icon 填入刚创建的命为AppIcon。
+
+227. More than one file was found with OS independent path  'lib/arm64-v8a/libsqlite.so'
+解决：
+android {
+        packagingOptions {
+        pickFirst 'lib/arm64-v8a/libsqlite.so'
+    }
+}
+
+228. 
