@@ -2526,7 +2526,7 @@ git添加某个文件到暂存区：git add xx.png
 git添加(当前目录)所有已经修改或者删除的tracted文件到暂存区：git add -u
 git添加(当前目录)所有已经修改或者删除或者没有tracted文件到暂存区：git add -A 
 
-214. cpu指令集在线查询 https://www.cpu7.com/soc/high.html
+214. cpu指令集在线查询 https://www.cpu7.com/soc/high.html   https://www.mydrivers.com/zhuanti/tianti/01/index.html
 adb查看设备cpu指令集:  adb shell getprop ro.product.cpu.abi
 android ABI使用armeabi-v7a:arm64-v8a 在一些cpu指令集是armv8会闪退，则只保留armeabi-v7a。详细参考33条。
 
@@ -2655,4 +2655,18 @@ android {
     }
 }
 
-228. 
+228. git 撤销文件本地修改：git checkout [filename]
+
+229. frameworks/cocos2d-x/tools/simulator/libsimulator/proj.ios_mac/libsimulator.xcodeproj: warning: The iOS deployment target 'IPHONEOS_DEPLOYMENT_TARGET' is set to 8.1, but the range of supported deployment target versions is 11.0 to 16.4.99. (in target 'libsimulator iOS' from project 'libsimulator')
+error: The armv7 architecture is deprecated. You should update your ARCHS build setting to remove the armv7 architecture. (in target 'libsimulator iOS' from project 'libsimulator')
+解决：libsimulator工程building setting下 VALID_ARCHS 只保留arm64
+
+230. Armv9.2 架构，仅支持 64 位指令集，不再兼容 32 位应用。
+
+231. visual studio 使用正则替换文本： https://www.dongchuanmin.com/archives/471.html
+eg: ['cancle']='取消'   使用正则匹配出所有的key： (.*)']='   匹配所有val： ']='(.*)
+eg: 把文字：{delayTime = 3, content = "未对话的角色暗色"} 替换成 {delayTime = 3, content = FUNC("未对话的角色暗色")}
+则：匹配: content = "(.*)" 替换: content = FUNC("($1)")   
+$1表示匹配出的第1个值(.*)，$2表示匹配出的第2个值(.*)
+
+232. 
