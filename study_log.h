@@ -2669,4 +2669,18 @@ eg: 把文字：{delayTime = 3, content = "未对话的角色暗色"} 替换成 
 则：匹配: content = "(.*)" 替换: content = FUNC("($1)")   
 $1表示匹配出的第1个值(.*)，$2表示匹配出的第2个值(.*)
 
-232. 
+232. android studio工程路径太长会导致编译失败
+
+233. cocos2d-lua 使用vscode调试:
+	1. vscode插件中心搜索luaide-lite, 安装。(此插件免费开源: https://github.com/wellshsu/luaide-lite)
+	2. 把cocos2d-lua工程lua目录src拖入vscode, vscode左侧栏点击"运行调试"按钮, 选择调试Cocos-Launch, 选择边上设置按钮，弹出的launch.json.
+	3. 在launch.json配置项 "name": "Cocos-Launch"，配置好exePath路径.
+	4. 下载LuaDebug.lua放入src目录, 下载地址: https://github.com/wellshsu/luaide-lite/blob/master/test/cocos/src/LuaDebug.lua
+	5. 在main.lua加入:
+		if cc.Application:getInstance():getTargetPlatform() == 0 then
+			local breakInfoFun, xpCallFun = require("LuaDebug")("localhost", 7003)
+			cc.Director:getInstance():getScheduler():scheduleScriptFunc(breakInfoFun, 0.3, false)
+		end
+	6. 配置完成, 按下F5启动调试, 打断点, F10, F11调试.
+	
+234. 
