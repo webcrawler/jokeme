@@ -2687,3 +2687,12 @@ $1表示匹配出的第1个值(.*)，$2表示匹配出的第2个值(.*)
 aapt是安卓 SDK 默认带的，文件在 SDK/build-tools/xx.xx.xx(版本号)/ 中
 aapt是Android Asset Packaging Tool 的缩写，用于处理APK文件。可以使用以下命令来查看APK包信息：
 aapt dump badging your_app.apk
+
+235. 接ios sdk发现sdk回调回游戏诱概率发生crash。发现是sdk回调是在子线程触发的。这样在子线程上操作游戏UI, 导致游戏crash。
+解决: sdk回调过来，在主线程内通知游戏UI:
+// 主线程中调用
+dispatch_async(dispatch_get_main_queue(), ^{
+	BOOL isMainThreadB = [[NSThread currentThread] isMainThread];
+	NSLog(@"++++++++++++++++ isMainThreadB:%@", isMainThreadB ? @"YES" : @"NO");
+	// 通知游戏UI
+});
