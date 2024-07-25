@@ -2683,4 +2683,7 @@ $1表示匹配出的第1个值(.*)，$2表示匹配出的第2个值(.*)
 		end
 	6. 配置完成, 按下F5启动调试, 打断点, F10, F11调试.
 	
-234. 
+234. 查看apk包信息:
+aapt是安卓 SDK 默认带的，文件在 SDK/build-tools/xx.xx.xx(版本号)/ 中
+aapt是Android Asset Packaging Tool 的缩写，用于处理APK文件。可以使用以下命令来查看APK包信息：
+aapt dump badging your_app.apk
