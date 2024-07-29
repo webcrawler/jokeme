@@ -2473,7 +2473,9 @@ cd 到目录proj.android
 lua_extensions.c 下static luaL_Reg luax_exts数组加入 {"cjson", luaopen_cjson},
 加头文件#include "cjson/lua_cjson.h"
 win下添加libluacocos2d项目添加过滤器命名cjson,并添加external/lua/cjson下的文件。
-cocos2d-x\cocos\scripting\lua-bindings\proj.android\android.mk文件添加：
+android: 
+cocos2d-x\cocos\scripting\lua-bindings\proj.android\android.mk 或者 frameworks\runtime-src\proj.android\app\jni\Android.mk
+文件添加：
 LOCAL_SRC_FILES加：
 ../../../../cocos2d-x/external/lua/cjson/fpconv.c \
 ../../../../cocos2d-x/external/lua/cjson/lua_cjson.c \
@@ -2702,3 +2704,14 @@ dispatch_async(dispatch_get_main_queue(), ^{
 	NSLog(@"++++++++++++++++ isMainThreadB:%@", isMainThreadB ? @"YES" : @"NO");
 	// 通知游戏UI
 });
+
+236. xcode添加.a第三方静态文件 编译报错：
+Undefined symbols for architecture arm64:
+  "_OBJC_CLASS_$_XXSSSSS", referenced from:
+      objc-class-ref in XXXXX.a(XKKKKKK.o)
+ld: symbol(s) not found for architecture arm64
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+解决：add Files to "proj"需要选择 "Create groups", "Copy items if needed".
+如果还未解决，检查文档是否需要添加一些系统.framework,以上.a静态库可能需要用到.framework。 eg:在Link Binary With Libraries下添加StroeKit.framework。
+
+237.
