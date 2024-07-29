@@ -2714,4 +2714,14 @@ clang: error: linker command failed with exit code 1 (use -v to see invocation)
 解决：add Files to "proj"需要选择 "Create groups", "Copy items if needed".
 如果还未解决，检查文档是否需要添加一些系统.framework,以上.a静态库可能需要用到.framework。 eg:在Link Binary With Libraries下添加StroeKit.framework。
 
-237.
+237. 多台android设备连接的情况，选择其中一台adb调试:
+查看设备:
+C:\Users\Administrator>adb devices
+List of devices attached
+63e244520906    device
+127.0.0.1:21503 device
+
+adb logcat查看127.0.0.1:21503这台设备log:
+adb -s 127.0.0.1:21503 logcat 
+
+238. 
