@@ -2724,4 +2724,14 @@ List of devices attached
 adb logcat查看127.0.0.1:21503这台设备log:
 adb -s 127.0.0.1:21503 logcat 
 
-238. 
+238. bat查找字符串是否包含的字符
+@echo off
+set a=55544333
+set b=44
+echo %a%| findstr %b% >nul && (
+	echo %a%包含%b%
+ ) || (
+	echo %a%不包含%b%
+)
+
+239. 
