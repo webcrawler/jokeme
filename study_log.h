@@ -2810,5 +2810,9 @@ java.lang.NoClassDefFoundError: Failed resolution of: Lokhttp3/OkHttpClient$Buil
 244. 打开app 收到弹窗提示 "此应用专为旧版Android打造，可能无法正常运行，请尝试检查更新或与开发者联系"
 解决：提高targetSdkVersion。补充: targetSdkVersion升级时只能增加不能降低。targetSdkVersion高的apk无法被targetSdkVersion低的apk覆盖安装.
 
-245
+245. 接入sdk，在自定义的appliaction初始化sdk。sdk界面没有调用起来。log也没有任何相关的sdk信息。但是安装apk出现2个app图标。
+排查原因是aar内AndroidManifest.xml Activity为android.intent.category.LAUNCHER。
+解决：去掉项目activity内<intent-filter>标签。使用sdk的启动activity。
+
+255. 
 
