@@ -2663,7 +2663,7 @@ android {
 error: The armv7 architecture is deprecated. You should update your ARCHS build setting to remove the armv7 architecture. (in target 'libsimulator iOS' from project 'libsimulator')
 解决：libsimulator工程building setting下 VALID_ARCHS 只保留arm64
 
-230. Armv9.2 架构，仅支持 64 位指令集，不再兼容 32 位应用。
+230. Armv9.2 架构，仅支持 64 位指令集，不再兼容 32 位应用。eg: 8Gen3, 天玑9300
 
 231. visual studio 使用正则替换文本： https://www.dongchuanmin.com/archives/471.html
 eg: ['cancle']='取消'   使用正则匹配出所有的key： (.*)']='   匹配所有val： ']='(.*)
@@ -2705,6 +2705,14 @@ dispatch_async(dispatch_get_main_queue(), ^{
 	// 通知游戏UI
 });
 
+android在主线程中调用UI,使用runOnUiThread。 cocos2dx使用：
+Cocos2dxHelper.runOnGLThread(new Runnable() {
+	@Override
+	public void run() {
+		//此时已在主线程中，可以更新UI了
+	}
+});
+
 236. xcode添加.a第三方静态文件 编译报错：
 Undefined symbols for architecture arm64:
   "_OBJC_CLASS_$_XXSSSSS", referenced from:
@@ -2734,4 +2742,73 @@ echo %a%| findstr %b% >nul && (
 	echo %a%不包含%b%
 )
 
-239. 
+239. sdk接入报错：
+[XXSDK.aar] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\XXSDK.aar\fd9a081bcdbf4c242e0bd1b83b71d7c3\AndroidManifest.xml:15:9-54 Error:
+Missing 'package' key attribute on element package at [XXSDK.aar] AndroidManifest.xml:15:9-54
+查看AndroidManifest.xml报错位置(15行)：
+    <queries>
+        <package android:name="com.project.sdk" />
+    </queries>
+使用queries元素需要Android Gradle 插件版本是 4.1及以上，因为旧版本的插件并不兼容此元素，出现"Element queries is not allowed here" 的警告，也可能会导致manifest合并失败。
+
+软件包可见性:
+在 Android 10 及之前的版本中，应用可以通过 queryIntentActivities() 这样的方法获取到设备中所有已安装的应用列表。在大多数情况下，
+这种访问权限远超出了应用实际所需要的权限范围。随着我们不断加强对隐私保护的关注，我们将在 Android 11 (目标 API level 为 30)上引入一些新的变化，从而改变应用查询用户已安装应用并与之交互的方式。为了达到这一目的，我们为特定设备上所安装的应用列表带来了更好的访问控制。
+为了更好地 "问责" 访问已安装应用的行为，默认情况下，以 Android 11 为目标平台  的应用默认将只能检测到部分过滤后的已安装应用。
+如果想获取更多别的已安装应用列表信息，则需要在应用内的 Android manifest 中添加 <queries> 元素，从而拓宽访问范围。
+
+
+240. Manifest merger failed : Attribute application@label value=(xxsdk) from AndroidManifest.xml:16:9-37
+  	is also present at [XXSDK.aar] AndroidManifest.xml:21:9-41 value=(@string/app_name).
+  	Suggestion: add 'tools:replace="android:label"' to <application> element at AndroidManifest.xml:14:5-57:19 to override.
+第三方sdk中也定义了application@icon, application@label属性，则会与你的项目发生冲突。
+那么解决的方法就是在你的Application节点中加入tools:replace来表示替换三方库中的相关属性，eg：
+tools:replace="android:icon"
+或者2个都替换 tools:replace="android:icon, android:label"
+<application
+        android:icon="@drawable/box_icon"
+        android:label="@string/app_name"
+        tools:replace="android:icon, android:label">
+
+使用tools:replace需要在manifest根节点加上相关的引用，
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:tools="http://schemas.android.com/tools"
+          package="com.bcoder.app">
+
+241. gradle升级导致: Direct local .aar file dependencies are not supported when building an AAR.
+解决: 将library模块中依赖方式 改成compileOnly fileTree
+eg: compileOnly fileTree(dir: 'libs', include: '*.aar')
+并拷贝一份aar到主工程libs目录，将主工程AAR依赖方式改成implementation fileTree
+eg: implementation fileTree(dir: 'libs', include: '*.aar')
+
+或者:  https://stackoverflow.com/questions/60878599/error-building-android-library-direct-local-aar-file-dependencies-are-not-supp
+模拟android studio旧版本, 比如 android studio4.0.1 导入aar 生成响应的配置：
+
+创建目录SDKModule里面创建build.gradle 内容格式如下:
+configurations.maybeCreate("default")
+artifacts.add("default", file('xx1.aar'))
+artifacts.add("default", file('xx2.aar'))
+把xx1.aar， xx2.aar 放在和build.gradle同一个目录
+
+工程settings.gradle file添加:
+include(":SDKModule")
+在需要的module对应的build.gradle dependencies加: 
+implementation project(":SDKModule")
+
+
+242. 使用androidX后报错：libs\xx.jar' using Jetifier. Reason: InvalidByteCodeException, message: Error processing 'com\xx\thridparty\a.class' bytecode.. (Run with --stacktrace for more details.)
+           This is a known exception, and Jetifier won't be able to jetify this library.
+解决: gradle.properits文件添加 android.jetifier.blacklist=xx.jar
+
+243. java.lang.ClassNotFoundException: Didn't find class "com.google.gson.GsonBuilder
+解决：gradle引用  implementation 'com.google.code.gson:gson:2.8.6'
+
+java.lang.NoClassDefFoundError: Failed resolution of: Lokhttp3/OkHttpClient$Builder
+解决：implementation 'com.squareup.okhttp3:okhttp:3.4.1'
+	  implementation 'com.squareup.okhttp3:logging-interceptor:3.4.1'
+	  
+244. 打开app 收到弹窗提示 "此应用专为旧版Android打造，可能无法正常运行，请尝试检查更新或与开发者联系"
+解决：提高targetSdkVersion。补充: targetSdkVersion升级时只能增加不能降低。targetSdkVersion高的apk无法被targetSdkVersion低的apk覆盖安装.
+
+245
+
