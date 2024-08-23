@@ -2814,5 +2814,9 @@ java.lang.NoClassDefFoundError: Failed resolution of: Lokhttp3/OkHttpClient$Buil
 排查原因是aar内AndroidManifest.xml Activity为android.intent.category.LAUNCHER。
 解决：去掉项目activity内<intent-filter>标签。使用sdk的启动activity。
 
-255. 
+255. excel某一列值是另外一列值100倍再加coin，计算公式:
+eg: P列值是A列值100倍再加字符coin。在P列第一行输入公式:=IF(A1="","",A1*100&"coin") 然后单元格左下角往下拉计算每一行值。
+此处公式是判断A1单元格是否是空，空则返回空字符""。 非空则返回A1*100&"coin"。A1，下拉复制就是A2, A3, A4....
+
+256. 
 
