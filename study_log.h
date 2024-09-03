@@ -2818,5 +2818,36 @@ java.lang.NoClassDefFoundError: Failed resolution of: Lokhttp3/OkHttpClient$Buil
 eg: P列值是A列值100倍再加字符coin。在P列第一行输入公式:=IF(A1="","",A1*100&"coin") 然后单元格左下角往下拉计算每一行值。
 此处公式是判断A1单元格是否是空，空则返回空字符""。 非空则返回A1*100&"coin"。A1，下拉复制就是A2, A3, A4....
 
-256. 
+256. unity 使用monodevelop打开c#中文乱码。解决：tools->fonts->Text Editor->选择Monospace(Normal) 即可
+257. window下 unity monodevelop 提示"Do you want to convert the line endings?". 解决：Project-Solution Option-Source ->Code-Code Formatting下 C# source code对应的Line endings 改成windows。
+
+258. cocos2dx spine3.4升级到4.1, 参考:https://forum.cocos.org/t/topic/155493
+1. 下载spine4.1, https://github.com/EsotericSoftware/spine-runtimes/tags 解压
+2. 删除原工程目录cocos2d-x\cocos\editor-support\spine代码文件(保留工程文件)，
+找到解压的spine4.1，把其目录spine-cpp下src, include下的.h .cpp代码文件拷贝到原工程spine目录下。
+同样找到spine-cocos2dx目录把其src下代码文件拷贝到原工程spine目录下，注意旗下有目录v3，v4，指的是cocos2dx引擎版本。拷贝相应的版本目录下的代码文件。
+3. 以上v3，v4内代码文件直接拷到spine下使用，外部引用代码内有些include路径根据编译error，需要修改下。rg:spine-cocos2dx.h内
+4. win上libSpine工程Source Files 删除重新加入。
+5. 新增 ANIMATION_INTERRUPT, ANIMATION_DISPOSE, EVENT_SPINE_ANIMATION_PREUPDATE, EVENT_SPINE_ANIMATION_POSTUPDATE 事件类型。
+	EVENT_SPINE_ANIMATION_START,
+	EVENT_SPINE_ANIMATION_INTERRUPT, // added by joke for spine4.1
+	EVENT_SPINE_ANIMATION_END,
+	EVENT_SPINE_ANIMATION_COMPLETE,
+	EVENT_SPINE_ANIMATION_DISPOSE, // added by joke for spine4.1
+	EVENT_SPINE_ANIMATION_EVENT,
+	EVENT_SPINE_ANIMATION_PREUPDATE, // added by joke for spine4.1
+	EVENT_SPINE_ANIMATION_POSTUPDATE, // added by joke for spine4.1
+	
+6. lua binding后的文件lua_cocos2dx_spine_auto，lua_cocos2dx_spine_manual 见后面下载链接
+7. spine事件兼容spine3.4, 在lua_cocos2dx_spine_manual.cp, executeSpineEvent通知lua添加eventData
+   在spineEvent.insert(spineEvent.end(), LuaValueDict::value_type("event", LuaValue::dictValue(dict)));后添加:
+   spineEvent.insert(spineEvent.end(), LuaValueDict::value_type("eventData", LuaValue::dictValue(dataDict)));
+完整文件下载链接: https://github.com/webcrawler/spine4.1-cocos2dx
+
+259. github 提交失败 "Support for password authentication was removed on August 13, 2021. Please use a personal access token instead"
+解决：到个人中心 setting->developer setting ->personal access tokens创建token。提交密码输入token即可
+
+
+
+
 
