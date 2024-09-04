@@ -2847,7 +2847,10 @@ eg: P列值是A列值100倍再加字符coin。在P列第一行输入公式:=IF(A
 259. github 提交失败 "Support for password authentication was removed on August 13, 2021. Please use a personal access token instead"
 解决：到个人中心 setting->developer setting ->personal access tokens创建token。提交密码输入token即可
 
+260. cocostudio 导出的csb资源转成工程csd: https://github.com/lyzz0612/csb2csd
+     fork for me: https://github.com/webcrawler/csb2csd
 
+261. 
 
 
 
