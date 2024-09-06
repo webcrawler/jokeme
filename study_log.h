@@ -2275,6 +2275,8 @@ android {
 
 174. aws 刷新cdn(具体见代码):
 https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/cloudfront/client/create_invalidation.html
+distributionId为CloudFront下分配的ID。
+
 import boto3
 
 session = boto3.Session(
