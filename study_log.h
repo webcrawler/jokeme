@@ -2852,7 +2852,10 @@ eg: P列值是A列值100倍再加字符coin。在P列第一行输入公式:=IF(A
 260. cocostudio 导出的csb资源转成工程csd: https://github.com/lyzz0612/csb2csd
      fork for me: https://github.com/webcrawler/csb2csd
 
-261. 
+261. 升级android gradle plugin version工程报错: CustomMessageMissingMethodException: Could not find method compile() for arguments [project ':xxxxx'] on object of type org.gradle.api.internal.artifacts.dsl.dependencies.DefaultDependencyHandler.
+解决：compile改成api
+
+262. 
 
 
-
+ 
