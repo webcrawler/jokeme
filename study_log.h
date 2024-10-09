@@ -2855,7 +2855,11 @@ eg: P列值是A列值100倍再加字符coin。在P列第一行输入公式:=IF(A
 261. 升级android gradle plugin version工程报错: CustomMessageMissingMethodException: Could not find method compile() for arguments [project ':xxxxx'] on object of type org.gradle.api.internal.artifacts.dsl.dependencies.DefaultDependencyHandler.
 解决：compile改成api
 
-262. 
+262. app\AndroidManifest.xml:21:9-31:20 Error:
+	android:exported needs to be explicitly specified for element <activity#com.game.xx.xx>. Apps targeting Android 12 and higher are required to specify an explicit value for `android:exported` when the corresponding component has an intent filter defined. See https://developer.android.com/guide/topics/manifest/activity-element#exported for details.
+	解决：activity下添加android:exported属性  <activity  android:exported="true"
+	
+263. 
 
 
  
