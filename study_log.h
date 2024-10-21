@@ -2794,6 +2794,8 @@ artifacts.add("default", file('xx2.aar'))
 
 工程settings.gradle file添加:
 include(":SDKModule")
+project(':SDKModule').projectDir = new File(settingsDir, '../../xx/platform/android/SDKModule')
+
 在需要的module对应的build.gradle dependencies加: 
 implementation project(":SDKModule")
 
@@ -2859,7 +2861,10 @@ eg: P列值是A列值100倍再加字符coin。在P列第一行输入公式:=IF(A
 	android:exported needs to be explicitly specified for element <activity#com.game.xx.xx>. Apps targeting Android 12 and higher are required to specify an explicit value for `android:exported` when the corresponding component has an intent filter defined. See https://developer.android.com/guide/topics/manifest/activity-element#exported for details.
 	解决：activity下添加android:exported属性  <activity  android:exported="true"
 	
-263. 
-
-
+263. 报错: Program type already present: android.support.v4.app.INotificationSideChannel
+双击shift 查找class: INotificationSideChannel, 有多个包引入，删掉一个即可
+找到多个路径：
+1. .gradle\caches\transforms-1\files-1.1\core-1.9.0.aar\000xx45854\jars\classes.jar!\android\support\v4\app\INotificationSideChannel.class
+2. android\java\libs\android-support-v4.jar!\android\support\v4\app\INotificationSideChannel.class
+发现是引用的project里面添加了 implementation 'androidx.appcompat:appcompat:1.6.1', 删除, 只保留libs\android-support-v4.jar 即可。
  
