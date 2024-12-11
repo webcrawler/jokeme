@@ -2868,3 +2868,7 @@ eg: P列值是A列值100倍再加字符coin。在P列第一行输入公式:=IF(A
 2. android\java\libs\android-support-v4.jar!\android\support\v4\app\INotificationSideChannel.class
 发现是引用的project里面添加了 implementation 'androidx.appcompat:appcompat:1.6.1', 删除, 只保留libs\android-support-v4.jar 即可。
  
+ 
+264. visual studio 打开运行的按钮"start"变成"attach". 解决：没有选择启动项目
+
+265. 
