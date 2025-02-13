@@ -2875,98 +2875,99 @@ eg: P列值是A列值100倍再加字符coin。在P列第一行输入公式:=IF(A
 发现是引用的project里面添加了 implementation 'androidx.appcompat:appcompat:1.6.1', 删除, 只保留libs\android-support-v4.jar 即可。
  
  
-264. visual studio 打开运行的按钮"start"变成"attach". 解决：没有选择启动项目
+264. cocos creator使用vscode开发相关:
+	visual studio 打开运行的按钮"start"变成"attach". 解决：没有选择启动项目
 
-265. cocos creator 使用vscode配置  https://docs.cocos.com/creator/3.2/manual/zh/getting-started/coding-setup.html
-0. 在 Creator 编辑器主菜单里执行 开发者 -> VS Code 工作流 -> 添加编译任务。该操作会在项目的 .vscode 文件夹下添加 tasks.json 任务配置文件。后续再vscode有修改js，直接Ctrl+p, 激活 快速打开 输入框，
-然后输入 task compile, 通知 cocos creator编译。
-Ctrl+Shift+p 打开输入框，输入keybindings.json。可以自定义快捷键。比如编译脚本：
-// 将键绑定放在此文件中以覆盖默认值
-[
-    {
-        "key": "ctrl+b", // 请配置自己习惯的快捷键
-        "command": "workbench.action.tasks.runTask",
-        "args": "compile"
-    }
-]
+	cocos creator 使用vscode配置  https://docs.cocos.com/creator/3.2/manual/zh/getting-started/coding-setup.html
+	0. 在 Creator 编辑器主菜单里执行 开发者 -> VS Code 工作流 -> 添加编译任务。该操作会在项目的 .vscode 文件夹下添加 tasks.json 任务配置文件。后续再vscode有修改js，直接Ctrl+p, 激活 快速打开 输入框，
+	然后输入 task compile, 通知 cocos creator编译。
+	Ctrl+Shift+p 打开输入框，输入keybindings.json。可以自定义快捷键。比如编译脚本：
+	// 将键绑定放在此文件中以覆盖默认值
+	[
+		{
+			"key": "ctrl+b", // 请配置自己习惯的快捷键
+			"command": "workbench.action.tasks.runTask",
+			"args": "compile"
+		}
+	]
 
-1. 在 Cocos Creator打开项目，主菜单-> 开发者 -> VS Code 工作流 -> 安装 VS Code 扩展插件。
-该操作会将 Cocos Creator API 适配插件安装到 VS Code 全局的插件文件夹中，一般在用户 Home 文件夹中的 .vscode/extensions 目录下。这个操作只需要执行一次，如果 API 适配插件更新了，则需要再次运行来更新插件。
-2. 主菜单->开发者 -> VS Code 工作流 -> 更新 VS Code 智能提示数据。该操作会将根据引擎 API 生成的 creator.d.ts 数据文件复制到项目根目录下（注意是在 assets 目录外面）
-3. vscode 打开项目，主菜单的 File -> Open， 在弹出的对话框中选择您的项目根目录，也就是 assets、project.json 所在的路径。
-4. 设置文件显示和搜索过滤，vscode菜单下，文件->首选项->设置，找到setting.json (user下)。添加如下，将为 VS Code 设置搜索时排除的目录，和在文件列表中隐藏的文件类型。
-新版 VS Code 打开用户配置文件 USER SETTINGS 时可能是处于 UI 界面状态，此时在上方的搜索框中输入 exclude 搜索，然后在 search.exclude 和 files.exclude 模块中点击 Add Pattern 补充缺少的内容即可。
-{
-    "search.exclude": {
-        "**/node_modules": true,
-        "**/bower_components": true,
-        "build/": true,
-        "temp/": true,
-        "library/": true,
-        "**/*.anim": true
-    },
-    "files.exclude": {
-        "**/.git": true,
-        "**/.DS_Store": true,
-        "**/*.meta": true,
-        "library/": true,
-        "local/": true,
-        "temp/": true
-    }
-}
-5. Cocos Creator 编辑器的菜单栏中点击 开发者 -> VS Code 工作流 -> 添加 Chrome Debug 配置，这个菜单命令会在你的项目文件夹下添加一个 .vscode/launch.json 文件作为调试器的配置，
-之后你就可以在 VS Code 里点击左侧栏的 调试 按钮打开调试面板，并在最上方的调试配置中选择 Creator Debug: Launch Chrome，然后点击绿色的开始按钮开始调试。（js文件打断点，按F5调试）
+	1. 在 Cocos Creator打开项目，主菜单-> 开发者 -> VS Code 工作流 -> 安装 VS Code 扩展插件。
+	该操作会将 Cocos Creator API 适配插件安装到 VS Code 全局的插件文件夹中，一般在用户 Home 文件夹中的 .vscode/extensions 目录下。这个操作只需要执行一次，如果 API 适配插件更新了，则需要再次运行来更新插件。
+	2. 主菜单->开发者 -> VS Code 工作流 -> 更新 VS Code 智能提示数据。该操作会将根据引擎 API 生成的 creator.d.ts 数据文件复制到项目根目录下（注意是在 assets 目录外面）
+	3. vscode 打开项目，主菜单的 File -> Open， 在弹出的对话框中选择您的项目根目录，也就是 assets、project.json 所在的路径。
+	4. 设置文件显示和搜索过滤，vscode菜单下，文件->首选项->设置，找到setting.json (user下)。添加如下，将为 VS Code 设置搜索时排除的目录，和在文件列表中隐藏的文件类型。
+	新版 VS Code 打开用户配置文件 USER SETTINGS 时可能是处于 UI 界面状态，此时在上方的搜索框中输入 exclude 搜索，然后在 search.exclude 和 files.exclude 模块中点击 Add Pattern 补充缺少的内容即可。
+	{
+		"search.exclude": {
+			"**/node_modules": true,
+			"**/bower_components": true,
+			"build/": true,
+			"temp/": true,
+			"library/": true,
+			"**/*.anim": true
+		},
+		"files.exclude": {
+			"**/.git": true,
+			"**/.DS_Store": true,
+			"**/*.meta": true,
+			"library/": true,
+			"local/": true,
+			"temp/": true
+		}
+	}
+	5. Cocos Creator 编辑器的菜单栏中点击 开发者 -> VS Code 工作流 -> 添加 Chrome Debug 配置，这个菜单命令会在你的项目文件夹下添加一个 .vscode/launch.json 文件作为调试器的配置，
+	之后你就可以在 VS Code 里点击左侧栏的 调试 按钮打开调试面板，并在最上方的调试配置中选择 Creator Debug: Launch Chrome，然后点击绿色的开始按钮开始调试。（js文件打断点，按F5调试）
+	
+265. cocos creator使用webstorm开发相关:
+	webstorm激活：打开https://3.jetbra.in/ 找到有星号的连接打开，下载jetbra.zip，运行里面scripts\install-current-user.vbs。等待提示"Done"，再回到刚才打开的页面copy code。
+	webStorm按F5，"Edit Configuration" -> add->JavaScript Debug-> JavaScript Debug->URL: http://localhost:7456/ (需要安装chrome插件 JetBrains IDE Support Chrome_2_0_7_.crx ？ )
 
-266. cocos creator 资源加密：https://forum.cocos.org/t/cocos-creator/95492 资源更新：https://github.com/cocos-creator/cocos-tutorial-hot-update/tree/below-2.3.3
-
-267. webStorm按F5，"Edit Configuration" -> add->JavaScript Debug-> JavaScript Debug->URL: http://localhost:7456/ (需要安装chrome插件 JetBrains IDE Support Chrome_2_0_7_.crx ？ )
-
-	 webStorm 隐藏文件：文件->设置->编辑器->文件类型->隐藏文件和文件夹：*.meta  library local packages build temp settings ...
-     运行->调试->编辑配置->新增调试， Url填http://localhost:7456  浏览器：Chrome, 本地文件目录添加 clientxx。
-	 文件->设置->搜索JSHint 不启用
+	webStorm 隐藏文件：文件->设置->编辑器->文件类型->隐藏文件和文件夹：*.meta  library local packages build temp settings ...
+	运行->调试->编辑配置->新增调试， Url填http://localhost:7456  浏览器：Chrome, 本地文件目录添加 clientxx。
+	文件->设置->搜索JSHint 不启用
 	 
 	 webstorm中js代码中出现红色波浪线。解决：setting->Langusges&Frameworks->JavaScript->Code Quality Tools->JsHint关闭即可。
+	 
+	 webstorm快捷键：
+	 1. 返回上一步 Atl+左箭头。
+	 2. view->tool window->terminal打开终端执行./up.bat   快捷键Ctrl+`打开终端 
 	
-
-268. 修改js，激活cocos creator编译: http://localhost:7456/update-db 请求执行即可。webStorm内可以写命令调用此请求，实现代码编译。
-	创建up.bat内容如下： curl http://localhost:7456/update-db -s   存放在项目目录下
-	webstore下 view->tool window->terminal打开终端执行./up.bat   快捷键Ctrl+`打开终端 
+	webstorm修改了js，激活cocos creator编译: http://localhost:7456/update-db 请求执行即可。webStorm内可以写命令调用此请求，实现代码编译。
+	创建up.bat内容如下： curl http://localhost:7456/update-db -s   存放在项目目录下，在webstorm终端执行./up.bat即可
 	
-269. webstorm：返回上一步 Atl+左箭头
+	webstorm编辑器界面标签页用法设置成和visual studio一样，不滚动。File->setting->editor->general->edtior tabs->一行显示(挤压标签页)。
 
-270. 在build-templates里改下 html, 增加一个根据useragent判断是desktop还是mobile的函数, 然后根据不同的结果用document.write 显示对应的内容即可. 参考:https://forum.cocos.com/t/topic/59014
+266. cocos creator相关：
+	1. cocos creator 资源加密：https://forum.cocos.org/t/cocos-creator/95492 资源更新：https://github.com/cocos-creator/cocos-tutorial-hot-update/tree/below-2.3.3
+	2. chrome打开开发者工具 快捷键 Ctrl + Shift + j.   
+	3. 在build-templates里改下 html, 增加一个根据useragent判断是desktop还是mobile的函数, 然后根据不同的结果用document.write 显示对应的内容即可. 参考:https://forum.cocos.com/t/topic/59014
+	4. 从cocostudio导入到cocos creator，有些default image找不到。查看其他creator工程找到internal本地目录。找到default-assets拷贝进工程目录即可。
 
-271. cocos2dx3.13.3 批量创建spine报错。https://github.com/cocos2d/cocos2d-x/issues/16602 升级到cocos2dx3.14.1问题解决。或者单但升级spine到3.8 https://www.cnblogs.com/tomaszheng/p/14807373.html
+267. cocos2dx3.13.3 批量创建spine报错。https://github.com/cocos2d/cocos2d-x/issues/16602 升级到cocos2dx3.14.1问题解决。或者单但升级spine到3.8 https://www.cnblogs.com/tomaszheng/p/14807373.html
 
-272. ios project  duplicate 一个target。导致编译出错: "Multiple commands produce 'xxxx/Build/Products/Debug-iphoneos/xx.app/Info.plist" 解决：在此target下 build Phases->Copy Bundle Resources下删除 info.plist
+268. ios project  duplicate 一个target。导致编译出错: "Multiple commands produce 'xxxx/Build/Products/Debug-iphoneos/xx.app/Info.plist" 解决：在此target下 build Phases->Copy Bundle Resources下删除 info.plist
 
-273. ios： Undefined symbol: _OBJC_CLASS_$_SKAdNetwork。 解决: Build Phases下添加StoreKit.framework
+269. ios： Undefined symbol: _OBJC_CLASS_$_SKAdNetwork。 解决: Build Phases下添加StoreKit.framework
 
-274. 查看apk签名信息 keytool -list -printcert -jarfile xx.apk
+270. 查看apk签名信息 keytool -list -printcert -jarfile xx.apk
 
-275. targetSdkVersion为31, 启动的 Activity需要设置属性 android:exported="true" 否则无法安装。
+271. targetSdkVersion为31, 启动的 Activity需要设置属性 android:exported="true" 否则无法安装。
 
-276. adb 连接mumu模拟器：
+272. adb 连接mumu模拟器：
 	1. 进入mumu模拟器
 	2、进入设置-关于手机，连续点击版本号进入开发者模式；
 	3、进入设置-系统-开发者选项；
 	4、启用USB调试，允许使用ADB与模拟器通信；
 	5、打开命令行，通过以下adb命令连接模拟器：adb connect 127.0.0.1:7555
 	
-277. 当apk的targetSdkVersion为30时，v2SigningEnabled false(只使用v1签名)，在android 11的手机上安装时，会出现安装失败的问题。：INSTALL_PARSE_FAILED_NO_CERTIFICATES: Scanning Failed.: No signature found in package of version 2 or newer for package
+273. 当apk的targetSdkVersion为30时，v2SigningEnabled false(只使用v1签名)，在android 11的手机上安装时，会出现安装失败的问题。：INSTALL_PARSE_FAILED_NO_CERTIFICATES: Scanning Failed.: No signature found in package of version 2 or newer for package
 解决: targetSdkVersion降低, 改成29。获取添加v2Sign。(注：修改v2SigningEnabled工程需要clean再重新打包。)
 
-278.webstorm激活：打开https://3.jetbra.in/ 找到有星号的连接打开，下载jetbra.zip，运行里面scripts\install-current-user.vbs。等待提示"Done"，再回到刚才打开的页面copy code。
+274.  SSH连接GUI工具：xshell
 
-289. chrome打开开发者工具 快捷键 Ctrl + Shift + j.    SSH连接GUI工具：xshell
+275. apk修改assets资源无需apktool，简单重新打包：改成.zip双击打开找到assets下要修改的目录。把修改完的文件拖入其中。再重新改成.apk 即可。
 
-290. 从cocostudio导入到cocos creator，有些default image找不到。查看其他creator工程找到internal本地目录。找到default-assets拷贝进工程目录即可。
-
-291. webstorm编辑器界面标签页用法设置成和visual studio一样，不滚动。File->setting->editor->general->edtior tabs->一行显示(挤压标签页)。
-
-292. apk修改assets资源无需apktool，简单重新打包：改成.zip双击打开找到assets下要修改的目录。把修改完的文件拖入其中。再重新改成.apk 即可。
-
-293. 
+276. 
 
 
 
