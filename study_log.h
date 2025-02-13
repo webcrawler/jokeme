@@ -2954,15 +2954,20 @@ Ctrl+Shift+p 打开输入框，输入keybindings.json。可以自定义快捷键
 	5、打开命令行，通过以下adb命令连接模拟器：adb connect 127.0.0.1:7555
 	
 277. 当apk的targetSdkVersion为30时，v2SigningEnabled false(只使用v1签名)，在android 11的手机上安装时，会出现安装失败的问题。：INSTALL_PARSE_FAILED_NO_CERTIFICATES: Scanning Failed.: No signature found in package of version 2 or newer for package
-解决: targetSdkVersion降低。获取添加v2Sign。(注：修改v2SigningEnabled工程需要clean再重新打包。)
+解决: targetSdkVersion降低, 改成29。获取添加v2Sign。(注：修改v2SigningEnabled工程需要clean再重新打包。)
 
 278.webstorm激活：打开https://3.jetbra.in/ 找到有星号的连接打开，下载jetbra.zip，运行里面scripts\install-current-user.vbs。等待提示"Done"，再回到刚才打开的页面copy code。
 
-289. chrome打开开发者工具 快捷键 Ctrl + Shift + j
+289. chrome打开开发者工具 快捷键 Ctrl + Shift + j.    SSH连接GUI工具：xshell
 
 290. 从cocostudio导入到cocos creator，有些default image找不到。查看其他creator工程找到internal本地目录。找到default-assets拷贝进工程目录即可。
 
-291. 
+291. webstorm编辑器界面标签页用法设置成和visual studio一样，不滚动。File->setting->editor->general->edtior tabs->一行显示(挤压标签页)。
+
+292. apk修改assets资源无需apktool，简单重新打包：改成.zip双击打开找到assets下要修改的目录。把修改完的文件拖入其中。再重新改成.apk 即可。
+
+293. 
+
 
 
 
