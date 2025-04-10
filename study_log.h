@@ -2936,12 +2936,40 @@ eg: P列值是A列值100倍再加字符coin。在P列第一行输入公式:=IF(A
 	创建up.bat内容如下： curl http://localhost:7456/update-db -s   存放在项目目录下，在webstorm终端执行./up.bat即可
 	
 	webstorm编辑器界面标签页用法设置成和visual studio一样，不滚动。File->setting->editor->general->edtior tabs->一行显示(挤压标签页)。
+	webstorm搜索文件快捷键: 按下 Shift 两次。 搜索内容: Ctrl + Shift + F 
+	
 
 266. cocos creator相关：
 	1. cocos creator 资源加密：https://forum.cocos.org/t/cocos-creator/95492 资源更新：https://github.com/cocos-creator/cocos-tutorial-hot-update/tree/below-2.3.3
-	2. chrome打开开发者工具 快捷键 Ctrl + Shift + j.   
+	2. chrome打开开发者工具 快捷键 Ctrl + Shift + j 或者 F12
 	3. 在build-templates里改下 html, 增加一个根据useragent判断是desktop还是mobile的函数, 然后根据不同的结果用document.write 显示对应的内容即可. 参考:https://forum.cocos.com/t/topic/59014
 	4. 从cocostudio导入到cocos creator，有些default image找不到。查看其他creator工程找到internal本地目录。找到default-assets拷贝进工程目录即可。
+	5. Widget 组件会自动调整当前节点的坐标和宽高，不过目前调整后的结果要到下一帧才能在脚本里获取到，除非你先手动调用 updateAlignment。eg: node.getComponent(cc.Widget).updateAlignment()
+	6. mac下打开cocos creator。报错:Error: EROFS: read-only file system, open '/Volumes/Cocos Creator/CocosCreator.app/Contents/Resources/static/default-assets/image.meta'. 
+	   解决:安装后cocoscreator.app拖到application里，再打开。
+	7. creator2.0.9 cc.loader.load，原生平台远程加载不支持图片文件以外类型的资源。
+	8. 从已发布的文件中查找使用的引擎版本：搜索发布的目录 "engineVersion" 
+	9. cocos creator 触摸在google chrome调试没有反应，在手机浏览器上正常。解决：google chrome上关闭手机调试模式调试。
+	10. cocos creator在浏览器运行。google chrome切换到sources找到对应的代码可以打断点调试。
+	11. scene目录配置为bundle。运行报错;Can not load the xxScene because it was not in the build settings before
+	12.莫名奇妙出现：
+		Uncaught TypeError: getComponent: Type must be non-nil
+		at Node.addComponent (base-node.ts:930:23)
+		at Tt.createInspectorCanvas (inject.js:110:276989)
+		at Tt.addDraw (inject.js:110:276678)
+		at Tt.initDrawNode (inject.js:110:272890)
+		at Mt.update (inject.js:110:281077)
+		at inject.js:110:302880
+		at Director.emit (callbacks-invoker.ts:344:25)
+		at Director.mainLoop (director.ts:906:18)
+		at _callback (game.ts:695:26)
+	查看堆栈是挂在(inject.js:110:276989)：chrome-extension://hejbkamkfnkifppoaljcidepkhgaahcj/inject.js 想起来是装了一个插件 cc-inspector. 删除即可。
+	
+	13. cocos creator 预览运行在google chrome上，使用快捷键 Ctrl + P 查找js文件并打断点。
+	14. cocos creator spine预览插件:https://github.com/ichenpipi/cocos-skeleton-viewer。
+	    下载地址:https://gitee.com/ichenpipi/ccc-skeleton-viewer/releases/download/v1.4.0-v3/ccc-skeleton-viewer.zip 下载解压大片项目packages目录下。
+	15. 
+	
 
 267. cocos2dx3.13.3 批量创建spine报错。https://github.com/cocos2d/cocos2d-x/issues/16602 升级到cocos2dx3.14.1问题解决。或者单但升级spine到3.8 https://www.cnblogs.com/tomaszheng/p/14807373.html
 
@@ -2967,10 +2995,94 @@ eg: P列值是A列值100倍再加字符coin。在P列第一行输入公式:=IF(A
 
 275. apk修改assets资源无需apktool，简单重新打包：改成.zip双击打开找到assets下要修改的目录。把修改完的文件拖入其中。再重新改成.apk 即可。
 
-276. 
+276. vs编译报错： Il mismatch between 'P1' version '20150812' and 'P2' version '20130802'。解决 tools->Extends and Updates->Updates->更新Visual Studio 2015 Update3。
+	但是还是安装失败，直接下载离线iso文件 mu_visual_studio_2015_update_3_x86_x64_dvd_8923065.iso，解压文件进入\ServicedSetupPayloads\OfflineCache\installers\VSU_14.0.25420\en\0 用管理员权限执行vsupdate_KB3022398.exe
+	iso下载链接：http://download.microsoft.com/download/c/2/6/c26892d8-6a5d-4871-9d46-629f4d430146/vs2015.3.vsu.iso
+	
+277. cocos creator导出的android项目，编译报错：error: unable to open output file 'E:/work/xx/build/jsb-link/frameworks/runtime-src/proj.android-studio/app/build/intermediates/ndkBuild/debug/obj/local/arm64-v8a/objs-debug/cocos2dx_static/scripting/js-bindings/jswrapper/v8/debugger/inspector_socket_server.o': 'No such file or directory'
+解决：路径太长导致, 默认情况下，Windows使用路径长度限制(MAX_PATH)256个字符。修改目录？
 
+278. virtualBox 切换本地电脑或者虚拟机内操作系统，快捷键 Right Ctrl。即键盘右边的Ctrl键
+	 virtualBox 安装centos7,使用桥接网络，命令 ip addr查看本地ip。使用xshell登录centos。执行安装宝塔脚本，官网下找到安装脚本： https://www.bt.cn/ 
+	 centos需要root超级管理员权限，输入命令su切换到root超级管理员。root没有设置默认密码则，需要sudo passwd root 设定root密码
+	 
+279. sublime Text4 激活码：
+—– BEGIN LICENSE —–
 
+Mifeng User
 
+Single User License
 
+EA7E-1184812
+
+C0DAA9CD 6BE825B5 FF935692 1750523A
+
+EDF59D3F A3BD6C96 F8D33866 3F1CCCEA
+
+1C25BE4D 25B1C4CC 5110C20E 5246CC42
+
+D232C83B C99CCC42 0E32890C B6CBF018
+
+B1D4C178 2F9DDB16 ABAA74E5 95304BEF
+
+9D0CCFA9 8AF8F8E2 1E0A955E 4771A576
+
+50737C65 325B6C32 817DCB83 A7394DFA
+
+27B7E747 736A1198 B3865734 0B434AA5
+
+—— END LICENSE ——
+
+280. IDA调试SO库：https://blog.csdn.net/StepTp/article/details/120983405
+
+cd D:\program files\IDA 7.0\dbgsrv
+D:
+
+连接android设备
+adb push D:\program files\IDA 7.0\dbgsrv\android_x86_server /data/local/tmp/
+adb shell
+su
+chmod 777 /data/local/tmp/android_x86_server 
+# 启动
+./data/local/tmp/android_x86_server
+
+adb forward tcp:23946 tcp:23946
+
+adb shell "dumpsys window | grep mCurrentFocus"
+
+adb shell am start -D -n com.x.x.ss/com.game.ss.MainActivity
+
+执行sdk下android monitor: E:\android\sdk\tools\monitor.bat 查看以上app使用端口
+
+jdb -connect com.sun.jdi.SocketAttach:hostname=localhost,port=8638    #  port=8638为以上 com.x.x.ss/com.game.ss.MainActivity使用端口
+
+ida 设置...
+
+281.搭建git服务器。GitBlit是一款开源的、轻量级的Git服务器。http://www.gitblit.com/
+下载解压
+修改：gitblit-1.9.3\data\defaults.properties：
+git.repositoriesFolder = E:/gitRepository
+server.httpPort = 12301 # 使用的端口不要与已有端口冲突
+server.httpBindInterface = 192.168.1.8
+server.httpsBindInterface = 192.168.1.8
+执行目下gitblit.cmd 控制台执行完会显示后台地址。http://192.168.1.8:12301/
+默认登录账户密码：admin/admin 可在data文件夹users.conf中修改账号密码。
+
+设置成服务方式（Windows Service）启动Gitblit（开机自动启动）
+找到nstallService.cmd 文本打来：
+设置: SET ARCH=amd64 //64位系统   /*SET ARCH=X86 //若为32位系统*/
+添加: SET CD=D:\gitblit-1.9.3   //这里CD的值是我们GitBlit的文件夹路径
+修改: --StartParams="" ^        //参数设置为空
+重新执行gitblit.cmd。任务管理器->服务 找到gitblit 右键启动
+
+282. cocos creator2.3 发布小游戏子包:
+asstes/gameres 配置为子包。构建发布，远程服务器地址填入http://121.25.146.193/update/
+打开构建好后目录找到subpackages，把该文件夹拷贝到远程服务器目录update/下。再删除本地subpackages.
+
+283. 在施行夏令时的国家，一年里面有一天只有23小时（夏令时开始那一天），有一天有25小时（夏令时结束那一天），其他时间每天都是24小时。
+
+284. JavaScript 教程：https://wangdoc.com/javascript/  ES6标准入门教程: https://wangdoc.com/es6/  TS：？？
+
+285. 
 
 
