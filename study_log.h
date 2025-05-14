@@ -1166,7 +1166,11 @@ public static String getChannel(Context context) {
 批量配置渠道号：http://tech.meituan.com/mt-apk-packaging.html
 http://www.cnblogs.com/ct2011/p/4152323.html
 
-72. python使用import xxtea, 先安装pip(python3.4自带pip可省略下载安装pip): https://bootstrap.pypa.io/get-pip.py
+72. python使用import xxtea.
+先安装pip(python3.4自带pip可省略下载安装pip): https://bootstrap.pypa.io/get-pip.py 
+python2.7使用: https://bootstrap.pypa.io/pip/2.7/get-pip.py  下载完get-pip.py 执行python "{path}\get-pip.py" (执行需要挂代理)
+安装在C:\Python27\Scripts，如果执行pip不存在，则cd进入此目录再执行
+
 然后安装xxtea：pip install xxtea -U
 假如提示：“command 'cl.exe' failed: No such file or directory”  见 
 http://stackoverflow.com/questions/38059732/error-command-cl-exe-failed-no-such-file-or-directory  
@@ -1231,6 +1235,7 @@ svn update
 	cd D:/Android/SDK/build-tools/23.0.0_rc3
 	然后使用aapt dump bading XXX.apk就能看到VersionCode等信息
 	aapt dump badging C:/Users/xx/Desktop/app-release_1.0.9.apk
+	如果提示 "ERROR: dump failed because no AndroidManifest.xml found" 可能是apk路径有中文
 
 82. 节点曲线运动，计算节点转动的角度(和x轴夹角)
     local bezier1 = {
@@ -2545,7 +2550,7 @@ https://github.com/webcrawler/jokeme/blob/master/sdk_xsolla_demo.lua
 
 216.查看远程主机端口是否开放:
 telnet安装：控制面板-程序和功能-启用或关闭Windows功能-勾选Telnet客户端
-telnet 8.135.2.1 18080
+telnet 8.135.2.1{空格}8080
 或者在线工具：https://tool.chinaz.com/port
 
 217. docker相关：
@@ -2968,8 +2973,36 @@ eg: P列值是A列值100倍再加字符coin。在P列第一行输入公式:=IF(A
 	13. cocos creator 预览运行在google chrome上，使用快捷键 Ctrl + P 查找js文件并打断点。
 	14. cocos creator spine预览插件:https://github.com/ichenpipi/cocos-skeleton-viewer。
 	    下载地址:https://gitee.com/ichenpipi/ccc-skeleton-viewer/releases/download/v1.4.0-v3/ccc-skeleton-viewer.zip 下载解压大片项目packages目录下。
-	15. 
+	15. cocos creator2.0.9 发布到android studio.编译问题:
+		1. "Parameter specified as non-null is null: method com.android.build.gradle.internal.cxx.configure.JsonGenerationVariantConfiguration., parameter ndkVersion"
+		    解决: 修改ndk版本为r16. (ndk.dir=E\:\\android\\sdk\\ndk\\android-ndk-r16) 文档:https://docs.cocos.com/creator/2.0/manual/zh/publish/setup-native-development.html
+	    2. inspector_socket_server.o': 'No such file or directory'
+			解决: 见编号277. 路径太深导致
+		3. 
+		
+	16. 微信小游戏相关:=> 网站入口: https://mp.weixin.qq.com/ 发布流程：https://gamemaker.weixin.qq.com/doc/minigame/release.html
 	
+	17. 发布字节小游戏整包需要小于20MB。图片压缩，分包使用"合并所有json"
+	    js混淆:assets/main/index.js 文件拖到此处混淆 https://obfuscator.io/  混淆后的文件体积会增大。
+		
+	18. 微信小游戏分包加载包大小的限制: 
+			整个小游戏所有主包+分包大小不超过 30M
+			主包不超过 4M
+			单个普通分包不限制大小
+			单个独立分包不超过 4M
+			
+		抖音小游戏分包加载包大小的限制: 
+			•普通小游戏包
+			未配置分包的场景下，每个小游戏允许上传的代码包总大小上限为 20MB。
+			•分包后小游戏包
+			对于配置了分包的小游戏，默认限制为：
+			小游戏整体包（小游戏包整个目录）大小不超过 20MB；
+			单个主包不超过 4MB；
+			单个分包大小不超过 20MB。
+			•开放数据域
+			开放数据域文件类似子包概念，该文件 / 目录的大小不超过 4MB。
+	
+	19. 
 
 267. cocos2dx3.13.3 批量创建spine报错。https://github.com/cocos2d/cocos2d-x/issues/16602 升级到cocos2dx3.14.1问题解决。或者单但升级spine到3.8 https://www.cnblogs.com/tomaszheng/p/14807373.html
 
@@ -3083,6 +3116,9 @@ asstes/gameres 配置为子包。构建发布，远程服务器地址填入http:
 
 284. JavaScript 教程：https://wangdoc.com/javascript/  ES6标准入门教程: https://wangdoc.com/es6/  TS：？？
 
-285. 
+285. Samsung Galaxy Z Flip6 安装apk失败，提示"應用程式套件無效，因此未能完成安装"。提示信息查询https://www.androidos.net.cn/android/10.0.0_r6/raw/frameworks/base/packages/PackageInstaller/res/values-zh-rTW/strings.xml
+错误信息为"install_failed_invalid_apk",
 
+286. 查看apk是否为debug打的包：使用apktool工具，apktool d xx.apk  查看AndroidManifest.xml文件是否存在 android:debuggable="true"
 
+287. 
