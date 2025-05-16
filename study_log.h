@@ -3121,4 +3121,7 @@ asstes/gameres 配置为子包。构建发布，远程服务器地址填入http:
 
 286. 查看apk是否为debug打的包：使用apktool工具，apktool d xx.apk  查看AndroidManifest.xml文件是否存在 android:debuggable="true"
 
-287. 
+287. 微信小游戏体验版本广告显示正常，线上版本不展示。问题：在小程序后台->广告管理->审核提示 "组件审核:小程序广告组件关闭原因：违反小程序流量主广告组件规范，广告展示永久关闭。"
+     详情: "1.流量主通过不正当刷粉方式开通流量主账号。"
+	 
+288. cocos creator2.0.9 i18n插件在ide不存在，官方不维护了。到https://github.com/cocos-creator-packages/i18n/tree/master/runtime-scripts。下载runtime-scripts放入项目Scripts
