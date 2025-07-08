@@ -3125,3 +3125,57 @@ asstes/gameres 配置为子包。构建发布，远程服务器地址填入http:
      详情: "1.流量主通过不正当刷粉方式开通流量主账号。"
 	 
 288. cocos creator2.0.9 i18n插件在ide不存在，官方不维护了。到https://github.com/cocos-creator-packages/i18n/tree/master/runtime-scripts。下载runtime-scripts放入项目Scripts
+
+289. adb logcat 只显示需要的输出(白名单), 使用 grep
+	adb logcat | grep "cocos2d-x debug info"
+	
+	adb logcat 过滤过滤不需要的输出(黑名单), 加 -v即可
+	adb logcat | grep -v "TimeStats: RenderEngineTimes are already at its maximum size"
+
+290. 
+Egret相关:
+	导出android工程资源：egret publish Demo -target android
+	下载工具放 C:\Users\Administrator\AppData\Roaming\EgretLauncher\download
+	文档：
+	https://www.egret.uk/egretengine2d/
+	https://github.com/egret-labs/egret-android-support
+	http://www.uustory.com/?p=2273
+	引擎文档：https://github.com/egret-labs/egret-docs
+	UI Editor文档：https://github.com/egret-labs/egret-ui-editor-opensource
+	https://www.kuwwz.com/#/EUI/README
+	
+	Egret Wing快捷键:
+		ctrl+p: 查找文件
+		F5：启动或者调试当前项目
+		*Ctrl+Shift+O: 能够打开快速大纲面板，显示当前文件中定义的所有类，方法和变量。
+		*Shift+F12：查找所有引用
+		Alt+Left：切换到上一个编辑位置
+		*Alt+Shift+F: 格式化代码
+	
+	Egret Wing排查某文件夹：文件->首选项->工作区设置：
+	// 将设置放入此文件中以覆盖默认值和用户设置。
+	{
+		...
+		// 配置排除文件和文件夹的匹配模式.
+		"files.exclude": {
+			...
+			"**/bin-debug": true
+		}
+	}
+	
+		
+291. vscode:
+要操作光标所在文件中的所有代码块：
+折叠所有 Ctrl+K+0
+展开所有 Ctrl+K+J
+
+仅仅操作光标所处代码块内的代码：
+折叠 Ctrl+Shift+[
+展开 Ctrl+Shift+]
+
+或者Ctrl+Shift+P 搜索 fold和unfold
+
+292. cocos creator2.4.5 替换加载页cocos图：
+	D:\ProgramData\cocos\editors\Creator\2.4.5\resources\static\img\logo_portrait.png。找个透明图替换
+	
+293. 
