@@ -3143,6 +3143,7 @@ Egret相关:
 	引擎文档：https://github.com/egret-labs/egret-docs
 	UI Editor文档：https://github.com/egret-labs/egret-ui-editor-opensource
 	https://www.kuwwz.com/#/EUI/README
+	原生发布文档：https://www.egret.uk/egretnative/
 	
 	Egret Wing快捷键:
 		ctrl+p: 查找文件
@@ -3163,6 +3164,13 @@ Egret相关:
 		}
 	}
 	
+	发布android:
+	egret publish -target android
+	生成的工程在项目同一层。从(已经安装)C:\Users\Administrator\AppData\Roaming\EgretLauncher\download\EgretNativeSupport\1.1.2\android\template
+	下拷贝android工程到刚生成的目录。
+	(EgretNativeSupport是从从https://ogi.teracloud.jp/sbrowser/#https://ogi.teracloud.jp/ds/dav/1202a78a4d474762/下载supports_download.zip解压放入以上目录)
+	
+	
 		
 291. vscode:
 要操作光标所在文件中的所有代码块：
@@ -3178,4 +3186,35 @@ Egret相关:
 292. cocos creator2.4.5 替换加载页cocos图：
 	D:\ProgramData\cocos\editors\Creator\2.4.5\resources\static\img\logo_portrait.png。找个透明图替换
 	
-293. 
+293. android studio 报错"Invalid Gradle JDK configuration found". 解决: Project Structure->SDK Location->有两个可供设置的选项, 一个是系统默认的 JDK 路径, 一个是 Android Studio 默认的 JDK 路径, 切换一下即可。
+修改后继续报错"No matching variant of com.android.tools.build:gradle:7.4.2 was found". 解决:https://blog.csdn.net/msn465780/article/details/129981203. 更改GradleJDK为Java11
+
+294. android studio 全局搜索快捷键： ctrl + shift + f
+
+295. android studio报错：Could not determine java version from '11.0.8'.
+	解决：Grade 和 JDK 的版本不兼容，修改。
+	egret5.3.10 android工程：Gradle Plugin: 3.3.1, Gradle Version: 4.10.1, JDK: 1.8
+	
+296. android studio打包出错: Failed to read key AndroidDebugKey from store debug.keystore。解决修改JDK为11版本
+
+297. 安装apk提示："這個應用程式是專為舊版 Android 打造，因此不含最新的隱私保護服務。 安装這個應用程式可能會讓装置面臨風險。進一步瞭解 Play 安全防護。"
+	解决：顯示提示：「這個應用程式是專為舊版 Android 打造，因此不含最新的隱私保護服務」
+	通知的原因：只有在應用程式的 targetSdkVersion 比目前的 Android API 級別低 2 個以上版本時，才會顯示這些 Play 安全防護警告。舉例來說，如果使用者使用搭載 Android 13 (目前 API = 33) 的裝置，在安裝任何以 API 級別 31 以下為目標的 APK 時，系統會發出警告。您可以在 API 級別頁面查看 Android 版本和對應的 API 級別。
+
+	如果裝置的 API 級別低於目標 API 級別，就不會收到警告。每個新的 Android 版本都會推出變更，可提升安全性與效能，並改善 Android 使用者體驗。其中某些變更僅適用於透過 targetSdkVersion 資訊清單屬性 (也就是目標 API 級別) 明確宣告支援的應用程式。如果您設定讓應用程式支援最新的 API 級別，就能讓使用者享受到這些提升的效益，同時可繼續讓您的應用程式在較舊版本的 Android 上正常運作。指定使用最新 API 級別也有助於讓應用程式充分發揮平台的最新功能，讓使用者用得更加愉快。
+
+	建議的開發人員行動：
+
+	為確保各 Android 版本的相容性，開發人員應確保任何應用程式的新版本都指定最新的 API 級別。如需變更應用程式目標 API 級別的建議，請參閱遷移指南。
+	https://developers.google.com/android/play-protect/warning-dev-guidance?hl=zh-tw
+	
+298. android studio打包，targetSdkVersion从28升级到33后 打出的apk在模拟器(android 12)安装不了，但是在android 9还能安装。
+	解决：Android 12（API 31）起，所有包含 <intent-filter> 的组件（Activity、Service、Receiver）​​必须显式声明 android:exported​​（true 或 false）。
+	<activity android:name=".MainActivity" android:exported="true"> <!-- 允许外部启动 -->
+		<intent-filter>
+			<action android:name="android.intent.action.MAIN" />
+		</intent-filter>
+	</activity>
+	<receiver android:name=".MyReceiver" android:exported="false"/> <!-- 仅内部使用 -->
+	
+299. 
