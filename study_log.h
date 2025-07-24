@@ -3217,4 +3217,13 @@ Egret相关:
 	</activity>
 	<receiver android:name=".MyReceiver" android:exported="false"/> <!-- 仅内部使用 -->
 	
-299. 
+	compileSdkVersion 必须 ≥ targetSdkVersion，否则编译时可能忽略新 API 的兼容性检查。
+	
+299. android studio 打包release模式报错：java.io.IOException: Can't read [E:\android\sdk\platforms\android-33\optional\android.car.jar] (Can't process class [android/car/Car$CarServiceLifecycleListener.class] (Unsupported version number [55.0] (maximum 54.0, Java 10)))
+	解决：升级ProGuard版本，project下build.gradle，dependencies新增 classpath 'com.guardsquare:proguard-gradle:7.1.0'
+	dependencies {
+        ...
+        classpath 'com.guardsquare:proguard-gradle:7.1.0' // ProGuard Gradle 插件。
+    }
+	
+ 300. 
