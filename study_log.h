@@ -3170,7 +3170,10 @@ Egret相关:
 	下拷贝android工程到刚生成的目录。
 	(EgretNativeSupport是从从https://ogi.teracloud.jp/sbrowser/#https://ogi.teracloud.jp/ds/dav/1202a78a4d474762/下载supports_download.zip解压放入以上目录)
 	
-	
+	001. egret在项目下lib放第三方库(spine-egret-runtimes.d.ts, spine-egret-runtimes.js, spine-egret-runtimes.min.js)，
+	修改egretProperties.json，在modules下新增库"spine", 执行build后，项目manifest.json内initial下没有新增spine-egret-runtimes.js。
+	解决：把以上库文件重新命名成spine.js。(看起来js文件命名不能使用横线或者下划线连接)
+	下载egret spine库 https://github.com/BobSongCN/spine-egret-runtimes
 		
 291. vscode:
 要操作光标所在文件中的所有代码块：
@@ -3226,4 +3229,32 @@ Egret相关:
         classpath 'com.guardsquare:proguard-gradle:7.1.0' // ProGuard Gradle 插件。
     }
 	
- 300. 
+300. 打开 java -jar skeletonViewer-3.7.94.jar  报错com.badlogic.gdx.utils.GdxRuntimeException: java.lang.NoSuchMethodError: java.nio.FloatBuffer.flip()Ljava/nio/FloatBuffer
+	解决: Java version >= 9
+	
+301.IIS 中强制所有文件类型均以下载形式处理（而非直接打开），需通过配置通配符 MIME 类型实现: 
+	打开 ​​IIS 管理器​​ → 右键点击​​本地计算机​​ → 选择​​属性​​。
+	点击 ​​MIME 类型​​ → ​​添加​​。
+	填写以下参数：
+	​​扩展名​​：*（星号表示所有文件类型）
+	​​MIME 类型​​：application/octet-stream（通用二进制流类型）
+	重启
+302. bat调用python，在python执行print报错 LookupError: unknown encoding: cp65001 
+	解决：bat加：
+	chcp 65001 
+	set PYTHONIOENCODING=UTF-8
+	
+303. 多个devices的情况下，adb logcat指定设备
+// 查看设备: 
+C:\Users\Administrator>adb devices
+List of devices attached
+emulator-5554   device
+127.0.0.1:16384 device
+
+// 指定127.0.0.1:16384这台设备执行logcat
+adb -s 127.0.0.1:16384 logcat
+
+304. Android 9+ 需注意明文 HTTP 限制，如需允许 HTTP，添加：
+<application android:usesCleartextTraffic="true" ...>
+
+305. 
