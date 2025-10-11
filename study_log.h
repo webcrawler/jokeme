@@ -3257,4 +3257,7 @@ adb -s 127.0.0.1:16384 logcat
 304. Android 9+ 需注意明文 HTTP 限制，如需允许 HTTP，添加：
 <application android:usesCleartextTraffic="true" ...>
 
-305. 
+305.  xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=utf-8"); => 简单请求不会触发预检(OPTIONS)​​，浏览器直接发送请求.
+      xhr.setRequestHeader("Content-Type", "application/json;charset=utf-8"); => 非简单请求 (Preflighted Request), 会先发送 OPTIONS 预检请求​​，服务器必须正确处理这个预检请求。
+	  
+306. 
