@@ -1233,7 +1233,7 @@ svn update
 81. 查看apk信息：
 	首先找到aapt工具，在Android SDK文件夹下的build-tools包里，如下：
 	cd D:/Android/SDK/build-tools/23.0.0_rc3
-	然后使用aapt dump bading XXX.apk就能看到VersionCode等信息
+	然后使用aapt dump badging XXX.apk就能看到VersionCode等信息
 	aapt dump badging C:/Users/xx/Desktop/app-release_1.0.9.apk
 	如果提示 "ERROR: dump failed because no AndroidManifest.xml found" 可能是apk路径有中文
 
@@ -2922,6 +2922,8 @@ eg: P列值是A列值100倍再加字符coin。在P列第一行输入公式:=IF(A
 	}
 	5. Cocos Creator 编辑器的菜单栏中点击 开发者 -> VS Code 工作流 -> 添加 Chrome Debug 配置，这个菜单命令会在你的项目文件夹下添加一个 .vscode/launch.json 文件作为调试器的配置，
 	之后你就可以在 VS Code 里点击左侧栏的 调试 按钮打开调试面板，并在最上方的调试配置中选择 Creator Debug: Launch Chrome，然后点击绿色的开始按钮开始调试。（js文件打断点，按F5调试）
+	6. 全局(用户)setting.json路径在C:\Users\Administrator\AppData\Roaming\Code\User\settings.json, 项目(工作区)setting.json路径在xxproj\.vscode\settings.json。按 Ctrl + ,打开设置也可以看到「用户」和「工作区」的设置界面。
+	
 	
 265. cocos creator使用webstorm开发相关:
 	webstorm激活：打开https://3.jetbra.in/ 找到有星号的连接打开，下载jetbra.zip，运行里面scripts\install-current-user.vbs。等待提示"Done"，再回到刚才打开的页面copy code。
@@ -3020,6 +3022,13 @@ eg: P列值是A列值100倍再加字符coin。在P列第一行输入公式:=IF(A
 	3、进入设置-系统-开发者选项；
 	4、启用USB调试，允许使用ADB与模拟器通信；
 	5、打开命令行，通过以下adb命令连接模拟器：adb connect 127.0.0.1:7555
+	
+	adb连接mumu(端口在mumu->设备诊断 查看)：
+	chcp 65001 
+	adb kill-server
+	adb connect 127.0.0.1:16384
+	adb devices
+	adb -s 127.0.0.1:16384 logcat | grep -v "RenderEngineTimes are already at its maximum size"
 	
 273. 当apk的targetSdkVersion为30时，v2SigningEnabled false(只使用v1签名)，在android 11的手机上安装时，会出现安装失败的问题。：INSTALL_PARSE_FAILED_NO_CERTIFICATES: Scanning Failed.: No signature found in package of version 2 or newer for package
 解决: targetSdkVersion降低, 改成29。获取添加v2Sign。(注：修改v2SigningEnabled工程需要clean再重新打包。)
@@ -3259,5 +3268,13 @@ adb -s 127.0.0.1:16384 logcat
 
 305.  xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=utf-8"); => 简单请求不会触发预检(OPTIONS)​​，浏览器直接发送请求.
       xhr.setRequestHeader("Content-Type", "application/json;charset=utf-8"); => 非简单请求 (Preflighted Request), 会先发送 OPTIONS 预检请求​​，服务器必须正确处理这个预检请求。
-	  
-306. 
+	  link: https://www.cnblogs.com/zdt168/p/18935326
+
+306. linux 删除文件夹命令：
+[root@ip-172-31-43-222 bundle]# ls
+import  native
+[root@ip-172-31-43-222 bundle]# rm  -rf native/
+[root@ip-172-31-43-222 bundle]# ls
+import
+
+307. 
