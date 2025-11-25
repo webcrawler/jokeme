@@ -3313,14 +3313,44 @@ import
 310. 执行adb install失败：Failure [INSTALL_PARSE_FAILED_MANIFEST_MALFORMED: Failed parse during installPackageLI: /data/app/vmdl1982070011.tmp/bas
 e.apk (at Binary XML file line #208): com.tencent.tauth.AuthActivity: Targeting S+ (version 31 and above) requires that
 an explicit value for android:exported be defined when intent filters are present]
-	解决：在AndroidManifest.xml内添加：
+	1. 接的sdk内部activity存在<intent-filter>, 临时解决：在项目AndroidManifest.xml内添加：
 	<!-- targetSdkVersion >= 31(android 12)的情况下需要加android:exported -->
 	<activity
 		android:name="com.tencent.tauth.AuthActivity"
 		android:exported="false">
 	</activity>
 	
+	2. 也可以使用appt命令aapt dump xmltree xx.apk AndroidManifest.xml 查看com.tencent.tauth.AuthActivity信息：
+	 A: android:name(0x01010003)="com.tencent.tauth.AuthActivity" (Raw: "com.tencent.tauth.AuthActivity")
+        A: android:launchMode(0x0101001d)=(type 0x10)0x2
+        A: android:noHistory(0x0101022d)=(type 0x12)0xffffffff
+        E: intent-filter (line=212)
+          E: action (line=213)
+            A: android:name(0x01010003)="android.intent.action.VIEW" (Raw: "android.intent.action.VIEW")
+          E: category (line=215)
+            A: android:name(0x01010003)="android.intent.category.DEFAULT" (Raw: "android.intent.category.DEFAULT")
+          E: category (line=216)
+            A: android:name(0x01010003)="android.intent.category.BROWSABLE" (Raw: "android.intent.category.BROWSABLE")
+          E: data (line=218)
+            A: android:scheme(0x01010027)="tencent111111" (Raw: "tencent111111")
+      E: activity (line=221)
+	  
+	 然后修改完善以上<activity：
+	<activity
+		android:name="com.tencent.tauth.AuthActivity"
+		android:exported="false">
+	   <intent-filter>
+			<!-- 原有的 intent-filter 内容 -->
+			<action android:name="android.intent.action.VIEW" />
+			<category android:name="android.intent.category.DEFAULT" />
+			<category android:name="android.intent.category.BROWSABLE" />
+			<data android:scheme="tencent111111" />
+		</intent-filter>
+	</activity>
+	
 311. 
+
+
 
 
 
