@@ -3335,7 +3335,7 @@ an explicit value for android:exported be defined when intent filters are presen
             A: android:scheme(0x01010027)="tencent111111" (Raw: "tencent111111")
       E: activity (line=221)
 	  
-	 然后修改完善以上<activity：
+	然后修改sdk完善以上<activity：
 	<activity
 		android:name="com.tencent.tauth.AuthActivity"
 		android:exported="false">
