@@ -2671,6 +2671,7 @@ android {
 }
 
 228. git 撤销文件本地修改：git checkout [filename]
+	eg: git checkout resource/config.zip
 
 229. frameworks/cocos2d-x/tools/simulator/libsimulator/proj.ios_mac/libsimulator.xcodeproj: warning: The iOS deployment target 'IPHONEOS_DEPLOYMENT_TARGET' is set to 8.1, but the range of supported deployment target versions is 11.0 to 16.4.99. (in target 'libsimulator iOS' from project 'libsimulator')
 error: The armv7 architecture is deprecated. You should update your ARCHS build setting to remove the armv7 architecture. (in target 'libsimulator iOS' from project 'libsimulator')
@@ -2923,6 +2924,25 @@ eg: P列值是A列值100倍再加字符coin。在P列第一行输入公式:=IF(A
 	5. Cocos Creator 编辑器的菜单栏中点击 开发者 -> VS Code 工作流 -> 添加 Chrome Debug 配置，这个菜单命令会在你的项目文件夹下添加一个 .vscode/launch.json 文件作为调试器的配置，
 	之后你就可以在 VS Code 里点击左侧栏的 调试 按钮打开调试面板，并在最上方的调试配置中选择 Creator Debug: Launch Chrome，然后点击绿色的开始按钮开始调试。（js文件打断点，按F5调试）
 	6. 全局(用户)setting.json路径在C:\Users\Administrator\AppData\Roaming\Code\User\settings.json, 项目(工作区)setting.json路径在xxproj\.vscode\settings.json。按 Ctrl + ,打开设置也可以看到「用户」和「工作区」的设置界面。
+	7.总结，vscode调试cocos creator：打开项目下.vscode/launch.json，复制如下文本保存即可
+	{
+		"version": "1.4.0",
+		"configurations": [
+			{
+				"name": "Creator Debug: Launch Chrome",
+				"type": "chrome",
+				"request": "launch",
+				"url": "http://localhost:7456",
+				"sourceMaps": true,
+				"userDataDir": "${workspaceRoot}/.vscode/chrome",
+				"diagnosticLogging": false,
+				"pathMapping": {
+					"/preview-scripts/assets": "${workspaceRoot}/temp/quick-scripts/assets",
+					"/": "${workspaceRoot}"
+				}    
+			}
+		]
+	}
 	
 	
 265. cocos creator使用webstorm开发相关:
@@ -3277,4 +3297,30 @@ import  native
 [root@ip-172-31-43-222 bundle]# ls
 import
 
-307. 
+307. 查看.jar包，gui工具：jd-gui-windows  => https://github.com/java-decompiler/jd-gui
+
+308. git撤销最近的pull操作命令 git reset --hard commit hash
+	eg: git reset --hard dd7e967146b2faa012e91428ff3e2823991da3c0 (撤回到某个提交点，本地修改全部还原)
+	
+309. 存在多个设备情况下adb install操作：
+	先 adb devices 查看设备。再执行adb -s {device} install xx/x.apk. 示例：
+	C:\Users\Administrator>adb devices
+	List of devices attached
+	emulator-5556   device
+	127.0.0.1:16416 device
+	C:\Users\Administrator>adb -s 127.0.0.1:16416 install G:\works\client_androids\app\build\outputs\apk\debug\app-debug.apk
+
+310. 执行adb install失败：Failure [INSTALL_PARSE_FAILED_MANIFEST_MALFORMED: Failed parse during installPackageLI: /data/app/vmdl1982070011.tmp/bas
+e.apk (at Binary XML file line #208): com.tencent.tauth.AuthActivity: Targeting S+ (version 31 and above) requires that
+an explicit value for android:exported be defined when intent filters are present]
+	解决：在AndroidManifest.xml内添加：
+	<!-- targetSdkVersion >= 31(android 12)的情况下需要加android:exported -->
+	<activity
+		android:name="com.tencent.tauth.AuthActivity"
+		android:exported="false">
+	</activity>
+	
+311. 
+
+
+
