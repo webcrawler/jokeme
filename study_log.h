@@ -3348,7 +3348,12 @@ an explicit value for android:exported be defined when intent filters are presen
 		</intent-filter>
 	</activity>
 	
-311. 
+311. android项目的 targetSdkVersion>=31(Android 12), 安装APK的手机系统是 Android 12 或更高版本。 AndroidManifest.xml启动器 Activity内exported="false"，导致安装后打开app提示"应用未安装"。
+解决：从 Android 12（API 31）​ 开始，如果某个 Activity、Service 或 Receiver 使用了 <intent-filter>，系统会强制要求你显式地声明 android:exported属性。
+对于启动器 Activity（含有 MAIN和 LAUNCHER的 Activity），它必须被设置为 exported="true"。
+因为点击桌面图标这个行为，是由系统启动器（Launcher）​ 这个“其他应用”来发起的。如果你的主Activity不导出，系统Launcher就无法启动它。
+
+312. 
 
 
 
