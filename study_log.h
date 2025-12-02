@@ -2249,7 +2249,7 @@ pip install xxxxx -i http://pypi.douban.com/simple/ --trusted-host pypi.douban.c
 168. Android Studio gradle build项目时控制台输出中文乱码。解决：找到 studio64.exe.vmoptions 文件,文件末尾加入：-Dfile.encoding=UTF-8
 
 169. Android9.0 报错：java.lang.NoClassDefFoundError: Failed resolution of: Lorg/apache/http/client/HttpRequestRetryHandler;
-解决：在AndroidManifest.xml的application 标签中添加: <uses-library android:name="org.apache.http.legacy" android:required="false" />
+解决：以 Android 9 及更高版本为目标平台的应用若要继续使用 Apache HTTP 客户端, 在AndroidManifest.xml的application 标签中添加: <uses-library android:name="org.apache.http.legacy" android:required="false" />
 
 170. adb连接逍遥模拟器:adb connect 127.0.0.1:21523  端口号在program files\Microvirt\MEmu\MemuHyperv VMs\MEmu_xx\MEmu_xx.memu-prev里：
 <Forwarding name="ADB" proto="1" hostip="127.0.0.1" hostport="21523" guestip="10.0.2.15" guestport="5555"/>。hostip和hostport
