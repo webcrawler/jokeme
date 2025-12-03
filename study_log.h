@@ -3355,7 +3355,13 @@ an explicit value for android:exported be defined when intent filters are presen
 
 312. python 使用pip安装包, 关闭网络代理，使用清华镜像。eg: pip install -i https://pypi.tuna.tsinghua.edu.cn/simple pandas
 
-313.git使用代理提交代码：git config --global http.proxy socks5://127.0.0.1:1080
+313. git使用代理提交代码：在项目下.git\config内添加(socks5)：
+[http]
+	proxy = socks5://192.168.1.123:1088
+[https]
+	proxy = socks5://192.168.1.123:1088
+	
+314.
 
 
 
