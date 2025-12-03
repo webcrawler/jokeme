@@ -3353,8 +3353,9 @@ an explicit value for android:exported be defined when intent filters are presen
 对于启动器 Activity（含有 MAIN和 LAUNCHER的 Activity），它必须被设置为 exported="true"。
 因为点击桌面图标这个行为，是由系统启动器（Launcher）​ 这个“其他应用”来发起的。如果你的主Activity不导出，系统Launcher就无法启动它。
 
-312. 
+312. python 使用pip安装包, 关闭网络代理，使用清华镜像。eg: pip install -i https://pypi.tuna.tsinghua.edu.cn/simple pandas
 
+313.git使用代理提交代码：git config --global http.proxy socks5://127.0.0.1:1080
 
 
 
