@@ -3024,7 +3024,12 @@ eg: P列值是A列值100倍再加字符coin。在P列第一行输入公式:=IF(A
 			•开放数据域
 			开放数据域文件类似子包概念，该文件 / 目录的大小不超过 4MB。
 	
-	19. 
+	19. 创建Spine节点时先设置父节点，再添加组件和设置属性的顺序，否则不展示：
+		var node = new cc.Node("skelon");
+		node.parent = xxx;  // 先设置父节点 or xxx.addchild(node)
+		var sp = node.addComponent("sp.Skeleton");
+		sp.skeletonData = res_object;
+		sp.setAnimation(1, "action1", true);
 
 267. cocos2dx3.13.3 批量创建spine报错。https://github.com/cocos2d/cocos2d-x/issues/16602 升级到cocos2dx3.14.1问题解决。或者单但升级spine到3.8 https://www.cnblogs.com/tomaszheng/p/14807373.html
 
