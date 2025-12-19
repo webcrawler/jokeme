@@ -3030,6 +3030,9 @@ eg: P列值是A列值100倍再加字符coin。在P列第一行输入公式:=IF(A
 		var sp = node.addComponent("sp.Skeleton");
 		sp.skeletonData = res_object;
 		sp.setAnimation(1, "action1", true);
+	
+	20. cocos creator2.3 之前不支持spine二进制。2.3开始 Spine runtime version 3.8支持二进制。
+	
 
 267. cocos2dx3.13.3 批量创建spine报错。https://github.com/cocos2d/cocos2d-x/issues/16602 升级到cocos2dx3.14.1问题解决。或者单但升级spine到3.8 https://www.cnblogs.com/tomaszheng/p/14807373.html
 
@@ -3366,7 +3369,13 @@ an explicit value for android:exported be defined when intent filters are presen
 [https]
 	proxy = socks5://192.168.1.123:1088
 	
-314.
+314. google doc(https://docs.google.com/) 在线excel翻译公式。如下demo(判断A1是否空，空则返回空字符，否则把A1内中文翻译成日语)
+	=IF(OR(A1 = "", ISBLANK(A1)), "", GOOGLETRANSLATE(A1, "zh", "ja")) 
+	
+	微软在下表格(https://onedrive.live.com/)，如下demo,把A1内中文翻译成日语
+	=TRANSLATE(A1,"zh-chs","ja")
+
+315. 
 
 
 
