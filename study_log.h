@@ -3375,7 +3375,39 @@ an explicit value for android:exported be defined when intent filters are presen
 	微软在下表格(https://onedrive.live.com/)，如下demo,把A1内中文翻译成日语
 	=TRANSLATE(A1,"zh-chs","ja")
 
-315. 
+315. lua base64:
+ --base64加密
+ function base64_encode(data)
+	local base64Table='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'
+    return ((data:gsub('.', function(x) 
+        local r,b='',x:byte()
+        for i=8,1,-1 do r=r..(b%2^i-b%2^(i-1)>0 and '1' or '0') end
+        return r;
+    end)..'0000'):gsub('%d%d%d?%d?%d?%d?', function(x)
+        if (#x < 6) then return '' end
+        local c=0
+        for i=1,6 do c=c+(x:sub(i,i)=='1' and 2^(6-i) or 0) end
+        return base64Table:sub(c+1,c+1)
+    end)..({ '', '==', '=' })[#data%3+1])
+end
+ --base64解密
+function base64_decode(data)
+	local base64Table='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'
+    data = string.gsub(data, '[^'..base64Table..'=]', '')
+    return (data:gsub('.', function(x)
+        if (x == '=') then return '' end
+        local r,f='',(base64Table:find(x)-1)
+        for i=6,1,-1 do r=r..(f%2^i-f%2^(i-1)>0 and '1' or '0') end
+        return r;
+		end):gsub('%d%d%d?%d?%d?%d?%d?%d?', function(x)
+        if (#x ~= 8) then return '' end
+        local c=0
+        for i=1,8 do c=c+(x:sub(i,i)=='1' and 2^(8-i) or 0) end
+        return string.char(c)
+	end))
+end
+
+316. 
 
 
 
