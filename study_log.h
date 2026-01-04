@@ -3407,7 +3407,12 @@ function base64_decode(data)
 	end))
 end
 
-316. 
+316. 本地调试，http请求失败：
+Access to XMLHttpRequest at 'http://xx.x/sdfc' from origin 'http://127.0.0.1:5051' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.
+解决：浏览器安装跨域插件CORS: https://chromewebstore.google.com/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf?hl=zh-CN 
+	  修改hosts文件：添加一个域名解析到127.0.0.1  eg: 127.0.0.1 joke.com 使用域名访问。
+
+317. 
 
 
 
