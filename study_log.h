@@ -3412,8 +3412,17 @@ Access to XMLHttpRequest at 'http://xx.x/sdfc' from origin 'http://127.0.0.1:505
 解决：浏览器安装跨域插件CORS: https://chromewebstore.google.com/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf?hl=zh-CN 
 	  修改hosts文件：添加一个域名解析到127.0.0.1  eg: 127.0.0.1 joke.com 使用域名访问。
 
-317. 
-
+317. bat设置环境变量：
+	1. 临时设置环境变量（使用 set），设置的变量只在当前的命令提示符窗口内有效，一旦关闭窗口，设置即失效。非常适合临时测试。
+	REM 语法：set 变量名=变量值
+	set MY_TEMP_VAR=C:\MyTempTool
+	2. 永久设置环境变量（使用 setx），setx命令可以将变量永久地写入注册表。
+	REM 设置为当前用户的环境变量（无需管理员权限）
+	setx MY_USER_VAR "D:\MyUserTools"
+	REM 设置为系统环境变量（需要以管理员身份运行批处理）
+	setx MY_SYSTEM_VAR "C:\Program Files\MyTool" /M
+	
+318. 
 
 
 
