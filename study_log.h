@@ -3429,8 +3429,9 @@ Access to XMLHttpRequest at 'http://xx.x/sdfc' from origin 'http://127.0.0.1:505
 	 (系统变量)=> setx PYTHON_PATH C:\Python27 /M
 	 (用户变量)=> setx PYTHON_PATH C:\Python27
 	 
-320. 
+320. python使用win32com.client实现xml，xls，cvs互转
 
+321. 
 
 
 
