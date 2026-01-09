@@ -3422,7 +3422,15 @@ Access to XMLHttpRequest at 'http://xx.x/sdfc' from origin 'http://127.0.0.1:505
 	REM 设置为系统环境变量（需要以管理员身份运行批处理）
 	setx MY_SYSTEM_VAR "C:\Program Files\MyTool" /M
 	
-318. 
+318. 使用Selenium 自动化操作浏览器
+
+319. cmd查看环境变量: set
+	 cmd设置、修改环境变量值: 
+	 (系统变量)=> setx PYTHON_PATH C:\Python27 /M
+	 (用户变量)=> setx PYTHON_PATH C:\Python27
+	 
+320. 
+
 
 
 
