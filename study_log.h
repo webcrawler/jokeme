@@ -2690,7 +2690,22 @@ $1表示匹配出的第1个值(.*)，$2表示匹配出的第2个值(.*)
 233. cocos2d-lua 使用vscode调试:
 	1. vscode插件中心搜索luaide-lite, 安装。(此插件免费开源: https://github.com/wellshsu/luaide-lite)
 	2. 把cocos2d-lua工程lua目录src拖入vscode, vscode左侧栏点击"运行调试"按钮, 选择调试Cocos-Launch, 选择边上设置按钮，弹出的launch.json.
-	3. 在launch.json配置项 "name": "Cocos-Launch"，配置好exePath路径.
+	3. 在launch.json配置项 "name": "Cocos-Launch"，配置好exePath路径：
+        {
+            "name": "Cocos-Launch",
+            "type": "lua",
+            "request": "launch",
+            "runtimeType": "Cocos2",
+            "localRoot": "${workspaceRoot}",
+            "mainFile": "src/main.lua",
+            "commandLine": [
+                "-workdir ${workspaceRoot}",
+                "-file src/main.lua"
+            ],
+            "port": 7003,
+            "exePath": "D:\\works\\hyhz\\client\\simulator\\win32\\hyrz.exe",
+            "printType": 1
+        }
 	4. 下载LuaDebug.lua放入src目录, 下载地址: https://github.com/wellshsu/luaide-lite/blob/master/test/cocos/src/LuaDebug.lua
 	5. 在main.lua加入:
 		if cc.Application:getInstance():getTargetPlatform() == 0 then
@@ -3431,7 +3446,11 @@ Access to XMLHttpRequest at 'http://xx.x/sdfc' from origin 'http://127.0.0.1:505
 	 
 320. python使用win32com.client实现xml，xls，cvs互转
 
-321. 
+321. android studio工程：MySdk.getInstance(activity, R.xml.sdk_configuration); 提示找不到R。
+解决：查看当前工程AndroidManifest.xml内的package name。eg: com.x.io 然后在当前代码import com.x.io.R。
+sdk_configuration.xml存在于：AndroidManifest.xml同级目录下存在res/xml/sdk_configuration.xml
+
+322. 
 
 
 
