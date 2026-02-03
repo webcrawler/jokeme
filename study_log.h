@@ -2603,6 +2603,7 @@ https://officecdn.microsoft.com/pr/492350f6-3a01-4f97-b9c0-c7c6ddf67d60/media/zh
 219. 查看逍遥模拟器当前运行的app包名：
 连接模拟器:  adb connect 127.0.0.1:21503
 获取当前运行APP的appPackage，appActivity:  adb shell "dumpsys window | grep mCurrentFocus"
+adb shell "dumpsys window | grep mCurrentFocus" -s 127.0.0.1:16384
 
 220. python快速搭建ftp服务器
 下载包：pip install pyftpdlib -i http://pypi.douban.com/simple/ --trusted-host pypi.douban.com
@@ -2842,7 +2843,8 @@ java.lang.NoClassDefFoundError: Failed resolution of: Lokhttp3/OkHttpClient$Buil
 解决：提高targetSdkVersion。补充: targetSdkVersion升级时只能增加不能降低。targetSdkVersion高的apk无法被targetSdkVersion低的apk覆盖安装.
 
 245. 接入sdk，在自定义的appliaction初始化sdk。sdk界面没有调用起来。log也没有任何相关的sdk信息。但是安装apk出现2个app图标。
-排查原因是aar内AndroidManifest.xml Activity为android.intent.category.LAUNCHER。
+排查原因：在appliaction.java初始化sdk，传入游戏主Activity, 启动会使用sdk内Activity。sdk结束再切换回游戏主Activity。
+这个在aar内AndroidManifest.xml 可以看到Activity为android.intent.category.LAUNCHER。
 解决：去掉项目activity内<intent-filter>标签。使用sdk的启动activity。
 
 255. excel某一列值是另外一列值100倍再加coin，计算公式:
@@ -3450,7 +3452,35 @@ Access to XMLHttpRequest at 'http://xx.x/sdfc' from origin 'http://127.0.0.1:505
 解决：查看当前工程AndroidManifest.xml内的package name。eg: com.x.io 然后在当前代码import com.x.io.R。
 sdk_configuration.xml存在于：AndroidManifest.xml同级目录下存在res/xml/sdk_configuration.xml
 
-322. 
+322. android studio编译报错：Execution failed for task ':game:packageDebug'.
+> A failure occurred while executing com.android.build.gradle.tasks.PackageAndroidArtifact$IncrementalSplitterRunnable
+> java.lang.OutOfMemoryError (no error message)
+解决：构建APK时Gradle进程内存不足。在gradle.properties文件内加： org.gradle.jvmargs=-Xmx4096m -XX:MaxPermSize=512m -XX:+HeapDumpOnOutOfMemoryError -Dfile.encoding=UTF-8
+
+323. android studio工程报错：Invoke-customs are only supported starting with Android O (--min-api 26)
+解决：这个错误通常是因为项目中使用 Java 8 特性（如 Lambda 表达式），但未正确配置 Java 版本兼容性。
+在模块级的 build.gradle文件（通常是 app/build.gradle）中的 android代码块内添加：
+android {
+    // 其他配置...
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+234. android studio工程报错：Support for ANDROID_NDK_HOME is deprecated and will be removed in the future. Use android.ndkVersion in build.gradle instead.
+解决：删除local.properties文件内 ndk.dir=..
+在模块级的 build.gradle文件，android配置块内添加 ndkVersion:
+android {
+    compileSdk 34
+    // ... 其他配置 ...
+
+    // 添加以下行，并指定您本地已安装的 NDK 版本号
+    ndkVersion "25.1.8937393"
+}
+
+235. 
 
 
 
