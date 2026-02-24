@@ -3481,8 +3481,10 @@ android {
 }
 
 235. apk请求http报错：java.io.IOException: Cleartext HTTP traffic to xxx.com not permitted
+原因: 为保证用户数据和设备的安全，从 Android 9.0(API level 28) 开始，Google强制要求应用默认使用安全传输层协议（HTTPS），禁用了所有明文 HTTP 连接。
+
 在AndroidManifest.xml配置文件的<application>标签中加入android:usesCleartextTraffic="true"，重新打包还是不行。
-解决：
+解决：把targetSdkVersion改成<=27, 或者：
 1.在res文件夹下创建一个xml文件夹，然后创建一个network_security_config.xml文件，文件内容如下：
 <?xml version="1.0" encoding="utf-8"?>
 <network-security-config>
