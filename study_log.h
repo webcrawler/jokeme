@@ -3480,7 +3480,23 @@ android {
     ndkVersion "25.1.8937393"
 }
 
-235. 
+235. apk请求http报错：java.io.IOException: Cleartext HTTP traffic to xxx.com not permitted
+在AndroidManifest.xml配置文件的<application>标签中加入android:usesCleartextTraffic="true"，重新打包还是不行。
+解决：
+1.在res文件夹下创建一个xml文件夹，然后创建一个network_security_config.xml文件，文件内容如下：
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+<base-config cleartextTrafficPermitted="true" />
+</network-security-config>
+
+2.接着，在AndroidManifest.xml文件下的application标签增加以下属性：
+<application
+...
+android:networkSecurityConfig="@xml/network_security_config"
+...
+/>
+
+236. 
 
 
 
