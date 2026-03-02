@@ -2341,7 +2341,7 @@ xcode->preferences->accounts->输入账号密码->manage certificates->没有dev
 拷贝对应的手机系统版本到目录：/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/DeviceSupport
 
 181. 打越狱包:
-选择target->Any ios Device(arm64,armv7)->菜单栏Product->Analyze->编译成功后在Produces文件夹下生成app。新建文件夹名Payload把生成的app拖入文件夹，压缩并改名xx.ipa即可
+选择target->Any ios Device(arm64,armv7)->菜单栏Product->Analyze->编译成功后在Product文件夹下生成app。新建文件夹名Payload把生成的app拖入文件夹，压缩并改名xx.ipa即可, 使用爱思助手签名。
 
 182. 设备管理设置中不允许在此台iPhone上:
 解决：手机->设置->设备管理->信任描述文件
