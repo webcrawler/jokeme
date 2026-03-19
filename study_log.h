@@ -2341,6 +2341,7 @@ xcode->preferences->accounts->输入账号密码->manage certificates->没有dev
 拷贝对应的手机系统版本到目录：/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/DeviceSupport
 
 181. 打越狱包:
+选择target->Edit Scheme->Analyze->Build Configuration设置为release
 选择target->Any ios Device(arm64,armv7)->菜单栏Product->Analyze->编译成功后在Product文件夹下生成app。新建文件夹名Payload把生成的app拖入文件夹，压缩并改名xx.ipa即可, 使用爱思助手签名。
 
 182. 设备管理设置中不允许在此台iPhone上:
@@ -3055,7 +3056,7 @@ eg: P列值是A列值100倍再加字符coin。在P列第一行输入公式:=IF(A
 
 268. ios project  duplicate 一个target。导致编译出错: "Multiple commands produce 'xxxx/Build/Products/Debug-iphoneos/xx.app/Info.plist" 解决：在此target下 build Phases->Copy Bundle Resources下删除 info.plist
 
-269. ios： Undefined symbol: _OBJC_CLASS_$_SKAdNetwork。 解决: Build Phases下添加StoreKit.framework
+269. ios： Undefined symbol: _OBJC_CLASS_$_SKAdNetwork。 解决: 选中工程->选中target->Build Phases下添加StoreKit.framework
 
 270. 查看apk签名信息 keytool -list -printcert -jarfile xx.apk
 
