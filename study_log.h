@@ -3499,7 +3499,49 @@ android:networkSecurityConfig="@xml/network_security_config"
 ...
 >
 
-236. 
+236. docker拉取失败: 
+C:\Windows\System32>docker pull hello-world
+Using default tag: latest
+Error response from daemon: failed to resolve reference "docker.io/library/hello-world:latest": failed to do request: Head "https://registry-1.docker.io/v2/library/hello-world/manifests/latest": dialing registry-1.docker.io:443 container via direct connection because Docker Desktop has no HTTPS proxy: connecting to registry-1.docker.io:443: dial tcp 205.186.152.122:443: connectex: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.
+解决：Docker Engine内，添加加速镜像地址：
+  "registry-mirrors": [
+    "https://docker.1ms.run",
+    "https://docker.m.daocloud.io",
+    "https://ustc-edu-cn.mirror.aliyuncs.com"
+  ]
+  
+237. 设置pip永久全局设置： 
+修改文件C:\Users\Administrator\AppData\Roaming\pip\pip.ini
+添加：
+[global]
+index-url = https://pypi.tuna.tsinghua.edu.cn/simple/
+extra-index-url = https://repo.huaweicloud.com/repository/pypi/simple/
+trusted-host = 
+    pypi.tuna.tsinghua.edu.cn
+    repo.huaweicloud.com
+timeout = 600
 
+238. 执行powershell失败：
+无法加载文件 G:\works\client\build.ps1，因为在此系统上禁止运行脚本。有关详细信息，请参
+阅 https:/go.microsoft.com/fwlink/?LinkID=135170 中的 about_Execution_Policies。
+    + CategoryInfo          : SecurityError: (:) []，ParentContainsErrorRecordException
+    + FullyQualifiedErrorId : UnauthorizedAccess​
+	
+解决：以管理员身份打开PowerShell，然后执行以下命令：Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 
+239. 查看powershell版本命令：$PSVersionTable，powershell5执行 .ps1, ps1文件需要转UTF-8带BOM, 这样ps1内输出中文才不会乱码
 
+240. android studio报错：Could not resolve all files for configuration ':app:_internal_aapt2_binary'.
+> Could not find com.android.tools.build:aapt2:3.3.1-5013011.
+  Searched in the following locations:
+    - file:/E:/android/sdk/extras/m2repository/com/android/tools/build/aapt2/3.3.1-5013011/aapt2-3.3.1-5013011.pom
+	
+解决：项目下build.gradle内 
+allprojects {
+    repositories {
+		// 新增
+        google()
+    }
+}
+
+241. 
