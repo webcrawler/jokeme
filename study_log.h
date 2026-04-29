@@ -3544,4 +3544,8 @@ allprojects {
     }
 }
 
-241. 
+241. python 2.7 print中文乱码。解决: 输出字符串前加u
+# Unicode转义
+print u"你好，世界"
+
+242. 
