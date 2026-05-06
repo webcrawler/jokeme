@@ -3548,4 +3548,53 @@ allprojects {
 # Unicode转义
 print u"你好，世界"
 
-242. 
+242. mumu模拟器内把域名A重定向到域名B，实现步骤:
+1. win上下载nginx，https://nginx.org/en/download.html 解压
+2. 打开 D:\nginx\conf\nginx.conf， 清空原有 server 段，粘贴下面配置：
+events {
+    worker_connections 1024;
+}
+http {
+    include       mime.types;
+    default_type  application/octet-stream;
+
+    # 日志格式
+    log_format  main  '[$time_local] $remote_addr -> $host "$request" -> $status -> Forward: $proxy_host';
+
+    # Windows 不能用 /dev/stderr，改用这行
+    access_log  stdout main;
+	
+	server {
+		listen 80;
+		server_name A.com www.A;
+
+		# 反向代理转发到 B
+		location / {
+			proxy_pass http://B;
+			proxy_set_header Host B;
+			proxy_set_header X-Real-IP $remote_addr;
+			proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+		}
+	}
+}
+3. 启动 Nginx: start nginx 或者查看日志的启动：nginx.exe -g "daemon off;"
+4. 其他命令=> (查看是否启动：tasklist | findstr nginx   杀掉nginx: taskkill /f /im nginx.exe)
+5. 设置mumu模拟器hosts, 把域名A解析到本地电脑ip，执行如下命令：
+
+# adb连接mumu模拟器
+adb -s 127.0.0.1:16384 shell
+su
+
+mount -o rw,remount /
+# 设置默认hosts, 并添加域名A解析到本地ip 192.168.1.8
+echo -n "127.0.0.1 localhost
+::1 localhost
+192.168.1.8 A 
+" > /system/etc/hosts
+
+# 6. 验证修改结果
+adb -s 127.0.0.1:16384 shell "cat /system/etc/hosts"
+
+MuMu模拟器 所有流量走电脑代理，电脑上搭 Nginx，收到域名 A 请求，直接 301 重定向到域名 B。
+
+243. 
