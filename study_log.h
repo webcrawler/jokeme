@@ -3601,4 +3601,14 @@ MuMu模拟器 所有流量走电脑代理，电脑上搭 Nginx，收到域名 A 
 244. mumu模拟器内连接sock5代理socksdroid, 下载地址 https://github.com/bndeff/socksdroid/releases
 填入代理地址，端口。
 
-245. 
+245. android studio打包报错：
+> Task :game:processDebugResources FAILED
+Execution failed for task ':game:processDebugResources'.
+> A failure occurred while executing com.android.build.gradle.internal.tasks.Workers$ActionFacade
+   > AAPT2 aapt2-3.6.0-6040484-windows Daemon #0: Unexpected error during link, attempting to stop daemon.
+     This should not happen under normal circumstances, please file an issue if it does.
+解决：不要混合使用新版 AndroidX + 旧 Support 库，容易资源冲突。
+    implementation 'androidx.appcompat:appcompat:1.0.0'
+	// implementation 'androidx.legacy:legacy-support-v4:1.0.0' 去掉即可
+
+246. 
