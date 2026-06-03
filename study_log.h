@@ -3596,7 +3596,7 @@ adb -s 127.0.0.1:16384 shell "cat /system/etc/hosts"
 
 MuMu模拟器 所有流量走电脑代理，电脑上搭 Nginx，收到域名 A 请求，直接 301 重定向到域名 B。
 
-243. 查看apk/jar包内java代码工具：jadx-gui 
+243. 查看apk/jar包内java代码工具：jadx-gui  https://github.com/skylot/jadx
 
 244. mumu模拟器内连接sock5代理socksdroid, 下载地址 https://github.com/bndeff/socksdroid/releases
 填入代理地址，端口。
